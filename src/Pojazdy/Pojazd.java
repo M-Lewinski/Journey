@@ -1,6 +1,7 @@
 package Pojazdy;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import Mapa.PunktNaMapie;
@@ -9,7 +10,7 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 
 public abstract class Pojazd extends PunktNaMapie implements Runnable {
     private UUID identyfikator;
-    private ArrayList<MiejsceZmianyKierunku> trasa;
+    private List<MiejsceZmianyKierunku> trasa = new ArrayList<MiejsceZmianyKierunku>();
     private int maksymalnaPredkosc;
     private TypLadunku Ladunek;
 
@@ -20,8 +21,21 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     public void zmianaTrasy(){
 
     }
-    public ArrayList<MiejsceZmianyKierunku> getTrasa() {
+
+    public List<MiejsceZmianyKierunku> getTrasa() {
         return trasa;
+    }
+
+    public void setTrasa(List<MiejsceZmianyKierunku> trasa) {
+        this.trasa = trasa;
+    }
+
+    public void addPunktTrasy(MiejsceZmianyKierunku miejsceZmianyKierunku){
+        this.trasa.add(miejsceZmianyKierunku);
+    }
+
+    public void removePunktTrasy(MiejsceZmianyKierunku miejsceZmianyKierunku){
+        this.trasa.remove(miejsceZmianyKierunku);
     }
 
     public int getMaksymalnaPredkosc() {
@@ -32,10 +46,6 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         return identyfikator;
     }
 
-
-    public void setTrasa(ArrayList<MiejsceZmianyKierunku> trasa) {
-        this.trasa = trasa;
-    }
 
     public void poruszanie(){
 

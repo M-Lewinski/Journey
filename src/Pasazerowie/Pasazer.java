@@ -5,6 +5,7 @@ import Mapa.ShowInfo;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -21,7 +22,7 @@ public class Pasazer implements ShowInfo {
     private Przystanek przystanekDocelowy;
     private PunktNaMapie obecnePolozenie;
     private boolean rodzajPodrozy;
-    private ArrayList<Bilet> bilet;
+    private List<Bilet> listaBiletow = new ArrayList<Bilet>();
     private boolean powrot;
     public Pasazer() {
     }
@@ -34,12 +35,20 @@ public class Pasazer implements ShowInfo {
         this.powrot = powrot;
     }
 
-    public ArrayList<Bilet> getBilet() {
-        return bilet;
+    public List<Bilet> getListaBiletow() {
+        return listaBiletow;
     }
 
-    public void setBilet(ArrayList<Bilet> bilet) {
-        this.bilet = bilet;
+    public void setListaBiletow(List<Bilet> listaBiletow) {
+        this.listaBiletow = listaBiletow;
+    }
+
+    public void addBilet(Bilet bilet){
+        this.listaBiletow.add(bilet);
+    }
+
+    public void removeBilet(Bilet bilet){
+        this.listaBiletow.remove(bilet);
     }
 
     public boolean isRodzajPodrozy() {

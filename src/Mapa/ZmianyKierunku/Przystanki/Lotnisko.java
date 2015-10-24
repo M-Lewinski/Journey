@@ -15,4 +15,11 @@ public abstract class Lotnisko extends Przystanek {
         return maksymalnaPojemnosc;
     }
 
+    public Lotnisko(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, int maksymalnaPojemnosc) {
+        super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen);
+        this.maksymalnaPojemnosc = maksymalnaPojemnosc;
+    }
+    public Lotnisko(){
+
+    }
 }

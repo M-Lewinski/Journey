@@ -27,4 +27,13 @@ public abstract class ObiektGraficzny implements Rysowanie {
     public void setSzerokosc(int szerokosc) {
         this.szerokosc = szerokosc;
     }
+
+    public ObiektGraficzny(int dlugosc, int szerokosc) {
+        this.dlugosc = dlugosc;
+        this.szerokosc = szerokosc;
+    }
+    public ObiektGraficzny(){
+
+    }
+
 }
