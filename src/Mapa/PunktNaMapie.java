@@ -1,6 +1,6 @@
 package Mapa;
 
-public class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
+public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
     private int polozenieX;
     private int polozenieY;
 

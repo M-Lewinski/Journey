@@ -1,23 +1,58 @@
 package Mapa;
 
 import Drogi.Droga;
+import Drogi.DrogaMorska;
 import Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne;
+import Mapa.ZmianyKierunku.Przystanki.Przystanek;
+import Pasazerowie.GeneratorPasazerow;
 import Pasazerowie.Pasazer;
 import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 
 public class Swiat extends ObiektGraficzny {
+    private static Swiat instance = null;
     private List<Pasazer> listaPasazerow = new ArrayList<Pasazer>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
     private List<Pojazd> listaPojazdow = new ArrayList<Pojazd>();
     private List<MiejsceZmianyKierunku> listaMiejscZmianyKierunku = new ArrayList<MiejsceZmianyKierunku>();
+    private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
     private List<Pasazer> listaPasazerowBezTrasy = new ArrayList<Pasazer>();
 
     public Swiat() {
+        System.out.println("Poczatek Swiata");
         LotniskoCywilne miasto1 = new LotniskoCywilne(100,100,100,100,false,10);
+        listaPrzystankow.add(miasto1);
+//        Pasazer pasazer1 = new Pasazer();
+//        System.out.println("Imie pasazera:"+pasazer1.getImie());
+    }
+
+    public synchronized static Swiat getInstance(){
+        if(instance == null){
+            instance = new Swiat();
+        }
+        return instance;
+    }
+
+    public List<Przystanek> getListaPrzystankow() {
+        return listaPrzystankow;
+    }
+
+    public void setListaPrzystankow(List<Przystanek> listaPrzystankow) {
+        this.listaPrzystankow = listaPrzystankow;
+    }
+
+    public void addPrzystanek(Przystanek przystanek){
+        this.listaPrzystankow.add(przystanek);
+    }
+
+    public void removePrzystanek(Przystanek przystanek){
+        this.listaPrzystankow.remove(przystanek);
     }
 
     public List<Pasazer> getListaPasazerow() {
@@ -103,7 +138,12 @@ public class Swiat extends ObiektGraficzny {
     }
 
     public static void main(String[] args) {
-        Swiat swiat = new Swiat();
-        System.out.println("Poczatek Swiata");
+//        System.out.println("Poczatek Swiata");
+        Swiat.getInstance();
+//        System.out.println(swiat.getListaPrzystankow().get(0));
+        Pasazer pasazer = new Pasazer();
+//        swiat.addPasazer(pasazer);
+//        System.out.println("Imie: "+GeneratorPasazerow.getInstance().getImie());
+//        System.out.println("Nazwisko: "+GeneratorPasazerow.getInstance().getNazwisko());
     }
 }

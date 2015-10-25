@@ -1,6 +1,7 @@
 package Pojazdy;
 
 import Mapa.ZmianyKierunku.Przystanki.Lotnisko;
+import Pojazdy.Ladunki.TypLadunku;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -11,6 +12,16 @@ public abstract class Samolot extends Pojazd {
     private int aktualnaIloscPaliwa;
     private Lotnisko nastepnyPrzystanek;
 
+    public Samolot(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
+        super(dlugosc, szerokosc, polozenieX, polozenieY, maksymalnaPredkosc, ladunek);
+        this.liczbaPersonelu = liczbaPersonelu;
+        this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
+        this.aktualnaIloscPaliwa = aktualnaIloscPaliwa;
+    }
+
+    public Samolot(){
+
+    }
 
     public Lotnisko getNastepnyPrzystanek() {
         return nastepnyPrzystanek;

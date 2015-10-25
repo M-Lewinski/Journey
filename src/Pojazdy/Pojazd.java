@@ -22,6 +22,17 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     }
 
+    public Pojazd(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
+        super(dlugosc, szerokosc, polozenieX, polozenieY);
+        this.identyfikator = UUID.randomUUID();
+        this.maksymalnaPredkosc = maksymalnaPredkosc;
+        Ladunek = ladunek;
+    }
+
+    public Pojazd(){
+
+    }
+
     public List<MiejsceZmianyKierunku> getTrasa() {
         return trasa;
     }

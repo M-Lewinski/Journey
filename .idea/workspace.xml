@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f50d38b-bcd9-44e5-9551-e37e6c23d7d2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java" afterPath="$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java" />
+    <list default="true" id="1f50d38b-bcd9-44e5-9551-e37e6c23d7d2" name="Default" comment="Modifing lists and constructors.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Pasazerowie/NameList.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Pasazerowie/SurnameList.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Drogi/Droga.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Drogi/Droga.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Drogi/DrogaMorska.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Drogi/DrogaMorska.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Drogi/DrogaPowietrzna.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Drogi/DrogaPowietrzna.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Lotnisko.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Lotnisko.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ObiektGraficzny.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ObiektGraficzny.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Przystanek.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Przystanek.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/PunktNaMapie.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/PunktNaMapie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/SamolotPasazerski.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/SamolotPasazerski.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/Swiat.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/Swiat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/Droga.java" afterPath="$PROJECT_DIR$/src/Drogi/Droga.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/DrogaMorska.java" afterPath="$PROJECT_DIR$/src/Drogi/DrogaMorska.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" afterPath="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Lotniskowiec.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Lotniskowiec.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" afterPath="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Samolot.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Samolot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java" afterPath="$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/SamolotWojskowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/SamolotWojskowy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Statek.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Statek.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/Swiat.java" afterPath="$PROJECT_DIR$/src/Mapa/Swiat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Podroz.iws" />
@@ -35,76 +57,338 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DrogaMorska.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Drogi/DrogaMorska.java">
+      <file leaf-file-name="SamolotPasazerski.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
+      <file leaf-file-name="Samolot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Samolot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LotniskoCywilne.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Lotnisko.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Port.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Skrzyzowanie.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11805555">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MiejsceZmianyKierunku.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
-                <element signature="e#307#315#0" expanded="true" />
-                <element signature="e#992#993#0" expanded="true" />
-                <element signature="e#1053#1054#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JAVA/" pinned="false" current-in-tab="false">
+        <entry file="uml://JAVA/">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement />
+              <nodes>
+                <node x="1174.0" y="2844.0">com</node>
+                <node x="979.0070634267689" y="2283.0">Mapa.Swiat</node>
+                <node x="535.0" y="2844.0">netscape</node>
+                <node x="1302.949951421128" y="1688.0">Mapa.ZmianyKierunku.Przystanki.Lotnisko</node>
+                <node x="2499.4733030694797" y="2053.5">Pojazdy.Ladunki.Pasazerski</node>
+                <node x="1341.699951421128" y="1071.0">Mapa.ZmianyKierunku.Przystanki.Przystanek</node>
+                <node x="331.4749514211279" y="102.0">Mapa.ObiektGraficzny</node>
+                <node x="129.25" y="2053.0">Drogi.Droga</node>
+                <node x="1419.199951421128" y="2075.5">Mapa.ZmianyKierunku.Przystanki.Port</node>
+                <node x="228.71533603651233" y="0.0">Mapa.Rysowanie</node>
+                <node x="1471.0" y="2844.0">sun</node>
+                <node x="1619.5928085639848" y="1478.0">Pasazerowie.Pasazer</node>
+                <node x="1324.0" y="2844.0">java</node>
+                <node x="457.5749514211278" y="836.0">Mapa.ZmianyKierunku.MiejsceZmianyKierunku</node>
+                <node x="1022.0" y="2844.0">javax</node>
+                <node x="866.0" y="2844.0">javafx</node>
+                <node x="1481.9500915750916" y="124.5">Mapa.ShowInfo</node>
+                <node x="2191.7233030694792" y="2526.0">Pojazdy.SamolotPasazerski</node>
+                <node x="794.0749514211278" y="1699.0">Pojazdy.Statek</node>
+                <node x="0.0" y="2526.0">Drogi.DrogaMorska</node>
+                <node x="1049.449951421128" y="1688.0">Pojazdy.TworzeniePojazdu</node>
+                <node x="708.0" y="2844.0">oracle</node>
+                <node x="125.0" y="2526.0">Drogi.DrogaPowietrzna</node>
+                <node x="1616.0" y="2844.0">org</node>
+                <node x="1341.199951421128" y="304.0">Pojazdy.Ladunki.TypLadunku</node>
+                <node x="705.9499514211278" y="2075.5">Pojazdy.Lotniskowiec</node>
+                <node x="0.0" y="2844.0">Pasazerowie.GeneratorPasazerow</node>
+                <node x="2186.4733030694797" y="2020.0">Pojazdy.Samolot</node>
+                <node x="695.6499514211279" y="249.0">Pojazdy.Ladunki.Uzbrojenie</node>
+                <node x="1005.9499514211278" y="2075.5">Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe</node>
+                <node x="1807.878522849699" y="1192.5">Pasazerowie.Bilet</node>
+                <node x="738.8999514211279" y="571.5">Pojazdy.Ladunki.Wojskowy</node>
+                <node x="848.9499514211278" y="2075.5">Pojazdy.StatekWycieczkowy</node>
+                <node x="354.0" y="2844.0">META-INF</node>
+                <node x="1760.0" y="2844.0">jdk</node>
+                <node x="1158.949951421128" y="2075.5">Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne</node>
+                <node x="1902.0" y="2844.0">MainPanel</node>
+                <node x="596.8140661299481" y="1214.5">Mapa.ZmianyKierunku.Skrzyzowanie</node>
+                <node x="2342.7233030694792" y="2526.0">Pojazdy.SamolotWojskowy</node>
+                <node x="1094.949951421128" y="439.0">Pojazdy.Pojazd</node>
+                <node x="404.4749514211279" y="270.5">Mapa.PunktNaMapie</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="Pojazdy.Pojazd" target="Pojazdy.Ladunki.TypLadunku">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.Port" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+                  <point x="30.75" y="-26.0" />
+                  <point x="1511.449951421128" y="1458.0" />
+                  <point x="1436.8428085639853" y="1458.0" />
+                  <point x="-126.85714285714266" y="158.5" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe" target="Mapa.ZmianyKierunku.Przystanki.Lotnisko">
+                  <point x="33.25" y="-26.0" />
+                  <point x="1105.699951421128" y="1990.0" />
+                  <point x="1335.949951421128" y="1990.0" />
+                  <point x="-66.0" y="26.0" />
+                </edge>
+                <edge source="Pojazdy.Ladunki.Pasazerski" target="Pojazdy.Ladunki.TypLadunku">
+                  <point x="68.75" y="-48.0" />
+                  <point x="2705.7233030694797" y="419.0" />
+                  <point x="1424.5332847544614" y="419.0" />
+                  <point x="33.333333333333485" y="15.0" />
+                </edge>
+                <edge source="Pasazerowie.Bilet" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Pojazdy.Pojazd" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Skrzyzowanie" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+                  <point x="0.0" y="-15.0" />
+                  <point x="648.8140661299481" y="1051.0" />
+                  <point x="666.9916180877946" y="1051.0" />
+                  <point x="29.916666666666742" y="92.5" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.Przystanek" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+                  <point x="-148.0" y="-158.5" />
+                  <point x="1415.699951421128" y="1051.0" />
+                  <point x="726.8249514211278" y="1051.0" />
+                  <point x="89.75" y="92.5" />
+                </edge>
+                <edge source="Pojazdy.SamolotPasazerski" target="Pojazdy.Samolot">
+                  <point x="0.0" y="-15.0" />
+                  <point x="2257.2233030694792" y="2263.0" />
+                  <point x="2259.7233030694797" y="2263.0" />
+                  <point x="-73.25" y="81.5" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne" target="Pojazdy.TworzeniePojazdu">
+                  <point x="-30.75" y="-26.0" />
+                  <point x="1189.699951421128" y="1980.0" />
+                  <point x="1130.699951421128" y="1980.0" />
+                  <point x="16.25" y="26.0" />
+                </edge>
+                <edge source="Pasazerowie.Pasazer" target="Pasazerowie.Bilet">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne" target="Mapa.ZmianyKierunku.Przystanki.Lotnisko">
+                  <point x="30.75" y="-26.0" />
+                  <point x="1251.199951421128" y="2000.0" />
+                  <point x="1401.949951421128" y="2000.0" />
+                  <point x="0.0" y="26.0" />
+                </edge>
+                <edge source="Mapa.ObiektGraficzny" target="Mapa.Rysowanie">
+                  <point x="0.0" y="-48.5" />
+                  <point x="408.4749514211279" y="77.0" />
+                  <point x="314.2153360365123" y="77.0" />
+                  <point x="28.5" y="26.0" />
+                </edge>
+                <edge source="Pojazdy.Lotniskowiec" target="Pojazdy.TworzeniePojazdu">
+                  <point x="30.75" y="-26.0" />
+                  <point x="798.1999514211278" y="1990.0" />
+                  <point x="1065.699951421128" y="1990.0" />
+                  <point x="-48.75" y="26.0" />
+                </edge>
+                <edge source="Pasazerowie.Pasazer" target="Mapa.PunktNaMapie">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.MiejsceZmianyKierunku" target="Mapa.PunktNaMapie">
+                  <point x="-143.5999999999999" y="-92.5" />
+                  <point x="0.0" y="48.5" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Drogi.Droga">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.Lotnisko" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+                  <point x="0.0" y="-26.0" />
+                  <point x="1401.949951421128" y="1458.0" />
+                  <point x="1373.4142371354137" y="1458.0" />
+                  <point x="-190.28571428571422" y="158.5" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Mapa.ObiektGraficzny">
+                  <point x="-169.23076923076906" y="-258.0" />
+                  <point x="1084.776294196" y="2243.0" />
+                  <point x="334.2596153846155" y="2243.0" />
+                  <point x="334.2596153846155" y="224.0" />
+                  <point x="369.9749514211279" y="224.0" />
+                  <point x="-38.5" y="48.5" />
+                </edge>
+                <edge source="Mapa.PunktNaMapie" target="Mapa.ObiektGraficzny">
+                  <point x="-44.5" y="-48.5" />
+                  <point x="448.9749514211279" y="224.0" />
+                  <point x="446.9749514211279" y="224.0" />
+                  <point x="38.5" y="48.5" />
+                </edge>
+                <edge source="Pojazdy.Ladunki.Wojskowy" target="Pojazdy.Ladunki.Uzbrojenie">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Pojazdy.Statek" target="Pojazdy.Pojazd">
+                  <point x="0.0" y="-15.0" />
+                  <point x="827.0749514211278" y="816.0" />
+                  <point x="1256.540860512037" y="816.0" />
+                  <point x="-35.90909090909099" y="158.5" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.MiejsceZmianyKierunku" target="Pojazdy.Pojazd">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Pojazdy.Ladunki.Pasazerski" target="Pasazerowie.Pasazer">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe" target="Pojazdy.TworzeniePojazdu">
+                  <point x="-33.25" y="-26.0" />
+                  <point x="1039.199951421128" y="2000.0" />
+                  <point x="1098.199951421128" y="2000.0" />
+                  <point x="-16.25" y="26.0" />
+                </edge>
+                <edge source="Mapa.PunktNaMapie" target="Mapa.ShowInfo">
+                  <point x="44.5" y="-48.5" />
+                  <point x="537.9749514211279" y="224.0" />
+                  <point x="1516.4500915750916" y="224.0" />
+                  <point x="-34.5" y="26.0" />
+                </edge>
+                <edge source="Pojazdy.SamolotWojskowy" target="Pojazdy.Samolot">
+                  <point x="0.0" y="-15.0" />
+                  <point x="2408.7233030694792" y="2263.0" />
+                  <point x="2406.2233030694792" y="2263.0" />
+                  <point x="73.24999999999955" y="81.5" />
+                </edge>
+                <edge source="Pasazerowie.Pasazer" target="Mapa.ShowInfo">
+                  <point x="212.57142857142844" y="-236.0" />
+                  <point x="2080.1642371354133" y="1458.0" />
+                  <point x="2716.7233030694797" y="1458.0" />
+                  <point x="2716.7233030694797" y="224.0" />
+                  <point x="1585.4500915750916" y="224.0" />
+                  <point x="34.5" y="26.0" />
+                </edge>
+                <edge source="Pojazdy.StatekWycieczkowy" target="Pojazdy.Statek">
+                  <point x="0.0" y="-26.0" />
+                  <point x="917.4499514211278" y="1980.0" />
+                  <point x="843.5749514211278" y="1980.0" />
+                  <point x="16.5" y="15.0" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Pojazdy.Pojazd">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Drogi.DrogaMorska" target="Drogi.Droga">
+                  <point x="0.0" y="-15.0" />
+                  <point x="52.5" y="2263.0" />
+                  <point x="148.5" y="2263.0" />
+                  <point x="-57.75" y="48.5" />
+                </edge>
+                <edge source="Pojazdy.Pojazd" target="Mapa.PunktNaMapie">
+                  <point x="-98.75" y="-158.5" />
+                  <point x="1193.699951421128" y="409.0" />
+                  <point x="552.8082847544612" y="409.0" />
+                  <point x="59.33333333333326" y="48.5" />
+                </edge>
+                <edge source="Pojazdy.Lotniskowiec" target="Pojazdy.Statek">
+                  <point x="-30.75" y="-26.0" />
+                  <point x="736.6999514211278" y="1980.0" />
+                  <point x="810.5749514211278" y="1980.0" />
+                  <point x="-16.5" y="15.0" />
+                </edge>
+                <edge source="Pojazdy.Samolot" target="Mapa.ZmianyKierunku.Przystanki.Lotnisko">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Drogi.Droga" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.Przystanek" target="Pojazdy.Pojazd">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Pasazerowie.Pasazer" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.Port" target="Pojazdy.TworzeniePojazdu">
+                  <point x="-30.75" y="-26.0" />
+                  <point x="1449.949951421128" y="1970.0" />
+                  <point x="1163.199951421128" y="1970.0" />
+                  <point x="48.75" y="26.0" />
+                </edge>
+                <edge source="Pojazdy.Ladunki.Wojskowy" target="Pojazdy.Ladunki.TypLadunku">
+                  <point x="42.25" y="-26.0" />
+                  <point x="865.6499514211279" y="419.0" />
+                  <point x="1357.8666180877944" y="419.0" />
+                  <point x="-33.333333333333485" y="15.0" />
+                </edge>
+                <edge source="Pojazdy.Samolot" target="Pojazdy.Pojazd">
+                  <point x="73.24999999999955" y="-81.5" />
+                  <point x="2406.2233030694792" y="776.0" />
+                  <point x="1471.9954059665824" y="776.0" />
+                  <point x="179.5454545454545" y="158.5" />
+                </edge>
+                <edge source="Pasazerowie.Bilet" target="Pojazdy.Pojazd">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Drogi.Droga" target="Mapa.Rysowanie">
+                  <point x="-38.5" y="-48.5" />
+                  <point x="167.75" y="77.0" />
+                  <point x="257.2153360365123" y="77.0" />
+                  <point x="-28.5" y="26.0" />
+                </edge>
+                <edge source="Drogi.DrogaPowietrzna" target="Drogi.Droga">
+                  <point x="0.0" y="-15.0" />
+                  <point x="-19.25" y="48.5" />
+                </edge>
+                <edge source="Mapa.ZmianyKierunku.Przystanki.Przystanek" target="Pasazerowie.Pasazer">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="Mapa.Swiat" target="Pasazerowie.Pasazer">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="628.9999999999995" y="570.9999999999995" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Fields</Category>
+                <Category>Methods</Category>
+                <Category>Properties</Category>
+                <Category>Inner Classes</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
@@ -113,35 +397,80 @@
         <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
               <folding>
                 <element signature="e#370#378#0" expanded="true" />
                 <element signature="e#450#459#0" expanded="true" />
                 <element signature="e#533#541#0" expanded="true" />
                 <element signature="e#617#626#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
-                <element signature="e#782#783#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrogaPowietrzna.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java">
+      <file leaf-file-name="Port.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="8" column="103" selection-start-line="8" selection-start-column="103" selection-end-line="8" selection-end-column="103" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Droga.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
+      <file leaf-file-name="ShowInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/ShowInfo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rysowanie.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/Rysowanie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PunktNaMapie.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/PunktNaMapie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObiektGraficzny.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.64761907">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Swiat.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/Swiat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+              <folding>
+                <element signature="e#598#607#0" expanded="true" />
+                <element signature="e#660#667#0" expanded="true" />
+                <element signature="e#725#733#0" expanded="true" />
+                <element signature="e#818#841#0" expanded="true" />
+                <element signature="e#906#918#0" expanded="true" />
+                <element signature="e#986#995#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -168,16 +497,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/TworzeniePojazdu.java" />
-        <option value="$PROJECT_DIR$/src/Grafika.java" />
-        <option value="$PROJECT_DIR$/src/Rysowanie.java" />
-        <option value="$PROJECT_DIR$/src/Rysunek.java" />
-        <option value="$PROJECT_DIR$/src/ObiektGraficzny.java" />
-        <option value="$PROJECT_DIR$/src/DrogaMorska.java" />
-        <option value="$PROJECT_DIR$/src/DrogaPowietrzna.java" />
-        <option value="$PROJECT_DIR$/src/obslugaPojazduPrzyjazd.java" />
-        <option value="$PROJECT_DIR$/src/obslugaPojazduWyjazd.java" />
-        <option value="$PROJECT_DIR$/src/Uzbrojenie.java" />
         <option value="$PROJECT_DIR$/src/LotniskoWojskowe.java" />
         <option value="$PROJECT_DIR$/src/Port.java" />
         <option value="$PROJECT_DIR$/src/Lotnisko.java" />
@@ -203,22 +522,32 @@
         <option value="$PROJECT_DIR$/src/Bilet.java" />
         <option value="$PROJECT_DIR$/src/Pasazerowie/Bilet.java" />
         <option value="$PROJECT_DIR$/src/PunktNaMapie.java" />
-        <option value="$PROJECT_DIR$/src/Drogi/Droga.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Samolot.java" />
-        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" />
-        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/TworzeniePojazdu.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java" />
-        <option value="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" />
-        <option value="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" />
-        <option value="$PROJECT_DIR$/src/Mapa/Swiat.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
-        <option value="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" />
+        <option value="$PROJECT_DIR$/src/Drogi/Droga.java" />
+        <option value="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/NameList" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/SurnameList" />
+        <option value="$PROJECT_DIR$/src/Drogi/Tmp.java" />
+        <option value="$PROJECT_DIR$/src/Drogi/DrogaMorska.java" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/Swiat.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Samolot.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/SamolotWojskowy.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Statek.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Lotniskowiec.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
       </list>
     </option>
   </component>
@@ -731,12 +1060,19 @@
       <workItem from="1445514954325" duration="7000" />
       <workItem from="1445515379491" duration="2321000" />
       <workItem from="1445529051666" duration="5328000" />
-      <workItem from="1445694376866" duration="10495000" />
+      <workItem from="1445694376866" duration="30620000" />
     </task>
+    <task id="LOCAL-00001" summary="Modifing lists and constructors.">
+      <created>1445711853019</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1445711853019</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65621000" />
+    <option name="totallyTimeSpent" value="85746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -744,55 +1080,29 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32513967" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16424581" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34301677" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14748603" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34301677" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15953545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15709047" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21943766" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789558" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16476347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19742814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -805,9 +1115,13 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modifing lists and constructors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifing lists and constructors." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -816,41 +1130,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Statek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pojazdy/Samolot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1034,303 +1313,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="1365.0" y="1406.0">com</node>
-            <node x="333.0" y="382.0">Mapa.Swiat</node>
-            <node x="558.0" y="1406.0">netscape</node>
-            <node x="438.875" y="102.0">Mapa.ObiektGraficzny</node>
-            <node x="84.25" y="124.5">Drogi.Droga</node>
-            <node x="309.125" y="0.0">Mapa.Rysowanie</node>
-            <node x="0.0" y="1525.0">sun</node>
-            <node x="926.0" y="294.0">Pasazerowie.Pasazer</node>
-            <node x="1515.0" y="1406.0">java</node>
-            <node x="1213.0" y="1406.0">javax</node>
-            <node x="1057.0" y="1406.0">javafx</node>
-            <node x="915.875" y="147.0">Mapa.ShowInfo</node>
-            <node x="301.5277777777777" y="1297.5">Pojazdy.SamolotPasazerski</node>
-            <node x="746.5277777777778" y="1139.5">Pojazdy.Statek</node>
-            <node x="176.0" y="471.0">Drogi.DrogaMorska</node>
-            <node x="926.625" y="1128.5">Pojazdy.TworzeniePojazdu</node>
-            <node x="899.0" y="1406.0">oracle</node>
-            <node x="0.0" y="471.0">Drogi.DrogaPowietrzna</node>
-            <node x="145.0" y="1525.0">org</node>
-            <node x="875.375" y="1286.0">Pojazdy.Lotniskowiec</node>
-            <node x="328.2777777777777" y="1073.0">Pojazdy.Samolot</node>
-            <node x="0.0" y="1406.0">Pasazerowie.Bilet</node>
-            <node x="731.0" y="1406.0">Pojazdy.Ladunki</node>
-            <node x="668.5277777777778" y="1286.0">Pojazdy.StatekWycieczkowy</node>
-            <node x="377.0" y="1406.0">META-INF</node>
-            <node x="289.0" y="1525.0">jdk</node>
-            <node x="431.0" y="1525.0">MainPanel</node>
-            <node x="815.4027777777778" y="871.5">Mapa.ZmianyKierunku</node>
-            <node x="484.52777777777777" y="1297.5">Pojazdy.SamolotWojskowy</node>
-            <node x="440.40277777777777" y="750.0">Pojazdy.Pojazd</node>
-            <node x="607.0" y="426.0">Mapa.PunktNaMapie</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="Mapa.PunktNaMapie" target="Mapa.ShowInfo">
-              <point x="74.75" y="-71.0" />
-              <point x="831.25" y="269.0" />
-              <point x="950.375" y="269.0" />
-              <point x="-34.5" y="26.0" />
-            </edge>
-            <edge source="Pojazdy.SamolotWojskowy" target="Pojazdy.Samolot">
-              <point x="0.0" y="-26.0" />
-              <point x="566.5277777777778" y="1261.0" />
-              <point x="548.0277777777778" y="1261.0" />
-              <point x="73.25000000000006" y="81.5" />
-            </edge>
-            <edge source="Pasazerowie.Pasazer" target="Mapa.ShowInfo">
-              <point x="0.0" y="-203.0" />
-              <point x="1138.5" y="269.0" />
-              <point x="1019.375" y="269.0" />
-              <point x="34.5" y="26.0" />
-            </edge>
-            <edge source="Pojazdy.StatekWycieczkowy" target="Pojazdy.Statek">
-              <point x="0.0" y="-37.5" />
-              <point x="-16.5" y="15.0" />
-            </edge>
-            <edge source="Mapa.ZmianyKierunku" target="Mapa.PunktNaMapie">
-              <point x="0.0" y="-15.0" />
-              <point x="899.4027777777778" y="725.0" />
-              <point x="831.25" y="725.0" />
-              <point x="74.75" y="71.0" />
-            </edge>
-            <edge source="Pojazdy.SamolotPasazerski" target="Pojazdy.Samolot">
-              <point x="0.0" y="-26.0" />
-              <point x="383.0277777777777" y="1261.0" />
-              <point x="401.5277777777777" y="1261.0" />
-              <point x="-73.25" y="81.5" />
-            </edge>
-            <edge source="Drogi.DrogaMorska" target="Drogi.Droga">
-              <point x="0.0" y="-26.0" />
-              <point x="244.5" y="269.0" />
-              <point x="199.75" y="269.0" />
-              <point x="38.5" y="48.5" />
-            </edge>
-            <edge source="Pojazdy.Lotniskowiec" target="Pojazdy.Statek">
-              <point x="-38.75" y="-37.5" />
-              <point x="914.125" y="1261.0" />
-              <point x="796.0277777777778" y="1261.0" />
-              <point x="16.5" y="15.0" />
-            </edge>
-            <edge source="Pojazdy.Pojazd" target="Mapa.PunktNaMapie">
-              <point x="0.0" y="-136.5" />
-              <point x="617.9027777777778" y="725.0" />
-              <point x="681.75" y="725.0" />
-              <point x="-74.75" y="71.0" />
-            </edge>
-            <edge source="Mapa.ObiektGraficzny" target="Mapa.Rysowanie">
-              <point x="0.0" y="-71.0" />
-              <point x="570.875" y="77.0" />
-              <point x="394.625" y="77.0" />
-              <point x="28.5" y="26.0" />
-            </edge>
-            <edge source="Pojazdy.Lotniskowiec" target="Pojazdy.TworzeniePojazdu">
-              <point x="38.75" y="-37.5" />
-              <point x="0.0" y="26.0" />
-            </edge>
-            <edge source="Pojazdy.Samolot" target="Pojazdy.Pojazd">
-              <point x="5.6843418860808015E-14" y="-81.5" />
-              <point x="474.77777777777777" y="1048.0" />
-              <point x="529.1527777777778" y="1048.0" />
-              <point x="-88.75" y="136.5" />
-            </edge>
-            <edge source="Mapa.Swiat" target="Mapa.ObiektGraficzny">
-              <point x="0.0" y="-115.0" />
-              <point x="460.0" y="269.0" />
-              <point x="504.875" y="269.0" />
-              <point x="-66.0" y="71.0" />
-            </edge>
-            <edge source="Mapa.PunktNaMapie" target="Mapa.ObiektGraficzny">
-              <point x="-74.75" y="-71.0" />
-              <point x="681.75" y="269.0" />
-              <point x="636.875" y="269.0" />
-              <point x="66.0" y="71.0" />
-            </edge>
-            <edge source="Drogi.Droga" target="Mapa.Rysowanie">
-              <point x="0.0" y="-48.5" />
-              <point x="161.25" y="77.0" />
-              <point x="337.625" y="77.0" />
-              <point x="-28.5" y="26.0" />
-            </edge>
-            <edge source="Drogi.DrogaPowietrzna" target="Drogi.Droga">
-              <point x="0.0" y="-26.0" />
-              <point x="78.0" y="269.0" />
-              <point x="122.75" y="269.0" />
-              <point x="-38.5" y="48.5" />
-            </edge>
-            <edge source="Pojazdy.Statek" target="Pojazdy.Pojazd">
-              <point x="0.0" y="-15.0" />
-              <point x="779.5277777777778" y="1048.0" />
-              <point x="706.6527777777778" y="1048.0" />
-              <point x="88.75" y="136.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="293.0" y="679.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.8111111">
+          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/PunktNaMapie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/Rysowanie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ShowInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/Swiat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="13" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="13" />
-          <folding>
-            <element signature="e#345#354#0" expanded="true" />
-            <element signature="e#407#414#0" expanded="true" />
-            <element signature="e#472#480#0" expanded="true" />
-            <element signature="e#565#588#0" expanded="true" />
-            <element signature="e#656#665#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Bilet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="e#632#639#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1029#1030#0" expanded="true" />
-            <element signature="e#1069#1070#0" expanded="true" />
-            <element signature="e#1113#1114#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-            <element signature="e#1203#1204#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Lotniskowiec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-          <folding>
-            <element signature="e#370#393#0" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#825#826#0" expanded="true" />
-            <element signature="e#878#879#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Samolot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/SamolotWojskowy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Statek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#165#166#0" expanded="true" />
-            <element signature="e#193#194#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1342,59 +1329,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/io/BufferedReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="387" column="18" selection-start-line="387" selection-start-column="18" selection-end-line="387" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java">
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/SurnameList.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Drogi/DrogaMorska.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#412#420#0" expanded="true" />
+            <element signature="e#477#485#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1410,25 +1369,544 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/NameList.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="97" selection-start-line="9" selection-start-column="97" selection-end-line="9" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding>
-            <element signature="e#370#378#0" expanded="true" />
-            <element signature="e#450#459#0" expanded="true" />
-            <element signature="e#533#541#0" expanded="true" />
-            <element signature="e#617#626#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#370#393#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Lotniskowiec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Bilet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11805555">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Drogi/DrogaMorska.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#236#237#0" expanded="true" />
+            <element signature="e#275#276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <folding>
+            <element signature="e#608#615#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Statek.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/SamolotWojskowy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/SamolotPasazerski.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Samolot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="1174.0" y="2844.0">com</node>
+            <node x="979.0070634267689" y="2283.0">Mapa.Swiat</node>
+            <node x="535.0" y="2844.0">netscape</node>
+            <node x="1302.949951421128" y="1688.0">Mapa.ZmianyKierunku.Przystanki.Lotnisko</node>
+            <node x="2499.4733030694797" y="2053.5">Pojazdy.Ladunki.Pasazerski</node>
+            <node x="1341.699951421128" y="1071.0">Mapa.ZmianyKierunku.Przystanki.Przystanek</node>
+            <node x="331.4749514211279" y="102.0">Mapa.ObiektGraficzny</node>
+            <node x="129.25" y="2053.0">Drogi.Droga</node>
+            <node x="1419.199951421128" y="2075.5">Mapa.ZmianyKierunku.Przystanki.Port</node>
+            <node x="228.71533603651233" y="0.0">Mapa.Rysowanie</node>
+            <node x="1471.0" y="2844.0">sun</node>
+            <node x="1619.5928085639848" y="1478.0">Pasazerowie.Pasazer</node>
+            <node x="1324.0" y="2844.0">java</node>
+            <node x="457.5749514211278" y="836.0">Mapa.ZmianyKierunku.MiejsceZmianyKierunku</node>
+            <node x="1022.0" y="2844.0">javax</node>
+            <node x="866.0" y="2844.0">javafx</node>
+            <node x="1481.9500915750916" y="124.5">Mapa.ShowInfo</node>
+            <node x="2191.7233030694792" y="2526.0">Pojazdy.SamolotPasazerski</node>
+            <node x="794.0749514211278" y="1699.0">Pojazdy.Statek</node>
+            <node x="0.0" y="2526.0">Drogi.DrogaMorska</node>
+            <node x="1049.449951421128" y="1688.0">Pojazdy.TworzeniePojazdu</node>
+            <node x="708.0" y="2844.0">oracle</node>
+            <node x="125.0" y="2526.0">Drogi.DrogaPowietrzna</node>
+            <node x="1616.0" y="2844.0">org</node>
+            <node x="1341.199951421128" y="304.0">Pojazdy.Ladunki.TypLadunku</node>
+            <node x="705.9499514211278" y="2075.5">Pojazdy.Lotniskowiec</node>
+            <node x="0.0" y="2844.0">Pasazerowie.GeneratorPasazerow</node>
+            <node x="2186.4733030694797" y="2020.0">Pojazdy.Samolot</node>
+            <node x="695.6499514211279" y="249.0">Pojazdy.Ladunki.Uzbrojenie</node>
+            <node x="1005.9499514211278" y="2075.5">Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe</node>
+            <node x="1807.878522849699" y="1192.5">Pasazerowie.Bilet</node>
+            <node x="738.8999514211279" y="571.5">Pojazdy.Ladunki.Wojskowy</node>
+            <node x="848.9499514211278" y="2075.5">Pojazdy.StatekWycieczkowy</node>
+            <node x="354.0" y="2844.0">META-INF</node>
+            <node x="1760.0" y="2844.0">jdk</node>
+            <node x="1158.949951421128" y="2075.5">Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne</node>
+            <node x="1902.0" y="2844.0">MainPanel</node>
+            <node x="596.8140661299481" y="1214.5">Mapa.ZmianyKierunku.Skrzyzowanie</node>
+            <node x="2342.7233030694792" y="2526.0">Pojazdy.SamolotWojskowy</node>
+            <node x="1094.949951421128" y="439.0">Pojazdy.Pojazd</node>
+            <node x="404.4749514211279" y="270.5">Mapa.PunktNaMapie</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="Pojazdy.Pojazd" target="Pojazdy.Ladunki.TypLadunku">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.Port" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+              <point x="30.75" y="-26.0" />
+              <point x="1511.449951421128" y="1458.0" />
+              <point x="1436.8428085639853" y="1458.0" />
+              <point x="-126.85714285714266" y="158.5" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe" target="Mapa.ZmianyKierunku.Przystanki.Lotnisko">
+              <point x="33.25" y="-26.0" />
+              <point x="1105.699951421128" y="1990.0" />
+              <point x="1335.949951421128" y="1990.0" />
+              <point x="-66.0" y="26.0" />
+            </edge>
+            <edge source="Pojazdy.Ladunki.Pasazerski" target="Pojazdy.Ladunki.TypLadunku">
+              <point x="68.75" y="-48.0" />
+              <point x="2705.7233030694797" y="419.0" />
+              <point x="1424.5332847544614" y="419.0" />
+              <point x="33.333333333333485" y="15.0" />
+            </edge>
+            <edge source="Pasazerowie.Bilet" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Pojazdy.Pojazd" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Skrzyzowanie" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+              <point x="0.0" y="-15.0" />
+              <point x="648.8140661299481" y="1051.0" />
+              <point x="666.9916180877946" y="1051.0" />
+              <point x="29.916666666666742" y="92.5" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.Przystanek" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+              <point x="-148.0" y="-158.5" />
+              <point x="1415.699951421128" y="1051.0" />
+              <point x="726.8249514211278" y="1051.0" />
+              <point x="89.75" y="92.5" />
+            </edge>
+            <edge source="Pojazdy.SamolotPasazerski" target="Pojazdy.Samolot">
+              <point x="0.0" y="-15.0" />
+              <point x="2257.2233030694792" y="2263.0" />
+              <point x="2259.7233030694797" y="2263.0" />
+              <point x="-73.25" y="81.5" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne" target="Pojazdy.TworzeniePojazdu">
+              <point x="-30.75" y="-26.0" />
+              <point x="1189.699951421128" y="1980.0" />
+              <point x="1130.699951421128" y="1980.0" />
+              <point x="16.25" y="26.0" />
+            </edge>
+            <edge source="Pasazerowie.Pasazer" target="Pasazerowie.Bilet">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne" target="Mapa.ZmianyKierunku.Przystanki.Lotnisko">
+              <point x="30.75" y="-26.0" />
+              <point x="1251.199951421128" y="2000.0" />
+              <point x="1401.949951421128" y="2000.0" />
+              <point x="0.0" y="26.0" />
+            </edge>
+            <edge source="Mapa.ObiektGraficzny" target="Mapa.Rysowanie">
+              <point x="0.0" y="-48.5" />
+              <point x="408.4749514211279" y="77.0" />
+              <point x="314.2153360365123" y="77.0" />
+              <point x="28.5" y="26.0" />
+            </edge>
+            <edge source="Pojazdy.Lotniskowiec" target="Pojazdy.TworzeniePojazdu">
+              <point x="30.75" y="-26.0" />
+              <point x="798.1999514211278" y="1990.0" />
+              <point x="1065.699951421128" y="1990.0" />
+              <point x="-48.75" y="26.0" />
+            </edge>
+            <edge source="Pasazerowie.Pasazer" target="Mapa.PunktNaMapie">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.MiejsceZmianyKierunku" target="Mapa.PunktNaMapie">
+              <point x="-143.5999999999999" y="-92.5" />
+              <point x="0.0" y="48.5" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Drogi.Droga">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.Lotnisko" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+              <point x="0.0" y="-26.0" />
+              <point x="1401.949951421128" y="1458.0" />
+              <point x="1373.4142371354137" y="1458.0" />
+              <point x="-190.28571428571422" y="158.5" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Mapa.ObiektGraficzny">
+              <point x="-169.23076923076906" y="-258.0" />
+              <point x="1084.776294196" y="2243.0" />
+              <point x="334.2596153846155" y="2243.0" />
+              <point x="334.2596153846155" y="224.0" />
+              <point x="369.9749514211279" y="224.0" />
+              <point x="-38.5" y="48.5" />
+            </edge>
+            <edge source="Mapa.PunktNaMapie" target="Mapa.ObiektGraficzny">
+              <point x="-44.5" y="-48.5" />
+              <point x="448.9749514211279" y="224.0" />
+              <point x="446.9749514211279" y="224.0" />
+              <point x="38.5" y="48.5" />
+            </edge>
+            <edge source="Pojazdy.Ladunki.Wojskowy" target="Pojazdy.Ladunki.Uzbrojenie">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Pojazdy.Statek" target="Pojazdy.Pojazd">
+              <point x="0.0" y="-15.0" />
+              <point x="827.0749514211278" y="816.0" />
+              <point x="1256.540860512037" y="816.0" />
+              <point x="-35.90909090909099" y="158.5" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.MiejsceZmianyKierunku" target="Pojazdy.Pojazd">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Pojazdy.Ladunki.Pasazerski" target="Pasazerowie.Pasazer">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe" target="Pojazdy.TworzeniePojazdu">
+              <point x="-33.25" y="-26.0" />
+              <point x="1039.199951421128" y="2000.0" />
+              <point x="1098.199951421128" y="2000.0" />
+              <point x="-16.25" y="26.0" />
+            </edge>
+            <edge source="Mapa.PunktNaMapie" target="Mapa.ShowInfo">
+              <point x="44.5" y="-48.5" />
+              <point x="537.9749514211279" y="224.0" />
+              <point x="1516.4500915750916" y="224.0" />
+              <point x="-34.5" y="26.0" />
+            </edge>
+            <edge source="Pojazdy.SamolotWojskowy" target="Pojazdy.Samolot">
+              <point x="0.0" y="-15.0" />
+              <point x="2408.7233030694792" y="2263.0" />
+              <point x="2406.2233030694792" y="2263.0" />
+              <point x="73.24999999999955" y="81.5" />
+            </edge>
+            <edge source="Pasazerowie.Pasazer" target="Mapa.ShowInfo">
+              <point x="212.57142857142844" y="-236.0" />
+              <point x="2080.1642371354133" y="1458.0" />
+              <point x="2716.7233030694797" y="1458.0" />
+              <point x="2716.7233030694797" y="224.0" />
+              <point x="1585.4500915750916" y="224.0" />
+              <point x="34.5" y="26.0" />
+            </edge>
+            <edge source="Pojazdy.StatekWycieczkowy" target="Pojazdy.Statek">
+              <point x="0.0" y="-26.0" />
+              <point x="917.4499514211278" y="1980.0" />
+              <point x="843.5749514211278" y="1980.0" />
+              <point x="16.5" y="15.0" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Pojazdy.Pojazd">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Drogi.DrogaMorska" target="Drogi.Droga">
+              <point x="0.0" y="-15.0" />
+              <point x="52.5" y="2263.0" />
+              <point x="148.5" y="2263.0" />
+              <point x="-57.75" y="48.5" />
+            </edge>
+            <edge source="Pojazdy.Pojazd" target="Mapa.PunktNaMapie">
+              <point x="-98.75" y="-158.5" />
+              <point x="1193.699951421128" y="409.0" />
+              <point x="552.8082847544612" y="409.0" />
+              <point x="59.33333333333326" y="48.5" />
+            </edge>
+            <edge source="Pojazdy.Lotniskowiec" target="Pojazdy.Statek">
+              <point x="-30.75" y="-26.0" />
+              <point x="736.6999514211278" y="1980.0" />
+              <point x="810.5749514211278" y="1980.0" />
+              <point x="-16.5" y="15.0" />
+            </edge>
+            <edge source="Pojazdy.Samolot" target="Mapa.ZmianyKierunku.Przystanki.Lotnisko">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Drogi.Droga" target="Mapa.ZmianyKierunku.MiejsceZmianyKierunku">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.Przystanek" target="Pojazdy.Pojazd">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Pasazerowie.Pasazer" target="Mapa.ZmianyKierunku.Przystanki.Przystanek">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.Port" target="Pojazdy.TworzeniePojazdu">
+              <point x="-30.75" y="-26.0" />
+              <point x="1449.949951421128" y="1970.0" />
+              <point x="1163.199951421128" y="1970.0" />
+              <point x="48.75" y="26.0" />
+            </edge>
+            <edge source="Pojazdy.Ladunki.Wojskowy" target="Pojazdy.Ladunki.TypLadunku">
+              <point x="42.25" y="-26.0" />
+              <point x="865.6499514211279" y="419.0" />
+              <point x="1357.8666180877944" y="419.0" />
+              <point x="-33.333333333333485" y="15.0" />
+            </edge>
+            <edge source="Pojazdy.Samolot" target="Pojazdy.Pojazd">
+              <point x="73.24999999999955" y="-81.5" />
+              <point x="2406.2233030694792" y="776.0" />
+              <point x="1471.9954059665824" y="776.0" />
+              <point x="179.5454545454545" y="158.5" />
+            </edge>
+            <edge source="Pasazerowie.Bilet" target="Pojazdy.Pojazd">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Drogi.Droga" target="Mapa.Rysowanie">
+              <point x="-38.5" y="-48.5" />
+              <point x="167.75" y="77.0" />
+              <point x="257.2153360365123" y="77.0" />
+              <point x="-28.5" y="26.0" />
+            </edge>
+            <edge source="Drogi.DrogaPowietrzna" target="Drogi.Droga">
+              <point x="0.0" y="-15.0" />
+              <point x="-19.25" y="48.5" />
+            </edge>
+            <edge source="Mapa.ZmianyKierunku.Przystanki.Przystanek" target="Pasazerowie.Pasazer">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="Mapa.Swiat" target="Pasazerowie.Pasazer">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.30000000000000016" x="628.9999999999995" y="570.9999999999995" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
+          <folding>
+            <element signature="e#370#378#0" expanded="true" />
+            <element signature="e#450#459#0" expanded="true" />
+            <element signature="e#533#541#0" expanded="true" />
+            <element signature="e#617#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="103" selection-start-line="8" selection-start-column="103" selection-end-line="8" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/Swiat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+            <element signature="e#660#667#0" expanded="true" />
+            <element signature="e#725#733#0" expanded="true" />
+            <element signature="e#818#841#0" expanded="true" />
+            <element signature="e#906#918#0" expanded="true" />
+            <element signature="e#986#995#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ShowInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/Rysowanie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/PunktNaMapie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64761907">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding />
         </state>
       </provider>

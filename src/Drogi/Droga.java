@@ -29,6 +29,14 @@ public abstract class Droga implements Rysowanie {
         return poczatek;
     }
 
+    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
+        this.poczatek = poczatek;
+        this.koniec = koniec;
+    }
+
+    public Droga(){
+
+    }
     @Override
     public void rysuj() {
 
