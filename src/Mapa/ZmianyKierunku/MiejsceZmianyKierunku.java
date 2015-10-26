@@ -1,5 +1,6 @@
 package Mapa.ZmianyKierunku;
 
+import Drogi.Droga;
 import Mapa.PunktNaMapie;
 import Pojazdy.Pojazd;
 
@@ -11,7 +12,33 @@ import java.util.List;
  */
 public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
+    private List<Droga> listaDrog = new ArrayList<Droga>();
     private boolean zajetaPrzestrzen;
+    private int promien;
+
+    public int getPromien() {
+        return promien;
+    }
+
+    public void setPromien(int promien) {
+        this.promien = promien;
+    }
+
+    public List<Droga> getListaDrog() {
+        return listaDrog;
+    }
+
+    public void setListaDrog(List<Droga> listaDrog) {
+        this.listaDrog = listaDrog;
+    }
+
+    public void addListaDrog(Droga droga){
+        listaDrog.add(droga);
+    }
+
+    public void removeListaDrog(Droga droga){
+        listaDrog.remove(droga);
+    }
 
     public List<Pojazd> getListaPojazdowOczekujacych() {
         return listaPojazdowOczekujacych;

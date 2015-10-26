@@ -13,6 +13,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     private List<MiejsceZmianyKierunku> trasa = new ArrayList<MiejsceZmianyKierunku>();
     private int maksymalnaPredkosc;
     private TypLadunku Ladunek;
+    private MiejsceZmianyKierunku obecnePolozenie;
 
     public TypLadunku getLadunek() {
         return Ladunek;
@@ -20,6 +21,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     public void zmianaTrasy(){
 
+    }
+
+    public MiejsceZmianyKierunku getObecnePolozenie() {
+        return obecnePolozenie;
+    }
+
+    public void setObecnePolozenie(MiejsceZmianyKierunku obecnePolozenie) {
+        this.obecnePolozenie = obecnePolozenie;
     }
 
     public Pojazd(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
