@@ -8,23 +8,62 @@ import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import java.util.*;
 
 /**
+ * Klasa pasazer, ktora implementuje obiekt pasazer.
  * Created by Lewin on 2015-10-18.
  */
 public class Pasazer implements ShowInfo,Runnable {
-
+    /**
+     * unikalny identyfikator
+     */
     private UUID identyfikator;
+    /**
+     * imie pasazera.
+     */
     private String imie;
+    /**
+     * nazwisko pasazera.
+     */
     private String nazwisko;
+    /**
+     * pesel pasazera.
+     */
     private String pesel;
+    /**
+     * wiek pasazera
+     */
     private int wiek;
+    /**
+     * poczatkowy przystanek.
+     */
     private Przystanek przystanekPoczatkowy;
+    /**
+     * przystanek docelowy.
+     */
     private Przystanek przystanekDocelowy;
+    /**
+     * obecne polozenie.
+     */
     private PunktNaMapie obecnePolozenie;
+    /**
+     * okresla czy pasazer jest w podrozy sluzbowej.
+     */
     private boolean podrozSluzbowa;
+    /**
+     * czas postoju, ktory zalezy od rodzaju podrozy.
+     */
     private int czasPostoju;
+    /**
+     * lista wszystkich miejsc zmiany kierunku i pojazdow za pomoca, ktorych bedzie przemieszczal sie pasazer.
+     */
     private List<Bilet> listaBiletow = new ArrayList<Bilet>();
+    /**
+     * okresla czy pasazer wraca z podrozy.
+     */
     private boolean powrot;
 
+    /**
+     * Konstruktor klasy pasazer, ktory losowo generuje wartosci pol.
+     */
     public Pasazer() {
         Random random = new Random();
         this.identyfikator = UUID.randomUUID();
@@ -53,6 +92,11 @@ public class Pasazer implements ShowInfo,Runnable {
         this.obecnePolozenie = this.przystanekPoczatkowy;
     }
 
+    /**
+     * zamiana typu integer na String w zaleznosci od ilosci cyfr.
+     * @param a liczba jedno lub dwu cyfrowa.
+     * @return lancuch znakow.
+     */
     private String peselNextNumber(int a){
         String result="";
         if(a<10)
@@ -137,25 +181,45 @@ public class Pasazer implements ShowInfo,Runnable {
         this.obecnePolozenie = obecnePolozenie;
     }
 
+    /**
+     * Pokazanie informacji na panelu informacyjnym.
+     */
     @Override
     public void showInfo() {
 
     }
 
+    /**
+     * szukanie trasy.
+     */
     public void znajdzTrase(){
 
     }
+
+    /**
+     * zmiana trasy.
+     */
     public void zmianaTrasy(){
 
     }
 
+    /**
+     * czekanie, jezeli nie istnieje polaczenie miedzy przystankami.
+     */
     public void czekaj(){
 
     }
 
+    /**
+     * informuje przystanki, ze znajduje sie na trasie pasazera.
+     */
     public void poinformujPrzystanki(){
 
     }
+
+    /**
+     * wypisywanie informacji na konsoli (testowanie).
+     */
     public void outconsole(){
         System.out.println("Identyfikator: " + this.identyfikator);
         System.out.println("Imie: " + this.imie);
@@ -169,6 +233,10 @@ public class Pasazer implements ShowInfo,Runnable {
         System.out.println("Czas postoju w punkcie docelowym: " + this.czasPostoju);
         System.out.println("Czy wraca: " + this.powrot);
     }
+
+    /**
+     * czynnosci wykonywane przez nowy watek pasazera.
+     */
     @Override
     public void run() {
         try {

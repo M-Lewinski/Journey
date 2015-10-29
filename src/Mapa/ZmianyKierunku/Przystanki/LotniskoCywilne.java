@@ -10,6 +10,7 @@ public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
         super(nazwa,dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, maksymalnaPojemnosc);
 //        System.out.println("Utworzono Lotnisko Cywilne");
     }
+
     @Override
     public void stworz() {
 

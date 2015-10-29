@@ -15,15 +15,43 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Klasa swiat, ktora implementuje obiekt calego swiata. Przechowuje on wszystkie listy obiektow oraz tworzy mape.
+ *
+ */
 public class Swiat extends ObiektGraficzny {
+    /**
+     * instancja klasy swiat.
+     */
     private static Swiat instance = null;
+    /**
+     * lista wszystkich pasazerow.
+     */
     private List<Pasazer> listaPasazerow = new ArrayList<Pasazer>();
+    /**
+     * lista wszystkich drog.
+     */
     private List<Droga> listaDrog = new ArrayList<Droga>();
+    /**
+     * lista wszystkich pojazdow.
+     */
     private List<Pojazd> listaPojazdow = new ArrayList<Pojazd>();
+    /**
+     * lista wszystkich miejsc, w ktorych mozemy zmienic kierunek poruszania sie.
+     */
     private List<MiejsceZmianyKierunku> listaMiejscZmianyKierunku = new ArrayList<MiejsceZmianyKierunku>();
+    /**
+     * lista wszystkich przystankow.
+     */
     private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
+    /**
+     * lista wszystkich pasazerow bez trasy.
+     */
     private List<Pasazer> listaPasazerowBezTrasy = new ArrayList<Pasazer>();
 
+    /**
+     * Konstruktor klasy swiat, ktory tworzy mape poprzez stworzenie drog, przystankow i skrzyzowan.
+     */
     public Swiat() {
         System.out.println("Poczatek Swiata");
         LotniskoCywilne miasto1 = new LotniskoCywilne("Lawica",100,100,100,100,false,10);
@@ -32,6 +60,10 @@ public class Swiat extends ObiektGraficzny {
 //        System.out.println("Imie pasazera:"+pasazer1.getImie());
     }
 
+    /**
+     * tworzenie instancji swiata.
+     * @return instancja swiata.
+     */
     public synchronized static Swiat getInstance(){
         if(instance == null){
             instance = new Swiat();
@@ -95,6 +127,9 @@ public class Swiat extends ObiektGraficzny {
         this.listaPasazerowBezTrasy = listaPasazerowBezTrasy;
     }
 
+    /**
+     * poinformowac pasazerow bez trasy, ze doszlo do zmiany w trasach, ktorymi poruszaja sie pojazdy.
+     */
     public void poinformuj(){
 
     }
@@ -138,13 +173,9 @@ public class Swiat extends ObiektGraficzny {
     }
 
     public static void main(String[] args) {
-//        System.out.println("Poczatek Swiata");
+        System.out.println("Poczatek Swiata!\n");
         Swiat.getInstance();
-//        System.out.println(swiat.getListaPrzystankow().get(0));
         Pasazer pasazer = new Pasazer();
         pasazer.outconsole();
-//        swiat.addPasazer(pasazer);
-//        System.out.println("Imie: "+GeneratorPasazerow.getInstance().getImie());
-//        System.out.println("Nazwisko: "+GeneratorPasazerow.getInstance().getNazwisko());
     }
 }
