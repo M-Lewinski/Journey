@@ -26,7 +26,7 @@ public class Swiat extends ObiektGraficzny {
 
     public Swiat() {
         System.out.println("Poczatek Swiata");
-        LotniskoCywilne miasto1 = new LotniskoCywilne(100,100,100,100,false,10);
+        LotniskoCywilne miasto1 = new LotniskoCywilne("Lawica",100,100,100,100,false,10);
         listaPrzystankow.add(miasto1);
 //        Pasazer pasazer1 = new Pasazer();
 //        System.out.println("Imie pasazera:"+pasazer1.getImie());
@@ -142,6 +142,7 @@ public class Swiat extends ObiektGraficzny {
         Swiat.getInstance();
 //        System.out.println(swiat.getListaPrzystankow().get(0));
         Pasazer pasazer = new Pasazer();
+        pasazer.outconsole();
 //        swiat.addPasazer(pasazer);
 //        System.out.println("Imie: "+GeneratorPasazerow.getInstance().getImie());
 //        System.out.println("Nazwisko: "+GeneratorPasazerow.getInstance().getNazwisko());

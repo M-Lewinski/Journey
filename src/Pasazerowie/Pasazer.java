@@ -20,44 +20,37 @@ public class Pasazer implements ShowInfo,Runnable {
     private Przystanek przystanekPoczatkowy;
     private Przystanek przystanekDocelowy;
     private PunktNaMapie obecnePolozenie;
-    private boolean rodzajPodrozy;
+    private boolean podrozSluzbowa;
+    private int czasPostoju;
     private List<Bilet> listaBiletow = new ArrayList<Bilet>();
     private boolean powrot;
 
     public Pasazer() {
         Random random = new Random();
         this.identyfikator = UUID.randomUUID();
-//        System.out.println(identyfikator);
         this.imie = GeneratorPasazerow.getInstance().getImie();
-//        System.out.println(this.imie);
         this.nazwisko = GeneratorPasazerow.getInstance().getNazwisko();
-//        System.out.println(this.nazwisko);
-//        this.wiek = random.nextInt() %(100-18)+18;
         GregorianCalendar date = new GregorianCalendar();
         date.set(date.YEAR,random.nextInt(100)+1900);
         date.set(date.DAY_OF_YEAR, random.nextInt(date.getActualMaximum(date.DAY_OF_YEAR) - 1) + 1);
-//        System.out.println(date.get(date.YEAR) + "-" + date.get(date.MONTH) + "-" + date.get(date.DAY_OF_MONTH));
         this.pesel=peselNextNumber(date.get(date.YEAR)%100)+peselNextNumber(date.get(date.MONTH))+peselNextNumber(date.get(date.DAY_OF_MONTH));
         for(int i=0;i<5;i++){
             this.pesel=this.pesel+Integer.toString(random.nextInt(10));
         }
-//        System.out.println(pesel);
         GregorianCalendar dateNow = new GregorianCalendar();
-//          System.out.println(date.get(date.YEAR) + "-" + date.get(date.MONTH) + "-" + date.get(date.DAY_OF_MONTH));
-//        System.out.println(dateNow.get(date.YEAR) + "-" + dateNow.get(date.MONTH) + "-" + dateNow.get(date.DAY_OF_MONTH));
-        /**********************!!!!!!!!!!!!!!!!!!!!!!PATRZ!!!!!!!!!!!!!!!!!!*/
         this.wiek=dateNow.get(date.YEAR)-date.get(date.YEAR);
-//        System.out.println(this.wiek);
-        this.rodzajPodrozy = random.nextBoolean();
-//        System.out.println(this.rodzajPodrozy);
+        this.podrozSluzbowa = random.nextBoolean();
         this.powrot = false;
+        if (this.podrozSluzbowa == true){
+            this.czasPostoju = random.nextInt(15)+5;
+        }
+        else{
+            this.czasPostoju = random.nextInt(30)+15;
+        }
+        this.czasPostoju = random.nextInt(30)+30;
         this.przystanekPoczatkowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
         this.przystanekDocelowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
         this.obecnePolozenie = this.przystanekPoczatkowy;
-//        System.out.println(Swiat.getInstance().getListaPrzystankow().get(0));
-//        System.out.println(this.przystanekPoczatkowy);
-//        System.out.println(this.przystanekDocelowy);
-//        System.out.println(this.obecnePolozenie);
     }
 
     private String peselNextNumber(int a){
@@ -66,6 +59,14 @@ public class Pasazer implements ShowInfo,Runnable {
             result="0";
         result+=a;
         return result;
+    }
+
+    public int getCzasPostoju() {
+        return czasPostoju;
+    }
+
+    public void setCzasPostoju(int czasPostoju) {
+        this.czasPostoju = czasPostoju;
     }
 
     public boolean isPowrot() {
@@ -92,9 +93,9 @@ public class Pasazer implements ShowInfo,Runnable {
         this.listaBiletow.remove(bilet);
     }
 
-    public boolean isRodzajPodrozy() {
+    public boolean isPodrozSluzbowa() {
 
-        return rodzajPodrozy;
+        return podrozSluzbowa;
     }
 
     public PunktNaMapie getObecnePolozenie() {
@@ -155,7 +156,19 @@ public class Pasazer implements ShowInfo,Runnable {
     public void poinformujPrzystanki(){
 
     }
-
+    public void outconsole(){
+        System.out.println("Identyfikator: " + this.identyfikator);
+        System.out.println("Imie: " + this.imie);
+        System.out.println("Nazwisko: " + this.nazwisko);
+        System.out.println("Wiek: " + this.wiek);
+        System.out.println("Pesel: " + this.pesel);
+//        System.out.println(this.obecnePolozenie);
+        System.out.println("Przystanek poczatkowy: " + this.przystanekPoczatkowy.getNazwa());
+        System.out.println("Przystanek docelowy: " + this.przystanekDocelowy.getNazwa());
+        System.out.println("Czy jest w podrozy sluzbowej? " + this.podrozSluzbowa);
+        System.out.println("Czas postoju w punkcie docelowym: " + this.czasPostoju);
+        System.out.println("Czy wraca: " + this.powrot);
+    }
     @Override
     public void run() {
         try {

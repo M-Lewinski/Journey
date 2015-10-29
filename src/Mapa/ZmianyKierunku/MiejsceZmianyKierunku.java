@@ -11,10 +11,19 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
+    private String nazwa;
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
     private boolean zajetaPrzestrzen;
     private int promien;
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
 
     public int getPromien() {
         return promien;
@@ -73,9 +82,10 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
 
     }
 
-    public MiejsceZmianyKierunku(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen) {
+    public MiejsceZmianyKierunku(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, String nazwa) {
         super(dlugosc, szerokosc, polozenieX, polozenieY);
         this.zajetaPrzestrzen = zajetaPrzestrzen;
+        this.nazwa = nazwa;
     }
     public MiejsceZmianyKierunku(){
 
