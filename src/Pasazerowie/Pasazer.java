@@ -90,6 +90,8 @@ public class Pasazer implements ShowInfo,Runnable {
         this.przystanekPoczatkowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
         this.przystanekDocelowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
         this.obecnePolozenie = this.przystanekPoczatkowy;
+        Swiat.getInstance().addPasazer(this);
+        this.przystanekPoczatkowy.addPasazerOczekujacy(this);
     }
 
     /**
@@ -221,7 +223,7 @@ public class Pasazer implements ShowInfo,Runnable {
      * wypisywanie informacji na konsoli (testowanie).
      */
     public void outconsole(){
-        System.out.println("Identyfikator: " + this.identyfikator);
+        System.out.println("\nIdentyfikator: " + this.identyfikator);
         System.out.println("Imie: " + this.imie);
         System.out.println("Nazwisko: " + this.nazwisko);
         System.out.println("Wiek: " + this.wiek);

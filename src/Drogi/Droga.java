@@ -1,6 +1,7 @@
 package Drogi;
 
 import Mapa.Rysowanie;
+import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 
 /** Klasa droga implementujaca abstrakcje obiektu droga.
@@ -18,7 +19,7 @@ public abstract class Droga implements Rysowanie {
     /**
      *  odleglosc miedzy punktem poczatkowym a koncowym.
      */
-    private int odleglosc;
+    private double odleglosc;
 
     public void setKoniec(MiejsceZmianyKierunku koniec) {
         this.koniec = koniec;
@@ -39,11 +40,11 @@ public abstract class Droga implements Rysowanie {
         return poczatek;
     }
 
-    public int getOdleglosc() {
+    public double getOdleglosc() {
         return odleglosc;
     }
 
-    public void setOdleglosc(int odleglosc) {
+    public void setOdleglosc(double odleglosc) {
         this.odleglosc = odleglosc;
     }
 
@@ -51,12 +52,14 @@ public abstract class Droga implements Rysowanie {
      * Konstruktor klasy droga, ktort wykorzystuje odziedziczony konstryktor.
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
-     * @param odleglosc odleglosc miedzy poczatkiem i koncem drogi.
      */
-    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,int odleglosc) {
+    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
         this.poczatek = poczatek;
         this.koniec = koniec;
+        this.odleglosc = Math.sqrt(Math.pow(poczatek.getPolozenieX()-koniec.getPolozenieX(),2.0) + Math.pow(poczatek.getPolozenieY(),2.0));
         this.odleglosc = odleglosc;
+        Swiat.getInstance().addDroga(this);
+        this.poczatek.addListaDrog(this);
     }
 
     /**

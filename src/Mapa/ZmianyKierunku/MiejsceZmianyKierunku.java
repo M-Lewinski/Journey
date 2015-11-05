@@ -2,6 +2,7 @@ package Mapa.ZmianyKierunku;
 
 import Drogi.Droga;
 import Mapa.PunktNaMapie;
+import Mapa.Swiat;
 import Pojazdy.Pojazd;
 
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
         super(dlugosc, szerokosc, polozenieX, polozenieY);
         this.zajetaPrzestrzen = zajetaPrzestrzen;
         this.nazwa = nazwa;
+        Swiat.getInstance().addMiejsceZmianyKierunku(this);
     }
     public MiejsceZmianyKierunku(){
 

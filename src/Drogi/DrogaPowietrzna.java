@@ -12,7 +12,7 @@ public class DrogaPowietrzna extends Droga {
      * @param koniec koniec drogi.
      * @param odleglosc odleglosc miedzy poczatkiem i koncem drogi.
      */
-    public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec, int odleglosc) {
-        super(poczatek, koniec, odleglosc);
+    public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
+        super(poczatek, koniec);
     }
 }

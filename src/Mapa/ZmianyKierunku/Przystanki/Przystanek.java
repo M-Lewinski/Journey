@@ -1,5 +1,6 @@
 package Mapa.ZmianyKierunku.Przystanki;
 
+import Mapa.Swiat;
 import Pasazerowie.Pasazer;
 import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
@@ -16,7 +17,7 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     private List<Pojazd> listaPojazdowPrzyjezdzajacych = new ArrayList<Pojazd>();
     private List<Pasazer> listaPasazerowPrzyjezdzajacych = new ArrayList<Pasazer>();
     public void poinformujPasazerow(){
-
+        Swiat.getInstance().addPrzystanek(this);
     }
 
     public List<Pojazd> getListaPojazdowZaparkowanych() {

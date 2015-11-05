@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.UUID;
 
 import Mapa.PunktNaMapie;
+import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
@@ -117,7 +118,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         super(dlugosc, szerokosc, polozenieX, polozenieY);
         this.identyfikator = UUID.randomUUID();
         this.maksymalnaPredkosc = maksymalnaPredkosc;
-        Ladunek = ladunek;
+        this.Ladunek = ladunek;
+        Swiat.getInstance().addPojazd(this);
     }
 
     /**
