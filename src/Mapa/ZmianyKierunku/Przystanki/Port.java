@@ -1,5 +1,6 @@
 package Mapa.ZmianyKierunku.Przystanki;
 
+import Mapa.Swiat;
 import Pojazdy.TworzeniePojazdu;
 
 /**
@@ -8,6 +9,7 @@ import Pojazdy.TworzeniePojazdu;
 public class Port extends Przystanek implements TworzeniePojazdu {
     public Port(String nazwa, int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, nazwa);
+        Swiat.getInstance().addPort(this);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package Pojazdy;
 
+import Drogi.DrogaMorska;
 import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.Pojazd;
 
@@ -19,7 +20,9 @@ public abstract class Statek extends Pojazd {
     public Statek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
     }
-
+    public void tworzenieTrasy(){
+        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaMorska()));
+    }
     /**
      * Pusty konstruktor klasy statek.
      */

@@ -62,37 +62,61 @@ public abstract class Pojazd extends PunktNaMapie {
 
     }
 
-    public List<MiejsceZmianyKierunku> szukanieTrasy(Przystanek poczatekTrasy,Przystanek koniecTrasy){
+    public List<MiejsceZmianyKierunku> szukanieTrasy(Przystanek poczatekTrasy,Przystanek koniecTrasy, Object typDrogi){
         ObservableList<Trasowanie> listaTras = FXCollections.observableArrayList();
         SortedList<Trasowanie> posortowanaListaTras =  new SortedList<Trasowanie>(listaTras,new Trasowanie());
-        for (int i = 0; i < poczatekTrasy.getListaDrog().size(); i++) {
-            Trasowanie nowyElement = new Trasowanie();
-            nowyElement.addListaPunktowNaMapie(poczatekTrasy.getListaDrog().get(i).getKoniec(),poczatekTrasy.getListaDrog().get(i).getOdleglosc());
-            listaTras.add(nowyElement);
-        }
+//        for (int i = 0; i < poczatekTrasy.getListaDrog().size(); i++) {
+//            Trasowanie nowyElement = new Trasowanie();
+//            nowyElement.addListaPunktowNaMapie(poczatekTrasy.getListaDrog().get(i).getKoniec(),poczatekTrasy.getListaDrog().get(i).getOdleglosc());
+//            listaTras.add(nowyElement);
+//        }
+        Trasowanie nowyElement = new Trasowanie();
+        nowyElement.addCopyListaPunktowNaMapie(poczatekTrasy);
+        listaTras.add(nowyElement);
+        System.out.println("Poczatek szukania trasy");
 //        System.out.println("Pierwszy element glownej list: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().get(0).getNazwa());
         while (posortowanaListaTras.size()!=0){
             //if (koniecTrasy.equals(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(posortowanaListaTras.get(0).getListaPunktowNaMapie().size()-1))) {
-            if (posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast() == koniecTrasy) {
-                System.out.println("Znaleziono Trase jej dlugosc to: " + posortowanaListaTras.get(0).getDlugosc());
-                for (int i = 0; i < posortowanaListaTras.get(0).getListaPunktowNaMapie().size(); i++) {
-                    System.out.println("Punkt " + i + " " + posortowanaListaTras.get(0).getListaPunktowNaMapie().get(i).getNazwa());
-                }
-                return posortowanaListaTras.get(0).getListaPunktowNaMapie();
-            }
-            for (int i = 0; i < posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().size(); i++) {
-                Trasowanie nowyElement = new Trasowanie();
-                for (int j = 0; j < posortowanaListaTras.get(0).getListaPunktowNaMapie().size(); j++) {
-                    nowyElement.addCopyListaPunktowNaMapie(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(j));
-                }
-                nowyElement.setDlugosc(posortowanaListaTras.get(0).getDlugosc());
-                nowyElement.addListaPunktowNaMapie(posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getKoniec(),posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getOdleglosc());
-                listaTras.add(nowyElement);
-            }
+            LinkedList<MiejsceZmianyKierunku> badanyElement = posortowanaListaTras.get(0).getListaPunktowNaMapie();
+            if (uzyskiwanieListTrasBezPowtorzeniaElementu(koniecTrasy, typDrogi, listaTras, posortowanaListaTras, badanyElement))
+                return badanyElement;
             listaTras.remove(posortowanaListaTras.get(0));
         }
+//        System.out.println("Nie znaleziono trasy");
         return null;
     }
+
+    private boolean uzyskiwanieListTrasBezPowtorzeniaElementu(Przystanek koniecTrasy, Object typDrogi, ObservableList<Trasowanie> listaTras, SortedList<Trasowanie> posortowanaListaTras, LinkedList<MiejsceZmianyKierunku> badanyElement) {
+        if ( badanyElement.getLast() == koniecTrasy) {
+//            System.out.println("Znaleziono Trase jej dlugosc to: " + posortowanaListaTras.get(0).getDlugosc());
+//            for (int i = 0; i <  badanyElement.size(); i++) {
+//                System.out.println("Punkt " + i + " " +  badanyElement.get(i).getNazwa());
+//            }
+            return true;
+        }
+        for (int i = 0; i <  badanyElement.getLast().getListaDrog().size(); i++) {
+//            System.out.println("Trasa ");
+//            for (int j = 0; j <  badanyElement.size(); j++) {
+//                System.out.printf( badanyElement.get(j).getNazwa()+ " ");
+//            }
+//            System.out.println("");
+            if ( badanyElement.contains( badanyElement.getLast().getListaDrog().get(i).getKoniec())){
+                continue;
+            }
+            if (typDrogi.getClass().isInstance( badanyElement.getLast().getListaDrog().get(i))){
+                Trasowanie nowyElement = new Trasowanie();
+//                    System.out.println(i + "punkt: " +"poczatek: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getPoczatek().getNazwa() + " koniec: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getKoniec().getNazwa());
+                for (int j = 0; j <  badanyElement.size(); j++) {
+                    nowyElement.addCopyListaPunktowNaMapie( badanyElement.get(j));
+                }
+                nowyElement.setDlugosc(posortowanaListaTras.get(0).getDlugosc());
+                nowyElement.addListaPunktowNaMapie( badanyElement.getLast().getListaDrog().get(i).getKoniec(),  badanyElement.getLast().getListaDrog().get(i).getOdleglosc());
+                listaTras.add(nowyElement);
+            }
+        }
+        return false;
+    }
+
 
     /**
      *
@@ -203,6 +227,16 @@ public abstract class Pojazd extends PunktNaMapie {
     }
     public void usunPojazd(){
 
+    }
+
+    public void okreslaniePolozenia(List<Przystanek> listaMozliwychPrzystankow){
+        if (listaMozliwychPrzystankow.size() !=0) {
+            Random random = new Random();
+            this.setPrzystanekPoczatkowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size() - 1)));
+            this.setObecnePolozenie(this.getPrzystanekPoczatkowy());
+            listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
+            this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size() - 1)));
+        }
     }
 
 //    @Override

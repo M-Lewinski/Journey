@@ -1,7 +1,13 @@
 package Pojazdy;
 
+import Drogi.DrogaPowietrzna;
+import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Lotnisko;
+import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -10,7 +16,7 @@ public abstract class Samolot extends Pojazd {
     private int liczbaPersonelu;
     private int maksymalnaIloscPaliwa;
     private int aktualnaIloscPaliwa;
-    private Lotnisko nastepnyPrzystanek;
+    private MiejsceZmianyKierunku nastepnyPrzystanek;
 
     public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
@@ -23,11 +29,11 @@ public abstract class Samolot extends Pojazd {
 
     }
 
-    public Lotnisko getNastepnyPrzystanek() {
+    public MiejsceZmianyKierunku getNastepnyPrzystanek() {
         return nastepnyPrzystanek;
     }
 
-    public void setNastepnyPrzystanek(Lotnisko nastepnyPrzystanek) {
+    public void setNastepnyPrzystanek(MiejsceZmianyKierunku nastepnyPrzystanek) {
         this.nastepnyPrzystanek = nastepnyPrzystanek;
     }
 
@@ -58,5 +64,17 @@ public abstract class Samolot extends Pojazd {
     }
     public void poinformujMiejsceZmianyKierunku(){
 
+    }
+    public void tworzenieTrasy(){
+        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
+    }
+
+    public MiejsceZmianyKierunku nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa){
+        for (int i = 0; i < trasa.size(); i++) {
+            if(trasa.get(i) instanceof Przystanek){
+                return trasa.get(i);
+            }
+        }
+        return null;
     }
 }

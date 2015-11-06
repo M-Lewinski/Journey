@@ -1,5 +1,6 @@
 package Mapa.ZmianyKierunku.Przystanki;
 
+import Mapa.Swiat;
 import Pojazdy.TworzeniePojazdu;
 
 /**
@@ -8,6 +9,7 @@ import Pojazdy.TworzeniePojazdu;
 public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
     public LotniskoCywilne(String nazwa,int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, int maksymalnaPojemnosc) {
         super(nazwa,dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, maksymalnaPojemnosc);
+        Swiat.getInstance().addLotniskoCywilne(this);
 //        System.out.println("Utworzono Lotnisko Cywilne");
     }
 

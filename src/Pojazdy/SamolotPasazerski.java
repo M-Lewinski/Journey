@@ -17,23 +17,19 @@ import java.util.Random;
 public class SamolotPasazerski extends Samolot {
     public SamolotPasazerski(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
         super( dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
-        LinkedList<Przystanek> listaLotniskCywilnych = new LinkedList<Przystanek>();
-        for (int i = 0; i < Swiat.getInstance().getListaPrzystankow().size(); i++) {
-            if(Swiat.getInstance().getListaPrzystankow().get(i) instanceof LotniskoCywilne){
-                listaLotniskCywilnych.add(Swiat.getInstance().getListaPrzystankow().get(i));
-            }
-        }
-        Pasazerski ladunek = new Pasazerski();
-        this.setLadunek(ladunek);
+        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
         Random random = new Random();
-        int temp;
-        temp=random.nextInt(listaLotniskCywilnych.size());
-        this.setPrzystanekPoczatkowy(listaLotniskCywilnych.get(temp));
-        this.setObecnePolozenie(listaLotniskCywilnych.get(temp));
-        listaLotniskCywilnych.remove(temp);
-        this.setPolozenieX(this.getObecnePolozenie().getPolozenieX());
-        this.setPolozenieY(this.getObecnePolozenie().getPolozenieY());
-        temp = random.nextInt(listaLotniskCywilnych.size());
-        this.setPrzystanekDocelowy(listaLotniskCywilnych.get(temp));
+        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskCywilnych());
+        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaMiast());
+//        if (listaMozliwychPrzystankow.size() !=0) {
+//            this.setPrzystanekPoczatkowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size() - 1)));
+//            this.setObecnePolozenie(this.getPrzystanekPoczatkowy());
+//            listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
+//            this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size() - 1)));
+//            tworzenieTrasy();
+//        }
+        okreslaniePolozenia(listaMozliwychPrzystankow);
+        tworzenieTrasy();
+        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
     }
 }
