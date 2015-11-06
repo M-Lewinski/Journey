@@ -8,6 +8,6 @@ import Pojazdy.Samolot;
  */
 public class SamolotWojskowy extends Samolot {
     public SamolotWojskowy(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY, maksymalnaPredkosc, ladunek, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
+        super(dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
     }
 }

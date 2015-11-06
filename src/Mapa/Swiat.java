@@ -202,15 +202,15 @@ public class Swiat extends ObiektGraficzny {
     public static void main(String[] args) {
 //        System.out.println("Poczatek Swiata!\n");
         Swiat.getInstance();
-        LotniskoCywilne lotniskoCywilne1 = new LotniskoCywilne("A",100,100,72,101,false,10);
+        LotniskoCywilne lotniskoCywilne1 = new LotniskoCywilne("A",100,100,70,100,false,10);
 //        LotniskoCywilne lotniskoCywilne2 = new LotniskoCywilne("B",100,100,280,80,false,10);
-        LotniskoCywilne lotniskoCywilne3 = new LotniskoCywilne("C",100,100,164,130,false,10);
+        LotniskoCywilne lotniskoCywilne3 = new LotniskoCywilne("C",100,100,200,200,false,10);
 //        LotniskoCywilne lotniskoCywilne4 = new LotniskoCywilne("D",100,100,254,190,false,10);
-        LotniskoCywilne lotniskoCywilne5 = new LotniskoCywilne("E",100,100,66,270,false,10);
+        LotniskoCywilne lotniskoCywilne5 = new LotniskoCywilne("E",100,100,70,300,false,10);
 //        LotniskoCywilne lotniskoCywilne6 = new LotniskoCywilne("F",100,100,288,292,false,10);
 //        LotniskoCywilne lotniskoCywilne7 = new LotniskoCywilne("G",100,100,120,431,false,10);
-        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S1",50,50,67,185,false);
-        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S2",50,50,122,169,false);
+        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S1",50,50,70,200,false);
+        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S2",50,50,120,200,false);
 //        Skrzyzowanie skrzyzowanie3 = new Skrzyzowanie("S3",50,50,162,232,false);
 //        Skrzyzowanie skrzyzowanie4 = new Skrzyzowanie("S4",50,50,295,188,false);
 //        Skrzyzowanie skrzyzowanie5 = new Skrzyzowanie("S5",50,50,214,277,false);
@@ -225,11 +225,14 @@ public class Swiat extends ObiektGraficzny {
         DrogaPowietrzna drogaPowietrzna9 = new DrogaPowietrzna(skrzyzowanie1,lotniskoCywilne5);
         DrogaPowietrzna drogaPowietrzna10 = new DrogaPowietrzna(lotniskoCywilne5,skrzyzowanie1);
 
-        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
-        for (int i = 0; i < Swiat.getInstance().getListaDrog().size() ; i++) {
-            System.out.println(Swiat.getInstance().getListaDrog().get(i).getPoczatek().getNazwa());
-        }
-        SamolotPasazerski samolot1 = new SamolotPasazerski(100,100)
+//        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
+//        for (int i = 0; i < Swiat.getInstance().getListaDrog().size() ; i++) {
+//            System.out.println(Swiat.getInstance().getListaDrog().get(i).getPoczatek().getNazwa());
+//        }
+        SamolotPasazerski samolot1 = new SamolotPasazerski(100,100,100,10,10,10);
+        System.out.println(samolot1.getPrzystanekPoczatkowy().getNazwa());
+        System.out.println(samolot1.getPrzystanekDocelowy().getNazwa());
+        samolot1.szukanieTrasy(samolot1.getPrzystanekPoczatkowy(),samolot1.getPrzystanekDocelowy());
 //        Pasazer pasazer = new Pasazer();
 //        pasazer.outconsole();
 //        double odleglosc = Math.sqrt(Math.pow(8,2) + Math.pow(6,2.0));

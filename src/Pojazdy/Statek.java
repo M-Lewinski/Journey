@@ -17,7 +17,7 @@ public abstract class Statek extends Pojazd {
      * @param ladunek
      */
     public Statek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY, maksymalnaPredkosc, ladunek);
+        super(dlugosc, szerokosc, maksymalnaPredkosc);
     }
 
     /**

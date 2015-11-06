@@ -84,7 +84,9 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     }
 
     public MiejsceZmianyKierunku(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, String nazwa) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY);
+        super(dlugosc, szerokosc);
+        this.setPolozenieX(polozenieX);
+        this.setPolozenieY(polozenieY);
         this.zajetaPrzestrzen = zajetaPrzestrzen;
         this.nazwa = nazwa;
         Swiat.getInstance().addMiejsceZmianyKierunku(this);

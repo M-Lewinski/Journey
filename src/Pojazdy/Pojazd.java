@@ -1,15 +1,15 @@
 package Pojazdy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.UUID;
+import java.lang.reflect.Array;
+import java.util.*;
 
+import Drogi.Droga;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import com.sun.istack.internal.localization.NullLocalizable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
@@ -20,7 +20,7 @@ import javafx.collections.transformation.SortedList;
  *  @param
  *
  */
-public abstract class Pojazd extends PunktNaMapie implements Runnable {
+public abstract class Pojazd extends PunktNaMapie {
     /**
      * unikalny identyfikator pojazdu.
      */
@@ -62,16 +62,36 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     }
 
-    public void wybieranieTrasyRekurencyjnie(MiejsceZmianyKierunku obecneMiejsce, ObservableList<Trasowanie> lista){
-        for (int i = 0; i < obecneMiejsce.getListaDrog().size() ; i++) {
-
+    public List<MiejsceZmianyKierunku> szukanieTrasy(Przystanek poczatekTrasy,Przystanek koniecTrasy){
+        ObservableList<Trasowanie> listaTras = FXCollections.observableArrayList();
+        SortedList<Trasowanie> posortowanaListaTras =  new SortedList<Trasowanie>(listaTras,new Trasowanie());
+        for (int i = 0; i < poczatekTrasy.getListaDrog().size(); i++) {
+            Trasowanie nowyElement = new Trasowanie();
+            nowyElement.addListaPunktowNaMapie(poczatekTrasy.getListaDrog().get(i).getKoniec(),poczatekTrasy.getListaDrog().get(i).getOdleglosc());
+            listaTras.add(nowyElement);
         }
-    }
-
-    public void wybieranieTrasy(){
-        ObservableList<Trasowanie> lista = FXCollections.observableArrayList();
-        SortedList<Trasowanie> listaTras =  new SortedList<Trasowanie>(lista,new Trasowanie());
-
+//        System.out.println("Pierwszy element glownej list: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().get(0).getNazwa());
+        while (posortowanaListaTras.size()!=0){
+            //if (koniecTrasy.equals(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(posortowanaListaTras.get(0).getListaPunktowNaMapie().size()-1))) {
+            if (posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast() == koniecTrasy) {
+                System.out.println("Znaleziono Trase jej dlugosc to: " + posortowanaListaTras.get(0).getDlugosc());
+                for (int i = 0; i < posortowanaListaTras.get(0).getListaPunktowNaMapie().size(); i++) {
+                    System.out.println("Punkt " + i + " " + posortowanaListaTras.get(0).getListaPunktowNaMapie().get(i).getNazwa());
+                }
+                return posortowanaListaTras.get(0).getListaPunktowNaMapie();
+            }
+            for (int i = 0; i < posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().size(); i++) {
+                Trasowanie nowyElement = new Trasowanie();
+                for (int j = 0; j < posortowanaListaTras.get(0).getListaPunktowNaMapie().size(); j++) {
+                    nowyElement.addCopyListaPunktowNaMapie(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(j));
+                }
+                nowyElement.setDlugosc(posortowanaListaTras.get(0).getDlugosc());
+                nowyElement.addListaPunktowNaMapie(posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getKoniec(),posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getOdleglosc());
+                listaTras.add(nowyElement);
+            }
+            listaTras.remove(posortowanaListaTras.get(0));
+        }
+        return null;
     }
 
     /**
@@ -85,7 +105,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     /**
      * @return
      */
-    public MiejsceZmianyKierunku getPrzystanekDocelowy() {
+    public Przystanek getPrzystanekDocelowy() {
         return przystanekDocelowy;
     }
 
@@ -95,6 +115,22 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     public void setPrzystanekPoczatkowy(Przystanek przystanekPoczatkowy) {
         this.przystanekPoczatkowy = przystanekPoczatkowy;
+    }
+
+    public void setIdentyfikator(UUID identyfikator) {
+        this.identyfikator = identyfikator;
+    }
+
+    public void setMaksymalnaPredkosc(int maksymalnaPredkosc) {
+        this.maksymalnaPredkosc = maksymalnaPredkosc;
+    }
+
+    public void setObecnePolozenie(MiejsceZmianyKierunku obecnePolozenie) {
+        this.obecnePolozenie = obecnePolozenie;
+    }
+
+    public void setLadunek(TypLadunku ladunek) {
+        Ladunek = ladunek;
     }
 
     public void setPrzystanekDocelowy(Przystanek przystanekDocelowy) {
@@ -109,16 +145,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
      * Konstruktor klasy pojazd, ktory wykorzystuje konstruktor z odziedziczonej klasy.
      * @param dlugosc okresla dlugosc obrazu zwiazanego z obiektem.
      * @param szerokosc okresla szerokosc obrazu zwiazanego z obiektem.
-     * @param polozenieX okresla polozenie obiektu w poziomie.
-     * @param polozenieY okresla polozenie obiektu w pionie.
      * @param maksymalnaPredkosc okresla maksymalna predkosc, z ktora porusza sie pojazd.
-     * @param ladunek okresla ladunek jaki posiada dany pojazd.
      */
-    public Pojazd(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY);
+    public Pojazd(int dlugosc, int szerokosc, int maksymalnaPredkosc) {
+        super(dlugosc, szerokosc);
         this.identyfikator = UUID.randomUUID();
         this.maksymalnaPredkosc = maksymalnaPredkosc;
-        this.Ladunek = ladunek;
         Swiat.getInstance().addPojazd(this);
     }
 
@@ -173,14 +205,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     }
 
-    @Override
-    public void run() {
-        while(true){
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    @Override
+//    public void run() {
+//        while(true){
+//            try {
+//                Thread.sleep(10);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

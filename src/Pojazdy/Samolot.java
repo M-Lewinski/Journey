@@ -12,8 +12,8 @@ public abstract class Samolot extends Pojazd {
     private int aktualnaIloscPaliwa;
     private Lotnisko nastepnyPrzystanek;
 
-    public Samolot(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY, maksymalnaPredkosc, ladunek);
+    public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
+        super(dlugosc, szerokosc, maksymalnaPredkosc);
         this.liczbaPersonelu = liczbaPersonelu;
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
         this.aktualnaIloscPaliwa = aktualnaIloscPaliwa;
