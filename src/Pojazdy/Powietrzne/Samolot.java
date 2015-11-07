@@ -1,10 +1,14 @@
-package Pojazdy;
+package Pojazdy.Powietrzne;
 
 import Drogi.DrogaPowietrzna;
+import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Lotnisko;
+import Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne;
+import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
+import Pojazdy.Pojazd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,14 +71,12 @@ public abstract class Samolot extends Pojazd {
     }
     public void tworzenieTrasy(){
         this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
+        this.addPunktTrasy(Swiat.getInstance().getListaLotniskWojskowych().get(0));
+        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
+        listaMozliwychLadowan.add(new Miasto());
+        listaMozliwychLadowan.add(new LotniskoCywilne());
+        poinformujOPrzyjezdzie(listaMozliwychLadowan);
+        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa(),listaMozliwychLadowan));
     }
 
-    public MiejsceZmianyKierunku nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa){
-        for (int i = 0; i < trasa.size(); i++) {
-            if(trasa.get(i) instanceof Przystanek){
-                return trasa.get(i);
-            }
-        }
-        return null;
-    }
 }

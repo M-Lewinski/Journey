@@ -12,6 +12,9 @@ public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
         Swiat.getInstance().addLotniskoCywilne(this);
 //        System.out.println("Utworzono Lotnisko Cywilne");
     }
+    public LotniskoCywilne(){
+
+    }
 
     @Override
     public void stworz() {

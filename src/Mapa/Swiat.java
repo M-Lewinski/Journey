@@ -5,13 +5,12 @@ import Drogi.DrogaMorska;
 import Drogi.DrogaPowietrzna;
 import Mapa.ZmianyKierunku.Przystanki.*;
 import Mapa.ZmianyKierunku.Skrzyzowanie;
-import Pasazerowie.GeneratorPasazerow;
 import Pasazerowie.Pasazer;
 import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
-import Pojazdy.SamolotPasazerski;
+import Pojazdy.Powietrzne.SamolotPasazerski;
+import Pojazdy.Wodne.Lotniskowiec;
 
-import javax.sound.midi.Soundbank;
 import java.util.*;
 
 /**
@@ -55,6 +54,8 @@ public class Swiat extends ObiektGraficzny {
     private List<LotniskoWojskowe> listaLotniskWojskowych = new ArrayList<LotniskoWojskowe>();
 
     private List<Port> listaPortow = new ArrayList<Port>();
+
+    private  List<Lotniskowiec> listaLotniskowcow = new ArrayList<Lotniskowiec>();
     /**
      * Konstruktor klasy swiat, ktory tworzy mape poprzez stworzenie drog, przystankow i skrzyzowan.
      */
@@ -83,6 +84,22 @@ public class Swiat extends ObiektGraficzny {
 
     public void addLotniskoCywilne(LotniskoCywilne lotniskoCywilne){
         this.listaLotniskCywilnych.add(lotniskoCywilne);
+    }
+
+    public List<Lotniskowiec> getListaLotniskowcow() {
+        return listaLotniskowcow;
+    }
+
+    public void addLotniskowiec(Lotniskowiec lotniskowiec){
+        listaLotniskowcow.add(lotniskowiec);
+    }
+
+    public void  removeLotniskowiec(Lotniskowiec lotniskowiec){
+        listaLotniskowcow.remove(lotniskowiec);
+    }
+
+    public void setListaLotniskowcow(List<Lotniskowiec> listaLotniskowcow) {
+        this.listaLotniskowcow = listaLotniskowcow;
     }
 
     public void removeLotniskoCywilne(LotniskoCywilne lotniskoCywilne){
@@ -259,19 +276,18 @@ public class Swiat extends ObiektGraficzny {
         DrogaMorska drogaMorska2 = new DrogaMorska(lotniskoCywilne2,lotniskoCywilne1);
         DrogaMorska drogaMorska3 = new DrogaMorska(lotniskoCywilne2,lotniskoCywilne3);
         DrogaMorska drogaMorska4 = new DrogaMorska(lotniskoCywilne3,lotniskoCywilne2);
-
+        LotniskoWojskowe lotniskoWojskowe1 = new LotniskoWojskowe("B",100,100,70,100,false,10);
 //        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
 //        for (int i = 0; i < Swiat.getInstance().getListaDrog().size() ; i++) {
 //            System.out.println(Swiat.getInstance().getListaDrog().get(i).getPoczatek().getNazwa());
 //        }
         SamolotPasazerski samolot1 = new SamolotPasazerski(100,100,100,10,10,10);
+        System.out.println("Stworzono Samolot");
         System.out.println(samolot1.getPrzystanekPoczatkowy().getNazwa());
         System.out.println(samolot1.getPrzystanekDocelowy().getNazwa());
         System.out.println(samolot1.getNastepnyPrzystanek().getNazwa());
-        System.out.println("Trasa:");
-        for (int i = 0; i < samolot1.getTrasa().size(); i++) {
-            System.out.printf(" " + samolot1.getTrasa().get(i).getNazwa());
-        }
+
+
         //samolot1.szukanieTrasy(samolot1.getPrzystanekPoczatkowy(), samolot1.getPrzystanekDocelowy(), new DrogaPowietrzna());
         //samolot1.szukanieTrasy(lotniskoCywilne1, lotniskoCywilne2, new DrogaPowietrzna());
 //        Pasazer pasazer = new Pasazer();

@@ -1,8 +1,13 @@
-package Pojazdy;
+package Pojazdy.Wodne;
 
 import Drogi.DrogaMorska;
+import Mapa.ZmianyKierunku.Przystanki.Miasto;
+import Mapa.ZmianyKierunku.Przystanki.Port;
 import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.Pojazd;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -22,6 +27,10 @@ public abstract class Statek extends Pojazd {
     }
     public void tworzenieTrasy(){
         this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaMorska()));
+        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
+        listaMozliwychLadowan.add(new Miasto());
+        listaMozliwychLadowan.add(new Port());
+        poinformujOPrzyjezdzie(listaMozliwychLadowan);
     }
     /**
      * Pusty konstruktor klasy statek.

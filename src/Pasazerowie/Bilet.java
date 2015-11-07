@@ -1,5 +1,6 @@
 package Pasazerowie;
 
+import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 
@@ -8,7 +9,7 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
  */
 public class Bilet {
     private Pojazd pojazd;
-    private MiejsceZmianyKierunku miejsceZmianyKierunku;
+    private Przystanek przystanek;
 
     public Pojazd getPojazd() {
         return pojazd;
@@ -18,11 +19,11 @@ public class Bilet {
         this.pojazd = pojazd;
     }
 
-    public MiejsceZmianyKierunku getMiejsceZmianyKierunku() {
-        return miejsceZmianyKierunku;
+    public Przystanek getPrzystanek() {
+        return przystanek;
     }
 
-    public void setMiejsceZmianyKierunku(MiejsceZmianyKierunku miejsceZmianyKierunku) {
-        this.miejsceZmianyKierunku = miejsceZmianyKierunku;
+    public void setPrzystanek(Przystanek przystanek) {
+        this.przystanek = przystanek;
     }
 }

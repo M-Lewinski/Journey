@@ -87,9 +87,14 @@ public class Pasazer implements ShowInfo,Runnable {
             this.czasPostoju = random.nextInt(30)+15;
         }
         this.czasPostoju = random.nextInt(30)+30;
-        this.przystanekPoczatkowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
-        this.przystanekDocelowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
+//        this.przystanekPoczatkowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
+//        this.przystanekDocelowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
+        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
+        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaPrzystankow());
+        this.przystanekPoczatkowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()-1));
         this.obecnePolozenie = this.przystanekPoczatkowy;
+        listaMozliwychPrzystankow.remove(this.przystanekPoczatkowy);
+        this.przystanekDocelowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()-1));
         Swiat.getInstance().addPasazer(this);
         this.przystanekPoczatkowy.addPasazerOczekujacy(this);
     }
@@ -186,6 +191,8 @@ public class Pasazer implements ShowInfo,Runnable {
     /**
      * Pokazanie informacji na panelu informacyjnym.
      */
+
+
     @Override
     public void showInfo() {
 
@@ -228,12 +235,17 @@ public class Pasazer implements ShowInfo,Runnable {
         System.out.println("Nazwisko: " + this.nazwisko);
         System.out.println("Wiek: " + this.wiek);
         System.out.println("Pesel: " + this.pesel);
-//        System.out.println(this.obecnePolozenie);
+        System.out.println(this.obecnePolozenie);
         System.out.println("Przystanek poczatkowy: " + this.przystanekPoczatkowy.getNazwa());
         System.out.println("Przystanek docelowy: " + this.przystanekDocelowy.getNazwa());
         System.out.println("Czy jest w podrozy sluzbowej? " + this.podrozSluzbowa);
         System.out.println("Czas postoju w punkcie docelowym: " + this.czasPostoju);
         System.out.println("Czy wraca: " + this.powrot);
+    }
+
+    public List<Bilet> szukanieTrasy(Przystanek poczatekTrasy, Przystanek koniecTrasy){
+
+        return null;
     }
 
     /**

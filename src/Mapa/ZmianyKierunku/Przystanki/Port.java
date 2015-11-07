@@ -11,6 +11,9 @@ public class Port extends Przystanek implements TworzeniePojazdu {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, nazwa);
         Swiat.getInstance().addPort(this);
     }
+    public Port(){
+
+    }
 
     @Override
 

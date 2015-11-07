@@ -6,6 +6,7 @@ import java.util.*;
 import Drogi.Droga;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
@@ -13,6 +14,7 @@ import com.sun.istack.internal.localization.NullLocalizable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
+import sun.awt.image.ImageWatched;
 
 
 /**
@@ -74,8 +76,8 @@ public abstract class Pojazd extends PunktNaMapie {
         nowyElement.addCopyListaPunktowNaMapie(poczatekTrasy);
         listaTras.add(nowyElement);
         System.out.println("Poczatek szukania trasy");
-//        System.out.println("Pierwszy element glownej list: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().get(0).getNazwa());
-        while (posortowanaListaTras.size()!=0){
+//        while (posortowanaListaTras.size()!=0){
+        while (!posortowanaListaTras.isEmpty()){
             //if (koniecTrasy.equals(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(posortowanaListaTras.get(0).getListaPunktowNaMapie().size()-1))) {
             LinkedList<MiejsceZmianyKierunku> badanyElement = posortowanaListaTras.get(0).getListaPunktowNaMapie();
             if (uzyskiwanieListTrasBezPowtorzeniaElementu(koniecTrasy, typDrogi, listaTras, posortowanaListaTras, badanyElement))
@@ -236,6 +238,68 @@ public abstract class Pojazd extends PunktNaMapie {
             this.setObecnePolozenie(this.getPrzystanekPoczatkowy());
             listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
             this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size() - 1)));
+        }
+    }
+
+
+    public Przystanek nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa,List<Object> listaObjektow) {
+        for (int i = 0; i < trasa.size(); i++) {
+            if (trasa.get(i) instanceof Przystanek) {
+                if(czyMozeLadowac(trasa.get(i),listaObjektow)) {
+                    return (Przystanek) trasa.get(i);
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<Przystanek> listaOdwiedzanychPrzystankow(List<Object> listaObjektow){
+//        System.out.println("here");
+        LinkedList<MiejsceZmianyKierunku> listaTymczasowaTras = new LinkedList<MiejsceZmianyKierunku>();
+        listaTymczasowaTras.addAll(this.trasa);
+        LinkedList<Przystanek> listaPrzystankow = new LinkedList<Przystanek>();
+        while(!listaTymczasowaTras.isEmpty()) {
+//            System.out.println("here");
+            if (nastepnyPrzystanekZTrasy(listaTymczasowaTras,listaObjektow)!=null) {
+                listaPrzystankow.add(nastepnyPrzystanekZTrasy(listaTymczasowaTras,listaObjektow));
+            }
+            for (int i = 0; !listaTymczasowaTras.isEmpty() && (listaTymczasowaTras.get(0) != nastepnyPrzystanekZTrasy(listaTymczasowaTras,listaObjektow)); i++) {
+                listaTymczasowaTras.remove(0);
+            }
+            if (!listaTymczasowaTras.isEmpty()) {
+                listaTymczasowaTras.remove(0);
+            }
+        }
+        return listaPrzystankow;
+    }
+
+    public void poinformujOPrzyjezdzie(List<Object> listaObjektow){
+        LinkedList<Przystanek> listaPrzystankow = new LinkedList<Przystanek>();
+        listaPrzystankow.addAll(listaOdwiedzanychPrzystankow(listaObjektow));
+//        listaPrzystankow.remove(0);
+        for (int i = 0; i < listaPrzystankow.size(); i++) {
+            listaPrzystankow.get(i).addPojazdPrzyjezdzajacy(this);
+        }
+        System.out.println("Przystanki " + listaPrzystankow.size());
+        for (int i = 0; i < listaPrzystankow.size(); i++) {
+            System.out.printf(listaPrzystankow.get(i).getNazwa() + " ");
+        }
+        System.out.println("");
+    }
+
+    public boolean czyMozeLadowac(Object doSprawdzenia,List<Object> listaObiektow){
+        for (int i = 0; i < listaObiektow.size(); i++) {
+            if(listaObiektow.get(i).getClass().isInstance(doSprawdzenia)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void wypisywanieTrasy(){
+        System.out.println("Trasa:");
+        for (int i = 0; i < this.getTrasa().size(); i++) {
+            System.out.printf(" " + this.getTrasa().get(i).getNazwa());
         }
     }
 
