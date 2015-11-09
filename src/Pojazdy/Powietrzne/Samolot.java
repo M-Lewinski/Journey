@@ -69,14 +69,14 @@ public abstract class Samolot extends Pojazd {
     public void poinformujMiejsceZmianyKierunku(){
 
     }
-    public void tworzenieTrasy(){
-        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
-        this.addPunktTrasy(Swiat.getInstance().getListaLotniskWojskowych().get(0));
-        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
-        listaMozliwychLadowan.add(new Miasto());
-        listaMozliwychLadowan.add(new LotniskoCywilne());
-        poinformujOPrzyjezdzie(listaMozliwychLadowan);
-        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa(),listaMozliwychLadowan));
-    }
+//    public void tworzenieTrasy(){
+//        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
+////        this.addPunktTrasy(Swiat.getInstance().getListaLotniskWojskowych().get(0));
+////        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
+////        listaMozliwychLadowan.add(new Miasto());
+////        listaMozliwychLadowan.add(new LotniskoCywilne());
+//        poinformujOPrzyjezdzie(Pojazd.getListaGdzieMozeLadowac());
+//        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa(),this.getTrasa().get(0),Pojazd.getListaGdzieMozeLadowac()));
+//    }
 
 }

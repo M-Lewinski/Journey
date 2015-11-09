@@ -3,7 +3,13 @@ package Pasazerowie;
 import Mapa.PunktNaMapie;
 import Mapa.ShowInfo;
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
+import Pojazdy.Pojazd;
+import Pojazdy.Trasowanie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 
 import java.util.*;
 
@@ -56,6 +62,8 @@ public class Pasazer implements ShowInfo,Runnable {
      * lista wszystkich miejsc zmiany kierunku i pojazdow za pomoca, ktorych bedzie przemieszczal sie pasazer.
      */
     private List<Bilet> listaBiletow = new ArrayList<Bilet>();
+
+    private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
     /**
      * okresla czy pasazer wraca z podrozy.
      */
@@ -89,14 +97,21 @@ public class Pasazer implements ShowInfo,Runnable {
         this.czasPostoju = random.nextInt(30)+30;
 //        this.przystanekPoczatkowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
 //        this.przystanekDocelowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
-        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
-        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaPrzystankow());
-        this.przystanekPoczatkowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()-1));
-        this.obecnePolozenie = this.przystanekPoczatkowy;
-        listaMozliwychPrzystankow.remove(this.przystanekPoczatkowy);
-        this.przystanekDocelowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()-1));
+//        okreslaniePolozen();
+        this.przystanekPoczatkowy = Swiat.getInstance().getListaPojazdow().get(0).getPrzystanekPoczatkowy();
+        this.przystanekDocelowy = Swiat.getInstance().getListaPojazdow().get(0).getPrzystanekDocelowy();
         Swiat.getInstance().addPasazer(this);
         this.przystanekPoczatkowy.addPasazerOczekujacy(this);
+    }
+
+    private void okreslaniePolozen() {
+        Random random = new Random();
+        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
+        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaPrzystankow());
+        this.przystanekPoczatkowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()));
+        this.obecnePolozenie = this.przystanekPoczatkowy;
+        listaMozliwychPrzystankow.remove(this.przystanekPoczatkowy);
+        this.przystanekDocelowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()));
     }
 
     /**
@@ -235,7 +250,7 @@ public class Pasazer implements ShowInfo,Runnable {
         System.out.println("Nazwisko: " + this.nazwisko);
         System.out.println("Wiek: " + this.wiek);
         System.out.println("Pesel: " + this.pesel);
-        System.out.println(this.obecnePolozenie);
+//        System.out.println(this.obecnePolozenie);
         System.out.println("Przystanek poczatkowy: " + this.przystanekPoczatkowy.getNazwa());
         System.out.println("Przystanek docelowy: " + this.przystanekDocelowy.getNazwa());
         System.out.println("Czy jest w podrozy sluzbowej? " + this.podrozSluzbowa);
@@ -243,9 +258,112 @@ public class Pasazer implements ShowInfo,Runnable {
         System.out.println("Czy wraca: " + this.powrot);
     }
 
-    public List<Bilet> szukanieTrasy(Przystanek poczatekTrasy, Przystanek koniecTrasy){
-
+    public List<Przystanek> szukanieTrasy(Przystanek poczatekTrasy,Przystanek koniecTrasy){
+        ObservableList<TrasowaniePasazerow> listaTras = FXCollections.observableArrayList();
+        SortedList<TrasowaniePasazerow> posortowanaListaTras =  new SortedList<TrasowaniePasazerow>(listaTras,new TrasowaniePasazerow());
+//        for (int i = 0; i < poczatekTrasy.getListaDrog().size(); i++) {
+//            Trasowanie nowyElement = new Trasowanie();
+//            nowyElement.addListaPunktowNaMapie(poczatekTrasy.getListaDrog().get(i).getKoniec(),poczatekTrasy.getListaDrog().get(i).getOdleglosc());
+//            listaTras.add(nowyElement);
+//        }
+        TrasowaniePasazerow nowyElement = new TrasowaniePasazerow();
+        nowyElement.addCopyListaPunktowNaMapie(poczatekTrasy);
+        listaTras.add(nowyElement);
+        System.out.println("Poczatek szukania trasy");
+//        while (posortowanaListaTras.size()!=0){
+        while (!posortowanaListaTras.isEmpty()){
+            //if (koniecTrasy.equals(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(posortowanaListaTras.get(0).getListaPunktowNaMapie().size()-1))) {
+            LinkedList<Przystanek> badanyElement = posortowanaListaTras.get(0).getListaPunktowNaMapie();
+            if (uzyskiwanieListTrasBezPowtorzeniaElementu(koniecTrasy, listaTras, posortowanaListaTras, badanyElement))
+                return badanyElement;
+            listaTras.remove(posortowanaListaTras.get(0));
+        }
+//        System.out.println("Nie znaleziono trasy");
         return null;
+    }
+
+    private boolean uzyskiwanieListTrasBezPowtorzeniaElementu(Przystanek koniecTrasy, ObservableList<TrasowaniePasazerow> listaTras, SortedList<TrasowaniePasazerow> posortowanaListaTras, LinkedList<Przystanek> badanyElement) {
+        if ( badanyElement.getLast() == koniecTrasy) {
+            System.out.println("Znaleziono Trase jej dlugosc to: " + posortowanaListaTras.get(0).getDlugosc());
+            for (int i = 0; i <  badanyElement.size(); i++) {
+                System.out.println("Punkt " + i + " " +  badanyElement.get(i).getNazwa());
+            }
+            return true;
+        }
+        LinkedList<Pojazd> listaMozliwychPojazdow = new LinkedList<Pojazd>();
+        if(!badanyElement.getLast().getListaPojazdowZaparkowanych().isEmpty()){
+            listaMozliwychPojazdow.addAll(badanyElement.getLast().getListaPojazdowZaparkowanych());
+        }
+        if(!badanyElement.getLast().getListaPojazdowPrzyjezdzajacych().isEmpty()){
+            listaMozliwychPojazdow.addAll(badanyElement.getLast().getListaPojazdowPrzyjezdzajacych());
+        }
+        for (int i = 0; i <  listaMozliwychPojazdow.size(); i++) {
+            System.out.println("Trasa ");
+            for (int j = 0; j <  badanyElement.size(); j++) {
+                System.out.printf( badanyElement.get(j).getNazwa()+ " ");
+            }
+            System.out.println("");
+            Przystanek nastepnyPrzystanek = listaMozliwychPojazdow.get(i).nastepneMozliweLadowanie(listaMozliwychPojazdow.get(i).getTrasa(), badanyElement.getLast());
+            if (nastepnyPrzystanek == null){
+                System.out.println("HERE");
+                continue;
+            }
+            if ( badanyElement.contains(nastepnyPrzystanek)){
+                continue;
+            }
+                TrasowaniePasazerow nowyElement = new TrasowaniePasazerow();
+//                    System.out.println(i + "punkt: " +"poczatek: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getPoczatek().getNazwa() + " koniec: " + posortowanaListaTras.get(0).getListaPunktowNaMapie().getLast().getListaDrog().get(i).getKoniec().getNazwa());
+                for (int j = 0; j <  badanyElement.size(); j++) {
+                    nowyElement.addCopyListaPunktowNaMapie( badanyElement.get(j));
+                }
+                nowyElement.setDlugosc(posortowanaListaTras.get(0).getDlugosc());
+            double odleglosc = listaMozliwychPojazdow.get(i).okreslanieDlugosciTrasy(badanyElement.getLast(), nastepnyPrzystanek, listaMozliwychPojazdow.get(i).getTrasa());
+            nowyElement.addListaPunktowNaMapie(nastepnyPrzystanek, odleglosc);
+                listaTras.add(nowyElement);
+        }
+        return false;
+    }
+
+    public void setPodrozSluzbowa(boolean podrozSluzbowa) {
+        this.podrozSluzbowa = podrozSluzbowa;
+    }
+
+    public void setPrzystanekDocelowy(Przystanek przystanekDocelowy) {
+        this.przystanekDocelowy = przystanekDocelowy;
+    }
+
+    public void setPrzystanekPoczatkowy(Przystanek przystanekPoczatkowy) {
+        this.przystanekPoczatkowy = przystanekPoczatkowy;
+    }
+
+    public List<Przystanek> getListaPrzystankow() {
+        return listaPrzystankow;
+    }
+
+    public void setListaPrzystankow(List<Przystanek> listaPrzystankow) {
+        this.listaPrzystankow = listaPrzystankow;
+    }
+
+    public void addListaPrzystankow(Przystanek przystanek){
+        this.listaPrzystankow.add(przystanek);
+    }
+
+    public void removeListaPrzystankow(Przystanek przystanek){
+        this.listaPrzystankow.remove(przystanek);
+    }
+
+    public void tworzenieTrasy(){
+        this.setListaPrzystankow(szukanieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy()));
+        if (this.listaPrzystankow == null){
+            System.out.println("Nie ma takiej trasy");
+            return;
+//            listaPrzystankow.remove(0);
+        }
+        System.out.println("Lista przystankow do przejechania:");
+        for (int i = 0; i < this.listaPrzystankow.size(); i++) {
+            System.out.printf(" " + this.listaPrzystankow.get(i).getNazwa());
+        }
+        System.out.println("");
     }
 
     /**

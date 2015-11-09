@@ -283,11 +283,16 @@ public class Swiat extends ObiektGraficzny {
 //        }
         SamolotPasazerski samolot1 = new SamolotPasazerski(100,100,100,10,10,10);
         System.out.println("Stworzono Samolot");
-        System.out.println(samolot1.getPrzystanekPoczatkowy().getNazwa());
-        System.out.println(samolot1.getPrzystanekDocelowy().getNazwa());
+        System.out.println("Przystanek poczatkowy: " + samolot1.getPrzystanekPoczatkowy().getNazwa());
+        System.out.println("Przystanek docelowy: " + samolot1.getPrzystanekDocelowy().getNazwa());
         System.out.println(samolot1.getNastepnyPrzystanek().getNazwa());
-
-
+        System.out.println("dlugosc drogi miedzy punktami: " +samolot1.okreslanieDlugosciTrasy(samolot1.getPrzystanekPoczatkowy(),samolot1.getPrzystanekDocelowy(),samolot1.getTrasa()));
+        Pasazer pasazer1 = new Pasazer();
+        pasazer1.outconsole();
+        pasazer1.setPrzystanekPoczatkowy(lotniskoCywilne1);
+        pasazer1.setPrzystanekDocelowy(lotniskoCywilne2);
+        //pasazer1.szukanieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
+        pasazer1.tworzenieTrasy();
         //samolot1.szukanieTrasy(samolot1.getPrzystanekPoczatkowy(), samolot1.getPrzystanekDocelowy(), new DrogaPowietrzna());
         //samolot1.szukanieTrasy(lotniskoCywilne1, lotniskoCywilne2, new DrogaPowietrzna());
 //        Pasazer pasazer = new Pasazer();

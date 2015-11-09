@@ -1,10 +1,12 @@
 package Pojazdy.Powietrzne;
 
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -17,5 +19,15 @@ public class SamolotWojskowy extends Samolot {
         okreslaniePolozenia(listaMozliwychPrzystankow);
         tworzenieTrasy();
 //        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
+    }
+
+    @Override
+    public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {
+        return null;
+    }
+
+    @Override
+    public void tworzenieTrasy() {
+
     }
 }

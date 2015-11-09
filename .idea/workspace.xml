@@ -2,27 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f50d38b-bcd9-44e5-9551-e37e6c23d7d2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Firma.java" />
-      <change type="DELETED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\out\production\Podroz\Pojazdy\Lotniskowiec.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\out\production\Podroz\Pojazdy\Samolot.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\out\production\Podroz\Pojazdy\SamolotPasazerski.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\out\production\Podroz\Pojazdy\SamolotWojskowy.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\out\production\Podroz\Pojazdy\Statek.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\out\production\Podroz\Pojazdy\StatekWycieczkowy.class" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\MainPanel.java" afterPath="$PROJECT_DIR$/src/Gui/MainPanel.java" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\Pojazdy\Lotniskowiec.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\Pojazdy\Samolot.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\Pojazdy\SamolotPasazerski.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\Pojazdy\SamolotWojskowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\Pojazdy\Statek.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" />
-      <change type="MOVED" beforePath="C:\Users\Lewin\IdeaProjects\Podroz\src\Pojazdy\StatekWycieczkowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Drogi/DrogaMorska.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Drogi/DrogaMorska.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Pasazerowie/TrasowaniePasazerow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Bilet.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Bilet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Port.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Port.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Przystanek.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Przystanek.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/Swiat.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/Swiat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/Bilet.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/Bilet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/Swiat.java" afterPath="$PROJECT_DIR$/src/Mapa/Swiat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -50,28 +45,74 @@
       <file leaf-file-name="Pojazd.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61858976">
-              <caret line="250" column="13" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.34537247">
+              <caret line="277" column="62" selection-start-line="277" selection-start-column="62" selection-end-line="277" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Droga.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="55" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pasazer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="373" column="13" selection-start-line="373" selection-start-column="13" selection-end-line="373" selection-end-column="13" />
               <folding>
-                <element signature="e#9020#9043#0" expanded="true" />
-                <element signature="e#9159#9171#0" expanded="true" />
-                <element signature="e#9979#9991#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1598#1610#0" expanded="true" />
+                <element signature="e#3750#3762#0" expanded="true" />
+                <element signature="e#7575#7596#0" expanded="true" />
+                <element signature="e#9529#9537#0" expanded="true" />
+                <element signature="e#11646#11647#0" expanded="true" />
+                <element signature="e#11698#11699#0" expanded="true" />
+                <element signature="e#11770#11771#0" expanded="true" />
+                <element signature="e#11830#11831#0" expanded="true" />
+                <element signature="e#12023#12024#0" expanded="true" />
+                <element signature="e#12062#12063#0" expanded="true" />
+                <element signature="e#12136#12137#0" expanded="true" />
+                <element signature="e#12192#12193#0" expanded="true" />
+                <element signature="e#12253#12254#0" expanded="true" />
+                <element signature="e#12306#12307#0" expanded="true" />
+                <element signature="e#12370#12371#0" expanded="true" />
+                <element signature="e#12426#12427#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bilet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Bilet.java">
+      <file leaf-file-name="Przystanek.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+              <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
               <folding>
-                <element signature="e#303#304#0" expanded="true" />
-                <element signature="e#332#333#0" expanded="true" />
-                <element signature="e#542#543#0" expanded="true" />
-                <element signature="e#586#587#0" expanded="true" />
+                <element signature="e#389#397#0" expanded="true" />
+                <element signature="e#469#478#0" expanded="true" />
+                <element signature="e#552#560#0" expanded="true" />
+                <element signature="e#636#645#0" expanded="true" />
+                <element signature="e#1353#1354#0" expanded="true" />
+                <element signature="e#1405#1406#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lotniskowiec.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,23 +121,8 @@
         <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#649#661#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Samolot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="69" selection-start-line="74" selection-start-column="69" selection-end-line="74" selection-end-column="69" />
-              <folding>
-                <element signature="e#2256#2264#0" expanded="true" />
-              </folding>
+              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,9 +131,21 @@
         <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SamolotPasazerski.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
               <folding>
-                <element signature="e#989#997#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#570#578#0" expanded="true" />
+                <element signature="e#1155#1167#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,7 +155,7 @@
         <entry file="file://$PROJECT_DIR$/src/Mapa/Swiat.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="228" column="5" selection-start-line="226" selection-start-column="19" selection-end-line="228" selection-end-column="5" />
+              <caret line="303" column="1" selection-start-line="303" selection-start-column="1" selection-end-line="303" selection-end-column="1" />
               <folding>
                 <element signature="e#1503#1511#0" expanded="true" />
                 <element signature="e#1587#1604#0" expanded="true" />
@@ -129,45 +167,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Port.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
+      <file leaf-file-name="Samolot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="2" selection-end-line="79" selection-end-column="7" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LotniskoWojskowe.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LotniskoCywilne.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SamolotPasazerski.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#693#705#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -178,8 +183,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -194,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Pasazerski.java" />
         <option value="$PROJECT_DIR$/src/StatekWycieczkowy.java" />
         <option value="$PROJECT_DIR$/src/Lotniskowiec.java" />
         <option value="$PROJECT_DIR$/src/ShowInfo.java" />
@@ -219,9 +223,7 @@
         <option value="$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java" />
         <option value="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/SamolotWojskowy.java" />
-        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Trasowanie.java" />
         <option value="$PROJECT_DIR$/src/Drogi/Droga.java" />
         <option value="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" />
@@ -234,16 +236,19 @@
         <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Firma.java" />
         <option value="$PROJECT_DIR$/src/Gui/MainPanel.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
-        <option value="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
         <option value="$PROJECT_DIR$/src/Pasazerowie/Bilet.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
-        <option value="$PROJECT_DIR$/src/Mapa/Swiat.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Trasowanie.java" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/TrasowaniePasazerow.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/Swiat.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
       </list>
     </option>
@@ -265,8 +270,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -928,7 +933,9 @@
       <workItem from="1446208051605" duration="4556000" />
       <workItem from="1446727212653" duration="4720000" />
       <workItem from="1446802195302" duration="18506000" />
-      <workItem from="1446850159054" duration="13621000" />
+      <workItem from="1446850159054" duration="17038000" />
+      <workItem from="1446923131596" duration="16966000" />
+      <workItem from="1447013987667" duration="5970000" />
     </task>
     <task id="LOCAL-00001" summary="Modifing lists and constructors.">
       <created>1445711853019</created>
@@ -978,11 +985,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446852476888</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="It's starting to work.">
+      <created>1446904794039</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1446904794039</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155898000" />
+    <option name="totallyTimeSpent" value="182251000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -994,60 +1007,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32402235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32300162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23910615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23164764" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34301677" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17420538" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2193646" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.122349106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32513967" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21533442" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34301677" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19288956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21943766" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1067,7 +1054,8 @@
     <MESSAGE value="Commenting and imprivng class Pasazer." />
     <MESSAGE value="Creating routes between cities." />
     <MESSAGE value="Vehicles finds routes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Vehicles finds routes." />
+    <MESSAGE value="It's starting to work." />
+    <option name="LAST_COMMIT_MESSAGE" value="It's starting to work." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1080,23 +1068,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1104,9 +1080,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1219,13 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/SurnameList.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/Rysowanie.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1249,10 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding>
-            <element signature="e#186#187#0" expanded="false" />
-            <element signature="e#219#220#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1635,19 +1598,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1664,7 +1618,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1682,8 +1636,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding>
-            <element signature="e#482#483#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="false" />
+            <element signature="e#521#522#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1697,7 +1651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1705,7 +1658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1713,43 +1665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="22" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="22" />
-          <folding>
-            <element signature="e#389#397#0" expanded="true" />
-            <element signature="e#469#478#0" expanded="true" />
-            <element signature="e#552#560#0" expanded="true" />
-            <element signature="e#636#645#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Trasowanie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding>
-            <element signature="e#396#419#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
-          <folding>
-            <element signature="e#372#380#0" expanded="true" />
-            <element signature="e#433#440#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1758,17 +1673,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#675#687#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#675#687#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1776,17 +1683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-          <folding>
-            <element signature="e#2999#3011#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1795,10 +1691,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding>
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#332#333#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="false" />
+            <element signature="e#332#333#0" expanded="false" />
+            <element signature="e#542#543#0" expanded="false" />
+            <element signature="e#586#587#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1819,27 +1715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#989#997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#649#661#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1848,21 +1723,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+          <folding>
+            <element signature="e#372#380#0" expanded="false" />
+            <element signature="e#433#440#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/SurnameList.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Trasowanie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#396#419#0" expanded="false" />
+            <element signature="e#455#456#0" expanded="false" />
+            <element signature="e#485#486#0" expanded="false" />
+            <element signature="e#531#532#0" expanded="false" />
+            <element signature="e#569#570#0" expanded="false" />
+            <element signature="e#642#643#0" expanded="false" />
+            <element signature="e#684#685#0" expanded="false" />
+            <element signature="e#1287#1288#0" expanded="false" />
+            <element signature="e#1347#1348#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/TrasowaniePasazerow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#693#705#0" expanded="true" />
+            <element signature="e#406#418#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1127#1128#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="2" selection-end-line="79" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="55" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/Swiat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="228" column="5" selection-start-line="226" selection-start-column="19" selection-end-line="228" selection-end-column="5" />
+          <caret line="303" column="1" selection-start-line="303" selection-start-column="1" selection-end-line="303" selection-end-column="1" />
           <folding>
             <element signature="e#1503#1511#0" expanded="true" />
             <element signature="e#1587#1604#0" expanded="true" />
@@ -1873,25 +1818,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="69" selection-start-line="74" selection-start-column="69" selection-end-line="74" selection-end-column="69" />
+          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
           <folding>
-            <element signature="e#2256#2264#0" expanded="true" />
+            <element signature="e#389#397#0" expanded="true" />
+            <element signature="e#469#478#0" expanded="true" />
+            <element signature="e#552#560#0" expanded="true" />
+            <element signature="e#636#645#0" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1405#1406#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#570#578#0" expanded="true" />
+            <element signature="e#1155#1167#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="373" column="13" selection-start-line="373" selection-start-column="13" selection-end-line="373" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1598#1610#0" expanded="true" />
+            <element signature="e#3750#3762#0" expanded="true" />
+            <element signature="e#7575#7596#0" expanded="true" />
+            <element signature="e#9529#9537#0" expanded="true" />
+            <element signature="e#11646#11647#0" expanded="true" />
+            <element signature="e#11698#11699#0" expanded="true" />
+            <element signature="e#11770#11771#0" expanded="true" />
+            <element signature="e#11830#11831#0" expanded="true" />
+            <element signature="e#12023#12024#0" expanded="true" />
+            <element signature="e#12062#12063#0" expanded="true" />
+            <element signature="e#12136#12137#0" expanded="true" />
+            <element signature="e#12192#12193#0" expanded="true" />
+            <element signature="e#12253#12254#0" expanded="true" />
+            <element signature="e#12306#12307#0" expanded="true" />
+            <element signature="e#12370#12371#0" expanded="true" />
+            <element signature="e#12426#12427#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61858976">
-          <caret line="250" column="13" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
-          <folding>
-            <element signature="e#9020#9043#0" expanded="true" />
-            <element signature="e#9159#9171#0" expanded="true" />
-            <element signature="e#9979#9991#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.34537247">
+          <caret line="277" column="62" selection-start-line="277" selection-start-column="62" selection-end-line="277" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,8 +1,10 @@
 package Pojazdy.Wodne;
 
 import Drogi.DrogaMorska;
+import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Port;
+import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.Pojazd;
 
@@ -37,5 +39,10 @@ public abstract class Statek extends Pojazd {
      */
     public Statek(){
 
+    }
+
+    @Override
+    public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {
+        return null;
     }
 }

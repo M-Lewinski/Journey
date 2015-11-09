@@ -26,4 +26,5 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
     public void stworz() {
 
     }
+
 }

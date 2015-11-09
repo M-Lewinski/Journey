@@ -84,6 +84,7 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         this.listaPasazerowPrzyjezdzajacych.remove(pasazer);
     }
 
+
     public Przystanek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, String nazwa) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
         Swiat.getInstance().addPrzystanek(this);
