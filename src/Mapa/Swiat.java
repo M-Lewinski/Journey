@@ -10,6 +10,7 @@ import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Pojazdy.Powietrzne.SamolotPasazerski;
 import Pojazdy.Wodne.Lotniskowiec;
+import com.sun.media.sound.MidiInDeviceProvider;
 
 import java.util.*;
 
@@ -292,7 +293,36 @@ public class Swiat extends ObiektGraficzny {
         pasazer1.setPrzystanekPoczatkowy(lotniskoCywilne1);
         pasazer1.setPrzystanekDocelowy(lotniskoCywilne2);
         //pasazer1.szukanieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
-        pasazer1.tworzenieTrasy();
+        pasazer1.tworzenieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
+//        List<MiejsceZmianyKierunku> listaprobna = new LinkedList<MiejsceZmianyKierunku>();
+
+//        listaprobna.add(skrzyzowanie1);
+//        listaprobna.add(skrzyzowanie2);
+//        listaprobna.add(lotniskoCywilne2);
+//        samolot1.setTrasa(listaprobna);
+//        samolot1.setPozostalaTrasa(listaprobna);
+        List<Przystanek> listaMiejsc = new LinkedList<Przystanek>();
+        listaMiejsc.addAll(Swiat.getInstance().getListaLotniskCywilnych());
+        System.out.println("Poczatek zmiany trasy");
+        samolot1.wypisywanieTrasy(samolot1.getTrasa());
+        samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
+//        samolot1.setObecnePolozenie(skrzyzowanie1);
+        samolot1.zmianaTrasy(listaMiejsc);
+//        samolot1.addPozostalaTrasa(skrzyzowanie1);
+        System.out.println("Zmiana trasy");
+        samolot1.wypisywanieTrasy(samolot1.getTrasa());
+        System.out.println("pozostala trasa");
+        samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
+
+
+        listaMiejsc.add(null);
+        if(listaMiejsc.isEmpty()){
+            System.out.println("jest pusta");
+        }
+        if(listaMiejsc.size() == 0){
+            System.out.println("dlugosc wynosi 0");
+        }
+
         //samolot1.szukanieTrasy(samolot1.getPrzystanekPoczatkowy(), samolot1.getPrzystanekDocelowy(), new DrogaPowietrzna());
         //samolot1.szukanieTrasy(lotniskoCywilne1, lotniskoCywilne2, new DrogaPowietrzna());
 //        Pasazer pasazer = new Pasazer();

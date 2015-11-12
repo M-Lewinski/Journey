@@ -64,10 +64,13 @@ public class Pasazer implements ShowInfo,Runnable {
     private List<Bilet> listaBiletow = new ArrayList<Bilet>();
 
     private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
+
     /**
      * okresla czy pasazer wraca z podrozy.
      */
     private boolean powrot;
+
+    private List<Przystanek> pozostalaTrasa = new ArrayList<Przystanek>();
 
     /**
      * Konstruktor klasy pasazer, ktory losowo generuje wartosci pol.
@@ -102,6 +105,7 @@ public class Pasazer implements ShowInfo,Runnable {
         this.przystanekDocelowy = Swiat.getInstance().getListaPojazdow().get(0).getPrzystanekDocelowy();
         Swiat.getInstance().addPasazer(this);
         this.przystanekPoczatkowy.addPasazerOczekujacy(this);
+        tworzenieTrasy(this.przystanekPoczatkowy,this.przystanekDocelowy);
     }
 
     private void okreslaniePolozen() {
@@ -127,6 +131,21 @@ public class Pasazer implements ShowInfo,Runnable {
         return result;
     }
 
+    public List<Przystanek> getPozostalaTrasa() {
+        return pozostalaTrasa;
+    }
+
+    public void setPozostalaTrasa(List<Przystanek> pozostalaTrasa) {
+        this.pozostalaTrasa = pozostalaTrasa;
+    }
+
+    public void addPozostalaTrasa(Przystanek przystanek){
+        this.pozostalaTrasa.add(przystanek);
+    }
+
+    public void removePozostalaTrasa(Przystanek przystanek){
+        this.pozostalaTrasa.remove(przystanek);
+    }
     public int getCzasPostoju() {
         return czasPostoju;
     }
@@ -352,13 +371,14 @@ public class Pasazer implements ShowInfo,Runnable {
         this.listaPrzystankow.remove(przystanek);
     }
 
-    public void tworzenieTrasy(){
-        this.setListaPrzystankow(szukanieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy()));
+    public void tworzenieTrasy(Przystanek punktPoczatkowy, Przystanek punktKoncowy){
+        this.setListaPrzystankow(szukanieTrasy(punktPoczatkowy, punktKoncowy));
         if (this.listaPrzystankow == null){
             System.out.println("Nie ma takiej trasy");
             return;
 //            listaPrzystankow.remove(0);
         }
+        this.setPozostalaTrasa(this.getListaPrzystankow());
         System.out.println("Lista przystankow do przejechania:");
         for (int i = 0; i < this.listaPrzystankow.size(); i++) {
             System.out.printf(" " + this.listaPrzystankow.get(i).getNazwa());

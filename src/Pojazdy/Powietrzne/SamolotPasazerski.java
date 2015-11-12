@@ -6,12 +6,10 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
-import Pojazdy.Pojazd;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -27,10 +25,10 @@ public class SamolotPasazerski extends Samolot {
         LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskCywilnych());
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaMiast());
-        System.out.println("dlugosc listy przystankow " + listaMozliwychPrzystankow.size());
-        okreslaniePolozenia(listaMozliwychPrzystankow);
-        tworzenieTrasy();
-        wypisywanieTrasy();
+//        System.out.println("dlugosc listy przystankow " + listaMozliwychPrzystankow.size());
+        okreslNowePolozenie(listaMozliwychPrzystankow);
+        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
+        wypisywanieTrasy(this.getTrasa());
         this.getObecnePolozenie().addPojazdOczekujacy(this);
 //        LinkedList<MiejsceZmianyKierunku> testList = new LinkedList<MiejsceZmianyKierunku>();
 //        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
@@ -60,13 +58,16 @@ public class SamolotPasazerski extends Samolot {
     }
 
     @Override
-    public void tworzenieTrasy(){
-        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
+    public void tworzenieTrasy(MiejsceZmianyKierunku przystanekPoczatkowy, MiejsceZmianyKierunku przystanekDocelowy){
+        this.poinformujORezygnacjiPrzyjazdu(this.getTrasa());
+        this.getTrasa().clear();
+        this.getPozostalaTrasa().clear();
+        this.setTrasa(szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,new DrogaPowietrzna()));
         if (this.getTrasa()==null){
             return;
         }
-//        this.addPunktTrasy(Swiat.getInstance().getListaLotniskWojskowych().get(0));
-        poinformujOPrzyjezdzie(SamolotPasazerski.getListaGdzieMozeLadowac());
-        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa(),this.getTrasa().get(0),SamolotPasazerski.getListaGdzieMozeLadowac()));
+        this.getPozostalaTrasa().addAll(this.getTrasa());
+        this.poinformujOZamiarzePrzyjazdu(this.getTrasa());
+        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
     }
 }

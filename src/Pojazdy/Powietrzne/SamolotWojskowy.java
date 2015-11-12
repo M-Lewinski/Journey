@@ -16,8 +16,8 @@ public class SamolotWojskowy extends Samolot {
         super(dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
         LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
-        okreslaniePolozenia(listaMozliwychPrzystankow);
-        tworzenieTrasy();
+        okreslNowePolozenie(listaMozliwychPrzystankow);
+        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
 //        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
     }
 
@@ -27,7 +27,7 @@ public class SamolotWojskowy extends Samolot {
     }
 
     @Override
-    public void tworzenieTrasy() {
+    public void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy) {
 
     }
 }

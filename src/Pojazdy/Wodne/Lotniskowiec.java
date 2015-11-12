@@ -1,6 +1,7 @@
 package Pojazdy.Wodne;
 
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.TworzeniePojazdu;
 
@@ -27,4 +28,8 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
 
     }
 
+    @Override
+    public void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy) {
+
+    }
 }

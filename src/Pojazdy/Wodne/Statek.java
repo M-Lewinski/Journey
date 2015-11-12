@@ -32,7 +32,7 @@ public abstract class Statek extends Pojazd {
         List<Object> listaMozliwychLadowan = new ArrayList<Object>();
         listaMozliwychLadowan.add(new Miasto());
         listaMozliwychLadowan.add(new Port());
-        poinformujOPrzyjezdzie(listaMozliwychLadowan);
+//        poinformujOPrzyjezdzie(listaMozliwychLadowan);
     }
     /**
      * Pusty konstruktor klasy statek.

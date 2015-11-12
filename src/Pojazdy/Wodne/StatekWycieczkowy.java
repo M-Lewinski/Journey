@@ -1,6 +1,7 @@
 package Pojazdy.Wodne;
 
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 
@@ -22,7 +23,12 @@ public class StatekWycieczkowy extends Statek {
         LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaPortow());
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaMiast());
-        okreslaniePolozenia(listaMozliwychPrzystankow);
+        okreslNowePolozenie(listaMozliwychPrzystankow);
         tworzenieTrasy();
+    }
+
+    @Override
+    public void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy) {
+
     }
 }

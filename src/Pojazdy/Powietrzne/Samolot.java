@@ -63,12 +63,14 @@ public abstract class Samolot extends Pojazd {
     public void setMaksymalnaIloscPaliwa(int maksymalnaIloscPaliwa) {
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
     }
+
     public void awaryjneLadowanie(){
 
     }
-    public void poinformujMiejsceZmianyKierunku(){
 
-    }
+//    public void poinformujMiejsceZmianyKierunku(){
+//
+//    }
 //    public void tworzenieTrasy(){
 //        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
 ////        this.addPunktTrasy(Swiat.getInstance().getListaLotniskWojskowych().get(0));
