@@ -99,10 +99,11 @@ public abstract class Pojazd extends PunktNaMapie {
             System.out.println("nie ma");
             nastepneMiejsceZmianyKierunku=nastepneMozliweLadowanie(this.getTrasa(),this.obecnePolozenie);
         }
-        System.out.println(nastepneMiejsceZmianyKierunku.getNazwa());
+        System.out.println("Nastepne miejsce: " + nastepneMiejsceZmianyKierunku.getNazwa());
         Random random = new Random();
         listaMozliwychPrzystankow.remove(nastepneMiejsceZmianyKierunku);
         listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
+        listaMozliwychPrzystankow.remove(this.getPrzystanekDocelowy());
         this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size())));
         this.tworzenieTrasy(nastepneMiejsceZmianyKierunku,this.getPrzystanekDocelowy());
         for (int i = 0;staraTrasa.get(i)!=nastepneMiejsceZmianyKierunku; i++) {
@@ -112,7 +113,8 @@ public abstract class Pojazd extends PunktNaMapie {
 
     public boolean czyWyladowal(MiejsceZmianyKierunku obecnePolozenieNaMapie){
         if (obecnePolozenieNaMapie instanceof Przystanek){
-            if((obecnePolozenieNaMapie.getPolozenieX() == this.getPolozenieX()) && (obecnePolozenieNaMapie.getPolozenieY() == this.getPolozenieY())){
+//            if((obecnePolozenieNaMapie.getPolozenieX() == this.getPolozenieX()) && (obecnePolozenieNaMapie.getPolozenieY() == this.getPolozenieY())){
+             if(((Przystanek) obecnePolozenieNaMapie).getListaPojazdowZaparkowanych().contains(this)){
                 return true;
             }
         }
@@ -136,14 +138,14 @@ public abstract class Pojazd extends PunktNaMapie {
         Trasowanie nowyElement = new Trasowanie();
         nowyElement.addCopyListaPunktowNaMapie(poczatekTrasy);
         listaTras.add(nowyElement);
-        System.out.println("Poczatek szukania trasy");
+//        System.out.println("Poczatek szukania trasy");
 //        while (posortowanaListaTras.size()!=0){
         while (!posortowanaListaTras.isEmpty()){
 //        while(posortowanaListaTras !=null){
             //if (koniecTrasy.equals(posortowanaListaTras.get(0).getListaPunktowNaMapie().get(posortowanaListaTras.get(0).getListaPunktowNaMapie().size()-1))) {
             LinkedList<MiejsceZmianyKierunku> badanyElement = posortowanaListaTras.get(0).getListaPunktowNaMapie();
             if (uzyskiwanieListTrasBezPowtorzeniaElementu(koniecTrasy, typDrogi, listaTras, posortowanaListaTras, badanyElement)) {
-                System.out.println("Dlugosc " + posortowanaListaTras.get(0).getDlugosc());
+//                System.out.println("Dlugosc " + posortowanaListaTras.get(0).getDlugosc());
                 return badanyElement;
             }
             listaTras.remove(posortowanaListaTras.get(0));
@@ -312,6 +314,7 @@ public abstract class Pojazd extends PunktNaMapie {
 //            }
 
             this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size())));
+            this.getPrzystanekPoczatkowy().addPojazdZaparkowany(this);
         }
     }
 
@@ -367,11 +370,11 @@ public abstract class Pojazd extends PunktNaMapie {
         for (int i = 0; i < listaPrzystankow.size(); i++) {
             listaPrzystankow.get(i).removePojazdPrzyjezdzajacy(this);
         }
-        System.out.println("Przystanki " + listaPrzystankow.size());
-        for (int i = 0; i < listaPrzystankow.size(); i++) {
-            System.out.printf(listaPrzystankow.get(i).getNazwa() + " ");
-        }
-        System.out.println("");
+//        System.out.println("Przystanki " + listaPrzystankow.size());
+//        for (int i = 0; i < listaPrzystankow.size(); i++) {
+//            System.out.printf(listaPrzystankow.get(i).getNazwa() + " ");
+//        }
+//        System.out.println("");
     }
 
     public void poinformujORezygnacjiPrzyjazdu(List<MiejsceZmianyKierunku> wczesniejszaTrasa){

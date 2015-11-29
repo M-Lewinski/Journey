@@ -1,5 +1,7 @@
 package Mapa;
 
+import javafx.scene.layout.Pane;
+
 /**
  * Created by Lewin on 2015-10-18.
  */
@@ -8,7 +10,7 @@ public abstract class ObiektGraficzny implements Rysowanie {
     private int szerokosc;
 
     @Override
-    public void rysuj() {
+    public void rysuj(Pane panel) {
 
     }
 

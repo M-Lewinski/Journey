@@ -11,8 +11,8 @@ public class DrogaMorska extends Droga {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public DrogaMorska(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
-        super(poczatek, koniec);
+    public DrogaMorska(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,int poprawkaX,int poprawkaY) {
+        super(poczatek, koniec,poprawkaX,poprawkaY);
     }
     public DrogaMorska (){
 

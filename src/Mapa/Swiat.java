@@ -14,10 +14,13 @@ import com.sun.media.sound.MidiInDeviceProvider;
 
 import java.util.*;
 
+import static javafx.application.Application.launch;
+
 /**
  * Klasa swiat, ktora implementuje obiekt calego swiata. Przechowuje on wszystkie listy obiektow oraz tworzy mape.
  *
  */
+//public class Swiat extends ObiektGraficzny {
 public class Swiat extends ObiektGraficzny {
     /**
      * instancja klasy swiat.
@@ -256,79 +259,132 @@ public class Swiat extends ObiektGraficzny {
         this.listaMiejscZmianyKierunku.remove(miejsceZmianyKierunku);
     }
 
-    public static void main(String[] args) {
-        Swiat.getInstance();
-        LotniskoCywilne lotniskoCywilne1 = new LotniskoCywilne("A",100,100,70,100,false,10);
-        LotniskoCywilne lotniskoCywilne2 = new LotniskoCywilne("C",100,100,200,200,false,10);
-        LotniskoCywilne lotniskoCywilne3 = new LotniskoCywilne("E",100,100,70,300,false,10);
-        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S1",50,50,70,200,false);
-        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S2",50,50,120,200,false);
-        DrogaPowietrzna drogaPowietrzna1 = new DrogaPowietrzna(lotniskoCywilne1,skrzyzowanie1);
-        DrogaPowietrzna drogaPowietrzna2 = new DrogaPowietrzna(skrzyzowanie1,lotniskoCywilne1);
-        DrogaPowietrzna drogaPowietrzna3 = new DrogaPowietrzna(lotniskoCywilne1,skrzyzowanie2);
-        DrogaPowietrzna drogaPowietrzna4 = new DrogaPowietrzna(skrzyzowanie2,lotniskoCywilne1);
-        DrogaPowietrzna drogaPowietrzna5 = new DrogaPowietrzna(skrzyzowanie1,skrzyzowanie2);
-        DrogaPowietrzna drogaPowietrzna6 = new DrogaPowietrzna(skrzyzowanie2,skrzyzowanie1);
-        DrogaPowietrzna drogaPowietrzna7 = new DrogaPowietrzna(lotniskoCywilne2,skrzyzowanie2);
-        DrogaPowietrzna drogaPowietrzna8 = new DrogaPowietrzna(skrzyzowanie2,lotniskoCywilne2);
-        DrogaPowietrzna drogaPowietrzna9 = new DrogaPowietrzna(skrzyzowanie1,lotniskoCywilne3);
-        DrogaPowietrzna drogaPowietrzna10 = new DrogaPowietrzna(lotniskoCywilne3,skrzyzowanie1);
-        DrogaMorska drogaMorska1 = new DrogaMorska(lotniskoCywilne1,lotniskoCywilne2);
-        DrogaMorska drogaMorska2 = new DrogaMorska(lotniskoCywilne2,lotniskoCywilne1);
-        DrogaMorska drogaMorska3 = new DrogaMorska(lotniskoCywilne2,lotniskoCywilne3);
-        DrogaMorska drogaMorska4 = new DrogaMorska(lotniskoCywilne3,lotniskoCywilne2);
-        LotniskoWojskowe lotniskoWojskowe1 = new LotniskoWojskowe("B",100,100,70,100,false,10);
-//        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
-//        for (int i = 0; i < Swiat.getInstance().getListaDrog().size() ; i++) {
-//            System.out.println(Swiat.getInstance().getListaDrog().get(i).getPoczatek().getNazwa());
+//    public static void main(String[] args) {
+//        Swiat.getInstance();
+//        LotniskoCywilne lotniskoCywilne1 = new LotniskoCywilne("A",100,100,70,100,false,10);
+//        LotniskoCywilne lotniskoCywilne2 = new LotniskoCywilne("C",100,100,200,200,false,10);
+//        LotniskoCywilne lotniskoCywilne3 = new LotniskoCywilne("E",100,100,70,300,false,10);
+//        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S1",50,50,70,200,false);
+//        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S2",50,50,120,200,false);
+//        DrogaPowietrzna drogaPowietrzna1 = new DrogaPowietrzna(lotniskoCywilne1,skrzyzowanie1);
+//        DrogaPowietrzna drogaPowietrzna2 = new DrogaPowietrzna(skrzyzowanie1,lotniskoCywilne1);
+//        DrogaPowietrzna drogaPowietrzna3 = new DrogaPowietrzna(lotniskoCywilne1,skrzyzowanie2);
+//        DrogaPowietrzna drogaPowietrzna4 = new DrogaPowietrzna(skrzyzowanie2,lotniskoCywilne1);
+//        DrogaPowietrzna drogaPowietrzna5 = new DrogaPowietrzna(skrzyzowanie1,skrzyzowanie2);
+//        DrogaPowietrzna drogaPowietrzna6 = new DrogaPowietrzna(skrzyzowanie2,skrzyzowanie1);
+//        DrogaPowietrzna drogaPowietrzna7 = new DrogaPowietrzna(lotniskoCywilne2,skrzyzowanie2);
+//        DrogaPowietrzna drogaPowietrzna8 = new DrogaPowietrzna(skrzyzowanie2,lotniskoCywilne2);
+//        DrogaPowietrzna drogaPowietrzna9 = new DrogaPowietrzna(skrzyzowanie1,lotniskoCywilne3);
+//        DrogaPowietrzna drogaPowietrzna10 = new DrogaPowietrzna(lotniskoCywilne3,skrzyzowanie1);
+//        DrogaMorska drogaMorska1 = new DrogaMorska(lotniskoCywilne1,lotniskoCywilne2);
+//        DrogaMorska drogaMorska2 = new DrogaMorska(lotniskoCywilne2,lotniskoCywilne1);
+//        DrogaMorska drogaMorska3 = new DrogaMorska(lotniskoCywilne2,lotniskoCywilne3);
+//        DrogaMorska drogaMorska4 = new DrogaMorska(lotniskoCywilne3,lotniskoCywilne2);
+//        LotniskoWojskowe lotniskoWojskowe1 = new LotniskoWojskowe("B",100,100,70,100,false,10);
+////        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
+////        for (int i = 0; i < Swiat.getInstance().getListaDrog().size() ; i++) {
+////            System.out.println(Swiat.getInstance().getListaDrog().get(i).getPoczatek().getNazwa());
+////        }
+//        SamolotPasazerski samolot1 = new SamolotPasazerski(100,100,100,10,10,10);
+//        System.out.println("Stworzono Samolot");
+//        System.out.println("Przystanek poczatkowy: " + samolot1.getPrzystanekPoczatkowy().getNazwa());
+//        System.out.println("Przystanek docelowy: " + samolot1.getPrzystanekDocelowy().getNazwa());
+//        System.out.println(samolot1.getNastepnyPrzystanek().getNazwa());
+//        System.out.println("dlugosc drogi miedzy punktami: " +samolot1.okreslanieDlugosciTrasy(samolot1.getPrzystanekPoczatkowy(),samolot1.getPrzystanekDocelowy(),samolot1.getTrasa()));
+//        Pasazer pasazer1 = new Pasazer();
+//        pasazer1.outconsole();
+//        pasazer1.setPrzystanekPoczatkowy(lotniskoCywilne1);
+//        pasazer1.setPrzystanekDocelowy(lotniskoCywilne2);
+//        //pasazer1.szukanieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
+//        pasazer1.tworzenieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
+////        List<MiejsceZmianyKierunku> listaprobna = new LinkedList<MiejsceZmianyKierunku>();
+//
+////        listaprobna.add(skrzyzowanie1);
+////        listaprobna.add(skrzyzowanie2);
+////        listaprobna.add(lotniskoCywilne2);
+////        samolot1.setTrasa(listaprobna);
+////        samolot1.setPozostalaTrasa(listaprobna);
+//        List<Przystanek> listaMiejsc = new LinkedList<Przystanek>();
+//        listaMiejsc.addAll(Swiat.getInstance().getListaLotniskCywilnych());
+//        System.out.println("Poczatek zmiany trasy, obecne polozenie: "+samolot1.getObecnePolozenie().getNazwa());
+//        samolot1.wypisywanieTrasy(samolot1.getTrasa());
+//        samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
+////        samolot1.setObecnePolozenie(skrzyzowanie1);
+//        samolot1.zmianaTrasy(listaMiejsc);
+////        samolot1.addPozostalaTrasa(skrzyzowanie1);
+//        System.out.println("Zmiana trasy");
+//        samolot1.wypisywanieTrasy(samolot1.getTrasa());
+//        System.out.println("pozostala trasa");
+//        samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
+//
+//        listaMiejsc.add(null);
+//        if(listaMiejsc.isEmpty()){
+//            System.out.println("jest pusta");
 //        }
-        SamolotPasazerski samolot1 = new SamolotPasazerski(100,100,100,10,10,10);
-        System.out.println("Stworzono Samolot");
-        System.out.println("Przystanek poczatkowy: " + samolot1.getPrzystanekPoczatkowy().getNazwa());
-        System.out.println("Przystanek docelowy: " + samolot1.getPrzystanekDocelowy().getNazwa());
-        System.out.println(samolot1.getNastepnyPrzystanek().getNazwa());
-        System.out.println("dlugosc drogi miedzy punktami: " +samolot1.okreslanieDlugosciTrasy(samolot1.getPrzystanekPoczatkowy(),samolot1.getPrzystanekDocelowy(),samolot1.getTrasa()));
-        Pasazer pasazer1 = new Pasazer();
-        pasazer1.outconsole();
-        pasazer1.setPrzystanekPoczatkowy(lotniskoCywilne1);
-        pasazer1.setPrzystanekDocelowy(lotniskoCywilne2);
-        //pasazer1.szukanieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
-        pasazer1.tworzenieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
-//        List<MiejsceZmianyKierunku> listaprobna = new LinkedList<MiejsceZmianyKierunku>();
+//        if(listaMiejsc.size() == 0){
+//            System.out.println("dlugosc wynosi 0");
+//        }
+//
+//        //samolot1.szukanieTrasy(samolot1.getPrzystanekPoczatkowy(), samolot1.getPrzystanekDocelowy(), new DrogaPowietrzna());
+//        //samolot1.szukanieTrasy(lotniskoCywilne1, lotniskoCywilne2, new DrogaPowietrzna());
+////        Pasazer pasazer = new Pasazer();
+////        pasazer.outconsole();
+////        double odleglosc = Math.sqrt(Math.pow(8,2) + Math.pow(6,2.0));
+////        System.out.printf("%.2f",odleglosc);
+//    }
 
-//        listaprobna.add(skrzyzowanie1);
-//        listaprobna.add(skrzyzowanie2);
-//        listaprobna.add(lotniskoCywilne2);
-//        samolot1.setTrasa(listaprobna);
-//        samolot1.setPozostalaTrasa(listaprobna);
-        List<Przystanek> listaMiejsc = new LinkedList<Przystanek>();
-        listaMiejsc.addAll(Swiat.getInstance().getListaLotniskCywilnych());
-        System.out.println("Poczatek zmiany trasy");
-        samolot1.wypisywanieTrasy(samolot1.getTrasa());
-        samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
-//        samolot1.setObecnePolozenie(skrzyzowanie1);
-        samolot1.zmianaTrasy(listaMiejsc);
-//        samolot1.addPozostalaTrasa(skrzyzowanie1);
-        System.out.println("Zmiana trasy");
-        samolot1.wypisywanieTrasy(samolot1.getTrasa());
-        System.out.println("pozostala trasa");
-        samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
+    public void stworzSwiat(){
+        //Swiat.getInstance();
+        LotniskoCywilne warszawa = new LotniskoCywilne("Warszawa", 30,30, 50, 300, false, 10);
+        LotniskoCywilne berlin = new LotniskoCywilne("Berlin", 30, 30, 500, 300, false, 10);
+        LotniskoCywilne paryz = new LotniskoCywilne("Paryz", 30, 30, 700, 50, false, 10);
+        LotniskoCywilne topGun = new LotniskoCywilne("Top gun",30,30,700,550,false,10);
+        LotniskoCywilne airlineTycoon = new LotniskoCywilne("Airline Tycoon",30,30,600,700,false,10);
+        LotniskoWojskowe sop = new LotniskoWojskowe("SOP",30,30,300,50,false,10);
+        LotniskoWojskowe po = new LotniskoWojskowe("PO",30,30,300,450,false,10);
+        LotniskoWojskowe pa = new LotniskoWojskowe("PA",30,30,900,300,false,10);
+        LotniskoWojskowe wsi = new LotniskoWojskowe("WSI",30,30,300,680,false,10);
+        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,100,650,false,10);
+        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S:Warszawa-Berlin", 30, 30, 300, 300, false);
+        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S:Berlin-Paryz", 30, 30, 600, 200, false);
+        Skrzyzowanie skrzyzowanie3 = new Skrzyzowanie("S:Berlin-Top gun",30,30,600,400,false);
+        Skrzyzowanie skrzyzowanie4 = new Skrzyzowanie("S:PO-WSI",30,30,300,620,false);
+        Skrzyzowanie skrzyzowanie5 = new Skrzyzowanie("S:PO-Airlne Tycoon",30,30,480,620,false);
+        DrogaPowietrzna drogaPowietrzna1 = new DrogaPowietrzna(warszawa,skrzyzowanie1,0,0);
+        DrogaPowietrzna drogaPowietrzna2 = new DrogaPowietrzna(skrzyzowanie1,warszawa,0,0);
+        DrogaPowietrzna drogaPowietrzna3 = new DrogaPowietrzna(skrzyzowanie1,berlin,0,0);
+        DrogaPowietrzna drogaPowietrzna4 = new DrogaPowietrzna(berlin,skrzyzowanie2,0,0);
+        DrogaPowietrzna drogaPowietrzna5 = new DrogaPowietrzna(berlin,skrzyzowanie2,0,0);
+        DrogaPowietrzna drogaPowietrzna6 = new DrogaPowietrzna(skrzyzowanie2,berlin,0,0);
+        DrogaPowietrzna drogaPowietrzna7 = new DrogaPowietrzna(skrzyzowanie2,paryz,0,0);
+        DrogaPowietrzna drogaPowietrzna8 = new DrogaPowietrzna(paryz,skrzyzowanie2,0,0);
+        DrogaPowietrzna drogaPowietrzna9 = new DrogaPowietrzna(sop,skrzyzowanie2,0,0);
+        DrogaPowietrzna drogaPowietrzna10 = new DrogaPowietrzna(skrzyzowanie2,sop,0,0);
+        DrogaPowietrzna drogaPowietrzna11 = new DrogaPowietrzna(skrzyzowanie2,pa,0,0);
+        DrogaPowietrzna drogaPowietrzna12 = new DrogaPowietrzna(pa,skrzyzowanie3,0,0);
+        DrogaPowietrzna drogaPowietrzna13 = new DrogaPowietrzna(skrzyzowanie3,pa,0,0);
+        DrogaPowietrzna drogaPowietrzna14 = new DrogaPowietrzna(berlin,skrzyzowanie3,0,0);
+        DrogaPowietrzna drogaPowietrzna15 = new DrogaPowietrzna(skrzyzowanie3,berlin,0,0);
+        DrogaPowietrzna drogaPowietrzna16 = new DrogaPowietrzna(skrzyzowanie3,topGun,0,0);
+        DrogaPowietrzna drogaPowietrzna17 = new DrogaPowietrzna(topGun,skrzyzowanie3,0,0);
+        DrogaPowietrzna drogaPowietrzna18 = new DrogaPowietrzna(skrzyzowanie3,po,0,0);
+        DrogaPowietrzna drogaPowietrzna19 = new DrogaPowietrzna(po,skrzyzowanie3,0,0);
+        DrogaPowietrzna drogaPowietrzna20 = new DrogaPowietrzna(sop,skrzyzowanie1,0,0);
+        DrogaPowietrzna drogaPowietrzna21 = new DrogaPowietrzna(skrzyzowanie1,sop,0,0);
+        DrogaPowietrzna drogaPowietrzna22 = new DrogaPowietrzna(skrzyzowanie1,po,0,0);
+        DrogaPowietrzna drogaPowietrzna23 = new DrogaPowietrzna(po,skrzyzowanie4,0,0);
+        DrogaPowietrzna drogaPowietrzna24 = new DrogaPowietrzna(wsi,skrzyzowanie4,0,0);
+        DrogaPowietrzna drogaPowietrzna25 = new DrogaPowietrzna(skrzyzowanie4,wsi,0,0);
+        DrogaPowietrzna drogaPowietrzna26 = new DrogaPowietrzna(skrzyzowanie4,cia,0,0);
+        DrogaPowietrzna drogaPowietrzna27 = new DrogaPowietrzna(cia,skrzyzowanie4,0,0);
+        DrogaPowietrzna drogaPowietrzna28 = new DrogaPowietrzna(skrzyzowanie4,skrzyzowanie5,0,0);
+        DrogaPowietrzna drogaPowietrzna29 = new DrogaPowietrzna(skrzyzowanie5,skrzyzowanie4,0,0);
+        DrogaPowietrzna drogaPowietrzna30 = new DrogaPowietrzna(skrzyzowanie5,airlineTycoon,0,0);
+        DrogaPowietrzna drogaPowietrzna31 = new DrogaPowietrzna(airlineTycoon,skrzyzowanie5,0,0);
+        DrogaPowietrzna drogaPowietrzna32 = new DrogaPowietrzna(skrzyzowanie5,topGun,0,0);
+        DrogaPowietrzna drogaPowietrzna33 = new DrogaPowietrzna(topGun,skrzyzowanie5,0,0);
 
-
-        listaMiejsc.add(null);
-        if(listaMiejsc.isEmpty()){
-            System.out.println("jest pusta");
-        }
-        if(listaMiejsc.size() == 0){
-            System.out.println("dlugosc wynosi 0");
-        }
-
-        //samolot1.szukanieTrasy(samolot1.getPrzystanekPoczatkowy(), samolot1.getPrzystanekDocelowy(), new DrogaPowietrzna());
-        //samolot1.szukanieTrasy(lotniskoCywilne1, lotniskoCywilne2, new DrogaPowietrzna());
-//        Pasazer pasazer = new Pasazer();
-//        pasazer.outconsole();
-//        double odleglosc = Math.sqrt(Math.pow(8,2) + Math.pow(6,2.0));
-//        System.out.printf("%.2f",odleglosc);
-
+//        LotniskoWojskowe lotniskoWojskowe1 = new LotniskoWojskowe("B", 100, 100, 70, 100, false, 10);
     }
+
 }

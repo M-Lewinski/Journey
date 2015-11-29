@@ -11,8 +11,8 @@ public class DrogaPowietrzna extends Droga {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
-        super(poczatek, koniec);
+    public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,int poprawkaX, int poprawkaY) {
+        super(poczatek, koniec,poprawkaX,poprawkaY);
     }
     public DrogaPowietrzna(){
 

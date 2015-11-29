@@ -2,6 +2,8 @@ package Mapa.ZmianyKierunku.Przystanki;
 
 import Mapa.Swiat;
 import Pojazdy.TworzeniePojazdu;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -15,5 +17,14 @@ public class LotniskoWojskowe extends Lotnisko implements TworzeniePojazdu {
     @Override
     public void stworz() {
 
+    }
+
+    @Override
+    public void rysuj(Pane panel) {
+        super.rysuj(panel);
+        this.getImageNode().setStroke(Color.RED);
+        this.getImageNode().setFill(Color.RED);
+        panel.getChildren().add(this.getImageNode());
+//        this.getImageNode().
     }
 }

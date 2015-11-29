@@ -4,7 +4,16 @@ import Drogi.Droga;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
 import Pojazdy.Pojazd;
+import com.sun.javafx.geom.*;
+import javafx.scene.Node;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
+import java.awt.*;
+import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +26,8 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     private List<Droga> listaDrog = new ArrayList<Droga>();
     private boolean zajetaPrzestrzen;
     private int promien;
-
+//    private int promien=10;
+    private javafx.scene.shape.Shape imageNode;
     public String getNazwa() {
         return nazwa;
     }
@@ -73,6 +83,15 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
         this.listaPojazdowOczekujacych.remove(pojazd);
     }
 
+
+    public javafx.scene.shape.Shape getImageNode() {
+        return imageNode;
+    }
+
+    public void setImageNode(javafx.scene.shape.Shape imageNode) {
+        this.imageNode = imageNode;
+    }
+
     public void zajmij(){
 
     }
@@ -93,5 +112,18 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     }
     public MiejsceZmianyKierunku(){
 
+    }
+
+    @Override
+    public void rysuj(Pane panel) {
+//        Circle circle = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
+        imageNode = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
+//        circle.setCenterX(this.getPolozenieX());
+//        circle.setCenterY(this.getPolozenieY());
+//        circle.setRadius(this.getPromien());
+        //circle.setFill(Color.WHITE);
+//        circle.setStroke(javafx.scene.paint.Color.RED);
+        //System.out.println("namalowano kolo");
+//        panel.getChildren().add(circle);
     }
 }

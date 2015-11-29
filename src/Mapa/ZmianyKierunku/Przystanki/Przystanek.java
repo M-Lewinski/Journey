@@ -4,6 +4,7 @@ import Mapa.Swiat;
 import Pasazerowie.Pasazer;
 import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,8 +89,11 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     public Przystanek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, String nazwa) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
         Swiat.getInstance().addPrzystanek(this);
+        this.setPromien(15);
     }
     public Przystanek(){
 
     }
+
+
 }
