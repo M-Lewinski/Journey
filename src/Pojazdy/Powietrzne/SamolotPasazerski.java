@@ -6,6 +6,8 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -30,6 +32,10 @@ public class SamolotPasazerski extends Samolot {
         tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
         wypisywanieTrasy(this.getTrasa());
         this.getObecnePolozenie().addPojazdOczekujacy(this);
+        this.setImageNode(new Rectangle(30,30, Color.BLACK));
+        this.nastepnaDroga();
+        System.out.println(this.getDrogaTeraz().getKoniec().getNazwa());
+        //this.setDrogaTeraz(this.getPrzystanekPoczatkowy().ge);
 //        LinkedList<MiejsceZmianyKierunku> testList = new LinkedList<MiejsceZmianyKierunku>();
 //        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
 //            testList.add(Swiat.getInstance().getListaMiejscZmianyKierunku().get(i));

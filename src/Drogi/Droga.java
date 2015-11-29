@@ -6,6 +6,7 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Shape;
 
 /** Klasa droga implementujaca abstrakcje obiektu droga.
  * Created by Lewin on 2015-10-18.
@@ -23,8 +24,10 @@ public abstract class Droga implements Rysowanie {
      *  odleglosc miedzy punktem poczatkowym a koncowym.
      */
     private double odleglosc;
+    private double angle;
     private int poprawkaX;
     private int poprawkaY;
+    private Shape imageNode;
     public void setKoniec(MiejsceZmianyKierunku koniec) {
         this.koniec = koniec;
     }
@@ -66,7 +69,16 @@ public abstract class Droga implements Rysowanie {
         this.poczatek.addListaDrog(this);
         this.poprawkaX=poprawkaX;
         this.poprawkaY=poprawkaY;
+        this.okreslKat();
 //        System.out.println("Dlugosc drogi: " + this.odleglosc);
+    }
+
+    public Shape getImageNode() {
+        return imageNode;
+    }
+
+    public void setImageNode(Shape imageNode) {
+        this.imageNode = imageNode;
     }
 
     /**
@@ -77,8 +89,21 @@ public abstract class Droga implements Rysowanie {
     }
     @Override
     public void rysuj(Pane panel) {
-        Line line = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
-        line.setStroke(Color.ORANGE);
-        panel.getChildren().add(line);
+        imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
+//        line.setStroke(Color.ORANGE);
+//        panel.getChildren().add(line);
+    }
+
+    public double getAngle() {
+        return angle;
+    }
+
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }
+
+    public void okreslKat(){
+        this.angle=Math.atan2(poczatek.getPolozenieX()-koniec.getPolozenieX(),poczatek.getPolozenieY()-koniec.getPolozenieY());
+//        System.out.println(angle);
     }
 }

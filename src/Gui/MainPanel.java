@@ -94,7 +94,7 @@ public class MainPanel extends Application {
     public static void main(String[] args) {
         Swiat.getInstance();
         Swiat.getInstance().stworzSwiat();
-        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
+//        System.out.println("ilosc drog " + Swiat.getInstance().getListaDrog().size());
 //        for (int i = 0; i < Swiat.getInstance().getListaDrog().size() ; i++) {
 //            System.out.println(Swiat.getInstance().getListaDrog().get(i).getPoczatek().getNazwa());
 //        }
@@ -104,12 +104,12 @@ public class MainPanel extends Application {
         System.out.println("Przystanek docelowy: " + samolot1.getPrzystanekDocelowy().getNazwa());
         System.out.println(samolot1.getNastepnyPrzystanek().getNazwa());
         System.out.println("dlugosc drogi miedzy punktami: " + samolot1.okreslanieDlugosciTrasy(samolot1.getPrzystanekPoczatkowy(), samolot1.getPrzystanekDocelowy(), samolot1.getTrasa()));
-        Pasazer pasazer1 = new Pasazer();
-        pasazer1.outconsole();
+//        Pasazer pasazer1 = new Pasazer();
+//        pasazer1.outconsole();
         //pasazer1.setPrzystanekPoczatkowy(lotniskoCywilne1);
         //pasazer1.setPrzystanekDocelowy(lotniskoCywilne2);
         //pasazer1.szukanieTrasy(pasazer1.getPrzystanekPoczatkowy(),pasazer1.getPrzystanekDocelowy());
-        pasazer1.tworzenieTrasy(pasazer1.getPrzystanekPoczatkowy(), pasazer1.getPrzystanekDocelowy());
+//        pasazer1.tworzenieTrasy(pasazer1.getPrzystanekPoczatkowy(), pasazer1.getPrzystanekDocelowy());
 //        List<MiejsceZmianyKierunku> listaprobna = new LinkedList<MiejsceZmianyKierunku>();
 
 //        listaprobna.add(skrzyzowanie1);
@@ -119,11 +119,12 @@ public class MainPanel extends Application {
 //        samolot1.setPozostalaTrasa(listaprobna);
         List<Przystanek> listaMiejsc = new LinkedList<Przystanek>();
         listaMiejsc.addAll(Swiat.getInstance().getListaLotniskCywilnych());
+        listaMiejsc.addAll(Swiat.getInstance().getListaMiast());
         System.out.println("Poczatek zmiany trasy, obecne polozenie: " + samolot1.getObecnePolozenie().getNazwa());
         samolot1.wypisywanieTrasy(samolot1.getTrasa());
         samolot1.wypisywanieTrasy(samolot1.getPozostalaTrasa());
 //        samolot1.setObecnePolozenie(skrzyzowanie1);
-        samolot1.zmianaTrasy(listaMiejsc);
+        samolot1.zmianaTrasy(listaMiejsc);;
 //        samolot1.addPozostalaTrasa(skrzyzowanie1);
         System.out.println("Zmiana trasy");
         samolot1.wypisywanieTrasy(samolot1.getTrasa());
@@ -146,9 +147,6 @@ public class MainPanel extends Application {
 //        System.out.printf("%.2f",odleglosc);
 
 //
-//        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
-//            Swiat.getInstance().getListaMiejscZmianyKierunku().get(i).rysuj();
-//        }
 
 
         launch(args);

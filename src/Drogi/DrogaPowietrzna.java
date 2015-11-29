@@ -1,6 +1,8 @@
 package Drogi;
 
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 /** Klasa drogi powietrznej, ktora implementuje obiekt droga powietrzna.
  * Created by Lewin on 2015-10-18.
@@ -16,5 +18,11 @@ public class DrogaPowietrzna extends Droga {
     }
     public DrogaPowietrzna(){
 
+    }
+    @Override
+    public void rysuj(Pane panel) {
+        super.rysuj(panel);
+        this.getImageNode().setStroke(Color.ORANGE);
+        panel.getChildren().add(this.getImageNode());
     }
 }

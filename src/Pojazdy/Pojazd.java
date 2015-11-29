@@ -23,7 +23,7 @@ import sun.misc.resources.Messages_it;
  *  @param
  *
  */
-public abstract class Pojazd extends PunktNaMapie {
+public abstract class Pojazd extends PunktNaMapie implements Runnable {
     /**
      * unikalny identyfikator pojazdu.
      */
@@ -33,6 +33,8 @@ public abstract class Pojazd extends PunktNaMapie {
      */
     private List<MiejsceZmianyKierunku> trasa = new ArrayList<MiejsceZmianyKierunku>();
 
+    //private double angle=0;
+    private Droga drogaTeraz=null;
     private List<MiejsceZmianyKierunku> pozostalaTrasa = new ArrayList<MiejsceZmianyKierunku>();
     /**
      * predkosc z jaka porusza sie pojazd.
@@ -87,6 +89,7 @@ public abstract class Pojazd extends PunktNaMapie {
     }
 
     public void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow){
+        int x;
         MiejsceZmianyKierunku nastepneMiejsceZmianyKierunku = null;
         List<MiejsceZmianyKierunku> staraTrasa = new LinkedList<MiejsceZmianyKierunku>();
         staraTrasa.addAll(this.getPozostalaTrasa());
@@ -104,7 +107,9 @@ public abstract class Pojazd extends PunktNaMapie {
         listaMozliwychPrzystankow.remove(nastepneMiejsceZmianyKierunku);
         listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
         listaMozliwychPrzystankow.remove(this.getPrzystanekDocelowy());
-        this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size())));
+        x=random.nextInt(listaMozliwychPrzystankow.size());
+        System.out.println(x);
+        this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(x));
         this.tworzenieTrasy(nastepneMiejsceZmianyKierunku,this.getPrzystanekDocelowy());
         for (int i = 0;staraTrasa.get(i)!=nastepneMiejsceZmianyKierunku; i++) {
             this.pozostalaTrasa.add(i,staraTrasa.get(i));
@@ -247,6 +252,7 @@ public abstract class Pojazd extends PunktNaMapie {
         this.identyfikator = UUID.randomUUID();
         this.maksymalnaPredkosc = maksymalnaPredkosc;
         Swiat.getInstance().addPojazd(this);
+
     }
 
     /**
@@ -280,9 +286,27 @@ public abstract class Pojazd extends PunktNaMapie {
         return identyfikator;
     }
 
+    public Droga getDrogaTeraz() {
+        return drogaTeraz;
+    }
 
-    public void poruszanie(){
+    public void setDrogaTeraz(Droga drogaTeraz) {
+        this.drogaTeraz = drogaTeraz;
+    }
 
+    public void nastepnaDroga(){
+        if( this.pozostalaTrasa == null || this.pozostalaTrasa.size()<3){
+            return;
+        }
+        for (int i = 0; i < this.pozostalaTrasa.get(0).getListaDrog().size(); i++) {
+            if(this.pozostalaTrasa.get(0).getListaDrog().get(i).getKoniec()==this.pozostalaTrasa.get(1)){
+                this.drogaTeraz=this.pozostalaTrasa.get(0).getListaDrog().get(i);
+            }
+        }
+    }
+    public void ruszSie(){
+
+        this.setPolozenieX(this.getPolozenieX()+ (this.getMaksymalnaPredkosc()*Math.sin(this.getDrogaTeraz().getAngle())));
     }
 
     public void postuj(){
@@ -445,14 +469,14 @@ public abstract class Pojazd extends PunktNaMapie {
     public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
 
 
-//    @Override
-//    public void run() {
-//        while(true){
-//            try {
-//                Thread.sleep(10);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    @Override
+    public void run() {
+        while(true){
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

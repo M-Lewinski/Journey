@@ -27,7 +27,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     private boolean zajetaPrzestrzen;
     private int promien;
 //    private int promien=10;
-    private javafx.scene.shape.Shape imageNode;
+//    private javafx.scene.shape.Shape imageNode;
     public String getNazwa() {
         return nazwa;
     }
@@ -84,13 +84,13 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     }
 
 
-    public javafx.scene.shape.Shape getImageNode() {
-        return imageNode;
-    }
-
-    public void setImageNode(javafx.scene.shape.Shape imageNode) {
-        this.imageNode = imageNode;
-    }
+//    public javafx.scene.shape.Shape getImageNode() {
+//        return imageNode;
+//    }
+//
+//    public void setImageNode(javafx.scene.shape.Shape imageNode) {
+//        this.imageNode = imageNode;
+//    }
 
     public void zajmij(){
 
@@ -117,13 +117,6 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     @Override
     public void rysuj(Pane panel) {
 //        Circle circle = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
-        imageNode = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
-//        circle.setCenterX(this.getPolozenieX());
-//        circle.setCenterY(this.getPolozenieY());
-//        circle.setRadius(this.getPromien());
-        //circle.setFill(Color.WHITE);
-//        circle.setStroke(javafx.scene.paint.Color.RED);
-        //System.out.println("namalowano kolo");
-//        panel.getChildren().add(circle);
+        this.setImageNode(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien()));
     }
 }
