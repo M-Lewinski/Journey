@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 import Drogi.Droga;
+import Gui.MainPanel;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
@@ -13,6 +14,7 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import com.sun.istack.internal.localization.NullLocalizable;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
@@ -20,6 +22,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import sun.applet.Main;
 import sun.awt.image.ImageWatched;
 import sun.misc.resources.Messages_it;
 
@@ -41,7 +44,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     //private double angle=0;
     private Droga drogaTeraz=null;
-    private int steps=0;
+    private double steps=0.0;
     private List<MiejsceZmianyKierunku> pozostalaTrasa = new ArrayList<MiejsceZmianyKierunku>();
     /**
      * predkosc z jaka porusza sie pojazd.
@@ -315,7 +318,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     }
 
     public void nastepnaDroga(){
-        if( this.pozostalaTrasa.isEmpty() || this.pozostalaTrasa.size()<2){
+        if( this.pozostalaTrasa == null || this.pozostalaTrasa.size()<2){
             return;
         }
         for (int i = 0; i < this.pozostalaTrasa.get(0).getListaDrog().size(); i++) {
@@ -323,39 +326,38 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
                 this.drogaTeraz=this.pozostalaTrasa.get(0).getListaDrog().get(i);
             }
         }
-        this.steps = (int)this.drogaTeraz.getOdleglosc()/(int) this.maksymalnaPredkosc;
+//        this.steps = this.drogaTeraz.getOdleglosc()/ this.maksymalnaPredkosc;
+        this.steps = this.drogaTeraz.getOdleglosc();
     }
 
     public void ruszSie(){
-        if(this.getImageNode()!=null){
-//            this.setPolozenieX(this.getPolozenieX()+10.0);
-//            this.getImageNode().setTranslateX(this.getPolozenieX());
-//            this.getImageNode().setTranslateY(this.getPolozenieY());
-//            TranslateTransition transition = new TranslateTransition(Duration.millis(10.0),this.getImageNode());
-//            transition.setToX(this.getPolozenieX());
-//            transition.setToY(this.getPolozenieY());
-//            transition.setCycleCount(1);
-//            transition.play();
-//            this.getImageNode().setLayoutX(this.getImageNode().getLayoutX()+10.0);
-//            System.out.println(this.getTrasa().get(1).getPolozenieX());
-            //if(this.getPolozenieX()==this.getTrasa().get(1).getPolozenieX() && this.getPolozenieY()== this.getTrasa().get(1).getPolozenieY()) {
-            if(this.steps==0){
-//                this.pozostalaTrasa.remove(0);
-//                this.nastepnaDroga();
-                this.zmienTor();
-            }
-            else{
-                double moveX = this.getMaksymalnaPredkosc() * -Math.sin(this.getDrogaTeraz().getAngle());
-//                double moveX = this.getMaksymalnaPredkosc() * Math.sin(this.getDrogaTeraz().getAngle());
-                this.setPolozenieX(this.getPolozenieX() + moveX);
-                double moveY = this.getMaksymalnaPredkosc() * -Math.cos(this.getDrogaTeraz().getAngle());
-//                double moveY = this.getMaksymalnaPredkosc() * Math.cos(this.getDrogaTeraz().getAngle());
-                this.setPolozenieY(this.getPolozenieY() + moveY);
-                this.getImageNode().setLayoutX(this.getPolozenieX());
-                this.getImageNode().setLayoutY(this.getPolozenieY());
-                this.steps--;
-            }
+//        if(this.getImageNode()!=null){
+        if(this.steps==0.0){
+            this.zmienTor();
+            return;
         }
+        double moveX;
+        double moveY;
+        if(this.steps<this.getMaksymalnaPredkosc()){
+            moveX = this.steps*this.getDrogaTeraz().getSinDrogi();
+            moveY = this.steps*this.getDrogaTeraz().getCosDrogi();
+            this.steps=0;
+        }
+        else {
+            moveX = this.getMaksymalnaPredkosc() * this.getDrogaTeraz().getSinDrogi();
+            moveY = this.getMaksymalnaPredkosc() * this.getDrogaTeraz().getCosDrogi();
+//            this.steps--;
+            this.steps-=this.getMaksymalnaPredkosc();
+        }
+        this.setPolozenieX(this.getPolozenieX() + moveX);
+        this.setPolozenieY(this.getPolozenieY() + moveY);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                getImageNode().setLayoutX(getPolozenieX());
+                getImageNode().setLayoutY(getPolozenieY());
+            }
+        });
     }
 
     public void zmienTor(){
@@ -545,25 +547,27 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     @Override
     public void rysuj(Group group) {
-        Rectangle rectangle = new Rectangle(30,30);
+        Rectangle rectangle = new Rectangle(10,10);
         rectangle.setLayoutX(this.getPolozenieX());
         rectangle.setLayoutY(this.getPolozenieY());
         this.setImageNode(rectangle);
-//        System.out.println("rysuje");
         group.getChildren().add(this.getImageNode());
     }
 
     @Override
     public void run() {
-        while(true){
+        while (true) {
             try {
-                if (this.getDrogaTeraz()!=null){
-                    if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
-                        this.odwrocTrase();
+                if(MainPanel.beginning==true) {
+                    if (this.getDrogaTeraz() != null) {
+                        if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
+                            this.odwrocTrase();
+                        }
+                        this.ruszSie();
                     }
-                    this.ruszSie();
                 }
-                Thread.sleep(1000 / 30);
+                    Thread.sleep(1000 / 30);
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

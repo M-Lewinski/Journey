@@ -1,5 +1,6 @@
 package Drogi;
 
+import Gui.MainPanel;
 import Mapa.Rysowanie;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
@@ -26,9 +27,12 @@ public abstract class Droga implements Rysowanie {
      */
     private double odleglosc;
     private double angle;
-    private int poprawkaX;
-    private int poprawkaY;
+    private double sinDrogi;
+    private double cosDrogi;
+    private double poprawkaX;
+    private double poprawkaY;
     private Shape imageNode;
+    private Color color;
     public void setKoniec(MiejsceZmianyKierunku koniec) {
         this.koniec = koniec;
     }
@@ -36,6 +40,14 @@ public abstract class Droga implements Rysowanie {
     public void setPoczatek(MiejsceZmianyKierunku poczatek) {
 
         this.poczatek = poczatek;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public MiejsceZmianyKierunku getKoniec() {
@@ -46,6 +58,22 @@ public abstract class Droga implements Rysowanie {
     public MiejsceZmianyKierunku getPoczatek() {
 
         return poczatek;
+    }
+
+    public double getCosDrogi() {
+        return cosDrogi;
+    }
+
+    public void setCosDrogi(double cosDrogi) {
+        this.cosDrogi = cosDrogi;
+    }
+
+    public double getSinDrogi() {
+        return sinDrogi;
+    }
+
+    public void setSinDrogi(double sinDrogi) {
+        this.sinDrogi = sinDrogi;
     }
 
     public double getOdleglosc() {
@@ -61,7 +89,7 @@ public abstract class Droga implements Rysowanie {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,int poprawkaX, int poprawkaY) {
+    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,double poprawkaX, double poprawkaY) {
         this.poczatek = poczatek;
         this.koniec = koniec;
         this.odleglosc = Math.sqrt(Math.pow(poczatek.getPolozenieX()-koniec.getPolozenieX(),2.0) + Math.pow(poczatek.getPolozenieY()-koniec.getPolozenieY(),2.0));
@@ -91,6 +119,8 @@ public abstract class Droga implements Rysowanie {
     @Override
     public void rysuj(Group group) {
         imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
+        imageNode.setStroke(this.color);
+        group.getChildren().add(imageNode);
 //        line.setStroke(Color.ORANGE);
 //        panel.getChildren().add(line);
     }
@@ -105,6 +135,8 @@ public abstract class Droga implements Rysowanie {
 
     public void okreslKat(){
         this.angle=Math.atan2(poczatek.getPolozenieX()-koniec.getPolozenieX(),poczatek.getPolozenieY()-koniec.getPolozenieY());
+        this.sinDrogi = -Math.sin(this.angle);
+        this.cosDrogi = -Math.cos(this.angle);
 //        this.angle=Math.atan(poczatek.getPolozenieX()-koniec.getPolozenieX()/poczatek.getPolozenieY()-koniec.getPolozenieY());
 //        System.out.println(angle);
     }

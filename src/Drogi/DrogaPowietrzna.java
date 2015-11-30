@@ -1,5 +1,6 @@
 package Drogi;
 
+import Gui.MainPanel;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
@@ -16,14 +17,16 @@ public class DrogaPowietrzna extends Droga {
      */
     public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,int poprawkaX, int poprawkaY) {
         super(poczatek, koniec,poprawkaX,poprawkaY);
+        this.setColor(Color.ORANGE);
+        this.rysuj(MainPanel.getGrupaDrog());
     }
     public DrogaPowietrzna(){
 
     }
-    @Override
-    public void rysuj(Group group) {
-        super.rysuj(group);
-        this.getImageNode().setStroke(Color.ORANGE);
-        group.getChildren().add(this.getImageNode());
-    }
+//    @Override
+//    public void rysuj(Group group) {
+//        super.rysuj(group);
+//        this.getImageNode().setStroke(Color.ORANGE);
+//        group.getChildren().add(this.getImageNode());
+//    }
 }

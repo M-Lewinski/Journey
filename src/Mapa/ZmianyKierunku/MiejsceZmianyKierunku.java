@@ -1,19 +1,18 @@
 package Mapa.ZmianyKierunku;
 
 import Drogi.Droga;
+import Gui.MainPanel;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
 import Pojazdy.Pojazd;
-import com.sun.javafx.geom.*;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 
-import java.awt.*;
-import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +25,19 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     private List<Droga> listaDrog = new ArrayList<Droga>();
     private boolean zajetaPrzestrzen;
     private int promien;
-//    private int promien=10;
+    private Shape outRing;
+    private Color color;
+    //    private int promien=10;
 //    private javafx.scene.shape.Shape imageNode;
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public String getNazwa() {
         return nazwa;
     }
@@ -114,9 +124,29 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
 
     }
 
+    public Shape getOutRing() {
+        return outRing;
+    }
+
+    public void setOutRing(Shape outRing) {
+        this.outRing = outRing;
+    }
+
     @Override
     public void rysuj(Group group) {
 //        Circle circle = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
         this.setImageNode(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien()));
+        this.setOutRing(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien()*2));
+        this.getOutRing().setStrokeWidth(2);
+        this.getOutRing().setFill(Color.TRANSPARENT);
+        this.getImageNode().setFill(this.color);
+        this.getImageNode().setStroke(this.color);
+        this.getOutRing().setStroke(this.color);
+        this.getOutRing().layoutXProperty().bind(MainPanel.getRootLayout().widthProperty());
+        this.getOutRing().layoutYProperty().bind(MainPanel.getRootLayout().heightProperty());
+        this.getImageNode().layoutXProperty().bind(MainPanel.getRootLayout().widthProperty());
+        this.getImageNode().layoutYProperty().bind(MainPanel.getRootLayout().heightProperty());
+        group.getChildren().add(this.getImageNode());
+        group.getChildren().add(this.getOutRing());
     }
 }
