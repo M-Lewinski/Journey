@@ -2,6 +2,7 @@ package Mapa.ZmianyKierunku.Przystanki;
 
 import Mapa.Swiat;
 import Pojazdy.TworzeniePojazdu;
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -24,11 +25,11 @@ public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
     }
 
     @Override
-    public void rysuj(Pane panel) {
-        super.rysuj(panel);
+    public void rysuj(Group group) {
+        super.rysuj(group);
         this.getImageNode().setStroke(Color.YELLOW);
         this.getImageNode().setFill(Color.YELLOW);
-        panel.getChildren().add(this.getImageNode());
+        group.getChildren().add(this.getImageNode());
 //        this.getImageNode().
     }
 }

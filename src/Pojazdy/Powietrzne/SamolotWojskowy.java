@@ -12,11 +12,11 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public class SamolotWojskowy extends Samolot {
-    public SamolotWojskowy(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
+    public SamolotWojskowy(int dlugosc, int szerokosc, int polozenieX, int polozenieY, double maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
         super(dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
         LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
-        okreslNowePolozenie(listaMozliwychPrzystankow);
+//        okreslNowePolozenie(listaMozliwychPrzystankow);
         tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
 //        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
     }

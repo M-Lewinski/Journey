@@ -20,10 +20,10 @@ public abstract class Samolot extends Pojazd {
     private int liczbaPersonelu;
     private int maksymalnaIloscPaliwa;
     private int aktualnaIloscPaliwa;
-    private MiejsceZmianyKierunku nastepnyPrzystanek;
+//    private MiejsceZmianyKierunku nastepnyPrzystanek;
 
 //    public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
-    public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
+    public Samolot(int dlugosc, int szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
         this.liczbaPersonelu = liczbaPersonelu;
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
@@ -34,13 +34,13 @@ public abstract class Samolot extends Pojazd {
 
     }
 
-    public MiejsceZmianyKierunku getNastepnyPrzystanek() {
-        return nastepnyPrzystanek;
-    }
-
-    public void setNastepnyPrzystanek(MiejsceZmianyKierunku nastepnyPrzystanek) {
-        this.nastepnyPrzystanek = nastepnyPrzystanek;
-    }
+//    public MiejsceZmianyKierunku getNastepnyPrzystanek() {
+//        return nastepnyPrzystanek;
+//    }
+//
+//    public void setNastepnyPrzystanek(MiejsceZmianyKierunku nastepnyPrzystanek) {
+//        this.nastepnyPrzystanek = nastepnyPrzystanek;
+//    }
 
     public int getLiczbaPersonelu() {
         return liczbaPersonelu;

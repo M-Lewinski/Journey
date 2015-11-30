@@ -3,6 +3,7 @@ package Drogi;
 import Mapa.Rysowanie;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -88,7 +89,7 @@ public abstract class Droga implements Rysowanie {
 
     }
     @Override
-    public void rysuj(Pane panel) {
+    public void rysuj(Group group) {
         imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
 //        line.setStroke(Color.ORANGE);
 //        panel.getChildren().add(line);
@@ -104,6 +105,7 @@ public abstract class Droga implements Rysowanie {
 
     public void okreslKat(){
         this.angle=Math.atan2(poczatek.getPolozenieX()-koniec.getPolozenieX(),poczatek.getPolozenieY()-koniec.getPolozenieY());
+//        this.angle=Math.atan(poczatek.getPolozenieX()-koniec.getPolozenieX()/poczatek.getPolozenieY()-koniec.getPolozenieY());
 //        System.out.println(angle);
     }
 }

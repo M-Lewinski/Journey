@@ -17,13 +17,13 @@ public class StatekWycieczkowy extends Statek {
         return firma;
     }
 
-    public StatekWycieczkowy(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek, String firma) {
+    public StatekWycieczkowy(int dlugosc, int szerokosc, int polozenieX, int polozenieY, double maksymalnaPredkosc, TypLadunku ladunek, String firma) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, maksymalnaPredkosc, ladunek);
         this.firma = firma;
         LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaPortow());
         listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaMiast());
-        okreslNowePolozenie(listaMozliwychPrzystankow);
+//        okreslNowePolozenie(listaMozliwychPrzystankow);
         tworzenieTrasy();
     }
 

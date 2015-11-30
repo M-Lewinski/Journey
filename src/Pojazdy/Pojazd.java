@@ -11,9 +11,15 @@ import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import com.sun.istack.internal.localization.NullLocalizable;
+import javafx.animation.Transition;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
+import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import sun.awt.image.ImageWatched;
 import sun.misc.resources.Messages_it;
 
@@ -35,11 +41,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     //private double angle=0;
     private Droga drogaTeraz=null;
+    private int steps=0;
     private List<MiejsceZmianyKierunku> pozostalaTrasa = new ArrayList<MiejsceZmianyKierunku>();
     /**
      * predkosc z jaka porusza sie pojazd.
      */
-    private int maksymalnaPredkosc;
+    private double maksymalnaPredkosc;
     /**
      * typ ladunku jaki posiada pojazd.
      */
@@ -70,6 +77,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 //
 ////        return nastepneMozliweLadowanie(trasa,)
 //    }
+    private MiejsceZmianyKierunku nastepnyPrzystanek;
 
 
     public List<MiejsceZmianyKierunku> getPozostalaTrasa() {
@@ -89,7 +97,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     }
 
     public void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow){
-        int x;
+        //int x;
         MiejsceZmianyKierunku nastepneMiejsceZmianyKierunku = null;
         List<MiejsceZmianyKierunku> staraTrasa = new LinkedList<MiejsceZmianyKierunku>();
         staraTrasa.addAll(this.getPozostalaTrasa());
@@ -107,7 +115,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         listaMozliwychPrzystankow.remove(nastepneMiejsceZmianyKierunku);
         listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
         listaMozliwychPrzystankow.remove(this.getPrzystanekDocelowy());
-        x=random.nextInt(listaMozliwychPrzystankow.size());
+        int x=random.nextInt(listaMozliwychPrzystankow.size());
         System.out.println(x);
         this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(x));
         this.tworzenieTrasy(nastepneMiejsceZmianyKierunku,this.getPrzystanekDocelowy());
@@ -202,6 +210,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         return obecnePolozenie;
     }
 
+    public MiejsceZmianyKierunku getNastepnyPrzystanek() {
+        return nastepnyPrzystanek;
+    }
+
+    public void setNastepnyPrzystanek(MiejsceZmianyKierunku nastepnyPrzystanek) {
+        this.nastepnyPrzystanek = nastepnyPrzystanek;
+    }
+
     /**
      * @return
      */
@@ -247,12 +263,16 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
      * @param szerokosc okresla szerokosc obrazu zwiazanego z obiektem.
      * @param maksymalnaPredkosc okresla maksymalna predkosc, z ktora porusza sie pojazd.
      */
-    public Pojazd(int dlugosc, int szerokosc, int maksymalnaPredkosc) {
+    public Pojazd(int dlugosc, int szerokosc, double maksymalnaPredkosc) {
         super(dlugosc, szerokosc);
         this.identyfikator = UUID.randomUUID();
         this.maksymalnaPredkosc = maksymalnaPredkosc;
         Swiat.getInstance().addPojazd(this);
-
+        Runnable runner = this;
+        Thread thread = new Thread(runner);
+        thread.start();
+        Swiat.getInstance().getListaRunnable().add(runner);
+        Swiat.getInstance().getListaThread().add(thread);
     }
 
     /**
@@ -278,7 +298,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         this.trasa.remove(miejsceZmianyKierunku);
     }
 
-    public int getMaksymalnaPredkosc() {
+    public double getMaksymalnaPredkosc() {
         return maksymalnaPredkosc;
     }
 
@@ -295,7 +315,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     }
 
     public void nastepnaDroga(){
-        if( this.pozostalaTrasa == null || this.pozostalaTrasa.size()<3){
+        if( this.pozostalaTrasa.isEmpty() || this.pozostalaTrasa.size()<2){
             return;
         }
         for (int i = 0; i < this.pozostalaTrasa.get(0).getListaDrog().size(); i++) {
@@ -303,10 +323,45 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
                 this.drogaTeraz=this.pozostalaTrasa.get(0).getListaDrog().get(i);
             }
         }
+        this.steps = (int)this.drogaTeraz.getOdleglosc()/(int) this.maksymalnaPredkosc;
     }
-    public void ruszSie(){
 
-        this.setPolozenieX(this.getPolozenieX()+ (this.getMaksymalnaPredkosc()*Math.sin(this.getDrogaTeraz().getAngle())));
+    public void ruszSie(){
+        if(this.getImageNode()!=null){
+//            this.setPolozenieX(this.getPolozenieX()+10.0);
+//            this.getImageNode().setTranslateX(this.getPolozenieX());
+//            this.getImageNode().setTranslateY(this.getPolozenieY());
+//            TranslateTransition transition = new TranslateTransition(Duration.millis(10.0),this.getImageNode());
+//            transition.setToX(this.getPolozenieX());
+//            transition.setToY(this.getPolozenieY());
+//            transition.setCycleCount(1);
+//            transition.play();
+//            this.getImageNode().setLayoutX(this.getImageNode().getLayoutX()+10.0);
+//            System.out.println(this.getTrasa().get(1).getPolozenieX());
+            //if(this.getPolozenieX()==this.getTrasa().get(1).getPolozenieX() && this.getPolozenieY()== this.getTrasa().get(1).getPolozenieY()) {
+            if(this.steps==0){
+//                this.pozostalaTrasa.remove(0);
+//                this.nastepnaDroga();
+                this.zmienTor();
+            }
+            else{
+                double moveX = this.getMaksymalnaPredkosc() * -Math.sin(this.getDrogaTeraz().getAngle());
+//                double moveX = this.getMaksymalnaPredkosc() * Math.sin(this.getDrogaTeraz().getAngle());
+                this.setPolozenieX(this.getPolozenieX() + moveX);
+                double moveY = this.getMaksymalnaPredkosc() * -Math.cos(this.getDrogaTeraz().getAngle());
+//                double moveY = this.getMaksymalnaPredkosc() * Math.cos(this.getDrogaTeraz().getAngle());
+                this.setPolozenieY(this.getPolozenieY() + moveY);
+                this.getImageNode().setLayoutX(this.getPolozenieX());
+                this.getImageNode().setLayoutY(this.getPolozenieY());
+                this.steps--;
+            }
+        }
+    }
+
+    public void zmienTor(){
+        this.setObecnePolozenie(this.getPozostalaTrasa().get(1));
+        this.getPozostalaTrasa().remove(0);
+        this.nastepnaDroga();
     }
 
     public void postuj(){
@@ -324,21 +379,31 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
 
     }
 
-    public void okreslNowePolozenie(List<Przystanek> listaMozliwychPrzystankow){
+//    public void okreslNowePolozenie(List<Przystanek> listaMozliwychPrzystankow){
+    public void okreslNowePolozenie(List<Object> listaMozliwychPrzystankow){
         if (listaMozliwychPrzystankow.size() !=0) {
-//            for (int i = 0; i < listaMozliwychPrzystankow.size(); i++) {
-//                System.out.println("przystanek " + i + ": " +listaMozliwychPrzystankow.get(i).getNazwa());
-//            }
-            Random random = new Random();
-            this.setPrzystanekPoczatkowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size())));
-            this.setObecnePolozenie(this.getPrzystanekPoczatkowy());
-            listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
-//            for (int i = 0; i < listaMozliwychPrzystankow.size(); i++) {
-//                System.out.println("przystanek " + i + ": " +listaMozliwychPrzystankow.get(i).getNazwa());
-//            }
+            List<Przystanek> listaLokalizacji = new LinkedList<Przystanek>();
+            List<Przystanek> listaPrzystankow = Swiat.getInstance().getListaPrzystankow();
+            for (int i = 0; i < listaPrzystankow.size(); i++) {
+                if(czyMozeLadowac(listaPrzystankow.get(i), listaMozliwychPrzystankow)){
+                    listaLokalizacji.add(listaPrzystankow.get(i));
+                }
+            }
 
-            this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size())));
+            System.out.println("lista lokalizacji: "+listaLokalizacji.size());
+            Random random = new Random();
+            this.setPrzystanekPoczatkowy(listaLokalizacji.get(random.nextInt(listaLokalizacji.size())));
+            this.setObecnePolozenie(this.getPrzystanekPoczatkowy());
+            listaLokalizacji.remove(this.getPrzystanekPoczatkowy());
+//            for (int i = 0; i < listaMozliwychPrzystankow.size(); i++) {
+//                System.out.println("przystanek " + i + ": " +listaMozliwychPrzystankow.get(i).getNazwa());
+//            }
+            this.setPrzystanekDocelowy(listaLokalizacji.get(random.nextInt(listaLokalizacji.size())));
             this.getPrzystanekPoczatkowy().addPojazdZaparkowany(this);
+            this.setPolozenieX(this.getObecnePolozenie().getPolozenieX());
+            this.setPolozenieY(this.getObecnePolozenie().getPolozenieY());
+            this.getObecnePolozenie().addPojazdOczekujacy(this);
+//            this.nastepnaDroga();
         }
     }
 
@@ -466,14 +531,39 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         System.out.println("");
     }
 
+    public void odwrocTrase(){
+        Przystanek poczatek = this.getPrzystanekDocelowy();
+        this.pozostalaTrasa.clear();
+        this.przystanekDocelowy=this.getPrzystanekPoczatkowy();
+        this.przystanekPoczatkowy=poczatek;
+        Collections.reverse(this.trasa);
+        this.pozostalaTrasa.addAll(this.trasa);
+        nastepnaDroga();
+    }
+
     public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
 
+    @Override
+    public void rysuj(Group group) {
+        Rectangle rectangle = new Rectangle(30,30);
+        rectangle.setLayoutX(this.getPolozenieX());
+        rectangle.setLayoutY(this.getPolozenieY());
+        this.setImageNode(rectangle);
+//        System.out.println("rysuje");
+        group.getChildren().add(this.getImageNode());
+    }
 
     @Override
     public void run() {
         while(true){
             try {
-                Thread.sleep(10);
+                if (this.getDrogaTeraz()!=null){
+                    if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
+                        this.odwrocTrase();
+                    }
+                    this.ruszSie();
+                }
+                Thread.sleep(1000 / 30);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

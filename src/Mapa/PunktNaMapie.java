@@ -1,22 +1,22 @@
 package Mapa;
 
 public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
-    private int polozenieX;
-    private int polozenieY;
+    private double polozenieX;
+    private double polozenieY;
 
-    public int getPolozenieX() {
+    public double getPolozenieX() {
         return polozenieX;
     }
 
-    public void setPolozenieX(int polozenieX) {
+    public void setPolozenieX(double polozenieX) {
         this.polozenieX = polozenieX;
     }
 
-    public int getPolozenieY() {
+    public double getPolozenieY() {
         return polozenieY;
     }
 
-    public void setPolozenieY(int polozenieY) {
+    public void setPolozenieY(double polozenieY) {
         this.polozenieY = polozenieY;
     }
 
@@ -25,7 +25,6 @@ public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
 
     }
     public PunktNaMapie(){
-
     }
 
     @Override

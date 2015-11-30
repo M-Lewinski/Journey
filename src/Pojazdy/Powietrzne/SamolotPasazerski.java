@@ -1,6 +1,7 @@
 package Pojazdy.Powietrzne;
 
 import Drogi.DrogaPowietrzna;
+import Gui.MainPanel;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne;
@@ -8,6 +9,7 @@ import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import sun.applet.Main;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,23 +20,28 @@ import java.util.List;
  */
 public class SamolotPasazerski extends Samolot {
     private static List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
-    public SamolotPasazerski(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
+    public SamolotPasazerski(int dlugosc, int szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
         super( dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
         if(SamolotPasazerski.getListaGdzieMozeLadowac().isEmpty()){
             SamolotPasazerski.addListaGdzieMozeLadowac(new Miasto());
             SamolotPasazerski.addListaGdzieMozeLadowac(new LotniskoCywilne());
         }
-        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
-        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskCywilnych());
-        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaMiast());
-//        System.out.println("dlugosc listy przystankow " + listaMozliwychPrzystankow.size());
-        okreslNowePolozenie(listaMozliwychPrzystankow);
-        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
+        okreslNowePolozenie(listaGdzieMozeLadowac);
+//        this.setPolozenieX(this.getPrzystanekPoczatkowy().getPolozenieX());
+//        this.setPolozenieY(this.getPrzystanekPoczatkowy().getPolozenieY());
+        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy());
         wypisywanieTrasy(this.getTrasa());
         this.getObecnePolozenie().addPojazdOczekujacy(this);
-        this.setImageNode(new Rectangle(30,30, Color.BLACK));
+        this.rysuj(MainPanel.getGrupaPojazdow());
+        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
         this.nastepnaDroga();
-        System.out.println(this.getDrogaTeraz().getKoniec().getNazwa());
+        System.out.println("droga teraz: " + this.getDrogaTeraz().getKoniec().getNazwa());
+        //        this.nastepnaDroga();
+//        Rectangle rectangle = new Rectangle(30,30, Color.BLACK);
+//        rectangle.setVisible(false);
+//        this.setImageNode(rectangle);
+
+//        System.out.println(this.getDrogaTeraz().getKoniec().getNazwa());
         //this.setDrogaTeraz(this.getPrzystanekPoczatkowy().ge);
 //        LinkedList<MiejsceZmianyKierunku> testList = new LinkedList<MiejsceZmianyKierunku>();
 //        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {

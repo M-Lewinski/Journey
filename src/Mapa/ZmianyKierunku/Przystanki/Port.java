@@ -2,8 +2,10 @@ package Mapa.ZmianyKierunku.Przystanki;
 
 import Mapa.Swiat;
 import Pojazdy.TworzeniePojazdu;
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -24,11 +26,11 @@ public class Port extends Przystanek implements TworzeniePojazdu {
     }
 
     @Override
-    public void rysuj(Pane panel) {
-        super.rysuj(panel);
+    public void rysuj(Group group) {
+        super.rysuj(group);
         this.getImageNode().setStroke(Color.BLUE);
         this.getImageNode().setFill(Color.BLUE);
-        panel.getChildren().add(this.getImageNode());
+        group.getChildren().add(this.getImageNode());
 //        this.getImageNode().
     }
 }

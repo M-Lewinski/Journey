@@ -18,7 +18,7 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
      * @param maksymalnaPredkosc
      * @param ladunek
      */
-    public Lotniskowiec(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
+    public Lotniskowiec(int dlugosc, int szerokosc, int polozenieX, int polozenieY, double maksymalnaPredkosc, TypLadunku ladunek) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, maksymalnaPredkosc, ladunek);
         Swiat.getInstance().addLotniskowiec(this);
     }

@@ -5,12 +5,12 @@ import Mapa.PunktNaMapie;
 import Mapa.Swiat;
 import Pojazdy.Pojazd;
 import com.sun.javafx.geom.*;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import org.omg.PortableServer.IMPLICIT_ACTIVATION_POLICY_ID;
 
 import java.awt.*;
 import java.awt.Shape;
@@ -115,7 +115,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     }
 
     @Override
-    public void rysuj(Pane panel) {
+    public void rysuj(Group group) {
 //        Circle circle = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
         this.setImageNode(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien()));
     }

@@ -1,5 +1,6 @@
 package Mapa;
 
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 
@@ -9,11 +10,10 @@ import javafx.scene.shape.Shape;
 public abstract class ObiektGraficzny implements Rysowanie {
     private int dlugosc;
     private int szerokosc;
-    private javafx.scene.shape.Shape imageNode;
+    private Shape imageNode;
 
     @Override
-    public void rysuj(Pane panel) {
-
+    public void rysuj(Group group) {
     }
 
     public Shape getImageNode() {

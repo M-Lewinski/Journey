@@ -24,16 +24,10 @@ public abstract class Statek extends Pojazd {
      * @param maksymalnaPredkosc
      * @param ladunek
      */
-    public Statek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, int maksymalnaPredkosc, TypLadunku ladunek) {
+    public Statek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, double maksymalnaPredkosc, TypLadunku ladunek) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
     }
-    public void tworzenieTrasy(){
-        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaMorska()));
-        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
-        listaMozliwychLadowan.add(new Miasto());
-        listaMozliwychLadowan.add(new Port());
-//        poinformujOPrzyjezdzie(listaMozliwychLadowan);
-    }
+
     /**
      * Pusty konstruktor klasy statek.
      */
@@ -41,6 +35,13 @@ public abstract class Statek extends Pojazd {
 
     }
 
+    public void tworzenieTrasy(){
+        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaMorska()));
+        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
+        listaMozliwychLadowan.add(new Miasto());
+        listaMozliwychLadowan.add(new Port());
+//        poinformujOPrzyjezdzie(listaMozliwychLadowan);
+    }
     @Override
     public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {
         return null;
