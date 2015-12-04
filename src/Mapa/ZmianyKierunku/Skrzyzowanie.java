@@ -10,10 +10,10 @@ import javafx.scene.paint.Color;
  * Created by Lewin on 2015-10-18.
  */
 public class Skrzyzowanie extends MiejsceZmianyKierunku {
-    public Skrzyzowanie(String nazwa, int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen) {
+    public Skrzyzowanie(String nazwa, double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
         this.setColor(Color.GREEN);
-        this.setPromien(10);
+        //this.setPromien(10);
         this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());
     }
 //    @Override

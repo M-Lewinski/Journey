@@ -18,12 +18,12 @@ import java.util.List;
  */
 public abstract class Samolot extends Pojazd {
     private int liczbaPersonelu;
-    private int maksymalnaIloscPaliwa;
-    private int aktualnaIloscPaliwa;
+    private double maksymalnaIloscPaliwa;
+    private double aktualnaIloscPaliwa;
 //    private MiejsceZmianyKierunku nastepnyPrzystanek;
 
 //    public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
-    public Samolot(int dlugosc, int szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
+    public Samolot(double dlugosc, double szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
         this.liczbaPersonelu = liczbaPersonelu;
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
@@ -46,22 +46,22 @@ public abstract class Samolot extends Pojazd {
         return liczbaPersonelu;
     }
 
-    public int getAktualnaIloscPaliwa() {
+    public double getAktualnaIloscPaliwa() {
 
         return aktualnaIloscPaliwa;
     }
 
-    public void setAktualnaIloscPaliwa(int aktualnaIloscPaliwa) {
+    public void setAktualnaIloscPaliwa(double aktualnaIloscPaliwa) {
         this.aktualnaIloscPaliwa = aktualnaIloscPaliwa;
     }
 
 
-    public int getMaksymalnaIloscPaliwa() {
+    public double getMaksymalnaIloscPaliwa() {
 
         return maksymalnaIloscPaliwa;
     }
 
-    public void setMaksymalnaIloscPaliwa(int maksymalnaIloscPaliwa) {
+    public void setMaksymalnaIloscPaliwa(double maksymalnaIloscPaliwa) {
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
     }
 

@@ -29,10 +29,18 @@ public abstract class Droga implements Rysowanie {
     private double angle;
     private double sinDrogi;
     private double cosDrogi;
-    private double poprawkaX;
-    private double poprawkaY;
+    private double pozycjaPoczatkowaX;
+    private double PozycjaPoczatkowaY;
+    private double odlegloscPoczatek;
+    private double katPoczatkowy;
+    private double pozycjaKoncowaX;
+    private double pozycjaKoncowaY;
+    private double odlegloscKoniec;
+    private double katKoncowy;
+    private double odlegloscMiedzyMiejscamiZmianyKierunku;
     private Shape imageNode;
     private Color color;
+
     public void setKoniec(MiejsceZmianyKierunku koniec) {
         this.koniec = koniec;
     }
@@ -96,8 +104,6 @@ public abstract class Droga implements Rysowanie {
         this.odleglosc = odleglosc;
         Swiat.getInstance().addDroga(this);
         this.poczatek.addListaDrog(this);
-        this.poprawkaX=poprawkaX;
-        this.poprawkaY=poprawkaY;
         this.okreslKat();
 //        System.out.println("Dlugosc drogi: " + this.odleglosc);
     }
@@ -121,6 +127,7 @@ public abstract class Droga implements Rysowanie {
         imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
         imageNode.setStroke(this.color);
         group.getChildren().add(imageNode);
+        proba(group);
 //        line.setStroke(Color.ORANGE);
 //        panel.getChildren().add(line);
     }
@@ -134,10 +141,104 @@ public abstract class Droga implements Rysowanie {
     }
 
     public void okreslKat(){
-        this.angle=Math.atan2(poczatek.getPolozenieX()-koniec.getPolozenieX(),poczatek.getPolozenieY()-koniec.getPolozenieY());
-        this.sinDrogi = -Math.sin(this.angle);
-        this.cosDrogi = -Math.cos(this.angle);
-//        this.angle=Math.atan(poczatek.getPolozenieX()-koniec.getPolozenieX()/poczatek.getPolozenieY()-koniec.getPolozenieY());
-//        System.out.println(angle);
+        this.angle=Math.atan2(-poczatek.getPolozenieX()+koniec.getPolozenieX(),-poczatek.getPolozenieY()+koniec.getPolozenieY());
+        this.sinDrogi = Math.sin(this.angle);
+        this.cosDrogi = Math.cos(this.angle);
+    }
+
+    public void proba(Group group){
+        double zmianaXP=0.0;
+        double zmianaYP=0.0;
+        double zmianaXK=0.0;
+        double zmianaYK=0.0;
+        double kat = this.angle;
+        double przerwa=10.0;
+        double promienP = this.getPoczatek().getPromienOuterRing();
+        double promienK = this.getKoniec().getPromienOuterRing();
+        double poczatekX = this.getPoczatek().getPolozenieX();
+        double poczatekY = this.getPoczatek().getPolozenieY();
+        double koniecX = this.getKoniec().getPolozenieX();
+        double koniecY = this.getKoniec().getPolozenieY();
+        double gamma;
+        double beta;
+        double betaPRIM;
+        if((Math.toDegrees(angle)>0) && (Math.toDegrees(angle)<=90)) {
+            gamma = Math.asin(przerwa / promienP);
+            beta = kat - gamma;
+            zmianaXP = Math.sin(beta) * promienP;
+            zmianaYP = Math.cos(beta) * promienP;
+            betaPRIM = Math.toRadians(90) - kat - gamma;
+            zmianaXK = -Math.cos(betaPRIM) * promienP;
+            zmianaYK = -Math.sin(betaPRIM) * promienP;
+            if(this instanceof DrogaPowietrzna){
+                this.color=Color.ORANGE;
+            }
+            else{
+                this.color=Color.BLUE;
+            }
+        }
+        else if((Math.toDegrees(angle)>=-180) && (Math.toDegrees(angle)<=-90)){
+            kat = angle - Math.toRadians(180);
+            gamma = Math.asin(-przerwa / promienP);
+            beta = kat - gamma;
+            zmianaXK = Math.sin(beta) * promienP;
+            zmianaYK = Math.cos(beta) * promienP;
+            betaPRIM = Math.toRadians(90) - kat - gamma;
+            zmianaXP = -Math.cos(betaPRIM) * promienP;
+            zmianaYP = -Math.sin(betaPRIM) * promienP;
+            if(this instanceof DrogaPowietrzna){
+                this.color = Color.FIREBRICK;
+            }
+            else{
+                this.color = Color.PURPLE;
+            }
+
+        }
+        else if ((Math.toDegrees(angle)>=90)&&(Math.toDegrees(angle)<=180)){
+            gamma = Math.asin(przerwa / promienP);
+            beta = kat - Math.toRadians(90) - gamma;
+            zmianaXP = Math.cos(beta)*promienP;
+            zmianaYP = -Math.sin(beta)*promienP;
+            betaPRIM = beta + 2*gamma;
+            zmianaXK = -promienK*Math.cos(betaPRIM);
+            zmianaYK = promienK*Math.sin(betaPRIM);
+            if(this instanceof DrogaPowietrzna){
+                this.color=Color.ORANGE;
+            }
+            else{
+                this.color=Color.BLUE;
+            }
+        }
+        else if((Math.toDegrees(angle)<=0)&&(Math.toDegrees(angle)>=-90)){
+            kat = angle - Math.toRadians(180);
+            gamma = Math.asin(-przerwa / promienP);
+            beta = kat - Math.toRadians(90) - gamma;
+            zmianaXK = Math.cos(beta)*promienP;
+            zmianaYK = -Math.sin(beta)*promienP;
+            betaPRIM = beta + 2*gamma;
+            zmianaXP = -promienK*Math.cos(betaPRIM);
+            zmianaYP = promienK*Math.sin(betaPRIM);
+            if(this instanceof DrogaPowietrzna){
+                this.color = Color.FIREBRICK;
+            }
+            else{
+                this.color = Color.PURPLE;
+            }
+        }
+        else{
+            return;
+        }
+        this.katPoczatkowy=beta;
+        this.katKoncowy=betaPRIM;
+        Line linia = new Line(poczatekX+zmianaXP,poczatekY+zmianaYP,koniecX+zmianaXK,koniecY+zmianaYK);
+        Line odMiasta = new Line(poczatekX,poczatekY,poczatekX+zmianaXP,poczatekY+zmianaYP);
+        Line doMiasta = new Line(koniecX,koniecY,koniecX+zmianaXK,koniecY+zmianaYK);
+        linia.setStroke(this.color);
+        odMiasta.setStroke(this.color);
+        doMiasta.setStroke(this.color);
+        group.getChildren().add(linia);
+        group.getChildren().add(odMiasta);
+        group.getChildren().add(doMiasta);
+
     }
 }

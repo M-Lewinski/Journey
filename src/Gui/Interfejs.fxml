@@ -10,8 +10,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller">
    <children>
-      <AnchorPane layoutX="400.0" layoutY="-1.0" prefHeight="710.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="400.0" layoutY="-1.0" prefHeight="710.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="buttonStworzSamolotPasazerski" layoutX="14.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleStworzSamolotPasazerski" prefHeight="25.0" prefWidth="215.0" text="Stworz samolot pasazerski" textAlignment="CENTER" AnchorPane.bottomAnchor="592.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="33.0" />
+            <Button fx:id="buttonStworzSamolotWojskowy" layoutX="14.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleStworzSamolotWojskowy" prefHeight="25.0" prefWidth="215.0" text="Stworz samolot wojskowy" textAlignment="CENTER" AnchorPane.bottomAnchor="545.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="80.0" />
+            <Button fx:id="buttonStworzSamolotWojskowy1" layoutX="14.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleStworzStatekWycieczkowy" prefHeight="25.0" prefWidth="215.0" text="Stworz statek wycieczkowy" textAlignment="CENTER" AnchorPane.bottomAnchor="504.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="121.0" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>

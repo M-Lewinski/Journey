@@ -20,7 +20,7 @@ public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
         this.polozenieY = polozenieY;
     }
 
-    public PunktNaMapie(int dlugosc, int szerokosc) {
+    public PunktNaMapie(double dlugosc, double szerokosc) {
         super(dlugosc,szerokosc);
 
     }

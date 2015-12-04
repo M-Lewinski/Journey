@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
  * Created by Lewin on 2015-10-18.
  */
 public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
-    public LotniskoCywilne(String nazwa,int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, int maksymalnaPojemnosc) {
+    public LotniskoCywilne(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, double maksymalnaPojemnosc) {
         super(nazwa,dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, maksymalnaPojemnosc);
         this.setColor(Color.BROWN);
         this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());

@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 import Drogi.Droga;
+import Drogi.DrogaPowietrzna;
 import Gui.MainPanel;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
@@ -41,7 +42,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
      * lista miejsce, ktore znajduja sie na trasie pojazdu.
      */
     private List<MiejsceZmianyKierunku> trasa = new ArrayList<MiejsceZmianyKierunku>();
-
+//    private  static abstract List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
     //private double angle=0;
     private Droga drogaTeraz=null;
     private double steps=0.0;
@@ -67,6 +68,27 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
      */
     private Przystanek przystanekDocelowy;
 
+    private Color tymczasowyKolor;
+
+    public Color getTymczasowyKolor() {
+        return tymczasowyKolor;
+    }
+
+    public void setTymczasowyKolor(Color tymczasowyKolor) {
+        this.tymczasowyKolor = tymczasowyKolor;
+    }
+
+    public double getSteps() {
+        return steps;
+    }
+
+    public void setSteps(double steps) {
+        this.steps = steps;
+    }
+
+    public void setMaksymalnaPredkosc(double maksymalnaPredkosc) {
+        this.maksymalnaPredkosc = maksymalnaPredkosc;
+    }
 
     /**
      * Getter
@@ -99,7 +121,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         this.pozostalaTrasa.remove(pozostalaTrasa);
     }
 
-    public void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow){
+//    public void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow){
+    public void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow,Droga typDrogi){
         //int x;
         MiejsceZmianyKierunku nastepneMiejsceZmianyKierunku = null;
         List<MiejsceZmianyKierunku> staraTrasa = new LinkedList<MiejsceZmianyKierunku>();
@@ -121,7 +144,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         int x=random.nextInt(listaMozliwychPrzystankow.size());
         System.out.println(x);
         this.setPrzystanekDocelowy(listaMozliwychPrzystankow.get(x));
-        this.tworzenieTrasy(nastepneMiejsceZmianyKierunku,this.getPrzystanekDocelowy());
+//        this.tworzenieTrasy(nastepneMiejsceZmianyKierunku,this.getPrzystanekDocelowy());
+        this.tworzenieTrasy(nastepneMiejsceZmianyKierunku,this.getPrzystanekDocelowy(),typDrogi);
         for (int i = 0;staraTrasa.get(i)!=nastepneMiejsceZmianyKierunku; i++) {
             this.pozostalaTrasa.add(i,staraTrasa.get(i));
         }
@@ -266,10 +290,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
      * @param szerokosc okresla szerokosc obrazu zwiazanego z obiektem.
      * @param maksymalnaPredkosc okresla maksymalna predkosc, z ktora porusza sie pojazd.
      */
-    public Pojazd(int dlugosc, int szerokosc, double maksymalnaPredkosc) {
+    public Pojazd(double dlugosc, double szerokosc, double maksymalnaPredkosc) {
         super(dlugosc, szerokosc);
         this.identyfikator = UUID.randomUUID();
         this.maksymalnaPredkosc = maksymalnaPredkosc;
+        Random random = new Random();
+        this.maksymalnaPredkosc=random.nextInt(14)+2;
         Swiat.getInstance().addPojazd(this);
         Runnable runner = this;
         Thread thread = new Thread(runner);
@@ -543,11 +569,24 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         nastepnaDroga();
     }
 
-    public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
-
+//    public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
+    public void tworzenieTrasy(MiejsceZmianyKierunku przystanekPoczatkowy, MiejsceZmianyKierunku przystanekDocelowy, Droga typDrogi){
+        this.poinformujORezygnacjiPrzyjazdu(this.getTrasa());
+        this.getTrasa().clear();
+        this.getPozostalaTrasa().clear();
+        this.setTrasa(szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,typDrogi));
+        if (this.getTrasa()==null){
+            return;
+        }
+        this.getPozostalaTrasa().addAll(this.getTrasa());
+        this.poinformujOZamiarzePrzyjazdu(this.getTrasa());
+        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
+    }
     @Override
     public void rysuj(Group group) {
-        Rectangle rectangle = new Rectangle(10,10);
+        Rectangle rectangle = new Rectangle(this.getSzerokosc(),this.getWysokosc());
+        rectangle.setStroke(this.tymczasowyKolor);
+        rectangle.setFill(this.tymczasowyKolor);
         rectangle.setLayoutX(this.getPolozenieX());
         rectangle.setLayoutY(this.getPolozenieY());
         this.setImageNode(rectangle);

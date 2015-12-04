@@ -15,7 +15,7 @@ public class DrogaMorska extends Droga {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public DrogaMorska(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,int poprawkaX,int poprawkaY) {
+    public DrogaMorska(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,double poprawkaX,double poprawkaY) {
         super(poczatek, koniec,poprawkaX,poprawkaY);
         this.setColor(Color.CYAN);
         this.rysuj(MainPanel.getGrupaDrog());

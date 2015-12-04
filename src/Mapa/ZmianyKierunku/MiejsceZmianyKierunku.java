@@ -5,6 +5,7 @@ import Gui.MainPanel;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
 import Pojazdy.Pojazd;
+import javafx.beans.binding.Bindings;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -24,9 +25,10 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
     private boolean zajetaPrzestrzen;
-    private int promien;
+    private double promien;
     private Shape outRing;
     private Color color;
+    private double promienOuterRing;
     //    private int promien=10;
 //    private javafx.scene.shape.Shape imageNode;
 
@@ -46,11 +48,11 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
         this.nazwa = nazwa;
     }
 
-    public int getPromien() {
+    public double getPromien() {
         return promien;
     }
 
-    public void setPromien(int promien) {
+    public void setPromien(double promien) {
         this.promien = promien;
     }
 
@@ -93,8 +95,15 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
         this.listaPojazdowOczekujacych.remove(pojazd);
     }
 
+    public double getPromienOuterRing() {
+        return promienOuterRing;
+    }
 
-//    public javafx.scene.shape.Shape getImageNode() {
+    public void setPromienOuterRing(double promienOuterRing) {
+        this.promienOuterRing = promienOuterRing;
+    }
+
+    //    public javafx.scene.shape.Shape getImageNode() {
 //        return imageNode;
 //    }
 //
@@ -112,13 +121,15 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
 
     }
 
-    public MiejsceZmianyKierunku(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, String nazwa) {
+    public MiejsceZmianyKierunku(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
         super(dlugosc, szerokosc);
         this.setPolozenieX(polozenieX);
         this.setPolozenieY(polozenieY);
         this.zajetaPrzestrzen = zajetaPrzestrzen;
         this.nazwa = nazwa;
         Swiat.getInstance().addMiejsceZmianyKierunku(this);
+        this.setPromien(10);
+        this.promienOuterRing = this.promien*2 + 15;
     }
     public MiejsceZmianyKierunku(){
 
@@ -136,17 +147,16 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     public void rysuj(Group group) {
 //        Circle circle = new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien());
         this.setImageNode(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien()));
-        this.setOutRing(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.getPromien()*2));
+        this.setOutRing(new Circle(this.getPolozenieX(),this.getPolozenieY(),this.promienOuterRing));
+//        this.setImageNode(innerCircle);
+//        this.setOutRing(outterCicle);
         this.getOutRing().setStrokeWidth(2);
         this.getOutRing().setFill(Color.TRANSPARENT);
         this.getImageNode().setFill(this.color);
         this.getImageNode().setStroke(this.color);
         this.getOutRing().setStroke(this.color);
-        this.getOutRing().layoutXProperty().bind(MainPanel.getRootLayout().widthProperty());
-        this.getOutRing().layoutYProperty().bind(MainPanel.getRootLayout().heightProperty());
-        this.getImageNode().layoutXProperty().bind(MainPanel.getRootLayout().widthProperty());
-        this.getImageNode().layoutYProperty().bind(MainPanel.getRootLayout().heightProperty());
         group.getChildren().add(this.getImageNode());
         group.getChildren().add(this.getOutRing());
+
     }
 }

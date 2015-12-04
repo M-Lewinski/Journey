@@ -86,10 +86,10 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     }
 
 
-    public Przystanek(int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, String nazwa) {
+    public Przystanek(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
         Swiat.getInstance().addPrzystanek(this);
-        this.setPromien(15);
+//        this.setPromien(15);
     }
     public Przystanek(){
 

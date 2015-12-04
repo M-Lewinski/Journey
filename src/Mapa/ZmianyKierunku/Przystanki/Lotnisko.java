@@ -7,13 +7,13 @@ public abstract class Lotnisko extends Przystanek {
     /**
      * maksymalna liczba samolotow, ktore znajduja sie na lotnisku.
      */
-    private int maksymalnaPojemnosc;
+    private double maksymalnaPojemnosc;
 
-    public void setMaksymalnaPojemnosc(int maksymalnaPojemnosc) {
+    public void setMaksymalnaPojemnosc(double maksymalnaPojemnosc) {
         this.maksymalnaPojemnosc = maksymalnaPojemnosc;
     }
 
-    public int getMaksymalnaPojemnosc() {
+    public double getMaksymalnaPojemnosc() {
 
         return maksymalnaPojemnosc;
     }
@@ -27,7 +27,7 @@ public abstract class Lotnisko extends Przystanek {
      * @param zajetaPrzestrzen czy przestrzen powietrzna nad lotniskiem jest zajeta.
      * @param maksymalnaPojemnosc maksymalna liczba samolotow znajdujacych sie na lotnisku.
      */
-    public Lotnisko(String nazwa,int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, int maksymalnaPojemnosc) {
+    public Lotnisko(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, double maksymalnaPojemnosc) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
         this.maksymalnaPojemnosc = maksymalnaPojemnosc;
     }

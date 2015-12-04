@@ -20,8 +20,10 @@ import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sun.applet.Main;
@@ -50,6 +52,7 @@ public class MainPanel extends Application {
         this.primaryStage.setTitle("Mapa");
         this.primaryStage.setResizable(true);
         initRootLayout();
+        MainPanel.beginning=true;
     }
 
 //    public synchronized static MainPanel getInstance(){
@@ -101,6 +104,8 @@ public class MainPanel extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainPanel.class.getResource("Interfejs.fxml"));
+            Controller controller = loader.getController();
+//            controller.setMainPanel(this);
             rootLayout = (AnchorPane) loader.load();
 //            for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
 //                Swiat.getInstance().getListaMiejscZmianyKierunku().get(i).rysuj(MainPanel.grupaMiejscZmianyKierunku);
@@ -115,10 +120,12 @@ public class MainPanel extends Application {
             rootLayout.getChildren().add(MainPanel.grupaPojazdow);
             //Group group = new Group();
             // Show the scene containing the root layout.
-            MainPanel.beginning=true;
+            Swiat.getInstance();
+            Swiat.getInstance().stworzSwiat();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,16 +137,7 @@ public class MainPanel extends Application {
 
 
     public static void main(String[] args) {
-        Swiat.getInstance();
-        Swiat.getInstance().stworzSwiat();
-        SamolotPasazerski samolot1 = new SamolotPasazerski(100, 100, 20, 10, 10, 10);
-        SamolotPasazerski samolot2 = new SamolotPasazerski(100, 100, 4, 10, 10, 10);
-        SamolotPasazerski samolot3 = new SamolotPasazerski(100, 100, 5, 10, 10, 10);
-        SamolotPasazerski samolot4 = new SamolotPasazerski(100, 100, 6, 10, 10, 10);
-        SamolotPasazerski samolot5 = new SamolotPasazerski(100, 100, 3, 10, 10, 10);
-        SamolotPasazerski samolot6 = new SamolotPasazerski(100, 100, 4, 10, 10, 10);
-        SamolotPasazerski samolot7 = new SamolotPasazerski(100, 100, 8, 10, 10, 10);
-        SamolotPasazerski samolot8 = new SamolotPasazerski(100, 100, 2, 10, 10, 10);
+
         launch(args);
     }
 

@@ -8,8 +8,8 @@ import javafx.scene.shape.Shape;
  * Created by Lewin on 2015-10-18.
  */
 public abstract class ObiektGraficzny implements Rysowanie {
-    private int dlugosc;
-    private int szerokosc;
+    private double wysokosc;
+    private double szerokosc;
     private Shape imageNode;
 
     @Override
@@ -24,24 +24,24 @@ public abstract class ObiektGraficzny implements Rysowanie {
         this.imageNode = imageNode;
     }
 
-    public int getDlugosc() {
-        return dlugosc;
+    public double getWysokosc() {
+        return wysokosc;
     }
 
-    public int getSzerokosc() {
+    public double getSzerokosc() {
         return szerokosc;
     }
 
-    public void setDlugosc(int dlugosc) {
-        this.dlugosc = dlugosc;
+    public void setWysokosc(double dlugosc) {
+        this.wysokosc = dlugosc;
     }
 
-    public void setSzerokosc(int szerokosc) {
+    public void setSzerokosc(double szerokosc) {
         this.szerokosc = szerokosc;
     }
 
-    public ObiektGraficzny(int dlugosc, int szerokosc) {
-        this.dlugosc = dlugosc;
+    public ObiektGraficzny(double dlugosc, double szerokosc) {
+        this.wysokosc = dlugosc;
         this.szerokosc = szerokosc;
     }
     public ObiektGraficzny(){

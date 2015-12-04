@@ -12,11 +12,14 @@ import javafx.scene.paint.Color;
  * Created by Lewin on 2015-10-18.
  */
 public class LotniskoWojskowe extends Lotnisko implements TworzeniePojazdu {
-    public LotniskoWojskowe(String nazwa, int dlugosc, int szerokosc, int polozenieX, int polozenieY, boolean zajetaPrzestrzen, int maksymalnaPojemnosc) {
+    public LotniskoWojskowe(String nazwa, double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, double maksymalnaPojemnosc) {
         super(nazwa,dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, maksymalnaPojemnosc);
         this.setColor(Color.RED);
         this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());
         Swiat.getInstance().addLotniskoWojskowe(this);
+    }
+    public LotniskoWojskowe(){
+
     }
 
     @Override
