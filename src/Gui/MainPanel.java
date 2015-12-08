@@ -111,10 +111,11 @@ public class MainPanel extends Application {
 //                Swiat.getInstance().getListaMiejscZmianyKierunku().get(i).rysuj(MainPanel.grupaMiejscZmianyKierunku);
 //            }
             System.out.println("grupa miejsc: "+grupaMiejscZmianyKierunku.getChildren().size());
-            this.grupaMiejscZmianyKierunku.setEffect(new BoxBlur(2, 2, 1));
+//            this.grupaMiejscZmianyKierunku.setEffect(new BoxBlur(2, 2, 1));
 //            for (int i = 0; i < Swiat.getInstance().getListaDrog().size(); i++) {
 //                Swiat.getInstance().getListaDrog().get(i).rysuj(this.grupaDrog);
 //            }
+//            this.grupaDrog.setEffect(new BoxBlur(2,2,1));
             rootLayout.getChildren().add(MainPanel.grupaMiejscZmianyKierunku);
             rootLayout.getChildren().add(MainPanel.grupaDrog);
             rootLayout.getChildren().add(MainPanel.grupaPojazdow);

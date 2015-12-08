@@ -20,25 +20,22 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public class SamolotPasazerski extends Samolot {
-    private static List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
+    private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     public SamolotPasazerski(double dlugosc, double szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
         super( dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
-        if(SamolotPasazerski.getListaGdzieMozeLadowac().isEmpty()){
-            SamolotPasazerski.addListaGdzieMozeLadowac(new Miasto());
-            SamolotPasazerski.addListaGdzieMozeLadowac(new LotniskoCywilne());
-        }
-        if(SamolotPasazerski.typDrogi==null){
-            SamolotPasazerski.typDrogi = new DrogaPowietrzna();
-        }
+
+
+//        okreslNowePolozenie(listaGdzieMozeLadowac);
+//        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
+//        wypisywanieTrasy(this.getTrasa());
+//        this.getObecnePolozenie().addPojazdOczekujacy(this);
+//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
+//        this.nastepnaDroga();
+
         this.setTymczasowyKolor(Color.YELLOW);
-        okreslNowePolozenie(listaGdzieMozeLadowac);
-        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
-        wypisywanieTrasy(this.getTrasa());
-        this.getObecnePolozenie().addPojazdOczekujacy(this);
         this.rysuj(MainPanel.getGrupaPojazdow());
-        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-        this.nastepnaDroga();
+
 //        System.out.println("droga teraz: " + this.getDrogaTeraz().getKoniec().getNazwa());
         //        this.nastepnaDroga();
 //        Rectangle rectangle = new Rectangle(30,30, Color.BLACK);
@@ -53,15 +50,15 @@ public class SamolotPasazerski extends Samolot {
 //        }
 //        this.setTrasa(testList);
     }
-    public static List<Object> getListaGdzieMozeLadowac() {
+    public static List<MiejsceZmianyKierunku> getListaGdzieMozeLadowac() {
         return listaGdzieMozeLadowac;
     }
 
-    public static void setListaGdzieMozeLadowac(List<Object> listaLadowisk) {
+    public static void setListaGdzieMozeLadowac(List<MiejsceZmianyKierunku> listaLadowisk) {
         SamolotPasazerski.listaGdzieMozeLadowac = listaLadowisk;
     }
 
-    public static void addListaGdzieMozeLadowac(Object listaLadowisk){
+    public static void addListaGdzieMozeLadowac(MiejsceZmianyKierunku listaLadowisk){
         SamolotPasazerski.listaGdzieMozeLadowac.add(listaLadowisk);
     }
 
@@ -74,7 +71,24 @@ public class SamolotPasazerski extends Samolot {
         return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, SamolotPasazerski.getListaGdzieMozeLadowac());
     }
 
-//    @Override
+    @Override
+    public List<MiejsceZmianyKierunku> getMozliweLadowania() {
+        if(SamolotPasazerski.getListaGdzieMozeLadowac().isEmpty()){
+            SamolotPasazerski.addListaGdzieMozeLadowac(new Miasto());
+            SamolotPasazerski.addListaGdzieMozeLadowac(new LotniskoCywilne());
+        }
+        return SamolotPasazerski.listaGdzieMozeLadowac;
+    }
+
+    @Override
+    public Droga getTypDrogi() {
+        if(SamolotPasazerski.typDrogi==null){
+            SamolotPasazerski.typDrogi = new DrogaPowietrzna();
+        }
+        return SamolotPasazerski.typDrogi;
+    }
+
+    //    @Override
 //    public void tworzenieTrasy(MiejsceZmianyKierunku przystanekPoczatkowy, MiejsceZmianyKierunku przystanekDocelowy){
 //        this.poinformujORezygnacjiPrzyjazdu(this.getTrasa());
 //        this.getTrasa().clear();

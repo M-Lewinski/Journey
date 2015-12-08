@@ -33,7 +33,7 @@ import sun.misc.resources.Messages_it;
  *  @param
  *
  */
-public abstract class Pojazd extends PunktNaMapie implements Runnable {
+public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowanie {
     /**
      * unikalny identyfikator pojazdu.
      */
@@ -302,6 +302,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         thread.start();
         Swiat.getInstance().getListaRunnable().add(runner);
         Swiat.getInstance().getListaThread().add(thread);
+        okreslNowePolozenie(this.getMozliweLadowania());
+        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),this.getTypDrogi());
+        wypisywanieTrasy(this.getTrasa());
+        this.getObecnePolozenie().addPojazdOczekujacy(this);
+        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
+        this.nastepnaDroga();
     }
 
     /**
@@ -403,12 +409,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     public void wyjazd(){
 
     }
-    public void usunPojazd(){
+    public void usunPojazd() {
 
     }
 
 //    public void okreslNowePolozenie(List<Przystanek> listaMozliwychPrzystankow){
-    public void okreslNowePolozenie(List<Object> listaMozliwychPrzystankow){
+    public void okreslNowePolozenie(List<MiejsceZmianyKierunku> listaMozliwychPrzystankow){
         if (listaMozliwychPrzystankow.size() !=0) {
             List<Przystanek> listaLokalizacji = new LinkedList<Przystanek>();
             List<Przystanek> listaPrzystankow = Swiat.getInstance().getListaPrzystankow();
@@ -436,7 +442,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     }
 
 
-    public Przystanek nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie, List<Object> listaObjektow) {
+    public Przystanek nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie, List<MiejsceZmianyKierunku> ListaGdzieMozeLadowac) {
         int temp;
 //        for (temp = 0;(temp<trasa.size()) &&  (trasa.get(temp) != obecnePolozenie); temp++) {
 ////            System.out.println("Nie ma takiego miejsca na trasie");
@@ -446,7 +452,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         }
         for (int i = temp+1; i < trasa.size(); i++) {
             if (trasa.get(i) instanceof Przystanek) {
-                if(czyMozeLadowac(trasa.get(i),listaObjektow)) {
+                if(czyMozeLadowac(trasa.get(i),ListaGdzieMozeLadowac)) {
                     return (Przystanek) trasa.get(i);
                 }
             }
@@ -521,9 +527,9 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
     }
 
 
-    public boolean czyMozeLadowac(Object doSprawdzenia,List<Object> listaObiektow){
-        for (int i = 0; i < listaObiektow.size(); i++) {
-            if(listaObiektow.get(i).getClass().isInstance(doSprawdzenia)){
+    public boolean czyMozeLadowac(Object doSprawdzenia,List<MiejsceZmianyKierunku> listaGdzieMozeLadowac){
+        for (int i = 0; i < listaGdzieMozeLadowac.size(); i++) {
+            if(listaGdzieMozeLadowac.get(i).getClass().isInstance(doSprawdzenia)){
                 return true;
             }
         }
@@ -592,6 +598,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable {
         this.setImageNode(rectangle);
         group.getChildren().add(this.getImageNode());
     }
+
+    @Override
+    public abstract List<MiejsceZmianyKierunku> getMozliweLadowania();
+
+    @Override
+    public abstract Droga getTypDrogi();
 
     @Override
     public void run() {

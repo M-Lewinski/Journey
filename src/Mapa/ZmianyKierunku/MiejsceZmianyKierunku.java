@@ -8,6 +8,7 @@ import Pojazdy.Pojazd;
 import javafx.beans.binding.Bindings;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
@@ -157,6 +158,9 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
         this.getOutRing().setStroke(this.color);
         group.getChildren().add(this.getImageNode());
         group.getChildren().add(this.getOutRing());
-
+        Label label = new Label(this.getNazwa());
+        label.setLayoutX(this.getPolozenieX()-this.promienOuterRing/2);
+        label.setLayoutY(this.getPolozenieY()-this.promienOuterRing-15);
+        group.getChildren().add(label);
     }
 }

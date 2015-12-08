@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public abstract class Statek extends Pojazd {
-    private static List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
+    private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     /**
      * Konstruktor klasy statek, ktory wykorzystuje konstruktor z odziedziczonej klasy.
@@ -33,23 +33,20 @@ public abstract class Statek extends Pojazd {
      */
     public Statek(double dlugosc, double szerokosc, double maksymalnaPredkosc, TypLadunku ladunek) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
-        if(listaGdzieMozeLadowac.isEmpty()){
-            listaGdzieMozeLadowac.add(new Miasto());
-            listaGdzieMozeLadowac.add(new Port());
-        }
-        if (typDrogi==null){
-            typDrogi = new DrogaMorska();
-        }
-        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
-        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
+
+
+//        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
+//        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
+//        okreslNowePolozenie(listaGdzieMozeLadowac);
+//        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
+//        wypisywanieTrasy(this.getTrasa());
+//        this.getObecnePolozenie().addPojazdOczekujacy(this);
+//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
+//        this.nastepnaDroga();
+
         this.setTymczasowyKolor(Color.LIGHTBLUE);
-        okreslNowePolozenie(listaGdzieMozeLadowac);
-        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
-        wypisywanieTrasy(this.getTrasa());
-        this.getObecnePolozenie().addPojazdOczekujacy(this);
         this.rysuj(MainPanel.getGrupaPojazdow());
-        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-        this.nastepnaDroga();
+
 
 //        okreslNowePolozenie(listaMozliwychPrzystankow);
 //        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
@@ -57,9 +54,28 @@ public abstract class Statek extends Pojazd {
 //        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
     }
 
+    @Override
+    public List<MiejsceZmianyKierunku> getMozliweLadowania() {
+        if(Statek.listaGdzieMozeLadowac.isEmpty()){
+            Statek.listaGdzieMozeLadowac.add(new Miasto());
+            Statek.listaGdzieMozeLadowac.add(new Port());
+        }
+        return Statek.listaGdzieMozeLadowac;
+    }
+
+    @Override
+    public Droga getTypDrogi() {
+        if (Statek.typDrogi==null){
+            Statek.typDrogi = new DrogaMorska();
+        }
+        return Statek.typDrogi;
+    }
+
     /**
      * Pusty konstruktor klasy statek.
      */
+
+
     public Statek(){
 
     }

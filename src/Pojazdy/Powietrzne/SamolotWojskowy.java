@@ -20,33 +20,46 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public class SamolotWojskowy extends Samolot {
-    private static List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
+    private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
 //    public SamolotWojskowy(double dlugosc, double szerokosc, double polozenieX, double polozenieY, double maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
     public SamolotWojskowy(double dlugosc, double szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
         super(dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
-        if(listaGdzieMozeLadowac.isEmpty()){
-//            listaGdzieMozeLadowac.add(new Miasto());
-            listaGdzieMozeLadowac.add(new LotniskoWojskowe());
-        }
-        if (typDrogi==null){
-            typDrogi = new DrogaPowietrzna();
-        }
-        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
-        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
+
+
+//        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
+//        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
+//        okreslNowePolozenie(listaGdzieMozeLadowac);
+//        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
+//        wypisywanieTrasy(this.getTrasa());
+//        this.getObecnePolozenie().addPojazdOczekujacy(this);
+//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
+//        this.nastepnaDroga();
+
         this.setTymczasowyKolor(Color.DARKORANGE);
-        okreslNowePolozenie(listaGdzieMozeLadowac);
-        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
-        wypisywanieTrasy(this.getTrasa());
-        this.getObecnePolozenie().addPojazdOczekujacy(this);
         this.rysuj(MainPanel.getGrupaPojazdow());
-        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-        this.nastepnaDroga();
 
 //        okreslNowePolozenie(listaMozliwychPrzystankow);
 //        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
 //        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),typDrogi);
 //        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
+    }
+
+    @Override
+    public List<MiejsceZmianyKierunku> getMozliweLadowania() {
+        if(SamolotWojskowy.listaGdzieMozeLadowac.isEmpty()){
+//            listaGdzieMozeLadowac.add(new Miasto());
+            SamolotWojskowy.listaGdzieMozeLadowac.add(new LotniskoWojskowe());
+        }
+        return SamolotWojskowy.listaGdzieMozeLadowac;
+    }
+
+    @Override
+    public Droga getTypDrogi() {
+        if (SamolotWojskowy.typDrogi==null){
+            SamolotWojskowy.typDrogi = new DrogaPowietrzna();
+        }
+        return SamolotWojskowy.typDrogi;
     }
 
     @Override
