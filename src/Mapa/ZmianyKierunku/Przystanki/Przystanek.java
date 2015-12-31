@@ -17,6 +17,17 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     private List<Pasazer> listaPasazerowOczekujacych = new ArrayList<Pasazer>();
     private List<Pojazd> listaPojazdowPrzyjezdzajacych = new ArrayList<Pojazd>();
     private List<Pasazer> listaPasazerowPrzyjezdzajacych = new ArrayList<Pasazer>();
+    private double maksymalnaPojemnosc=8;
+
+    public void setMaksymalnaPojemnosc(double maksymalnaPojemnosc) {
+        this.maksymalnaPojemnosc = maksymalnaPojemnosc;
+    }
+
+    public double getMaksymalnaPojemnosc() {
+
+        return maksymalnaPojemnosc;
+    }
+
     public void poinformujPasazerow(){
         Swiat.getInstance().addPrzystanek(this);
     }

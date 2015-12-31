@@ -7,16 +7,6 @@ public abstract class Lotnisko extends Przystanek {
     /**
      * maksymalna liczba samolotow, ktore znajduja sie na lotnisku.
      */
-    private double maksymalnaPojemnosc;
-
-    public void setMaksymalnaPojemnosc(double maksymalnaPojemnosc) {
-        this.maksymalnaPojemnosc = maksymalnaPojemnosc;
-    }
-
-    public double getMaksymalnaPojemnosc() {
-
-        return maksymalnaPojemnosc;
-    }
 
     /**
      * Konstruktor klasy lotnisko, ktory wykorzystuje konstruktor z odziedziczonej klasy.
@@ -29,7 +19,7 @@ public abstract class Lotnisko extends Przystanek {
      */
     public Lotnisko(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, double maksymalnaPojemnosc) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
-        this.maksymalnaPojemnosc = maksymalnaPojemnosc;
+//        this.maksymalnaPojemnosc = maksymalnaPojemnosc;
     }
 
     /**

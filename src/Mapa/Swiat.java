@@ -280,25 +280,26 @@ public class Swiat extends ObiektGraficzny {
 
     public void stworzSwiat(){
         //Swiat.getInstance();
-        Miasto warszawa = new Miasto("Warszawa", 30,30, 50, 300, false, 10);
-        Miasto berlin = new Miasto("Berlin", 30, 30, 560, 300, false, 10);
-        Miasto topGun = new Miasto("Top gun",30,30,800,600,false,10);
+        Miasto warszawa = new Miasto("Warszawa", 30,30, 50, 280, false, 10);
+        Miasto berlin = new Miasto("Berlin", 30, 30, 585, 300, false, 10);
+        Miasto topGun = new Miasto("Las Vegas",30,30,800,600,false,10);
         LotniskoCywilne airlineTycoon = new LotniskoCywilne("Airline Tycoon",30,30,120,440,false,10);
         LotniskoCywilne paryz = new LotniskoCywilne("Paryz", 30, 30, 700, 50, false, 10);
         LotniskoWojskowe sop = new LotniskoWojskowe("SOP",30,30,300,50,false,10);
         LotniskoWojskowe po = new LotniskoWojskowe("PO",30,30,250,560,false,10);
         LotniskoWojskowe pa = new LotniskoWojskowe("PA",30,30,800,300,false,10);
         LotniskoWojskowe wsi = new LotniskoWojskowe("WSI",30,30,520,50,false,10);
-        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,100,100,false,10);
-        Port port1 = new Port("nike",30,30,360,550,false);
-        Port port2 = new Port("addidas",30,30,800,400,false);
-        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S:Warszawa-Berlin", 30, 30, 300, 245, false);
-        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S:Berlin-Paryz", 30, 30, 660, 200, false);
-        Skrzyzowanie skrzyzowanie3 = new Skrzyzowanie("S:Berlin-Top gun",30,30,600,400,false);
-        Skrzyzowanie skrzyzowanie4 = new Skrzyzowanie("S:PO-WSI",30,30,300,440,false);
-        Skrzyzowanie skrzyzowanie5 = new Skrzyzowanie("S:PO-Airlne Tycoon",30,30,450,130,false);
-        Skrzyzowanie skrzyzowanie6 = new Skrzyzowanie("S:nike-berlin",30,30,420,385,false);
-        Skrzyzowanie skrzyzowanie7 = new Skrzyzowanie("S:nike-top gun",30,30,570,575,false);
+//        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,100,100,false,10);
+        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,450,230,false,10);
+        Port port1 = new Port("Green Gun",30,30,360,550,false);
+        Port port2 = new Port("Blue Gun",30,30,600,400,false);
+        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S:A", 30, 30, 300, 245, false);
+        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S:B", 30, 30, 660, 200, false);
+        Skrzyzowanie skrzyzowanie3 = new Skrzyzowanie("S:C",30,30,780,400,false);
+        Skrzyzowanie skrzyzowanie4 = new Skrzyzowanie("S:D",30,30,300,440,false);
+        Skrzyzowanie skrzyzowanie5 = new Skrzyzowanie("S:E",30,30,450,130,false);
+        Skrzyzowanie skrzyzowanie6 = new Skrzyzowanie("S:F",30,30,445,370,false);
+        Skrzyzowanie skrzyzowanie7 = new Skrzyzowanie("S:G",30,30,570,575,false);
         DrogaPowietrzna drogaPowietrzna1 = new DrogaPowietrzna(warszawa,skrzyzowanie1,0,0);
         DrogaPowietrzna drogaPowietrzna2 = new DrogaPowietrzna(skrzyzowanie1,warszawa,0,0);
         DrogaPowietrzna drogaPowietrzna5 = new DrogaPowietrzna(berlin,skrzyzowanie2,0,0);
@@ -341,8 +342,8 @@ public class Swiat extends ObiektGraficzny {
         DrogaMorska drogaMorska6 = new DrogaMorska(skrzyzowanie6,warszawa,0,0);
         DrogaMorska drogaMorska7 = new DrogaMorska(port2,skrzyzowanie7,0,0);
         DrogaMorska drogaMorska8 = new DrogaMorska(skrzyzowanie7,port2,0,0);
-        DrogaMorska drogaMorska9 = new DrogaMorska(skrzyzowanie6,skrzyzowanie7,0,0);
-        DrogaMorska drogaMorska10 = new DrogaMorska(skrzyzowanie7,skrzyzowanie6,0,0);
+//        DrogaMorska drogaMorska9 = new DrogaMorska(skrzyzowanie6,skrzyzowanie7,0,0);
+//        DrogaMorska drogaMorska10 = new DrogaMorska(skrzyzowanie7,skrzyzowanie6,0,0);
     }
 
 }

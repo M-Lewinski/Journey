@@ -32,7 +32,6 @@ public class SamolotPasazerski extends Samolot {
 //        this.getObecnePolozenie().addPojazdOczekujacy(this);
 //        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
 //        this.nastepnaDroga();
-
         this.setTymczasowyKolor(Color.YELLOW);
         this.rysuj(MainPanel.getGrupaPojazdow());
 
@@ -101,4 +100,6 @@ public class SamolotPasazerski extends Samolot {
 //        this.poinformujOZamiarzePrzyjazdu(this.getTrasa());
 //        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
 //    }
+
+
 }

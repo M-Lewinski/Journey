@@ -27,19 +27,19 @@ public class Controller {
     }
     @FXML
     public void handleStworzSamolotPasazerski(){
-        SamolotPasazerski samolotPasazerski = new SamolotPasazerski(15,15,15,10,10,10);
+        SamolotPasazerski samolotPasazerski = new SamolotPasazerski(10,10,15,10,10,10);
         System.out.println("Stworzono nowy samolot pasazerski");
     }
 
     @FXML
     public void handleStworzSamolotWojskowy(){
-        SamolotWojskowy samolotWojskowy = new SamolotWojskowy(15,15,15,10,10,10);
+        SamolotWojskowy samolotWojskowy = new SamolotWojskowy(10,10,15,10,10,10);
         System.out.println("Sworzono nowy samolot wojskowy");
     }
 
     @FXML
     public  void handleStworzStatekWycieczkowy(){
-        StatekWycieczkowy statekWycieczkowy = new StatekWycieczkowy(15,15,15,"nowy");
+        StatekWycieczkowy statekWycieczkowy = new StatekWycieczkowy(10,10,15,"nowy");
         System.out.println("Stworzono nowy statek wycieczkowy");
     }
 

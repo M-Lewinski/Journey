@@ -34,6 +34,10 @@ import sun.misc.resources.Messages_it;
  *
  */
 public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowanie {
+    private double oczekiwanie=0.0;
+    private int fps=30;
+    private double imagePromien;
+    private double odlegloscDoKonca=0.0;
     /**
      * unikalny identyfikator pojazdu.
      */
@@ -46,7 +50,35 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     //private double angle=0;
     private Droga drogaTeraz=null;
     private double steps=0.0;
+//    private int statusPrzelotu=-1;
+    private int statusPrzelotu=0;
+    private boolean pozwolenie=false;
     private List<MiejsceZmianyKierunku> pozostalaTrasa = new ArrayList<MiejsceZmianyKierunku>();
+
+    public int getFps() {
+        return fps;
+    }
+
+    public void setFps(int fps) {
+        this.fps = fps;
+    }
+
+    public int getStatusPrzelotu() {
+        return statusPrzelotu;
+    }
+
+    public void setStatusPrzelotu(int statusPrzelotu) {
+        this.statusPrzelotu = statusPrzelotu;
+    }
+
+    public boolean isPozwolenie() {
+        return pozwolenie;
+    }
+
+    public void setPozwolenie(boolean pozwolenie) {
+        this.pozwolenie = pozwolenie;
+    }
+
     /**
      * predkosc z jaka porusza sie pojazd.
      */
@@ -90,10 +122,19 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.maksymalnaPredkosc = maksymalnaPredkosc;
     }
 
+    public double getOdlegloscDoKonca() {
+        return odlegloscDoKonca;
+    }
+
+    public void setOdlegloscDoKonca(double odlegloscDoKonca) {
+        this.odlegloscDoKonca = odlegloscDoKonca;
+    }
+
     /**
      * Getter
      * @return ladunek pojazdu.
      */
+
     public TypLadunku getLadunek() {
         return Ladunek;
     }
@@ -104,6 +145,13 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //    }
     private MiejsceZmianyKierunku nastepnyPrzystanek;
 
+    public double getOczekiwanie() {
+        return oczekiwanie;
+    }
+
+    public void setOczekiwanie(double oczekiwanie) {
+        this.oczekiwanie = oczekiwanie;
+    }
 
     public List<MiejsceZmianyKierunku> getPozostalaTrasa() {
         return pozostalaTrasa;
@@ -129,14 +177,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         staraTrasa.addAll(this.getPozostalaTrasa());
         System.out.println(this.obecnePolozenie.getNazwa());
         if (czyWyladowal(this.obecnePolozenie) == true){
-            System.out.println("jest");
+//            System.out.println("jest");
             nastepneMiejsceZmianyKierunku=this.obecnePolozenie;
         }
         else{
-            System.out.println("nie ma");
+//            System.out.println("nie ma");
             nastepneMiejsceZmianyKierunku=nastepneMozliweLadowanie(this.getTrasa(),this.obecnePolozenie);
         }
-        System.out.println("Nastepne miejsce: " + nastepneMiejsceZmianyKierunku.getNazwa());
+//        System.out.println("Nastepne miejsce: " + nastepneMiejsceZmianyKierunku.getNazwa());
         Random random = new Random();
         listaMozliwychPrzystankow.remove(nastepneMiejsceZmianyKierunku);
         listaMozliwychPrzystankow.remove(this.getPrzystanekPoczatkowy());
@@ -160,6 +208,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         }
             return false;
     }
+
 
 
 
@@ -260,6 +309,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.przystanekPoczatkowy = przystanekPoczatkowy;
     }
 
+    public double getImagePromien() {
+        return imagePromien;
+    }
+
+    public void setImagePromien(double imagePromien) {
+        this.imagePromien = imagePromien;
+    }
+
     public void setIdentyfikator(UUID identyfikator) {
         this.identyfikator = identyfikator;
     }
@@ -292,10 +349,11 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
      */
     public Pojazd(double dlugosc, double szerokosc, double maksymalnaPredkosc) {
         super(dlugosc, szerokosc);
+        this.imagePromien=this.pitagoras(this.getSzerokosc()/2,this.getWysokosc()/2);
         this.identyfikator = UUID.randomUUID();
         this.maksymalnaPredkosc = maksymalnaPredkosc;
         Random random = new Random();
-        this.maksymalnaPredkosc=random.nextInt(14)+2;
+        this.maksymalnaPredkosc=random.nextInt(5)+2;
         Swiat.getInstance().addPojazd(this);
         Runnable runner = this;
         Thread thread = new Thread(runner);
@@ -305,9 +363,18 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         okreslNowePolozenie(this.getMozliweLadowania());
         tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),this.getTypDrogi());
         wypisywanieTrasy(this.getTrasa());
-        this.getObecnePolozenie().addPojazdOczekujacy(this);
+        System.out.println("Pozostala trasa od poczatku");
+        wypisywanieTrasy(this.getPozostalaTrasa());
+//        this.getObecnePolozenie().addPojazdOczekujacy(this);
+        this.przystanekPoczatkowy.addPojazdZaparkowany(this);
         this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-        this.nastepnaDroga();
+//        this.nastepnaDroga();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                getImageNode().visibleProperty().setValue(false);
+            }
+        });
     }
 
     /**
@@ -356,62 +423,178 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         for (int i = 0; i < this.pozostalaTrasa.get(0).getListaDrog().size(); i++) {
             if(this.pozostalaTrasa.get(0).getListaDrog().get(i).getKoniec()==this.pozostalaTrasa.get(1)){
                 this.drogaTeraz=this.pozostalaTrasa.get(0).getListaDrog().get(i);
+//                this.drogaTeraz.addListaPojazdow(this);
+                this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
+                this.getDrogaTeraz().addListaPojazdow(this);
+                return;
             }
         }
 //        this.steps = this.drogaTeraz.getOdleglosc()/ this.maksymalnaPredkosc;
-        this.steps = this.drogaTeraz.getOdleglosc();
+//        this.steps=this.drogaTeraz.getOdleglosc();
     }
 
-    public void ruszSie(){
-//        if(this.getImageNode()!=null){
-        if(this.steps==0.0){
-            this.zmienTor();
-            return;
+    public void ladowanie(){
+//        Random random = new Random();
+        this.oczekiwanie=5*fps;
+    }
+
+    public void obslugaRuchu(){
+        switch (this.statusPrzelotu){
+            case 0:
+//                System.out.println("TUTAJ");
+//                this.nastepnaDroga();
+//                this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
+                this.obecnePolozenie.startowanie(this);
+                break;
+            case 1:
+                this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
+                poruszSie();
+                break;
+            case 2:
+                this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
+                this.pozostalaTrasa.get(1).ladowanie(this);
+                break;
         }
-        double moveX;
-        double moveY;
-        if(this.steps<this.getMaksymalnaPredkosc()){
-            moveX = this.steps*this.getDrogaTeraz().getSinDrogi();
-            moveY = this.steps*this.getDrogaTeraz().getCosDrogi();
-            this.steps=0;
-        }
-        else {
-            moveX = this.getMaksymalnaPredkosc() * this.getDrogaTeraz().getSinDrogi();
-            moveY = this.getMaksymalnaPredkosc() * this.getDrogaTeraz().getCosDrogi();
-//            this.steps--;
-            this.steps-=this.getMaksymalnaPredkosc();
-        }
-        this.setPolozenieX(this.getPolozenieX() + moveX);
-        this.setPolozenieY(this.getPolozenieY() + moveY);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                getImageNode().setLayoutX(getPolozenieX());
-                getImageNode().setLayoutY(getPolozenieY());
+
+    }
+
+    public double pitagoras(double a, double b){
+        return Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
+    }
+
+    public void poruszSie(){
+        double sinDrogi = this.drogaTeraz.sinusDrogi(this.statusPrzelotu);
+        double cosDrogi = this.drogaTeraz.cosinusDrogi(this.statusPrzelotu);
+        double moveX=0.0;
+        double moveY=0.0;
+        this.odlegloscDoKonca = this.pitagoras(this.getPolozenieX()-this.pozostalaTrasa.get(1).getPolozenieX(),this.getPolozenieY()-this.pozostalaTrasa.get(1).getPolozenieY());
+//        System.out.println("odleglosc do konca: " + this.odlegloscDoKonca);
+        while(this.steps!=0.0) {
+            try {
+                Thread.sleep(1000 / fps);
+
+//                double moveX;
+//                double moveY;
+//                double sinDrogi = this.drogaTeraz.sinusDrogi(this.statusPrzelotu);
+//                double cosDrogi = this.drogaTeraz.cosinusDrogi(this.statusPrzelotu);
+                if (this.steps < this.getMaksymalnaPredkosc()) {
+                    moveX = this.steps * sinDrogi;
+                    moveY = this.steps * cosDrogi;
+//                    this.steps = 0.0;
+                } else {
+                    moveX = this.getMaksymalnaPredkosc() * sinDrogi;
+                    moveY = this.getMaksymalnaPredkosc() * cosDrogi;
+                    //            this.steps--;
+//                    this.steps -= this.getMaksymalnaPredkosc();
+                }
+                double przesuniecie = this.pitagoras(moveX,moveY);
+//                double odlegloscDoKoncaThis = this.pitagoras(this.getPolozenieX()-this.pozostalaTrasa.get(1).getPolozenieX(),this.getPolozenieY()-this.pozostalaTrasa.get(1).getPolozenieY());
+//                for (int i = 0; i < this.drogaTeraz.getListaPojazdow().size(); i++) {
+//                    Pojazd pojazdNaDrodze = this.drogaTeraz.getListaPojazdow().get(i);
+//                    if(pojazdNaDrodze.getImageNode().visibleProperty().get() == true){
+////                        double odlegloscMiedzyPojazdami = Math.sqrt(Math.pow(this.getPolozenieX()-pojazdNaDrodze.getPolozenieX(),2.0) + Math.pow(this.getPolozenieY()-pojazdNaDrodze.getPolozenieY(),2.0));
+//                        double odlegloscMiedzyPojazdami = Math.abs(this.odlegloscDoKonca-pojazdNaDrodze.getOdlegloscDoKonca());
+//                        if(odlegloscMiedzyPojazdami < this.imagePromien + pojazdNaDrodze.getImagePromien() + 2 + przesuniecie){
+//                            if(this.odlegloscDoKonca > pojazdNaDrodze.getOdlegloscDoKonca()){
+//                                System.out.println("Za blisko");
+//                                Thread.sleep(1000/fps);
+//                                continue;
+//                            }
+//                        }
+//                    }
+//
+//                }
+
+                if(this.drogaTeraz.czyDojdzieDoZderzenia(this,przesuniecie)==true){
+                    continue;
+                }
+                if(this.steps < this.getMaksymalnaPredkosc()){
+                    this.steps=0.0;
+                }else{
+                    this.steps-=this.getMaksymalnaPredkosc();
+                }
+                this.setPolozenieX(this.getPolozenieX() + moveX);
+                this.setPolozenieY(this.getPolozenieY() + moveY);
+                this.odlegloscDoKonca=this.odlegloscDoKonca - przesuniecie;
+                if(this.odlegloscDoKonca < 0.0){
+                    this.odlegloscDoKonca = 0.0;
+                }
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        getImageNode().setLayoutX(getPolozenieX()-getSzerokosc()/2);
+                        getImageNode().setLayoutY(getPolozenieY()-getWysokosc()/2);
+                    }
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
+        }
+        this.statusPrzelotu++;
+        this.statusPrzelotu=this.statusPrzelotu % 3;
     }
+// public void ruszSie(){
+////        if(this.getImageNode()!=null){
+//        if(this.steps==0.0){
+//            if(this.statusPrzelotu<3){
+//                this.statusPrzelotu+=1;
+//                if(this.statusPrzelotu==2){
+//
+//                }
+//                this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
+//            }
+//            else{
+//                this.statusPrzelotu=-1;
+//                this.zmienTor();
+//            }
+//            return;
+//        }
+//        double moveX;
+//        double moveY;
+//        double sinDrogi = this.drogaTeraz.sinusDrogi(this.statusPrzelotu);
+//        double cosDrogi = this.drogaTeraz.cosinusDrogi(this.statusPrzelotu);
+//        if(this.steps<this.getMaksymalnaPredkosc()){
+//            moveX = this.steps* sinDrogi;
+//            moveY = this.steps* cosDrogi;
+//            this.steps=0.0;
+//        }
+//        else {
+//            moveX = this.getMaksymalnaPredkosc() * sinDrogi;
+//            moveY = this.getMaksymalnaPredkosc() * cosDrogi;
+////            this.steps--;
+//            this.steps-=this.getMaksymalnaPredkosc();
+//        }
+//        this.setPolozenieX(this.getPolozenieX() + moveX);
+//        this.setPolozenieY(this.getPolozenieY() + moveY);
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                getImageNode().setLayoutX(getPolozenieX());
+//                getImageNode().setLayoutY(getPolozenieY());
+//            }
+//        });
+//    }
+//
+//    public void zmienTor(){
+//        this.setObecnePolozenie(this.getPozostalaTrasa().get(1));
+//        this.getPozostalaTrasa().remove(0);
+//        this.nastepnaDroga();
+//    }
 
-    public void zmienTor(){
-        this.setObecnePolozenie(this.getPozostalaTrasa().get(1));
-        this.getPozostalaTrasa().remove(0);
-        this.nastepnaDroga();
-    }
-
-    public void postuj(){
-
-    }
-
-    public void przyjazd(){
-
-    }
-
-    public void wyjazd(){
-
-    }
-    public void usunPojazd() {
-
-    }
+//    public void postuj(){
+//
+//    }
+//
+//    public void przyjazd(){
+//
+//    }
+//
+//    public void wyjazd(){
+//
+//    }
+//    public void usunPojazd() {
+//
+//    }
 
 //    public void okreslNowePolozenie(List<Przystanek> listaMozliwychPrzystankow){
     public void okreslNowePolozenie(List<MiejsceZmianyKierunku> listaMozliwychPrzystankow){
@@ -535,6 +718,9 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         }
         return false;
     }
+    public boolean czyMozeTutajLadowac(Object doSprawdzenia){
+        return czyMozeLadowac(doSprawdzenia,this.getMozliweLadowania());
+    }
 
     public double okreslanieDlugosciTrasy(MiejsceZmianyKierunku obecnePolozenieNaTrasie, MiejsceZmianyKierunku ostatecznePolozenieNaTrasie, List<MiejsceZmianyKierunku> trasaMiedzyDwomaPunktami){
         double dlugosc=0.0;
@@ -572,7 +758,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.przystanekPoczatkowy=poczatek;
         Collections.reverse(this.trasa);
         this.pozostalaTrasa.addAll(this.trasa);
-        nastepnaDroga();
+//        nastepnaDroga();
     }
 
 //    public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
@@ -593,8 +779,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         Rectangle rectangle = new Rectangle(this.getSzerokosc(),this.getWysokosc());
         rectangle.setStroke(this.tymczasowyKolor);
         rectangle.setFill(this.tymczasowyKolor);
-        rectangle.setLayoutX(this.getPolozenieX());
-        rectangle.setLayoutY(this.getPolozenieY());
+        rectangle.setLayoutX(this.getPolozenieX()-this.getSzerokosc()/2);
+        rectangle.setLayoutY(this.getPolozenieY()-this.getWysokosc()/2);
         this.setImageNode(rectangle);
         group.getChildren().add(this.getImageNode());
     }
@@ -609,15 +795,25 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     public void run() {
         while (true) {
             try {
-                if(MainPanel.beginning==true) {
-                    if (this.getDrogaTeraz() != null) {
+//                System.out.println("WLASNIE TUTAJ");
+//                if(MainPanel.beginning==true) {
+//                if(this.oczekiwanie!=0) {
+                    if (!this.pozostalaTrasa.isEmpty()) {
                         if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
                             this.odwrocTrase();
                         }
-                        this.ruszSie();
-                    }
+//                        System.out.println("HELLO");
+                        if(this.oczekiwanie==0.0) {
+//                            System.out.println("HEY");
+                            this.obslugaRuchu();
+//                        this.poruszSie();
+                        }
+                        else{
+                            this.oczekiwanie--;
+                        }
+
                 }
-                    Thread.sleep(1000 / 30);
+                    Thread.sleep(1000 / fps);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();

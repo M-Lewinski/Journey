@@ -1,19 +1,24 @@
 package Drogi;
 
 import Gui.MainPanel;
+import Mapa.Monitoring;
 import Mapa.Rysowanie;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import Pojazdy.Pojazd;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 
+import java.util.ArrayList;
+
 /** Klasa droga implementujaca abstrakcje obiektu droga.
  * Created by Lewin on 2015-10-18.
  */
 public abstract class Droga implements Rysowanie {
+    private Monitoring hulk = new Monitoring();
     /**
      * poczatek drogi.
      */
@@ -25,20 +30,24 @@ public abstract class Droga implements Rysowanie {
     /**
      *  odleglosc miedzy punktem poczatkowym a koncowym.
      */
+    private ArrayList<Pojazd> listaPojazdow = new ArrayList<Pojazd>();
     private double odleglosc;
     private double angle;
-    private double sinDrogi;
-    private double cosDrogi;
-    private double pozycjaPoczatkowaX;
-    private double PozycjaPoczatkowaY;
-    private double odlegloscPoczatek;
-    private double katPoczatkowy;
-    private double pozycjaKoncowaX;
-    private double pozycjaKoncowaY;
-    private double odlegloscKoniec;
-    private double katKoncowy;
-    private double odlegloscMiedzyMiejscamiZmianyKierunku;
-    private Shape imageNode;
+//    private double sinDrogi;
+//    private double cosDrogi;
+    private Odcinek wylot;
+    private Odcinek przelot;
+    private Odcinek ladowanie;
+//    private double pozycjaPoczatkowaX;
+//    private double PozycjaPoczatkowaY;
+//    private double odlegloscPoczatek;
+//    private double katPoczatkowy;
+//    private double pozycjaKoncowaX;
+//    private double pozycjaKoncowaY;
+//    private double odlegloscKoniec;
+//    private double katKoncowy;
+//    private double odlegloscMiedzyMiejscamiZmianyKierunku;
+//    private Shape imageNode;
     private Color color;
 
     public void setKoniec(MiejsceZmianyKierunku koniec) {
@@ -68,21 +77,68 @@ public abstract class Droga implements Rysowanie {
         return poczatek;
     }
 
-    public double getCosDrogi() {
-        return cosDrogi;
+
+    public ArrayList<Pojazd> getListaPojazdow() {
+        return listaPojazdow;
     }
 
-    public void setCosDrogi(double cosDrogi) {
-        this.cosDrogi = cosDrogi;
+    public void setListaPojazdow(ArrayList<Pojazd> listaPojazdow) {
+        this.listaPojazdow = listaPojazdow;
     }
 
-    public double getSinDrogi() {
-        return sinDrogi;
+    public void addListaPojazdow(Pojazd pojazd){
+        this.listaPojazdow.add(pojazd);
+    }
+    public void removeListaPojazdow(Pojazd pojazd){
+        this.listaPojazdow.remove(pojazd);
+    }
+    public double getAngle() {
+        return angle;
     }
 
-    public void setSinDrogi(double sinDrogi) {
-        this.sinDrogi = sinDrogi;
+    public void setAngle(double angle) {
+        this.angle = angle;
     }
+
+    public Odcinek getWylot() {
+        return wylot;
+    }
+
+    public void setWylot(Odcinek wylot) {
+        this.wylot = wylot;
+    }
+
+    public Odcinek getPrzelot() {
+        return przelot;
+    }
+
+    public void setPrzelot(Odcinek przelot) {
+        this.przelot = przelot;
+    }
+
+    public Odcinek getLadowanie() {
+        return ladowanie;
+    }
+
+    public void setLadowanie(Odcinek ladowanie) {
+        this.ladowanie = ladowanie;
+    }
+
+    //    public double getCosDrogi() {
+//        return cosDrogi;
+//    }
+//
+//    public void setCosDrogi(double cosDrogi) {
+//        this.cosDrogi = cosDrogi;
+//    }
+//
+//    public double getSinDrogi() {
+//        return sinDrogi;
+//    }
+//
+//    public void setSinDrogi(double sinDrogi) {
+//        this.sinDrogi = sinDrogi;
+//    }
 
     public double getOdleglosc() {
         return odleglosc;
@@ -108,13 +164,13 @@ public abstract class Droga implements Rysowanie {
 //        System.out.println("Dlugosc drogi: " + this.odleglosc);
     }
 
-    public Shape getImageNode() {
-        return imageNode;
-    }
-
-    public void setImageNode(Shape imageNode) {
-        this.imageNode = imageNode;
-    }
+//    public Shape getImageNode() {
+//        return imageNode;
+//    }
+//
+//    public void setImageNode(Shape imageNode) {
+//        this.imageNode = imageNode;
+//    }
 
     /**
      * Pusty konstruktor drogi.
@@ -124,26 +180,26 @@ public abstract class Droga implements Rysowanie {
     }
     @Override
     public void rysuj(Group group) {
-        imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
-        imageNode.setStroke(this.color);
-        group.getChildren().add(imageNode);
+//        imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
+//        imageNode.setStroke(this.color);
+//        group.getChildren().add(imageNode);
         proba(group);
 //        line.setStroke(Color.ORANGE);
 //        panel.getChildren().add(line);
     }
 
-    public double getAngle() {
-        return angle;
-    }
-
-    public void setAngle(double angle) {
-        this.angle = angle;
-    }
+//    public double getAngle() {
+//        return angle;
+//    }
+//
+//    public void setAngle(double angle) {
+//        this.angle = angle;
+//    }
 
     public void okreslKat(){
         this.angle=Math.atan2(-poczatek.getPolozenieX()+koniec.getPolozenieX(),-poczatek.getPolozenieY()+koniec.getPolozenieY());
-        this.sinDrogi = Math.sin(this.angle);
-        this.cosDrogi = Math.cos(this.angle);
+//        this.sinDrogi = Math.sin(this.angle);
+//        this.cosDrogi = Math.cos(this.angle);
     }
 
     public void proba(Group group){
@@ -152,7 +208,7 @@ public abstract class Droga implements Rysowanie {
         double zmianaXK=0.0;
         double zmianaYK=0.0;
         double kat = this.angle;
-        double przerwa=10.0;
+        double przerwa=13.0;
         double promienP = this.getPoczatek().getPromienOuterRing();
         double promienK = this.getKoniec().getPromienOuterRing();
         double poczatekX = this.getPoczatek().getPolozenieX();
@@ -171,7 +227,7 @@ public abstract class Droga implements Rysowanie {
             zmianaXK = -Math.cos(betaPRIM) * promienP;
             zmianaYK = -Math.sin(betaPRIM) * promienP;
             if(this instanceof DrogaPowietrzna){
-                this.color=Color.ORANGE;
+                this.color=Color.RED;
             }
             else{
                 this.color=Color.BLUE;
@@ -187,10 +243,10 @@ public abstract class Droga implements Rysowanie {
             zmianaXP = -Math.cos(betaPRIM) * promienP;
             zmianaYP = -Math.sin(betaPRIM) * promienP;
             if(this instanceof DrogaPowietrzna){
-                this.color = Color.FIREBRICK;
+                this.color = Color.ORANGE;
             }
             else{
-                this.color = Color.PURPLE;
+                this.color = Color.CYAN;
             }
 
         }
@@ -203,7 +259,7 @@ public abstract class Droga implements Rysowanie {
             zmianaXK = -promienK*Math.cos(betaPRIM);
             zmianaYK = promienK*Math.sin(betaPRIM);
             if(this instanceof DrogaPowietrzna){
-                this.color=Color.ORANGE;
+                this.color=Color.RED;
             }
             else{
                 this.color=Color.BLUE;
@@ -219,26 +275,103 @@ public abstract class Droga implements Rysowanie {
             zmianaXP = -promienK*Math.cos(betaPRIM);
             zmianaYP = promienK*Math.sin(betaPRIM);
             if(this instanceof DrogaPowietrzna){
-                this.color = Color.FIREBRICK;
+                this.color = Color.ORANGE;
             }
             else{
-                this.color = Color.PURPLE;
+                this.color = Color.CYAN;
             }
         }
         else{
             return;
         }
-        this.katPoczatkowy=beta;
-        this.katKoncowy=betaPRIM;
-        Line linia = new Line(poczatekX+zmianaXP,poczatekY+zmianaYP,koniecX+zmianaXK,koniecY+zmianaYK);
-        Line odMiasta = new Line(poczatekX,poczatekY,poczatekX+zmianaXP,poczatekY+zmianaYP);
-        Line doMiasta = new Line(koniecX,koniecY,koniecX+zmianaXK,koniecY+zmianaYK);
-        linia.setStroke(this.color);
-        odMiasta.setStroke(this.color);
-        doMiasta.setStroke(this.color);
-        group.getChildren().add(linia);
-        group.getChildren().add(odMiasta);
-        group.getChildren().add(doMiasta);
-
+//        this.katPoczatkowy=beta;
+//        this.katKoncowy=betaPRIM;
+//        System.out.println(this.poczatek.getNazwa()+" kat normalny " + Math.toDegrees(this.angle));
+        double katMiedzy = Math.atan2(zmianaXP,zmianaYP);
+//        System.out.println(this.poczatek.getNazwa()+" kat wylotu "+Math.toDegrees(katMiedzy));
+//        double katMiedzy = Math.atan2(zmianaYP,zmianaXP);
+        this.wylot = new Odcinek(katMiedzy,poczatekX,poczatekY,poczatekX+zmianaXP,poczatekY+zmianaYP,this.color);
+        katMiedzy = Math.atan2(koniecX+zmianaXK-(poczatekX+zmianaXP),koniecY+zmianaYK-(poczatekY+zmianaYP));
+//        katMiedzy = Math.atan2(koniecY+zmianaYK-(poczatekY+zmianaYP),koniecX+zmianaXK-(poczatekX+zmianaXP));
+//        System.out.println(this.poczatek.getNazwa()+" kat przelatu "+Math.toDegrees(katMiedzy));
+        this.przelot = new Odcinek(katMiedzy,poczatekX+zmianaXP,poczatekY+zmianaYP,koniecX+zmianaXK,koniecY+zmianaYK,this.color);
+        katMiedzy = Math.atan2(-zmianaXK,-zmianaYK);
+//        katMiedzy = Math.atan2(zmianaYK,zmianaXK);
+//        System.out.println(this.poczatek.getNazwa()+" kat ladowania "+Math.toDegrees(katMiedzy));
+        this.ladowanie = new Odcinek(katMiedzy,koniecX+zmianaXK,koniecY+zmianaYK,koniecX,koniecY,this.color);
+//        System.out.println(this.poczatek.getNazwa() + " odcinek normalny: "+this.odleglosc);
+//        System.out.println(this.poczatek.getNazwa() + " odcinek wylotu: " + this.wylot.getDlugosc());
+//        System.out.println(this.poczatek.getNazwa() + " odcinek przelotu: " + this.przelot.getDlugosc());
+//        System.out.println(this.poczatek.getNazwa() + " odcinek ladowania: "+ this.ladowanie.getDlugosc());
     }
+
+    public double iloscKrokow(int statusPodrozy){
+        double steps=0.0;
+        switch (statusPodrozy){
+            case 0:
+//                steps=this.wylot.getDlugosc()/predkoscPojazdu;
+                steps=this.wylot.getDlugosc();
+                break;
+            case 1:
+//                steps=this.przelot.getDlugosc()/predkoscPojazdu;
+                steps=this.przelot.getDlugosc();
+                break;
+            case 2:
+//                steps=this.ladowanie.getDlugosc()/predkoscPojazdu;
+                steps=this.ladowanie.getDlugosc();
+                break;
+        }
+        return steps;
+    }
+
+    public double sinusDrogi(int statusPodrozy){
+        double sin=0.0;
+        switch (statusPodrozy){
+            case 0:
+                sin=this.wylot.getSinOdcinka();
+                break;
+            case 1:
+                sin=this.przelot.getSinOdcinka();
+                break;
+            case 2:
+                sin=this.ladowanie.getSinOdcinka();
+                break;
+        }
+        return sin;
+    }
+
+    public double cosinusDrogi(int statusPodrozy){
+        double cos=0.0;
+        switch (statusPodrozy){
+            case 0:
+                cos=this.wylot.getCosOdcinka();
+                break;
+            case 1:
+                cos=this.przelot.getCosOdcinka();
+                break;
+            case 2:
+                cos=this.ladowanie.getCosOdcinka();
+                break;
+        }
+        return cos;
+    }
+
+    public boolean czyDojdzieDoZderzenia(Pojazd pojazd, double przesuniecie){
+        synchronized (hulk){
+            for (int i = 0; i < pojazd.getDrogaTeraz().getListaPojazdow().size(); i++) {
+                Pojazd pojazdNaDrodze = pojazd.getDrogaTeraz().getListaPojazdow().get(i);
+                if(pojazdNaDrodze.getImageNode().visibleProperty().get() == true){
+                    double odlegloscMiedzyPojazdami = Math.abs(pojazd.getOdlegloscDoKonca()-pojazdNaDrodze.getOdlegloscDoKonca());
+                    if(odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie){
+                        if(pojazd.getOdlegloscDoKonca() > pojazdNaDrodze.getOdlegloscDoKonca()){
+//                            System.out.println("Za blisko");
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
 }

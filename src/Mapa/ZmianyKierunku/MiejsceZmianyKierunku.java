@@ -1,16 +1,15 @@
 package Mapa.ZmianyKierunku;
 
+import Mapa.Monitoring;
 import Drogi.Droga;
-import Gui.MainPanel;
 import Mapa.PunktNaMapie;
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
-import javafx.beans.binding.Bindings;
+import Pojazdy.Powietrzne.Samolot;
+import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -25,11 +24,12 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
     private String nazwa;
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
-    private boolean zajetaPrzestrzen;
+    private boolean zajetaPrzestrzen=false;
     private double promien;
     private Shape outRing;
     private Color color;
     private double promienOuterRing;
+    private Monitoring kontrolaLotow = new Monitoring();
     //    private int promien=10;
 //    private javafx.scene.shape.Shape imageNode;
 
@@ -112,14 +112,78 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
 //        this.imageNode = imageNode;
 //    }
 
-    public void zajmij(){
+    public void poinformujSkrzyzowanie(){
 
+    }
+
+    public void zajmij(Pojazd pojazd){
+        this.zajetaPrzestrzen=true;
+        this.listaPojazdowOczekujacych.remove(pojazd);
     }
     public void zwolnij(){
-
+        this.zajetaPrzestrzen=false;
+        poinformujPojazdy();
     }
-    public void poinformuj(){
+    public void poinformujPojazdy(){
+        Pojazd pojazd = this.getListaPojazdowOczekujacych().get(0);
+    }
 
+    public void ladowanie(Pojazd pojazd){
+        synchronized (kontrolaLotow){
+            Boolean czyToJestMiejsceDoLadowania=false;
+            if(this instanceof Przystanek){
+                Przystanek przystanek = (Przystanek) this;
+                if (pojazd.czyMozeTutajLadowac(this)==true){
+                    if(pojazd instanceof Samolot){
+                        if(przystanek.getMaksymalnaPojemnosc()==0){
+                            return;
+                        }
+                        przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()-1);
+                    }
+                    czyToJestMiejsceDoLadowania=true;
+                    przystanek.addPojazdZaparkowany(pojazd);
+                }
+            }
+            pojazd.poruszSie();
+            pojazd.setObecnePolozenie(this);
+            pojazd.getDrogaTeraz().removeListaPojazdow(pojazd);
+            pojazd.getPozostalaTrasa().remove(0);
+            if(czyToJestMiejsceDoLadowania==true){
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        pojazd.getImageNode().visibleProperty().setValue(false);
+                    }
+                });
+                pojazd.ladowanie();
+            }
+            else{
+                this.startowanie(pojazd);
+            }
+        }
+    }
+
+    public void startowanie(Pojazd pojazd){
+        synchronized (kontrolaLotow){
+            pojazd.nastepnaDroga();
+//            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
+            if(this instanceof Przystanek){
+                Przystanek przystanek = (Przystanek) this;
+                if(przystanek.getListaPojazdowZaparkowanych().contains(pojazd)){
+                    if(pojazd instanceof Samolot){
+                        przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()+1);
+                    }
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            pojazd.getImageNode().visibleProperty().setValue(true);
+                        }
+                    });
+                    przystanek.removePojazdZaparkowany(pojazd);
+                }
+            }
+            pojazd.poruszSie();
+        }
     }
 
     public MiejsceZmianyKierunku(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
