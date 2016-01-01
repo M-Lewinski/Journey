@@ -1,8 +1,12 @@
 package Mapa.ZmianyKierunku;
 
+import Gui.Controller;
+import Gui.Informacja;
+import Gui.MainPanel;
 import Mapa.Monitoring;
 import Drogi.Droga;
 import Mapa.PunktNaMapie;
+import Mapa.ShowInfo;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
@@ -13,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +25,7 @@ import java.util.List;
 /**
  * Created by Lewin on 2015-10-18.
  */
-public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
+public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements ShowInfo {
     private String nazwa;
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
@@ -220,11 +225,32 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie {
         this.getImageNode().setFill(this.color);
         this.getImageNode().setStroke(this.color);
         this.getOutRing().setStroke(this.color);
+        this.getOutRing().setOnMouseClicked(event -> {
+            Informacja.getInstance().setObecnaInformacja(this);
+        });
         group.getChildren().add(this.getImageNode());
         group.getChildren().add(this.getOutRing());
         Label label = new Label(this.getNazwa());
         label.setLayoutX(this.getPolozenieX()-this.promienOuterRing/2);
-        label.setLayoutY(this.getPolozenieY()-this.promienOuterRing-15);
+        label.setLayoutY(this.getPolozenieY() - this.promienOuterRing - 15);
         group.getChildren().add(label);
+    }
+
+    @Override
+    public void showInfo(){
+        List<Label> listaLabeli = new ArrayList<Label>();
+        Label label1 = new Label(this.getNazwa());
+        listaLabeli.add(label1);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Controller controller = MainPanel.getLoader().getController();
+                controller.getGrid().getChildren().clear();
+                for (int i = 0; i < listaLabeli.size(); i++) {
+                    listaLabeli.get(i).setFont(new Font(15.0));
+                    controller.getGrid().add(listaLabeli.get(i),0,i);
+                }
+            }
+        });
     }
 }

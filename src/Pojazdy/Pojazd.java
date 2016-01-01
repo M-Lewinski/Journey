@@ -5,8 +5,12 @@ import java.util.*;
 
 import Drogi.Droga;
 import Drogi.DrogaPowietrzna;
+import Gui.Controller;
+import Gui.Informacja;
 import Gui.MainPanel;
+import Gui.ShowLabel;
 import Mapa.PunktNaMapie;
+import Mapa.ShowInfo;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
@@ -19,9 +23,14 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import sun.applet.Main;
 import sun.awt.image.ImageWatched;
@@ -33,7 +42,7 @@ import sun.misc.resources.Messages_it;
  *  @param
  *
  */
-public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowanie {
+public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowanie, ShowInfo {
     private double oczekiwanie=0.0;
     private int fps=30;
     private double imagePromien;
@@ -751,6 +760,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         System.out.println("");
     }
 
+
     public void odwrocTrase(){
         Przystanek poczatek = this.getPrzystanekDocelowy();
         this.pozostalaTrasa.clear();
@@ -781,6 +791,9 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         rectangle.setFill(this.tymczasowyKolor);
         rectangle.setLayoutX(this.getPolozenieX()-this.getSzerokosc()/2);
         rectangle.setLayoutY(this.getPolozenieY()-this.getWysokosc()/2);
+        rectangle.setOnMouseClicked(event -> {
+            Informacja.getInstance().setObecnaInformacja(this);
+        });
         this.setImageNode(rectangle);
         group.getChildren().add(this.getImageNode());
     }
@@ -790,6 +803,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
     @Override
     public abstract Droga getTypDrogi();
+
 
     @Override
     public void run() {
@@ -820,4 +834,49 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             }
         }
     }
+
+    @Override
+    public void showInfo(){
+        List<ShowLabel> listaLabeli = new ArrayList<ShowLabel>();
+        ShowLabel label1 = new ShowLabel("Identyfikator:");
+        listaLabeli.add(label1);
+        ShowLabel label2 = new ShowLabel("  " + this.identyfikator.toString(),this);
+        listaLabeli.add(label2);
+        ShowLabel label5 = new ShowLabel("Przystanek poczatkowy:");
+        listaLabeli.add(label5);
+        ShowLabel label6 = new ShowLabel("  " +this.getPrzystanekPoczatkowy().getNazwa(),this.getNastepnyPrzystanek());
+        listaLabeli.add(label6);
+        ShowLabel label11 = new ShowLabel("Obecne polozenie:");
+        listaLabeli.add(label11);
+        ShowLabel label12 = new ShowLabel(" "+this.obecnePolozenie.getNazwa(),this.getObecnePolozenie());
+        listaLabeli.add(label12);
+        ShowLabel label7 = new ShowLabel("Przystanek koncowy:");
+        listaLabeli.add(label7);
+        ShowLabel label8 = new ShowLabel("   " + this.getPrzystanekDocelowy().getNazwa(),this.getPrzystanekDocelowy());
+        listaLabeli.add(label8);
+        ShowLabel label9 = new ShowLabel("Obecna Trasa:");
+        listaLabeli.add(label9);
+//        ShowLabel label10 = new ShowLabel("");
+//        listaLabeli.add(label10);
+        for (int i = 1; i < this.pozostalaTrasa.size(); i++) {
+            ShowLabel label = new ShowLabel("   " + this.pozostalaTrasa.get(i).getNazwa(),this.pozostalaTrasa.get(i));
+            listaLabeli.add(label);
+        }
+        Controller controller = MainPanel.getLoader().getController();
+        if(controller.getGrid().getChildren().size()==listaLabeli.size()){
+            listaLabeli.clear();
+            return;
+        }
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                controller.getGrid().getChildren().clear();
+                for (int i = 0; i < listaLabeli.size(); i++) {
+                    listaLabeli.get(i).setFont(new Font(15.0));
+                    controller.getGrid().add(listaLabeli.get(i),0,i);
+                }
+            }
+        });
+    }
+
 }

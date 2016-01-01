@@ -44,15 +44,18 @@ public class MainPanel extends Application {
     private static Group  grupaMiejscZmianyKierunku = new Group();
     private static Group grupaDrog = new Group();
     private static Group grupaPojazdow = new Group();
-    public static boolean beginning = false;
+//    public static boolean beginning = false;
+//    private static Controller controller;
     //    private static MainPanel instance = null;
+    private static FXMLLoader  loader = new FXMLLoader();
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Mapa");
         this.primaryStage.setResizable(true);
         initRootLayout();
-        MainPanel.beginning=true;
+
+//        MainPanel.beginning=true;
     }
 
 //    public synchronized static MainPanel getInstance(){
@@ -63,6 +66,22 @@ public class MainPanel extends Application {
 //    }
 
 
+//    public static Controller getController() {
+//        return controller;
+//    }
+//
+//    public static void setController(Controller controller) {
+//        MainPanel.controller = controller;
+//    }
+
+
+    public static FXMLLoader getLoader() {
+        return loader;
+    }
+
+    public static void setLoader(FXMLLoader loader) {
+        MainPanel.loader = loader;
+    }
 
     public static Group getGrupaPojazdow() {
         return MainPanel.grupaPojazdow;
@@ -102,31 +121,19 @@ public class MainPanel extends Application {
 
     public void initRootLayout() {
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainPanel.class.getResource("Interfejs.fxml"));
-            Controller controller = loader.getController();
-//            controller.setMainPanel(this);
-            rootLayout = (AnchorPane) loader.load();
-//            for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
-//                Swiat.getInstance().getListaMiejscZmianyKierunku().get(i).rysuj(MainPanel.grupaMiejscZmianyKierunku);
-//            }
+//            FXMLLoader loader = new FXMLLoader();
+            this.loader.setLocation(MainPanel.class.getResource("Interfejs.fxml"));
+            Controller controller = this.loader.getController();
+            rootLayout = (AnchorPane) this.loader.load();
             System.out.println("grupa miejsc: "+grupaMiejscZmianyKierunku.getChildren().size());
-//            this.grupaMiejscZmianyKierunku.setEffect(new BoxBlur(2, 2, 1));
-//            for (int i = 0; i < Swiat.getInstance().getListaDrog().size(); i++) {
-//                Swiat.getInstance().getListaDrog().get(i).rysuj(this.grupaDrog);
-//            }
-//            this.grupaDrog.setEffect(new BoxBlur(2,2,1));
-            rootLayout.getChildren().add(MainPanel.grupaMiejscZmianyKierunku);
             rootLayout.getChildren().add(MainPanel.grupaDrog);
+            rootLayout.getChildren().add(MainPanel.grupaMiejscZmianyKierunku);
             rootLayout.getChildren().add(MainPanel.grupaPojazdow);
-            //Group group = new Group();
-            // Show the scene containing the root layout.
             Swiat.getInstance();
             Swiat.getInstance().stworzSwiat();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

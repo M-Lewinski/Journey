@@ -87,19 +87,4 @@ public class SamolotPasazerski extends Samolot {
         return SamolotPasazerski.typDrogi;
     }
 
-    //    @Override
-//    public void tworzenieTrasy(MiejsceZmianyKierunku przystanekPoczatkowy, MiejsceZmianyKierunku przystanekDocelowy){
-//        this.poinformujORezygnacjiPrzyjazdu(this.getTrasa());
-//        this.getTrasa().clear();
-//        this.getPozostalaTrasa().clear();
-//        this.setTrasa(szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,new DrogaPowietrzna()));
-//        if (this.getTrasa()==null){
-//            return;
-//        }
-//        this.getPozostalaTrasa().addAll(this.getTrasa());
-//        this.poinformujOZamiarzePrzyjazdu(this.getTrasa());
-//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-//    }
-
-
 }
