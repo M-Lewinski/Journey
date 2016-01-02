@@ -10,6 +10,7 @@ import sun.applet.Main;
 public class Informacja implements Runnable {
     private ShowInfo obecnaInformacja=null;
     private static Informacja instance = null;
+    private int rowCount=0;
     public Informacja(){
         Runnable runner = this;
         Thread thread = new Thread(runner);
@@ -31,13 +32,33 @@ public class Informacja implements Runnable {
         this.obecnaInformacja = obecnaInformacja;
     }
 
+    public int getRowCount() {
+        return rowCount;
+    }
+
+    public void setRowCount(int rowCount) {
+        this.rowCount = rowCount;
+    }
+
+    public void wyczysc(){
+        this.rowCount=0;
+        this.obecnaInformacja=null;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Controller controller = MainPanel.getLoader().getController();
+                controller.getGrid().getChildren().clear();
+            }
+        });
+    }
+
     @Override
     public void run() {
         try {
 //            Controller controller = MainPanel.getLoader().getController();
             while(true) {
                 if (obecnaInformacja != null) {
-                    obecnaInformacja.showInfo();
+                    rowCount=obecnaInformacja.showInfo(rowCount);
                 }
                 Thread.sleep(1000 / 30);
             }

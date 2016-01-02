@@ -87,4 +87,9 @@ public class SamolotPasazerski extends Samolot {
         return SamolotPasazerski.typDrogi;
     }
 
+    @Override
+    public void usuwanie() {
+        super.usuwanie();
+//        this.getLadunek()
+    }
 }

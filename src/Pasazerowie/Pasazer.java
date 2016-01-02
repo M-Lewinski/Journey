@@ -228,8 +228,8 @@ public class Pasazer implements ShowInfo,Runnable {
 
 
     @Override
-    public void showInfo() {
-
+    public int showInfo(int rowCount) {
+        return rowCount;
     }
 
     /**

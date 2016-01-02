@@ -285,7 +285,7 @@ public class Swiat extends ObiektGraficzny {
         Miasto topGun = new Miasto("Las Vegas",30,30,800,600,false,10);
         LotniskoCywilne airlineTycoon = new LotniskoCywilne("Airline Tycoon",30,30,120,440,false,10);
         LotniskoCywilne paryz = new LotniskoCywilne("Paryz", 30, 30, 700, 50, false, 10);
-        LotniskoWojskowe sop = new LotniskoWojskowe("SOP",30,30,300,50,false,10);
+        LotniskoWojskowe sop = new LotniskoWojskowe("SOP",30,30,285,65,false,10);
         LotniskoWojskowe po = new LotniskoWojskowe("PO",30,30,250,560,false,10);
         LotniskoWojskowe pa = new LotniskoWojskowe("PA",30,30,800,300,false,10);
         LotniskoWojskowe wsi = new LotniskoWojskowe("WSI",30,30,520,50,false,10);

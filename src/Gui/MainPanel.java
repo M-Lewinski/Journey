@@ -124,16 +124,18 @@ public class MainPanel extends Application {
 //            FXMLLoader loader = new FXMLLoader();
             this.loader.setLocation(MainPanel.class.getResource("Interfejs.fxml"));
             Controller controller = this.loader.getController();
+//            this.controller.getGrid()
             rootLayout = (AnchorPane) this.loader.load();
-            System.out.println("grupa miejsc: "+grupaMiejscZmianyKierunku.getChildren().size());
-            rootLayout.getChildren().add(MainPanel.grupaDrog);
+//            System.out.println("grupa miejsc: "+grupaMiejscZmianyKierunku.getChildren().size());
             rootLayout.getChildren().add(MainPanel.grupaMiejscZmianyKierunku);
+            rootLayout.getChildren().add(MainPanel.grupaDrog);
             rootLayout.getChildren().add(MainPanel.grupaPojazdow);
             Swiat.getInstance();
             Swiat.getInstance().stworzSwiat();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+//            controller.getScrollPanel().setStyle("edge-to-edge;");
         } catch (IOException e) {
             e.printStackTrace();
         }

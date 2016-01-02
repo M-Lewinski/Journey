@@ -360,6 +360,9 @@ public abstract class Droga implements Rysowanie {
         synchronized (hulk){
             for (int i = 0; i < pojazd.getDrogaTeraz().getListaPojazdow().size(); i++) {
                 Pojazd pojazdNaDrodze = pojazd.getDrogaTeraz().getListaPojazdow().get(i);
+//                if(pojazdNaDrodze.getImageNode()==null){
+//                    continue;
+//                }
                 if(pojazdNaDrodze.getImageNode().visibleProperty().get() == true){
                     double odlegloscMiedzyPojazdami = Math.abs(pojazd.getOdlegloscDoKonca()-pojazdNaDrodze.getOdlegloscDoKonca());
                     if(odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie){

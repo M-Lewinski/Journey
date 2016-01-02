@@ -28,7 +28,7 @@ public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
     }
 
     @Override
-    public void showInfo() {
-
+    public int showInfo(int rowCount) {
+        return rowCount;
     }
 }

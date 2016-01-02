@@ -3,6 +3,7 @@ package Mapa.ZmianyKierunku;
 import Gui.Controller;
 import Gui.Informacja;
 import Gui.MainPanel;
+import Gui.ShowLabel;
 import Mapa.Monitoring;
 import Drogi.Droga;
 import Mapa.PunktNaMapie;
@@ -13,6 +14,7 @@ import Pojazdy.Pojazd;
 import Pojazdy.Powietrzne.Samolot;
 import javafx.application.Platform;
 import javafx.scene.Group;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -30,6 +32,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
     private boolean zajetaPrzestrzen=false;
+    private Pojazd obecnieZajmuje = null;
     private double promien;
     private Shape outRing;
     private Color color;
@@ -134,13 +137,14 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     }
 
     public void ladowanie(Pojazd pojazd){
+        Boolean czyToJestMiejsceDoLadowania=false;
         synchronized (kontrolaLotow){
-            Boolean czyToJestMiejsceDoLadowania=false;
+            this.obecnieZajmuje=pojazd;
             if(this instanceof Przystanek){
                 Przystanek przystanek = (Przystanek) this;
                 if (pojazd.czyMozeTutajLadowac(this)==true){
                     if(pojazd instanceof Samolot){
-                        if(przystanek.getMaksymalnaPojemnosc()==0){
+                        if(przystanek.getMaksymalnaPojemnosc()<1){
                             return;
                         }
                         przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()-1);
@@ -165,11 +169,32 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
             else{
                 this.startowanie(pojazd);
             }
+//                pojazd.nastepnaDroga();
+////            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
+//                if(this instanceof Przystanek){
+//                    Przystanek przystanek = (Przystanek) this;
+//                    if(przystanek.getListaPojazdowZaparkowanych().contains(pojazd)){
+//                        if(pojazd instanceof Samolot){
+//                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()+1);
+//                        }
+//                        Platform.runLater(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                pojazd.getImageNode().visibleProperty().setValue(true);
+//                            }
+//                        });
+//                        przystanek.removePojazdZaparkowany(pojazd);
+//                    }
+//                }
+//                pojazd.poruszSie();
+//            }
         }
+        this.obecnieZajmuje=null;
     }
 
     public void startowanie(Pojazd pojazd){
         synchronized (kontrolaLotow){
+            this.obecnieZajmuje=pojazd;
             pojazd.nastepnaDroga();
 //            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
             if(this instanceof Przystanek){
@@ -189,6 +214,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
             }
             pojazd.poruszSie();
         }
+        this.obecnieZajmuje=null;
     }
 
     public MiejsceZmianyKierunku(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
@@ -237,20 +263,24 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     }
 
     @Override
-    public void showInfo(){
-        List<Label> listaLabeli = new ArrayList<Label>();
-        Label label1 = new Label(this.getNazwa());
+    public int showInfo(int rowCount){
+        List<Control> listaLabeli = new ArrayList<Control>();
+        ShowLabel label1 = new ShowLabel(this.getNazwa());
         listaLabeli.add(label1);
+        if(this.obecnieZajmuje!=null) {
+            ShowLabel label2 = new ShowLabel(this.obecnieZajmuje.getIdentyfikator().toString(), this.obecnieZajmuje);
+            listaLabeli.add(label2);
+        }
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 Controller controller = MainPanel.getLoader().getController();
                 controller.getGrid().getChildren().clear();
                 for (int i = 0; i < listaLabeli.size(); i++) {
-                    listaLabeli.get(i).setFont(new Font(15.0));
                     controller.getGrid().add(listaLabeli.get(i),0,i);
                 }
             }
         });
+        return listaLabeli.size();
     }
 }
