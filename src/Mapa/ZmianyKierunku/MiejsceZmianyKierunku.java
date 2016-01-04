@@ -12,6 +12,7 @@ import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
 import Pojazdy.Powietrzne.Samolot;
+import Pojazdy.TransportowiecCywilny;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.control.Control;
@@ -112,71 +113,167 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
         this.promienOuterRing = promienOuterRing;
     }
 
-    //    public javafx.scene.shape.Shape getImageNode() {
-//        return imageNode;
+//    public void poinformujSkrzyzowanie(){
+//
 //    }
 //
-//    public void setImageNode(javafx.scene.shape.Shape imageNode) {
-//        this.imageNode = imageNode;
+//    public void zajmij(Pojazd pojazd){
+//        this.zajetaPrzestrzen=true;
+//        this.listaPojazdowOczekujacych.remove(pojazd);
+//    }
+//    public void zwolnij(){
+//        this.zajetaPrzestrzen=false;
+//        poinformujPojazdy();
+//    }
+//
+//    public void poinformujPojazdy(){
+//        Pojazd pojazd = this.getListaPojazdowOczekujacych().get(0);
 //    }
 
-    public void poinformujSkrzyzowanie(){
 
+    public Pojazd getObecnieZajmuje() {
+        return obecnieZajmuje;
     }
 
-    public void zajmij(Pojazd pojazd){
-        this.zajetaPrzestrzen=true;
-        this.listaPojazdowOczekujacych.remove(pojazd);
-    }
-    public void zwolnij(){
-        this.zajetaPrzestrzen=false;
-        poinformujPojazdy();
-    }
-    public void poinformujPojazdy(){
-        Pojazd pojazd = this.getListaPojazdowOczekujacych().get(0);
+    public void setObecnieZajmuje(Pojazd obecnieZajmuje) {
+        this.obecnieZajmuje = obecnieZajmuje;
     }
 
     public void ladowanie(Pojazd pojazd){
         Boolean czyToJestMiejsceDoLadowania=false;
-        synchronized (kontrolaLotow){
-            this.obecnieZajmuje=pojazd;
-            if(this instanceof Przystanek){
-                Przystanek przystanek = (Przystanek) this;
-                if (pojazd.czyMozeTutajLadowac(this)==true){
-                    if(pojazd instanceof Samolot){
-                        if(przystanek.getMaksymalnaPojemnosc()<1){
-                            return;
+        synchronized (kontrolaLotow) {
+            synchronized (pojazd.getHulk()) {
+//               if(pojazd.przedLadowaniem(this)==false){
+//                   return;
+//               }
+                this.obecnieZajmuje = pojazd;
+//                if (this instanceof Przystanek) {
+                    if (pojazd.czyMozeTutajLadowac(this) == true) {
+                        Przystanek przystanek = (Przystanek) this;
+                        if (pojazd instanceof Samolot) {
+                            if (przystanek.getMaksymalnaPojemnosc() < 1) {
+                                return;
+                            }
+                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc() - 1);
                         }
-                        przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()-1);
+                        czyToJestMiejsceDoLadowania = true;
                     }
-                    czyToJestMiejsceDoLadowania=true;
+//                }
+                pojazd.poruszSie();
+                pojazd.setObecnePolozenie(this);
+                pojazd.getDrogaTeraz().removeListaPojazdow(pojazd);
+                pojazd.getPozostalaTrasa().remove(0);
+                pojazd.setDrogaTeraz(null);
+                if (czyToJestMiejsceDoLadowania == true) {
+                    pojazd.setWidocznosc(false);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            pojazd.getImageNode().visibleProperty().setValue(false);
+                        }
+                    });
+                    Przystanek przystanek = (Przystanek) this;
                     przystanek.addPojazdZaparkowany(pojazd);
+                    pojazd.ladowanie(przystanek);
+                    pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
+                } else {
+                    this.startowanie(pojazd);
                 }
+                this.obecnieZajmuje=null;
             }
-            pojazd.poruszSie();
-            pojazd.setObecnePolozenie(this);
-            pojazd.getDrogaTeraz().removeListaPojazdow(pojazd);
-            pojazd.getPozostalaTrasa().remove(0);
-            if(czyToJestMiejsceDoLadowania==true){
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        pojazd.getImageNode().visibleProperty().setValue(false);
-                    }
-                });
-                pojazd.ladowanie();
-            }
-            else{
-                this.startowanie(pojazd);
-            }
-//                pojazd.nastepnaDroga();
-////            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
-//                if(this instanceof Przystanek){
-//                    Przystanek przystanek = (Przystanek) this;
-//                    if(przystanek.getListaPojazdowZaparkowanych().contains(pojazd)){
-//                        if(pojazd instanceof Samolot){
-//                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()+1);
+        }
+    }
+//
+//    public void ladowanie(Pojazd pojazd){
+//        Boolean czyToJestMiejsceDoLadowania=false;
+//        synchronized (kontrolaLotow) {
+//            synchronized (pojazd.getHulk()) {
+//               if(pojazd.przedLadowaniem(this)==false){
+//                   return;
+//               }
+//                this.obecnieZajmuje = pojazd;
+//                if (this instanceof Przystanek) {
+//                    if (pojazd.czyMozeTutajLadowac(this) == true) {
+//                        Przystanek przystanek = (Przystanek) this;
+//                        if (pojazd instanceof Samolot) {
+//                            if (przystanek.getMaksymalnaPojemnosc() < 1) {
+//                                return;
+//                            }
+//                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc() - 1);
 //                        }
+//                        czyToJestMiejsceDoLadowania = true;
+////                    przystanek.addPojazdZaparkowany(pojazd);
+//                    }
+//                }
+//                pojazd.poruszSie();
+//                pojazd.setObecnePolozenie(this);
+//                pojazd.getDrogaTeraz().removeListaPojazdow(pojazd);
+//                pojazd.getPozostalaTrasa().remove(0);
+//                pojazd.setDrogaTeraz(null);
+//                if (czyToJestMiejsceDoLadowania == true) {
+//                    pojazd.setWidocznosc(false);
+//                    Platform.runLater(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            pojazd.getImageNode().visibleProperty().setValue(false);
+//                        }
+//                    });
+//                    Przystanek przystanek = (Przystanek) this;
+//                    przystanek.addPojazdZaparkowany(pojazd);
+//                    pojazd.ladowanie();
+//                    pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
+//                } else {
+//                    this.startowanie(pojazd);
+//                }
+//                this.obecnieZajmuje=null;
+//            }
+//        }
+//    }
+
+    public void startowanie(Pojazd pojazd){
+        synchronized (kontrolaLotow) {
+            synchronized (pojazd.getHulk()) {
+//                if(pojazd.przedStartowaniem(this)==false){
+//                    return;
+//                }
+                this.obecnieZajmuje = pojazd;
+//            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
+                if (this instanceof Przystanek) {
+                    Przystanek przystanek = (Przystanek) this;
+                    if (przystanek.getListaPojazdowZaparkowanych().contains(pojazd)) {
+                        if (pojazd instanceof Samolot) {
+                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc() + 1);
+                        }
+                        pojazd.setWidocznosc(true);
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                pojazd.getImageNode().visibleProperty().setValue(true);
+                            }
+                        });
+                        przystanek.removePojazdZaparkowany(pojazd);
+                    }
+                }
+                pojazd.nastepnaDroga();
+                pojazd.poruszSie();
+                this.obecnieZajmuje = null;
+            }
+        }
+    }
+
+//
+//    public void startowanie(Pojazd pojazd){
+//        synchronized (kontrolaLotow) {
+//            synchronized (pojazd.getHulk()) {
+//                this.obecnieZajmuje = pojazd;
+////            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
+//                if (this instanceof Przystanek) {
+//                    Przystanek przystanek = (Przystanek) this;
+//                    if (przystanek.getListaPojazdowZaparkowanych().contains(pojazd)) {
+//                        if (pojazd instanceof Samolot) {
+//                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc() + 1);
+//                        }
+//                        pojazd.setWidocznosc(true);
 //                        Platform.runLater(new Runnable() {
 //                            @Override
 //                            public void run() {
@@ -186,37 +283,13 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 //                        przystanek.removePojazdZaparkowany(pojazd);
 //                    }
 //                }
+//                pojazd.nastepnaDroga();
 //                pojazd.poruszSie();
+//                this.obecnieZajmuje = null;
 //            }
-        }
-        this.obecnieZajmuje=null;
-    }
-
-    public void startowanie(Pojazd pojazd){
-        synchronized (kontrolaLotow){
-            this.obecnieZajmuje=pojazd;
-            pojazd.nastepnaDroga();
-//            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
-            if(this instanceof Przystanek){
-                Przystanek przystanek = (Przystanek) this;
-                if(przystanek.getListaPojazdowZaparkowanych().contains(pojazd)){
-                    if(pojazd instanceof Samolot){
-                        przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc()+1);
-                    }
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            pojazd.getImageNode().visibleProperty().setValue(true);
-                        }
-                    });
-                    przystanek.removePojazdZaparkowany(pojazd);
-                }
-            }
-            pojazd.poruszSie();
-        }
-        this.obecnieZajmuje=null;
-    }
-
+//        }
+//    }
+//
     public MiejsceZmianyKierunku(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
         super(dlugosc, szerokosc);
         this.setPolozenieX(polozenieX);
@@ -263,24 +336,23 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     }
 
     @Override
-    public int showInfo(int rowCount){
-        List<Control> listaLabeli = new ArrayList<Control>();
-        ShowLabel label1 = new ShowLabel(this.getNazwa());
-        listaLabeli.add(label1);
-        if(this.obecnieZajmuje!=null) {
-            ShowLabel label2 = new ShowLabel(this.obecnieZajmuje.getIdentyfikator().toString(), this.obecnieZajmuje);
-            listaLabeli.add(label2);
+    public List<Control> potrzebneInformacje() {
+        List<Control> listaNodow = new ArrayList<Control>();
+        ShowLabel showLabel1 = new ShowLabel("Nazwa:");
+        listaNodow.add(showLabel1);
+        ShowLabel showLabel2 = new ShowLabel(this.getNazwa(),this);
+        listaNodow.add(showLabel2);
+        ShowLabel showLabel3 = new ShowLabel("Obecnie zajmowane przez:");
+        listaNodow.add(showLabel3);
+        if(this.obecnieZajmuje!=null){
+            ShowLabel showLabel4 = new ShowLabel(this.obecnieZajmuje.getIdentyfikator().toString(),this.obecnieZajmuje);
+            listaNodow.add(showLabel4);
         }
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Controller controller = MainPanel.getLoader().getController();
-                controller.getGrid().getChildren().clear();
-                for (int i = 0; i < listaLabeli.size(); i++) {
-                    controller.getGrid().add(listaLabeli.get(i),0,i);
-                }
-            }
-        });
-        return listaLabeli.size();
+        else{
+            ShowLabel showLabel4 = new ShowLabel("Nikt");
+            listaNodow.add(showLabel4);
+        }
+        return listaNodow;
     }
+
 }

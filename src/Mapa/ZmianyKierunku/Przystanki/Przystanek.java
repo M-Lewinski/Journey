@@ -1,12 +1,15 @@
 package Mapa.ZmianyKierunku.Przystanki;
 
+import Gui.ShowLabel;
 import Mapa.Swiat;
 import Pasazerowie.Pasazer;
 import Pojazdy.Pojazd;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import javafx.scene.control.Control;
 import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 /**
@@ -28,9 +31,93 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         return maksymalnaPojemnosc;
     }
 
-    public void poinformujPasazerow(){
-        Swiat.getInstance().addPrzystanek(this);
+    public void poinformujPasazerow(List<Pasazer> listaOznajmionychPasazerow){
+        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
+            if(!listaOznajmionychPasazerow.contains(this.listaPasazerowOczekujacych.get(i))) {
+                this.listaPasazerowOczekujacych.get(i).setDoszloDoZmiany(true);
+                listaOznajmionychPasazerow.add(this.listaPasazerowOczekujacych.get(i));
+//                System.out.println("wie");
+            }
+        }
+
+        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size() ; i++) {
+            if(!listaOznajmionychPasazerow.contains(this.listaPasazerowPrzyjezdzajacych.get(i))) {
+                this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
+                listaOznajmionychPasazerow.add(this.listaPasazerowPrzyjezdzajacych.get(i));
+//                System.out.println("wie");
+            }
+        }
     }
+//
+//    public void poinformujPasazerow(){
+//        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
+//            this.listaPasazerowOczekujacych.get(i).setDoszloDoZmiany(true);
+//        }
+//
+//        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size() ; i++) {
+//            this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
+//        }
+//    }
+
+    public void rezygnacjaPrzylotu(){
+        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
+            if(this.listaPasazerowOczekujacych.get(i).getPozostalaTrasa()!=null){
+                System.out.println("Znalazlem nowa trase " +listaPasazerowOczekujacych.get(i).getImie());
+                this.listaPasazerowOczekujacych.get(i).setDoszloDoZmiany(true);
+            }
+        }
+        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size(); i++) {
+            if(this.listaPasazerowPrzyjezdzajacych.get(i).getPozostalaTrasa()!=null){
+                System.out.println("Znalazlem nowa trase " +listaPasazerowOczekujacych.get(i).getImie());
+                this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
+            }
+        }
+    }
+
+    public void zamiarPrzylotu(){
+        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
+            if(listaPasazerowOczekujacych.get(i).getPozostalaTrasa()==null){
+                System.out.println("Znalazlem nowa trase " +listaPasazerowOczekujacych.get(i).getImie());
+                this.listaPasazerowOczekujacych.get(i).setDoszloDoZmiany(true);
+            }
+        }
+        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size(); i++) {
+            if(listaPasazerowPrzyjezdzajacych.get(i).getPozostalaTrasa()==null){
+                System.out.println("Znalazlem nowa trase " +listaPasazerowOczekujacych.get(i).getImie());
+                this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
+
+            }
+
+        }
+    }
+
+//    public void poinformujPasazerow(Pojazd pojazd) {
+//        poinformowanie(this.listaPasazerowOczekujacych, pojazd);
+//        poinformowanie(this.listaPasazerowPrzyjezdzajacych,pojazd);
+//    }
+//
+//    private void poinformowanie(List<Pasazer> listaPasazerow,Pojazd pojazd) {
+//        boolean wymaganaJestZmiana;
+//        for (int i = 0; i < listaPasazerow.size(); i++) {
+//            wymaganaJestZmiana=false;
+//            List<Przystanek> pozostalaTrasa = listaPasazerow.get(i).getPozostalaTrasa();
+// //
+//            if(pozostalaTrasa!=null) {
+//                for (int j = 0; j < pozostalaTrasa.size(); j++) {
+//                    if (pojazd.getTrasa().contains(pozostalaTrasa.get(j))) {
+//                        wymaganaJestZmiana = true;
+//                        break;
+//                    }
+//                }
+//            }
+//            else{
+//                wymaganaJestZ//miana=true;
+//            }
+//            if(wymaganaJestZmi//ana==true){
+//                listaPasazerow.get(i).setDoszloDoZm//iany(true);
+//            //}
+//        }
+//    }
 
     public List<Pojazd> getListaPojazdowZaparkowanych() {
         return listaPojazdowZaparkowanych;
@@ -107,4 +194,34 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     }
 
 
+
+    @Override
+    public List<Control> potrzebneInformacje() {
+        List<Control> listaNodow = super.potrzebneInformacje();
+        ShowLabel showLabel1 = new ShowLabel("Ilosc miejsc wolnych:");
+        listaNodow.add(showLabel1);
+        ShowLabel showLabel2 = new ShowLabel(Double.toString(this.maksymalnaPojemnosc));
+        listaNodow.add(showLabel2);
+        ShowLabel label20 = new ShowLabel("Lista pojazdow przyjezdzajacych:");
+        listaNodow.add(label20);
+        for (int i = 0; i < this.listaPojazdowPrzyjezdzajacych.size(); i++) {
+            ShowLabel label21 = new ShowLabel(this.getListaPojazdowPrzyjezdzajacych().get(i).getIdentyfikator().toString(),this.getListaPojazdowPrzyjezdzajacych().get(i));
+            listaNodow.add(label21);
+        }
+        ShowLabel showLabel4 = new ShowLabel("Lista Pasazerow:");
+        listaNodow.add(showLabel4);
+        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
+            Pasazer pasazer = this.listaPasazerowOczekujacych.get(i);
+            ShowLabel showLabel = new ShowLabel(pasazer.getImie()+ " " + pasazer.getNazwisko(),pasazer);
+            listaNodow.add(showLabel);
+        }
+        ShowLabel showLabel3 = new ShowLabel("Lista pojazdow:");
+        listaNodow.add(showLabel3);
+        for (int i = 0; i < this.getListaPojazdowZaparkowanych().size(); i++) {
+            Pojazd pojazd = this.getListaPojazdowZaparkowanych().get(i);
+            ShowLabel showLabel = new ShowLabel(pojazd.getIdentyfikator().toString(),pojazd);
+            listaNodow.add(showLabel);
+        }
+        return  listaNodow;
+    }
 }

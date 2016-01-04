@@ -3,29 +3,27 @@ package Pojazdy.Powietrzne;
 import Drogi.Droga;
 import Drogi.DrogaPowietrzna;
 import Gui.MainPanel;
-import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.LotniskoCywilne;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
+import Pasazerowie.Pasazer;
+import Pojazdy.Ladunki.Pasazerski;
+import Pojazdy.TransportowiecCywilny;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import sun.applet.Main;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Lewin on 2015-10-18.
  */
-public class SamolotPasazerski extends Samolot {
+public class SamolotPasazerski extends Samolot implements TransportowiecCywilny {
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
-    public SamolotPasazerski(double dlugosc, double szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-        super( dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
-
-
+    private Pasazerski ladunek;
+    public SamolotPasazerski(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
+        super( dlugosc, szerokosc, maksymalnaPredkosc, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
 //        okreslNowePolozenie(listaGdzieMozeLadowac);
 //        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
 //        wypisywanieTrasy(this.getTrasa());
@@ -34,20 +32,7 @@ public class SamolotPasazerski extends Samolot {
 //        this.nastepnaDroga();
         this.setTymczasowyKolor(Color.YELLOW);
         this.rysuj(MainPanel.getGrupaPojazdow());
-
-//        System.out.println("droga teraz: " + this.getDrogaTeraz().getKoniec().getNazwa());
-        //        this.nastepnaDroga();
-//        Rectangle rectangle = new Rectangle(30,30, Color.BLACK);
-//        rectangle.setVisible(false);
-//        this.setImageNode(rectangle);
-
-//        System.out.println(this.getDrogaTeraz().getKoniec().getNazwa());
-        //this.setDrogaTeraz(this.getPrzystanekPoczatkowy().ge);
-//        LinkedList<MiejsceZmianyKierunku> testList = new LinkedList<MiejsceZmianyKierunku>();
-//        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
-//            testList.add(Swiat.getInstance().getListaMiejscZmianyKierunku().get(i));
-//        }
-//        this.setTrasa(testList);
+        ladunek = new Pasazerski();
     }
     public static List<MiejsceZmianyKierunku> getListaGdzieMozeLadowac() {
         return listaGdzieMozeLadowac;
@@ -90,6 +75,116 @@ public class SamolotPasazerski extends Samolot {
     @Override
     public void usuwanie() {
         super.usuwanie();
-//        this.getLadunek()
+        this.ladunek.usuwanie();
+    }
+
+    @Override
+    public boolean wsiadanie(Pasazer pasazer) {
+        synchronized (this.getHulk()){
+            if(pasazer.getObecnePolozenie() instanceof Przystanek){
+                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
+                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
+                    return false;
+                }
+            }
+            if(this.ladunek.getMaksymalnaLiczbaPasazerow()-this.ladunek.getObecnaLiczbaPasazerow()>0){
+                this.ladunek.addPasazer(pasazer);
+                this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()+1);
+                return true;
+            }
+            return false;
+        }
+    }
+
+//    @Override
+//    public void wsiadanie(Pasazer pasazer) {
+//        synchronized (this.getHulk()){
+//            if(pasazer.getObecnePolozenie() instanceof Przystanek){
+//                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
+//                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
+//                    return;
+//                }
+//            }
+//            if(this.ladunek.getMaksymalnaLiczbaPasazerow()-this.ladunek.getObecnaLiczbaPasazerow()>0){
+//                this.ladunek.addPasazer(pasazer);
+//                this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()+1);
+//            }
+//        }
+//    }
+
+
+//    @Override
+//    public boolean przedLadowaniem(MiejsceZmianyKierunku miejsceZmianyKierunku) {
+//        if(super.przedLadowaniem(miejsceZmianyKierunku)==false){
+//            return false;
+//        }
+//        this.ladunek.znalezienieOsobWysiadajacych((Przystanek) miejsceZmianyKierunku);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean poLadowaniu(MiejsceZmianyKierunku miejsceZmianyKierunku) {
+//        if(super.poLadowaniu(miejsceZmianyKierunku)==false){
+//            return false;
+//        }
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean poStartowaniu(MiejsceZmianyKierunku miejsceZmianyKierunku) {
+//        if (super.poStartowaniu(miejsceZmianyKierunku)==false){
+//            return false;
+//        }
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean przedStartowaniem(MiejsceZmianyKierunku miejsceZmianyKierunku) {
+//         if(super.przedStartowaniem(miejsceZmianyKierunku)==true){
+//             return false;
+//         }
+//        if(this.czyMozeTutajLadowac(miejsceZmianyKierunku)){
+//            Przystanek przystanek = (Przystanek) miejsceZmianyKierunku;
+//
+//            List<Pasazer> listaPasazerow = przystanek.getListaPasazerowOczekujacych();
+//            for (int i = 0; i < listaPasazerow.size(); i++) {
+//                if(listaPasazerow.get(i).getNastepnyPrzystanek()==this.getNastepnyPrzystanek()){
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
+
+//    @Override
+//    public void ladowanie(Przystanek przystanek) {
+//        super.ladowanie(przystanek);
+//        this.ladunek.znalezienieOsobWysiadajacych(przystanek);
+//    }
+
+    @Override
+    public void wysiadanie(Pasazer pasazer) {
+        synchronized (this.getHulk()){
+            this.ladunek.removePasazer(pasazer);
+            this.ladunek.removeWysiadajacyPasazer(pasazer);
+            this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);
+        }
+    }
+
+//    @Override
+//    public void wysiadanie() {
+//        synchronized (this.getHulk()){
+//            this.ladunek.znalezienieOsobWysiadajacych(this.getNastepnyPrzystanek());
+//        }
+//    }
+
+    public Pasazerski getLadunek() {
+        return ladunek;
+    }
+
+    public void setLadunek(Pasazerski ladunek) {
+        this.ladunek = ladunek;
     }
 }

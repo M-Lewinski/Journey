@@ -15,6 +15,7 @@ import javafx.scene.control.Control;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -26,9 +27,10 @@ public abstract class Samolot extends Pojazd {
 //    private MiejsceZmianyKierunku nastepnyPrzystanek;
 
 //    public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
-    public Samolot(double dlugosc, double szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
+    public Samolot(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
         super(dlugosc, szerokosc, maksymalnaPredkosc);
-        this.liczbaPersonelu = liczbaPersonelu;
+        Random random = new Random();
+        this.liczbaPersonelu = random.nextInt(10)+4;
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
         this.aktualnaIloscPaliwa = aktualnaIloscPaliwa;
     }
@@ -40,18 +42,18 @@ public abstract class Samolot extends Pojazd {
     @Override
     public List<Control> potrzebneInformacje() {
         List<Control> listaNodow = super.potrzebneInformacje();
-        ShowLabel label1 = new ShowLabel("Liczba za³ogi:");
-        listaNodow.add(4,label1);
-        ShowLabel label2 = new ShowLabel(Integer.toString(this.liczbaPersonelu));
-        listaNodow.add(5,label2);
-        ShowLabel label3 = new ShowLabel("Maksymalna ilosc paliwa:");
+        ShowLabel label1 = new ShowLabel("Liczba zalogi: "+ Integer.toString(this.liczbaPersonelu));
+        listaNodow.add(5,label1);
+//        ShowLabel label2 = new ShowLabel(Integer.toString(this.liczbaPersonelu));
+//        listaNodow.add(4,label2);
+        ShowLabel label3 = new ShowLabel("Maksymalna ilosc paliwa: " + Double.toString(this.maksymalnaIloscPaliwa) + " litrow");
         listaNodow.add(6,label3);
-        ShowLabel label4 = new ShowLabel(Double.toString(this.maksymalnaIloscPaliwa));
-        listaNodow.add(7,label4);
-        ShowLabel label5 = new ShowLabel("Aktualna ilosc paliwa:");
-        listaNodow.add(8,label5);
-        ShowLabel label6 = new ShowLabel(Double.toString(this.aktualnaIloscPaliwa));
-        listaNodow.add(9,label6);
+//        ShowLabel label4 = new ShowLabel(Double.toString(this.maksymalnaIloscPaliwa) + " litrow");
+//        listaNodow.add(6,label4);
+        ShowLabel label5 = new ShowLabel("Aktualna ilosc paliwa: " + Double.toString(this.aktualnaIloscPaliwa) + " litrow");
+        listaNodow.add(7,label5);
+//        ShowLabel label6 = new ShowLabel(Double.toString(this.aktualnaIloscPaliwa) + " litrow");
+//        listaNodow.add(9,label6);
         return  listaNodow;
     }
 
@@ -89,19 +91,6 @@ public abstract class Samolot extends Pojazd {
     public void awaryjneLadowanie(){
 
     }
-
-//    public void poinformujMiejsceZmianyKierunku(){
-//
-//    }
-//    public void tworzenieTrasy(){
-//        this.setTrasa(szukanieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),new DrogaPowietrzna()));
-////        this.addPunktTrasy(Swiat.getInstance().getListaLotniskWojskowych().get(0));
-////        List<Object> listaMozliwychLadowan = new ArrayList<Object>();
-////        listaMozliwychLadowan.add(new Miasto());
-////        listaMozliwychLadowan.add(new LotniskoCywilne());
-//        poinformujOPrzyjezdzie(Pojazd.getListaGdzieMozeLadowac());
-//        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa(),this.getTrasa().get(0),Pojazd.getListaGdzieMozeLadowac()));
-//    }
 
 
     @Override

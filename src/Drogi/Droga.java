@@ -13,6 +13,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** Klasa droga implementujaca abstrakcje obiektu droga.
  * Created by Lewin on 2015-10-18.
@@ -358,17 +359,23 @@ public abstract class Droga implements Rysowanie {
 
     public boolean czyDojdzieDoZderzenia(Pojazd pojazd, double przesuniecie){
         synchronized (hulk){
-            for (int i = 0; i < pojazd.getDrogaTeraz().getListaPojazdow().size(); i++) {
-                Pojazd pojazdNaDrodze = pojazd.getDrogaTeraz().getListaPojazdow().get(i);
-//                if(pojazdNaDrodze.getImageNode()==null){
-//                    continue;
-//                }
-                if(pojazdNaDrodze.getImageNode().visibleProperty().get() == true){
-                    double odlegloscMiedzyPojazdami = Math.abs(pojazd.getOdlegloscDoKonca()-pojazdNaDrodze.getOdlegloscDoKonca());
-                    if(odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie){
-                        if(pojazd.getOdlegloscDoKonca() > pojazdNaDrodze.getOdlegloscDoKonca()){
+            List<Pojazd> listaPojazdowNaDrodze = new ArrayList<>(this.getListaPojazdow());
+//            for (int i = 0; i < this.getListaPojazdow().size(); i++) {
+            for (int i = 0; i < listaPojazdowNaDrodze.size(); i++) {
+//                Pojazd pojazdNaDrodze = this.getListaPojazdow().get(i);
+                Pojazd pojazdNaDrodze = listaPojazdowNaDrodze.get(i);
+                if (pojazdNaDrodze == pojazd) {
+                    if (pojazdNaDrodze == null) {
+                        continue;
+                    }
+//                if(pojazdNaDrodze.getImageNode().visibleProperty().get() == true){
+                    if (pojazdNaDrodze.isWidocznosc() == true) {
+                        double odlegloscMiedzyPojazdami = Math.abs(pojazd.getOdlegloscDoKonca() - pojazdNaDrodze.getOdlegloscDoKonca());
+                        if (odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie) {
+                            if (pojazd.getOdlegloscDoKonca() > pojazdNaDrodze.getOdlegloscDoKonca()) {
 //                            System.out.println("Za blisko");
-                            return true;
+                                return true;
+                            }
                         }
                     }
                 }

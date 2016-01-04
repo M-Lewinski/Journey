@@ -48,13 +48,13 @@ public class Controller {
 
     @FXML
     public void handleStworzSamolotPasazerski(){
-        SamolotPasazerski samolotPasazerski = new SamolotPasazerski(14,14,15,10,10,10);
+        SamolotPasazerski samolotPasazerski = new SamolotPasazerski(14,14,15,10,10);
         System.out.println("Stworzono nowy samolot pasazerski");
     }
 
     @FXML
     public void handleStworzSamolotWojskowy(){
-        SamolotWojskowy samolotWojskowy = new SamolotWojskowy(14,14,15,10,10,10);
+        SamolotWojskowy samolotWojskowy = new SamolotWojskowy(14,14,15,10,10);
         System.out.println("Sworzono nowy samolot wojskowy");
     }
 

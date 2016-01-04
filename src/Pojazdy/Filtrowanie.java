@@ -11,4 +11,5 @@ import java.util.List;
 public interface Filtrowanie {
     public List<MiejsceZmianyKierunku> getMozliweLadowania();
     public Droga getTypDrogi();
+    public boolean czyMozeTutajLadowac(Object doSprawdzenia);
 }

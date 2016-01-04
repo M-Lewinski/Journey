@@ -23,8 +23,8 @@ public class SamolotWojskowy extends Samolot {
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
 //    public SamolotWojskowy(double dlugosc, double szerokosc, double polozenieX, double polozenieY, double maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-    public SamolotWojskowy(double dlugosc, double szerokosc, double maksymalnaPredkosc, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-        super(dlugosc, szerokosc, maksymalnaPredkosc, liczbaPersonelu, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
+    public SamolotWojskowy(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
+        super(dlugosc, szerokosc, maksymalnaPredkosc, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
 
 
 //        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();

@@ -29,6 +29,7 @@ public class Informacja implements Runnable {
     }
 
     public void setObecnaInformacja(ShowInfo obecnaInformacja) {
+        Informacja.getInstance().wyczysc();
         this.obecnaInformacja = obecnaInformacja;
     }
 

@@ -1,5 +1,16 @@
 package Mapa;
 
+import Gui.Controller;
+import Gui.MainPanel;
+import Gui.ShowLabel;
+import javafx.application.Platform;
+import javafx.scene.control.Button;
+import javafx.scene.control.Control;
+import javafx.scene.control.Labeled;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
     private double polozenieX;
     private double polozenieY;
@@ -27,8 +38,68 @@ public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
     public PunktNaMapie(){
     }
 
+    public abstract List<Control> potrzebneInformacje();
+
     @Override
     public int showInfo(int rowCount) {
-        return rowCount;
+        List<Control> listaNodow = new ArrayList<Control>();
+        listaNodow.addAll(this.potrzebneInformacje());
+        Controller controller = MainPanel.getLoader().getController();
+//        if(controller.getGrid().getChildren().size()==listaNodow.size()){
+//            listaNodow.clear();
+//            return rowCount;
+//        }
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                boolean rozne =false;
+                if(controller.getGrid().getChildren().size()!= listaNodow.size()){
+                    controller.getGrid().getChildren().clear();
+                    rozne=true;
+                }
+                if(rozne==false){
+                    for (int i = 0; i < controller.getGrid().getChildren().size(); i++) {
+                        int row = controller.getGrid().getRowIndex(controller.getGrid().getChildren().get(i));
+                        if(controller.getGrid().getChildren().get(i) instanceof Labeled && listaNodow.get(row) instanceof Labeled){
+                            if(((Labeled) controller.getGrid().getChildren().get(i)).getText().equals(((Labeled) listaNodow.get(row)).getText())){
+                                continue;
+                            }
+
+                        }
+//                        if(controller.getGrid().getChildren().get(i) instanceof ShowLabel && listaNodow.get(row) instanceof ShowLabel) {
+//                            if(((ShowLabel) controller.getGrid().getChildren().get(i)).getText().equals(((ShowLabel) listaNodow.get(row)).getText())){
+//                                continue;
+//                            }
+//                        }
+//                        if(controller.getGrid().getChildren().get(i) instanceof Button && listaNodow.get(row) instanceof Button){
+//                            if(((Button) controller.getGrid().getChildren().get(i)).getText().equals())
+//                        }
+                        controller.getGrid().getChildren().remove(i);
+                        i--;
+                        controller.getGrid().add(listaNodow.get(row),0,row);
+                    }
+                }
+                else{
+                    for (int i = 0; i < listaNodow.size(); i++) {
+                        controller.getGrid().add(listaNodow.get(i),0,i);
+                    }
+                }
+            }
+//                for (int i = 0; i < listaNodow.size(); i++) {
+//                    int row=i;
+//                    if(rozne==false) {
+////                        row = controller.getGrid().getRowIndex(controller.getGrid().getChildren().get(i));
+//                        if(controller.getGrid().getChildren().get(i) instanceof ShowLabel && listaNodow.get(i) instanceof ShowLabel) {
+//                            if(((ShowLabel) controller.getGrid().getChildren().get(i)).getText().equals(((ShowLabel) listaNodow.get(i)).getText())){
+//                                continue;
+//                            }
+//                        }
+//                            controller.getGrid().getChildren().remove(i);
+//                    }
+//                    controller.getGrid().add(listaNodow.get(row), 0, row);
+//                }
+        });
+        return listaNodow.size();
     }
 }
