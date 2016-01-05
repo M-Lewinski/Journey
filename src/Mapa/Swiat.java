@@ -32,6 +32,7 @@ public class Swiat extends ObiektGraficzny {
     private List<Runnable> listaRunnable = new LinkedList<Runnable>();
     private List<Thread> listaThread = new LinkedList<Thread>();
     private List<Pasazer> listaPasazerow = new ArrayList<Pasazer>();
+    private List<Pojazd> listaWolnychPojazdow = new ArrayList<Pojazd>();
     /**
      * lista wszystkich drog.
      */
@@ -80,6 +81,17 @@ public class Swiat extends ObiektGraficzny {
         return instance;
     }
 
+
+    public List<Pojazd> getListaWolnychPojazdow() {
+        return listaWolnychPojazdow;
+    }
+
+    public void setListaWolnychPojazdow(List<Pojazd> listaWolnychPojazdow) {
+        this.listaWolnychPojazdow = listaWolnychPojazdow;
+    }
+    public void removeWolnyPojazd(Pojazd pojazd){
+        this.listaWolnychPojazdow.remove(pojazd);
+    }
     public List<Thread> getListaThread() {
         return listaThread;
     }
@@ -280,70 +292,70 @@ public class Swiat extends ObiektGraficzny {
 
     public void stworzSwiat(){
         //Swiat.getInstance();
-        Miasto warszawa = new Miasto("Warszawa", 30,30, 50, 280, false, 10);
-        Miasto berlin = new Miasto("Berlin", 30, 30, 590, 300, false, 10);
-        Miasto topGun = new Miasto("Las Vegas",30,30,800,600,false,10);
+        Miasto warszawa = new Miasto("Warszawa", 30,30, 50, 280, true);
+        Miasto berlin = new Miasto("Berlin", 30, 30, 590, 300, true);
+        Miasto topGun = new Miasto("Las Vegas",30,30,800,600, true);
 //        LotniskoCywilne airlineTycoon = new LotniskoCywilne("Airline Tycoon",30,30,120,440,false,10);
-        LotniskoWojskowe airlineTycoon = new LotniskoWojskowe("SOP",30,30,120,440,false,10);
-        LotniskoCywilne paryz = new LotniskoCywilne("Paryz", 30, 30, 700, 50, false, 10);
+        LotniskoWojskowe airlineTycoon = new LotniskoWojskowe("SOP",30,30,120,440,true);
+        LotniskoCywilne paryz = new LotniskoCywilne("Paryz", 30, 30, 700, 50,true);
 //        LotniskoWojskowe sop = new LotniskoWojskowe("SOP",30,30,300,50,false,10);
-        LotniskoCywilne sop = new LotniskoCywilne("AirLine Tycoon",30,30,300,50,false,10);
-        LotniskoWojskowe po = new LotniskoWojskowe("PO",30,30,250,560,false,10);
-        LotniskoWojskowe pa = new LotniskoWojskowe("PA",30,30,800,300,false,10);
-        LotniskoWojskowe wsi = new LotniskoWojskowe("WSI",30,30,410,210,false,10);
+        LotniskoCywilne sop = new LotniskoCywilne("AirLine Tycoon",30,30,300,50,true);
+        LotniskoWojskowe po = new LotniskoWojskowe("PO",30,30,250,560,true);
+        LotniskoWojskowe pa = new LotniskoWojskowe("PA",30,30,800,300,true);
+        LotniskoWojskowe wsi = new LotniskoWojskowe("WSI",30,30,410,210,true);
 //        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,100,100,false,10);
-        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,450,280,false,10);
-        Port port1 = new Port("Green Gun",30,30,360,550,false);
-        Port port2 = new Port("Blue Gun",30,30,600,400,false);
-        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S:A", 30, 30, 300, 245, false);
-        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S:B", 30, 30, 660, 200, false);
-        Skrzyzowanie skrzyzowanie3 = new Skrzyzowanie("S:C",30,30,780,400,false);
-        Skrzyzowanie skrzyzowanie4 = new Skrzyzowanie("S:D",30,30,300,440,false);
-        Skrzyzowanie skrzyzowanie5 = new Skrzyzowanie("S:E",30,30,450,50,false);
-        Skrzyzowanie skrzyzowanie6 = new Skrzyzowanie("S:F",30,30,445,370,false);
-        Skrzyzowanie skrzyzowanie7 = new Skrzyzowanie("S:G",30,30,570,575,false);
-        DrogaPowietrzna drogaPowietrzna1 = new DrogaPowietrzna(warszawa,skrzyzowanie1,0,0);
-        DrogaPowietrzna drogaPowietrzna2 = new DrogaPowietrzna(skrzyzowanie1,warszawa,0,0);
-        DrogaPowietrzna drogaPowietrzna5 = new DrogaPowietrzna(berlin,skrzyzowanie2,0,0);
-        DrogaPowietrzna drogaPowietrzna6 = new DrogaPowietrzna(skrzyzowanie2,berlin,0,0);
-        DrogaPowietrzna drogaPowietrzna7 = new DrogaPowietrzna(skrzyzowanie2,paryz,0,0);
-        DrogaPowietrzna drogaPowietrzna8 = new DrogaPowietrzna(paryz,skrzyzowanie2,0,0);
-        DrogaPowietrzna drogaPowietrzna9 = new DrogaPowietrzna(sop,skrzyzowanie5,0,0);
-        DrogaPowietrzna drogaPowietrzna10 = new DrogaPowietrzna(skrzyzowanie5,sop,0,0);
-        DrogaPowietrzna drogaPowietrzna11 = new DrogaPowietrzna(skrzyzowanie2,pa,0,0);
-        DrogaPowietrzna drogaPowietrzna23 = new DrogaPowietrzna(pa,skrzyzowanie2,0,0);
-        DrogaPowietrzna drogaPowietrzna12 = new DrogaPowietrzna(pa,skrzyzowanie3,0,0);
-        DrogaPowietrzna drogaPowietrzna13 = new DrogaPowietrzna(skrzyzowanie3,pa,0,0);
-        DrogaPowietrzna drogaPowietrzna14 = new DrogaPowietrzna(berlin,skrzyzowanie3,0,0);
-        DrogaPowietrzna drogaPowietrzna15 = new DrogaPowietrzna(skrzyzowanie3,berlin,0,0);
-        DrogaPowietrzna drogaPowietrzna16 = new DrogaPowietrzna(skrzyzowanie3,topGun,0,0);
-        DrogaPowietrzna drogaPowietrzna17 = new DrogaPowietrzna(topGun,skrzyzowanie3,0,0);
-        DrogaPowietrzna drogaPowietrzna18 = new DrogaPowietrzna(skrzyzowanie2,skrzyzowanie5,0,0);
-        DrogaPowietrzna drogaPowietrzna19 = new DrogaPowietrzna(skrzyzowanie5,skrzyzowanie2,0,0);
-        DrogaPowietrzna drogaPowietrzna20 = new DrogaPowietrzna(sop,skrzyzowanie1,0,0);
-        DrogaPowietrzna drogaPowietrzna21 = new DrogaPowietrzna(skrzyzowanie1,sop,0,0);
-        DrogaPowietrzna drogaPowietrzna22 = new DrogaPowietrzna(skrzyzowanie1,skrzyzowanie4,0,0);
-        DrogaPowietrzna drogaPowietrzna35 = new DrogaPowietrzna(skrzyzowanie4,skrzyzowanie1,0,0);
-        DrogaPowietrzna drogaPowietrzna24 = new DrogaPowietrzna(skrzyzowanie4,po,0,0);
-        DrogaPowietrzna drogaPowietrzna25 = new DrogaPowietrzna(po,skrzyzowanie4,0,0);
-        DrogaPowietrzna drogaPowietrzna26 = new DrogaPowietrzna(skrzyzowanie1,cia,0,0);
-        DrogaPowietrzna drogaPowietrzna27 = new DrogaPowietrzna(cia,skrzyzowanie1,0,0);
-        DrogaPowietrzna drogaPowietrzna28 = new DrogaPowietrzna(skrzyzowanie5,wsi,0,0);
-        DrogaPowietrzna drogaPowietrzna29 = new DrogaPowietrzna(wsi,skrzyzowanie5,0,0);
-        DrogaPowietrzna drogaPowietrzna30 = new DrogaPowietrzna(airlineTycoon,skrzyzowanie4,0,0);
-        DrogaPowietrzna drogaPowietrzna31 = new DrogaPowietrzna(skrzyzowanie4,airlineTycoon,0,0);
-        DrogaMorska drogaMorska1 = new DrogaMorska(port1,skrzyzowanie6,0,0);
-        DrogaMorska drogaMorska2 = new DrogaMorska(skrzyzowanie6,port1,0,0);
-        DrogaMorska drogaMorska11 = new DrogaMorska(berlin,skrzyzowanie6,0,0);
-        DrogaMorska drogaMorska12 = new DrogaMorska(skrzyzowanie6,berlin,0,0);
-        DrogaMorska drogaMorska3 = new DrogaMorska(port1,skrzyzowanie7,0,0);
-        DrogaMorska drogaMorska4 = new DrogaMorska(skrzyzowanie7,port1,0,0);
-        DrogaMorska drogaMorska13 = new DrogaMorska(skrzyzowanie7,topGun,0,0);
-        DrogaMorska drogaMorska14 = new DrogaMorska(topGun,skrzyzowanie7,0,0);
-        DrogaMorska drogaMorska5 = new DrogaMorska(warszawa,skrzyzowanie6,0,0);
-        DrogaMorska drogaMorska6 = new DrogaMorska(skrzyzowanie6,warszawa,0,0);
-        DrogaMorska drogaMorska7 = new DrogaMorska(port2,skrzyzowanie7,0,0);
-        DrogaMorska drogaMorska8 = new DrogaMorska(skrzyzowanie7,port2,0,0);
+        LotniskoWojskowe cia = new LotniskoWojskowe("CIA",30,30,450,280,true);
+        Port port1 = new Port("Green Gun",30,30,360,550,true);
+        Port port2 = new Port("Blue Gun",30,30,600,400,true);
+        Skrzyzowanie skrzyzowanie1 = new Skrzyzowanie("S:A", 30, 30, 300, 245, true);
+        Skrzyzowanie skrzyzowanie2 = new Skrzyzowanie("S:B", 30, 30, 660, 200, true);
+        Skrzyzowanie skrzyzowanie3 = new Skrzyzowanie("S:C",30,30,780,400,true);
+        Skrzyzowanie skrzyzowanie4 = new Skrzyzowanie("S:D",30,30,300,440,true);
+        Skrzyzowanie skrzyzowanie5 = new Skrzyzowanie("S:E",30,30,450,50,true);
+        Skrzyzowanie skrzyzowanie6 = new Skrzyzowanie("S:F",30,30,445,370,true);
+        Skrzyzowanie skrzyzowanie7 = new Skrzyzowanie("S:G",30,30,570,575,true);
+        DrogaPowietrzna drogaPowietrzna1 = new DrogaPowietrzna(warszawa,skrzyzowanie1);
+        DrogaPowietrzna drogaPowietrzna2 = new DrogaPowietrzna(skrzyzowanie1,warszawa);
+        DrogaPowietrzna drogaPowietrzna5 = new DrogaPowietrzna(berlin,skrzyzowanie2);
+        DrogaPowietrzna drogaPowietrzna6 = new DrogaPowietrzna(skrzyzowanie2,berlin);
+        DrogaPowietrzna drogaPowietrzna7 = new DrogaPowietrzna(skrzyzowanie2,paryz);
+        DrogaPowietrzna drogaPowietrzna8 = new DrogaPowietrzna(paryz,skrzyzowanie2);
+        DrogaPowietrzna drogaPowietrzna9 = new DrogaPowietrzna(sop,skrzyzowanie5);
+        DrogaPowietrzna drogaPowietrzna10 = new DrogaPowietrzna(skrzyzowanie5,sop);
+        DrogaPowietrzna drogaPowietrzna11 = new DrogaPowietrzna(skrzyzowanie2,pa);
+        DrogaPowietrzna drogaPowietrzna23 = new DrogaPowietrzna(pa,skrzyzowanie2);
+        DrogaPowietrzna drogaPowietrzna12 = new DrogaPowietrzna(pa,skrzyzowanie3);
+        DrogaPowietrzna drogaPowietrzna13 = new DrogaPowietrzna(skrzyzowanie3,pa);
+        DrogaPowietrzna drogaPowietrzna14 = new DrogaPowietrzna(berlin,skrzyzowanie3);
+        DrogaPowietrzna drogaPowietrzna15 = new DrogaPowietrzna(skrzyzowanie3,berlin);
+        DrogaPowietrzna drogaPowietrzna16 = new DrogaPowietrzna(skrzyzowanie3,topGun);
+        DrogaPowietrzna drogaPowietrzna17 = new DrogaPowietrzna(topGun,skrzyzowanie3);
+        DrogaPowietrzna drogaPowietrzna18 = new DrogaPowietrzna(skrzyzowanie2,skrzyzowanie5);
+        DrogaPowietrzna drogaPowietrzna19 = new DrogaPowietrzna(skrzyzowanie5,skrzyzowanie2);
+        DrogaPowietrzna drogaPowietrzna20 = new DrogaPowietrzna(sop,skrzyzowanie1);
+        DrogaPowietrzna drogaPowietrzna21 = new DrogaPowietrzna(skrzyzowanie1,sop);
+        DrogaPowietrzna drogaPowietrzna22 = new DrogaPowietrzna(skrzyzowanie1,skrzyzowanie4);
+        DrogaPowietrzna drogaPowietrzna35 = new DrogaPowietrzna(skrzyzowanie4,skrzyzowanie1);
+        DrogaPowietrzna drogaPowietrzna24 = new DrogaPowietrzna(skrzyzowanie4,po);
+        DrogaPowietrzna drogaPowietrzna25 = new DrogaPowietrzna(po,skrzyzowanie4);
+        DrogaPowietrzna drogaPowietrzna26 = new DrogaPowietrzna(skrzyzowanie1,cia);
+        DrogaPowietrzna drogaPowietrzna27 = new DrogaPowietrzna(cia,skrzyzowanie1);
+        DrogaPowietrzna drogaPowietrzna28 = new DrogaPowietrzna(skrzyzowanie5,wsi);
+        DrogaPowietrzna drogaPowietrzna29 = new DrogaPowietrzna(wsi,skrzyzowanie5);
+        DrogaPowietrzna drogaPowietrzna30 = new DrogaPowietrzna(airlineTycoon,skrzyzowanie4);
+        DrogaPowietrzna drogaPowietrzna31 = new DrogaPowietrzna(skrzyzowanie4,airlineTycoon);
+        DrogaMorska drogaMorska1 = new DrogaMorska(port1,skrzyzowanie6);
+        DrogaMorska drogaMorska2 = new DrogaMorska(skrzyzowanie6,port1);
+        DrogaMorska drogaMorska11 = new DrogaMorska(berlin,skrzyzowanie6);
+        DrogaMorska drogaMorska12 = new DrogaMorska(skrzyzowanie6,berlin);
+        DrogaMorska drogaMorska3 = new DrogaMorska(port1,skrzyzowanie7);
+        DrogaMorska drogaMorska4 = new DrogaMorska(skrzyzowanie7,port1);
+        DrogaMorska drogaMorska13 = new DrogaMorska(skrzyzowanie7,topGun);
+        DrogaMorska drogaMorska14 = new DrogaMorska(topGun,skrzyzowanie7);
+        DrogaMorska drogaMorska5 = new DrogaMorska(warszawa,skrzyzowanie6);
+        DrogaMorska drogaMorska6 = new DrogaMorska(skrzyzowanie6,warszawa);
+        DrogaMorska drogaMorska7 = new DrogaMorska(port2,skrzyzowanie7);
+        DrogaMorska drogaMorska8 = new DrogaMorska(skrzyzowanie7,port2);
 //        DrogaMorska drogaMorska9 = new DrogaMorska(skrzyzowanie6,skrzyzowanie7,0,0);
 //        DrogaMorska drogaMorska10 = new DrogaMorska(skrzyzowanie7,skrzyzowanie6,0,0);
     }

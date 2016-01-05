@@ -1026,6 +1026,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             ShowLabel label3 = new ShowLabel("Nastepny przystanek: Brak");
             listaNodow.add(label3);
         }
+
 //        ShowLabel label12 = new ShowLabel(" "+this.obecnePolozenie.getNazwa(),this.getObecnePolozenie());
 //        listaNodow.add(label12);
         ShowLabel label7 = new ShowLabel("Przystanek koncowy: " + this.przystanekDocelowy.getNazwa(),this.przystanekDocelowy);
@@ -1066,7 +1067,15 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                 if (!this.pozostalaTrasa.isEmpty() && this.getImageNode()!=null) {
                     if(this.pozostalaTrasa.size()<2) {
                         if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
-                            this.odwrocTrase();
+                            if(this.getTrasa().size()<2) {
+                                if(Swiat.getInstance().getListaWolnychPojazdow().contains(this)){
+                                    Swiat.getInstance().removeWolnyPojazd(this);
+                                }
+                                this.zmienDotychczasowaTrase();
+                            }
+                            else {
+                                this.odwrocTrase();
+                            }
                         }
                     }
 //                        System.out.println("HELLO");
@@ -1081,7 +1090,6 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
                 }
                 Thread.sleep(1000 / fps);
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

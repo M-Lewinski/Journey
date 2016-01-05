@@ -22,50 +22,33 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public abstract class Statek extends Pojazd {
-    private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
-    private static Droga typDrogi;
+//    private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
+//    private static Droga typDrogi;
     /**
      * Konstruktor klasy statek, ktory wykorzystuje konstruktor z odziedziczonej klasy.
      * @param dlugosc
      * @param szerokosc
-     * @param maksymalnaPredkosc
-     * @param ladunek
      */
-    public Statek(double dlugosc, double szerokosc, double maksymalnaPredkosc, TypLadunku ladunek) {
+    public Statek(double dlugosc, double szerokosc) {
         super(dlugosc, szerokosc);
-
-
-//        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
-//        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
-//        okreslNowePolozenie(listaGdzieMozeLadowac);
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
-//        wypisywanieTrasy(this.getTrasa());
-//        this.getObecnePolozenie().addPojazdOczekujacy(this);
-//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-//        this.nastepnaDroga();
-
-//        okreslNowePolozenie(listaMozliwychPrzystankow);
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),typDrogi);
-//        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
     }
 
-    @Override
-    public List<MiejsceZmianyKierunku> getMozliweLadowania() {
-        if(Statek.listaGdzieMozeLadowac.isEmpty()){
-            Statek.listaGdzieMozeLadowac.add(new Miasto());
-            Statek.listaGdzieMozeLadowac.add(new Port());
-        }
-        return Statek.listaGdzieMozeLadowac;
-    }
-
-    @Override
-    public Droga getTypDrogi() {
-        if (Statek.typDrogi==null){
-            Statek.typDrogi = new DrogaMorska();
-        }
-        return Statek.typDrogi;
-    }
+//    @Override
+//    public List<MiejsceZmianyKierunku> getMozliweLadowania() {
+//        if(Statek.listaGdzieMozeLadowac.isEmpty()){
+//            Statek.listaGdzieMozeLadowac.add(new Miasto());
+//            Statek.listaGdzieMozeLadowac.add(new Port());
+//        }
+//        return Statek.listaGdzieMozeLadowac;
+//    }
+//
+//    @Override
+//    public Droga getTypDrogi() {
+//        if (Statek.typDrogi==null){
+//            Statek.typDrogi = new DrogaMorska();
+//        }
+//        return Statek.typDrogi;
+//    }
 
     /**
      * Pusty konstruktor klasy statek.

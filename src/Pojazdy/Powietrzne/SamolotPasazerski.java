@@ -23,8 +23,8 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     private Pasazerski ladunek;
-    public SamolotPasazerski(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-        super( dlugosc, szerokosc, maksymalnaPredkosc, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
+    public SamolotPasazerski(double dlugosc, double szerokosc) {
+        super( dlugosc, szerokosc);
         ladunek = new Pasazerski();
 //        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
         this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
@@ -189,10 +189,9 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     public List<Control> potrzebneInformacje() {
         List<Control> listaNodow = super.potrzebneInformacje();
         List<Control> listaTymczasowa = this.ladunek.potrzebneInformacje();
-        int j = 8;
+//        int j = 8;
         for (int i = 0; i < listaTymczasowa.size(); i++) {
-            listaNodow.add(j,listaTymczasowa.get(i));
-            j++;
+            listaNodow.add(listaTymczasowa.get(i));
         }
 //        for (int i = 0; i < listaTymczasowa.size(); i++) {
 //            listaNodow.add(listaTymczasowa.get(i));

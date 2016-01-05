@@ -154,7 +154,7 @@ public abstract class Droga implements Rysowanie {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,double poprawkaX, double poprawkaY) {
+    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
         this.poczatek = poczatek;
         this.koniec = koniec;
         this.odleglosc = Math.sqrt(Math.pow(poczatek.getPolozenieX()-koniec.getPolozenieX(),2.0) + Math.pow(poczatek.getPolozenieY()-koniec.getPolozenieY(),2.0));

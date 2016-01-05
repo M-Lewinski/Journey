@@ -683,10 +683,12 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 
     public void wsiadanie(Pojazd pojazd){
         synchronized (pojazd.getHulk()){
+//            System.out.println("Wsiadam");
             if(pojazd instanceof TransportowiecCywilny){
-//                System.out.println("Jestem!!!!!!!!");
+                System.out.println("Jestem!!!!!!!!");
                 TransportowiecCywilny transportowiecCywilny = (TransportowiecCywilny) pojazd;
                 if(transportowiecCywilny.wsiadanie(this)){
+                    System.out.println("wsiadlem");
                     Przystanek przystanek = (Przystanek) this.getObecnePolozenie();
                     przystanek.removePasazerOczekujacy(this);
                     this.obecnePolozenie=pojazd;
