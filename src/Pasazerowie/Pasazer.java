@@ -2,6 +2,7 @@ package Pasazerowie;
 
 import Drogi.Droga;
 import Gui.Controller;
+import Gui.Informacja;
 import Gui.MainPanel;
 import Gui.ShowLabel;
 import Mapa.PunktNaMapie;
@@ -86,7 +87,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private List<Przystanek> pozostalaTrasa = new ArrayList<Przystanek>();
 
-    private Przystanek nastepnyPrzystanek = null;
+    private Przystanek nastepnyPrzystanek;
     private Thread thread;
     private boolean threadIsAlive = false;
     private boolean moznaWysiadac = false;
@@ -170,13 +171,13 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                 listaMozliwychPrzystankow.add(listaPrzystankow.get(i));
             }
         }
-//        this.przystanekPoczatkowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()));
-        this.przystanekPoczatkowy = Swiat.getInstance().getListaLotniskCywilnych().get(0);
+        this.przystanekPoczatkowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()));
+//        this.przystanekPoczatkowy = Swiat.getInstance().getListaLotniskCywilnych().get(0);
         this.przystanekPoczatkowy.addPasazerOczekujacy(this);
         this.obecnePolozenie = this.przystanekPoczatkowy;
         listaMozliwychPrzystankow.remove(this.przystanekPoczatkowy);
-//        this.przystanekDocelowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()));
-        this.przystanekDocelowy = Swiat.getInstance().getListaLotniskCywilnych().get(1);
+        this.przystanekDocelowy = listaMozliwychPrzystankow.get(random.nextInt(listaMozliwychPrzystankow.size()));
+//        this.przystanekDocelowy = Swiat.getInstance().getListaLotniskCywilnych().get(1);
     }
 
     /**
@@ -367,7 +368,8 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         listaNodow.add(label9);
 //        if(this.listaPrzystankow!=null && this.listaPrzystankow.size()>1){
         if(!this.pozostalaTrasa.isEmpty() && this.pozostalaTrasa.size()>1){
-            for (int i = 1; i < this.pozostalaTrasa.size(); i++) {
+//            for (int i = 1; i < this.pozostalaTrasa.size(); i++) {
+            for (int i = 0; i < this.pozostalaTrasa.size(); i++) {
                 ShowLabel label = new ShowLabel("   " + this.pozostalaTrasa.get(i).getNazwa(),this.pozostalaTrasa.get(i));
                 listaNodow.add(label);
             }
@@ -634,16 +636,21 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     }
 
     public void tworzenieTrasy(Przystanek punktPoczatkowy, Przystanek punktKoncowy){
+        this.poinformujORezygnacjiZPrzyjazdu();
         if(!this.listaPrzystankow.isEmpty()) {
             this.listaPrzystankow.clear();
         }
         if(!this.pozostalaTrasa.isEmpty()){
             this.pozostalaTrasa.clear();
         }
-        nastepnyPrzystanek=null;
 //        this.setListaPrzystankow(szukanieTrasy(punktPoczatkowy, punktKoncowy));
         List<Przystanek> listaTymczasowa = szukanieTrasy(punktPoczatkowy,punktKoncowy);
+//        nastepnyPrzystanek=null;
         if(listaTymczasowa==null){
+            this.setNastepnyPrzystanek(null);
+            return;
+        }
+        else if(listaTymczasowa.size()==1){
             return;
         }
         else{
@@ -654,43 +661,49 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 ////            return;
 ////            listaPrzystankow.remove(0);
 //        }
-        if(listaPrzystankow==null){
-            return;
-        }
+//        if(listaPrzystankow==null){
+//            return;
+//        }
         this.pozostalaTrasa.addAll(this.listaPrzystankow);
-        nastepnyPrzystanek=kolejnyPrzystanek(this.pozostalaTrasa);
+        this.setNastepnyPrzystanek(kolejnyPrzystanek(this.pozostalaTrasa));
 //        System.out.println("Lista przystankow do przejechania:");
 //        for (int i = 0; i < this.listaPrzystankow.size(); i++) {
 //            System.out.printf(" " + this.listaPrzystankow.get(i).getNazwa());
 //        }
 //        System.out.println("");
+        this.poinformujOZamiarzePrzyjazdu();
     }
 
-    public void wysiadanie(){
+    public synchronized void wysiadanie(){
             if (this.obecnePolozenie instanceof TransportowiecCywilny) {
                 TransportowiecCywilny pojazd = (TransportowiecCywilny) this.obecnePolozenie;
                 synchronized (pojazd.getHulk()) {
-                    System.out.println("wysiadam!!!!!!!!!");
+//                    System.out.println("wysiadam!!!!!!!!!");
                     this.nastepnyPrzystanek.addPasazerOczekujacy(this);
                     pojazd.wysiadanie(this);
-                    this.pozostalaTrasa.remove(0);
+                    if(this.pozostalaTrasa.size()>0) {
+                        this.pozostalaTrasa.remove(0);
+                    }
                     this.obecnePolozenie=this.nastepnyPrzystanek;
-                    this.nastepnyPrzystanek = this.kolejnyPrzystanek(this.pozostalaTrasa);
+//                    this.nastepnyPrzystanek = this.kolejnyPrzystanek(this.pozostalaTrasa);
+                    this.setNastepnyPrzystanek(this.kolejnyPrzystanek(this.pozostalaTrasa));
                     this.moznaWysiadac = false;
                 }
             }
     }
 
-    public void wsiadanie(Pojazd pojazd){
+    public synchronized void wsiadanie(Pojazd pojazd){
         synchronized (pojazd.getHulk()){
 //            System.out.println("Wsiadam");
             if(pojazd instanceof TransportowiecCywilny){
-                System.out.println("Jestem!!!!!!!!");
+//                System.out.println("Jestem!!!!!!!!");
                 TransportowiecCywilny transportowiecCywilny = (TransportowiecCywilny) pojazd;
                 if(transportowiecCywilny.wsiadanie(this)){
-                    System.out.println("wsiadlem");
-                    Przystanek przystanek = (Przystanek) this.getObecnePolozenie();
-                    przystanek.removePasazerOczekujacy(this);
+//                    System.out.println("wsiadlem");
+                    if(this.getObecnePolozenie() instanceof  Przystanek) {
+                        Przystanek przystanek = (Przystanek) this.getObecnePolozenie();
+                        przystanek.removePasazerOczekujacy(this);
+                    }
                     this.obecnePolozenie=pojazd;
                 }
             }
@@ -731,20 +744,38 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         this.doszloDoZmiany = doszloDoZmiany;
     }
 
+//    public void poinformujORezygnacjiZPrzyjazdu(){
+//        for (int i = 0; i < this.listaPrzystankow.size(); i++) {
+//            this.listaPrzystankow.get(i).removePasazerPrzyjezdzajacy(this);
+//        }
+//    }
+//
     public void poinformujORezygnacjiZPrzyjazdu(){
-        for (int i = 0; i < this.listaPrzystankow.size(); i++) {
-            this.listaPrzystankow.get(i).removePasazerPrzyjezdzajacy(this);
+        List<Przystanek> listaTymczasowa = Swiat.getInstance().getListaPrzystankow();
+        for (int i = 0; i < listaTymczasowa.size(); i++) {
+            if(listaTymczasowa.get(i).getListaPasazerowPrzyjezdzajacych().contains(this)){
+                listaTymczasowa.get(i).removePasazerPrzyjezdzajacy(this);
+            }
         }
     }
 
+
     public void poinformujOZamiarzePrzyjazdu(){
         for (int i = 0; i < this.listaPrzystankow.size(); i++) {
-            this.listaPrzystankow.get(i).addPasazerPrzyjezdzajacy(this);
+            if(!this.listaPrzystankow.get(i).getListaPojazdowPrzyjezdzajacych().contains(this)) {
+                this.listaPrzystankow.get(i).addPasazerPrzyjezdzajacy(this);
+            }
         }
     }
 
     public void usuwanie(){
         this.poinformujORezygnacjiZPrzyjazdu();
+//        List<Przystanek> listaTymczasowa = Swiat.getInstance().getListaPrzystankow();
+//        for (int i = 0; i < listaTymczasowa.size(); i++) {
+//            if(listaTymczasowa.get(i).getListaPasazerowPrzyjezdzajacych().contains(this)){
+//                listaTymczasowa.get(i).getListaPojazdowZaparkowanych().remove(this);
+//            }
+//        }
         if(this.obecnePolozenie instanceof Przystanek){
             Przystanek przystanek = (Przystanek) this.obecnePolozenie;
             przystanek.removePasazerOczekujacy(this);
@@ -752,7 +783,10 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         Swiat.getInstance().removePasazer(this);
         Swiat.getInstance().getListaThread().remove(thread);
         threadIsAlive=false;
-        System.out.println("USUNIETO PASAZERA!!!!!!!!!!!!!!!");
+        if(Informacja.getInstance().getObecnaInformacja()==this) {
+            Informacja.getInstance().wyczysc();
+        }
+//        System.out.println("USUNIETO PASAZERA!!!!!!!!!!!!!!!");
     }
 
     public void odwrocTrase(){
@@ -785,6 +819,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             this.threadIsAlive=true;
             while(this.threadIsAlive==true){
                 if(this.getObecnePolozenie()==this.getPrzystanekDocelowy()){
+
                     odwrocTrase();
                 }
                 if(this.czasPostoju==0) {
@@ -795,12 +830,29 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                         if (this.obecnePolozenie instanceof Przystanek) {
                             tworzenieTrasy((Przystanek) this.getObecnePolozenie(), this.getPrzystanekDocelowy());
                         } else {
-                            tworzenieTrasy(this.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
+//                            tworzenieTrasy(this.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
+                            Pojazd pojazd = (Pojazd) this.getObecnePolozenie();
+//                            tworzenieTrasy(pojazd.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
+                            if(pojazd.getObecnePolozenie() instanceof Przystanek) {
+                                Przystanek obecne = (Przystanek) pojazd.getObecnePolozenie();
+                                tworzenieTrasy(obecne, this.getPrzystanekDocelowy());
+                            }
+                            else{
+                                tworzenieTrasy(pojazd.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
+                            }
+                            if(nastepnyPrzystanek==null){
+                                this.setNastepnyPrzystanek(pojazd.getNastepnyPrzystanek());
+                                if(this.nastepnyPrzystanek!=null) {
+                                    if (!this.nastepnyPrzystanek.getListaPojazdowPrzyjezdzajacych().contains(this)) {
+                                        this.nastepnyPrzystanek.addPasazerPrzyjezdzajacy(this);
+                                    }
+                                }
+                            }
                         }
-                    } else {
+                    }
+                    else {
                         if (moznaWysiadac == true) {
 //                        moznaWysiadac=false;
-//                        System.out.println("chce wyjsc");
                             this.wysiadanie();
                         } else {
                             if (this.nastepnyPrzystanek != null) {
@@ -810,6 +862,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                                         Pojazd pojazd = przystanek.getListaPojazdowZaparkowanych().get(i);
                                         if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
                                             this.wsiadanie(pojazd);
+                                            break;
                                         }
                                     }
                                 }

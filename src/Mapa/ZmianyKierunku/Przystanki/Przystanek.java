@@ -57,8 +57,7 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
 //        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size() ; i++) {
 //            this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
 //        }
-//    }
-
+//
     public void rezygnacjaPrzylotu(){
         for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
             if(this.listaPasazerowOczekujacych.get(i).getPozostalaTrasa()!=null){

@@ -3,6 +3,7 @@ package Pojazdy.Ladunki;
 import Gui.ShowLabel;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
+import Pojazdy.Pojazd;
 import javafx.scene.control.Control;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Pasazerski extends TypLadunku {
     }
 
     public void removeWysiadajacyPasazer(Pasazer pasazer){
-        this.listaPasazerow.remove(pasazer);
+        this.listaWysiadajacychPasazerow.remove(pasazer);
     }
     public List<Pasazer> getListaPasazerow() {
         return listaPasazerow;
@@ -73,10 +74,15 @@ public class Pasazerski extends TypLadunku {
 
     public void znalezienieOsobWysiadajacych(Przystanek przystanek){
         for (int i = 0; i < listaPasazerow.size(); i++) {
+//            if(this.listaPasazerow.get(i).getNastepnyPrzystanek()==przystanek || this.listaPasazerow.get(i).getPozostalaTrasa().isEmpty()){
             if(this.listaPasazerow.get(i).getNastepnyPrzystanek()==przystanek){
                 this.listaWysiadajacychPasazerow.add(this.listaPasazerow.get(i));
                 this.listaPasazerow.get(i).setMoznaWysiadac(true);
             }
+//            if(this.listaPasazerow.get(i).getPozostalaTrasa().isEmpty()){
+//            this.listaWysiadajacychPasazerow.add(this.listaPasazerow.get(i));
+//            this.listaPasazerow.get(i).setMoznaWysiadac(true);
+//            }
         }
     }
 
@@ -107,6 +113,8 @@ public class Pasazerski extends TypLadunku {
         listaNodow.add(showLabel);
         ShowLabel showLabel1 = new ShowLabel("Aktualna liczba pasazerow: " + Integer.toString(this.getObecnaLiczbaPasazerow()));
         listaNodow.add(showLabel1);
+        ShowLabel showLabel4 = new ShowLabel("Liczba pasazerow wysiadajacych: " + Integer.toString(this.listaWysiadajacychPasazerow.size()));
+        listaNodow.add(showLabel4);
         ShowLabel showLabel3 = new ShowLabel("Pasazerowie na pokladzie: ");
         listaNodow.add(showLabel3);
         for (int i = 0; i < this.listaPasazerow.size(); i++) {
@@ -117,10 +125,14 @@ public class Pasazerski extends TypLadunku {
         return  listaNodow;
     }
 
-    public boolean czyWciazJestNaPrzystanku(Pasazer pasazer){
+    public boolean czyWciazJestNaPrzystanku(Pasazer pasazer, Pojazd pojazd){
         if(pasazer.getObecnePolozenie() instanceof Przystanek){
+//            Przystanek przystanek = (Przystanek) pasazer.getNastepnyPrzystanek();
+//            if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
+//                return false;
+//            }
             Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
-            if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
+            if(!przystanek.getListaPojazdowZaparkowanych().contains(pojazd)){
                 return false;
             }
         }
@@ -132,6 +144,8 @@ public class Pasazerski extends TypLadunku {
             return true;
         }
         else{
+            System.out.println("co jest do diabla");
+            System.out.println(this.listaWysiadajacychPasazerow.size());
             return false;
         }
     }

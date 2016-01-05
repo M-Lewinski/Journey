@@ -195,6 +195,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //        MiejsceZmianyKierunku nastepneMiejsceZmianyKierunku = null;
         Przystanek nastepneMiejsceZmianyKierunku = null;
         List<MiejsceZmianyKierunku> staraTrasa = new LinkedList<MiejsceZmianyKierunku>();
+        List<Przystanek> staraTrasaPrzystankow = new ArrayList<Przystanek>();
+        staraTrasaPrzystankow.addAll(this.listaOdwiedzanychPrzystankow(this.trasa));
         staraTrasa.addAll(this.getPozostalaTrasa());
 //        System.out.println(this.obecnePolozenie.getNazwa());
         if (czyWyladowal(this.obecnePolozenie) == true){
@@ -223,13 +225,13 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         for (int i = 0;staraTrasa.get(i)!=nastepneMiejsceZmianyKierunku; i++) {
             this.pozostalaTrasa.add(i,staraTrasa.get(i));
         }
-        for (int i = 0; i < this.pozostalaTrasa.size(); i++) {
+//        for (int i = 0; i < this.pozostalaTrasa.size(); i++) {
 //            if(this.pozostalaTrasa.get(i)==this.przystanekDocelowy){
 //                this.pozostalaTrasa.subList(i,this.pozostalaTrasa.size()).clear();
 //            }
-        }
+//        }
         this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getPozostalaTrasa(),this.getObecnePolozenie()));
-
+        this.poinformujPasazerow(staraTrasaPrzystankow,this.listaOdwiedzanychPrzystankow(this.trasa));
     }
 
     public void zmienDotychczasowaTrase(){
@@ -477,6 +479,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.getPrzystanekPoczatkowy().getListaPojazdowZaparkowanych().add(this);
         tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(), this.getTypDrogi());
         this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getPozostalaTrasa(),this.obecnePolozenie));
+        this.poinformujPasazerow(null,this.listaOdwiedzanychPrzystankow(this.trasa));
     }
 
     public void ladowanie(Przystanek przystanek){
@@ -877,11 +880,11 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
 //    public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
     public synchronized void tworzenieTrasy(MiejsceZmianyKierunku przystanekPoczatkowy, MiejsceZmianyKierunku przystanekDocelowy, Droga typDrogi){
-//        this.poinformujORezygnacjiPrzyjazdu(this.getTrasa());
-        List<MiejsceZmianyKierunku> staraTrasa = new ArrayList<MiejsceZmianyKierunku>();
-        if(!this.getTrasa().isEmpty()){
-            staraTrasa.addAll(this.trasa);
-        }
+
+//        List<MiejsceZmianyKierunku> staraTrasa = new ArrayList<MiejsceZmianyKierunku>();
+//        if(!this.getTrasa().isEmpty()){
+//            staraTrasa.addAll(this.trasa);
+//        }
         this.getTrasa().clear();
         this.getPozostalaTrasa().clear();
 //        this.setTrasa(szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,typDrogi));
@@ -897,10 +900,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         }
         this.getPozostalaTrasa().addAll(this.getTrasa());
 //        this.poinformujOZamiarzePrzyjazdu(this.getTrasa());
-        this.poinformujPasazerow(this.listaOdwiedzanychPrzystankow(staraTrasa),this.listaOdwiedzanychPrzystankow(this.trasa));
+        //tutaj nie do konca jest dobra synchronizacja!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//        this.poinformujPasazerow(this.listaOdwiedzanychPrzystankow(staraTrasa),this.listaOdwiedzanychPrzystankow(this.trasa));
 //        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
 
     }
+
     @Override
     public void rysuj(Group group) {
         Rectangle rectangle = new Rectangle(this.getSzerokosc(),this.getWysokosc());

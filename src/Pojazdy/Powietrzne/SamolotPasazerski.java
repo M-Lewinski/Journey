@@ -25,7 +25,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     private Pasazerski ladunek;
     public SamolotPasazerski(double dlugosc, double szerokosc) {
         super( dlugosc, szerokosc);
-        ladunek = new Pasazerski();
+        this.ladunek = new Pasazerski();
 //        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
         this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
         this.setTymczasowyKolor(Color.YELLOW);
@@ -49,7 +49,8 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
     @Override
     public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {
-        return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, SamolotPasazerski.getListaGdzieMozeLadowac());
+//        return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, SamolotPasazerski.getListaGdzieMozeLadowac());
+        return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, this.getMozliweLadowania());
     }
 
     @Override
@@ -84,7 +85,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 //                    return false;
 //                }
 //            }
-            if(this.ladunek.czyWciazJestNaPrzystanku(pasazer)==false){
+            if(this.ladunek.czyWciazJestNaPrzystanku(pasazer,this)==false){
                 return false;
             }
             return this.ladunek.czyJestWolneMiejsce(pasazer);

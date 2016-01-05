@@ -58,8 +58,5 @@ public abstract class Statek extends Pojazd {
     public Statek(){
 
     }
-    @Override
-    public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {
-        return null;
-    }
+
 }

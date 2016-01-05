@@ -46,7 +46,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
         super(dlugosc, szerokosc);
         Random random = new Random();
         firma=Firma.values()[random.nextInt(Firma.values().length)];
-        ladunek = new Pasazerski();
+        this.ladunek = new Pasazerski();
 //        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
         this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
         this.firma = firma;
@@ -76,7 +76,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 
     @Override
     public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {
-        return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, StatekWycieczkowy.getListaGdzieMozeLadowac());
+        return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, this.getMozliweLadowania());
     }
 
 
@@ -124,7 +124,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 //                    return false;
 //                }
 //            }
-            if(this.ladunek.czyWciazJestNaPrzystanku(pasazer)==false){
+            if(this.ladunek.czyWciazJestNaPrzystanku(pasazer,this)==false){
                 return false;
             }
             return this.ladunek.czyJestWolneMiejsce(pasazer);

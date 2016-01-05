@@ -373,7 +373,7 @@ public abstract class Droga implements Rysowanie {
                         double odlegloscMiedzyPojazdami = Math.abs(pojazd.getOdlegloscDoKonca() - pojazdNaDrodze.getOdlegloscDoKonca());
                         if (odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie) {
                             if (pojazd.getOdlegloscDoKonca() > pojazdNaDrodze.getOdlegloscDoKonca()) {
-//                            System.out.println("Za blisko");
+                            System.out.println("Za blisko");
                                 return true;
                             }
                         }
