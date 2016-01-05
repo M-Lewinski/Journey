@@ -1,7 +1,9 @@
 package Pojazdy.Ladunki;
 
+import Gui.ShowLabel;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
+import javafx.scene.control.Control;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +54,8 @@ public class Pasazerski extends TypLadunku {
         return maksymalnaLiczbaPasazerow;
     }
 
-    public void stworzNowychPasazerow() {
-        for (int i = 0; i < this.getMaksymalnaLiczbaPasazerow(); i++) {
+    public void stworzNowychPasazerow(int liczba) {
+        for (int i = 0; i < liczba; i++) {
             Pasazer pasazer = new Pasazer();
         }
     }
@@ -61,14 +63,12 @@ public class Pasazerski extends TypLadunku {
 
     public Pasazerski(int maksymalnaLiczbaPasazerow) {
         this.maksymalnaLiczbaPasazerow = maksymalnaLiczbaPasazerow;
-        stworzNowychPasazerow();
     }
 
     public Pasazerski() {
         Random random = new Random();
 //        this.maksymalnaLiczbaPasazerow=random.nextInt(6)+5;
-        this.maksymalnaLiczbaPasazerow=100;
-        stworzNowychPasazerow();
+        this.maksymalnaLiczbaPasazerow=10;
     }
 
     public void znalezienieOsobWysiadajacych(Przystanek przystanek){
@@ -87,5 +87,52 @@ public class Pasazerski extends TypLadunku {
             this.listaPasazerow.remove(i);
         }
         this.listaWysiadajacychPasazerow.clear();
+    }
+
+    public boolean czyJestWolneMiejsce(Pasazer pasazer){
+        if(this.getMaksymalnaLiczbaPasazerow()-this.getObecnaLiczbaPasazerow()>0){
+            this.addPasazer(pasazer);
+//            this.setObecnaLiczbaPasazerow(this.getObecnaLiczbaPasazerow()+1);
+            this.obecnaLiczbaPasazerow++;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public List<Control> potrzebneInformacje(){
+        List<Control> listaNodow = new ArrayList<>();
+        ShowLabel showLabel = new ShowLabel("Maksymalna liczba pasazerow: "+Integer.toString(this.getMaksymalnaLiczbaPasazerow()));
+        listaNodow.add(showLabel);
+        ShowLabel showLabel1 = new ShowLabel("Aktualna liczba pasazerow: " + Integer.toString(this.getObecnaLiczbaPasazerow()));
+        listaNodow.add(showLabel1);
+        ShowLabel showLabel3 = new ShowLabel("Pasazerowie na pokladzie: ");
+        listaNodow.add(showLabel3);
+        for (int i = 0; i < this.listaPasazerow.size(); i++) {
+            Pasazer pasazer = this.listaPasazerow.get(i);
+            ShowLabel showLabel2 = new ShowLabel(pasazer.getImie() + " " + pasazer.getNazwisko(),this.getListaPasazerow().get(i));
+            listaNodow.add(showLabel2);
+        }
+        return  listaNodow;
+    }
+
+    public boolean czyWciazJestNaPrzystanku(Pasazer pasazer){
+        if(pasazer.getObecnePolozenie() instanceof Przystanek){
+            Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
+            if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean czyWszystcyWysiedli(){
+        if(this.listaWysiadajacychPasazerow.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

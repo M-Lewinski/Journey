@@ -9,4 +9,8 @@ public class Wojskowy extends TypLadunku {
     public Uzbrojenie getUzbrojenie() {
         return uzbrojenie;
     }
+
+    public Wojskowy(Uzbrojenie uzbrojenie) {
+        this.uzbrojenie = uzbrojenie;
+    }
 }

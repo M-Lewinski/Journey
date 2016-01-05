@@ -32,7 +32,7 @@ public abstract class Statek extends Pojazd {
      * @param ladunek
      */
     public Statek(double dlugosc, double szerokosc, double maksymalnaPredkosc, TypLadunku ladunek) {
-        super(dlugosc, szerokosc, maksymalnaPredkosc);
+        super(dlugosc, szerokosc);
 
 
 //        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
@@ -43,10 +43,6 @@ public abstract class Statek extends Pojazd {
 //        this.getObecnePolozenie().addPojazdOczekujacy(this);
 //        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
 //        this.nastepnaDroga();
-
-        this.setTymczasowyKolor(Color.LIGHTBLUE);
-        this.rysuj(MainPanel.getGrupaPojazdow());
-
 
 //        okreslNowePolozenie(listaMozliwychPrzystankow);
 //        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());

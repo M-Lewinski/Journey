@@ -10,6 +10,7 @@ import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
 import Pojazdy.Ladunki.Pasazerski;
 import Pojazdy.TransportowiecCywilny;
+import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -24,15 +25,11 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     private Pasazerski ladunek;
     public SamolotPasazerski(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
         super( dlugosc, szerokosc, maksymalnaPredkosc, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
-//        okreslNowePolozenie(listaGdzieMozeLadowac);
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
-//        wypisywanieTrasy(this.getTrasa());
-//        this.getObecnePolozenie().addPojazdOczekujacy(this);
-//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-//        this.nastepnaDroga();
+        ladunek = new Pasazerski();
+//        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
+        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
         this.setTymczasowyKolor(Color.YELLOW);
         this.rysuj(MainPanel.getGrupaPojazdow());
-        ladunek = new Pasazerski();
     }
     public static List<MiejsceZmianyKierunku> getListaGdzieMozeLadowac() {
         return listaGdzieMozeLadowac;
@@ -81,18 +78,16 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     @Override
     public boolean wsiadanie(Pasazer pasazer) {
         synchronized (this.getHulk()){
-            if(pasazer.getObecnePolozenie() instanceof Przystanek){
-                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
-                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
-                    return false;
-                }
+//            if(pasazer.getObecnePolozenie() instanceof Przystanek){
+//                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
+//                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
+//                    return false;
+//                }
+//            }
+            if(this.ladunek.czyWciazJestNaPrzystanku(pasazer)==false){
+                return false;
             }
-            if(this.ladunek.getMaksymalnaLiczbaPasazerow()-this.ladunek.getObecnaLiczbaPasazerow()>0){
-                this.ladunek.addPasazer(pasazer);
-                this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()+1);
-                return true;
-            }
-            return false;
+            return this.ladunek.czyJestWolneMiejsce(pasazer);
         }
     }
 
@@ -158,11 +153,13 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 //        return true;
 //    }
 
-//    @Override
-//    public void ladowanie(Przystanek przystanek) {
-//        super.ladowanie(przystanek);
-//        this.ladunek.znalezienieOsobWysiadajacych(przystanek);
-//    }
+    @Override
+    public void ladowanie(Przystanek przystanek) {
+        synchronized (this.getHulk()) {
+            super.ladowanie(przystanek);
+            this.ladunek.znalezienieOsobWysiadajacych(przystanek);
+        }
+    }
 
     @Override
     public void wysiadanie(Pasazer pasazer) {
@@ -186,5 +183,27 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
     public void setLadunek(Pasazerski ladunek) {
         this.ladunek = ladunek;
+    }
+
+    @Override
+    public List<Control> potrzebneInformacje() {
+        List<Control> listaNodow = super.potrzebneInformacje();
+        List<Control> listaTymczasowa = this.ladunek.potrzebneInformacje();
+        int j = 8;
+        for (int i = 0; i < listaTymczasowa.size(); i++) {
+            listaNodow.add(j,listaTymczasowa.get(i));
+            j++;
+        }
+//        for (int i = 0; i < listaTymczasowa.size(); i++) {
+//            listaNodow.add(listaTymczasowa.get(i));
+////            j++;
+//        }
+        return listaNodow;
+    }
+
+    @Override
+    public boolean przedStartowaniem() {
+//        return super.przedStartowaniem(miejsceZmianyKierunku);
+        return this.ladunek.czyWszystcyWysiedli();
     }
 }

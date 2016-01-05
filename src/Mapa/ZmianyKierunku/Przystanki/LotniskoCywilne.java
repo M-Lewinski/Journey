@@ -11,12 +11,14 @@ import javafx.scene.paint.Color;
  * Created by Lewin on 2015-10-18.
  */
 public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
-    public LotniskoCywilne(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, double maksymalnaPojemnosc) {
-        super(nazwa,dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, maksymalnaPojemnosc);
-        this.setColor(Color.BROWN);
-        this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());
-        Swiat.getInstance().addLotniskoCywilne(this);
+    public LotniskoCywilne(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY,boolean czyIstniejeWSwiecie) {
+        super(nazwa, dlugosc, szerokosc, polozenieX, polozenieY, czyIstniejeWSwiecie);
+        if (czyIstniejeWSwiecie == true) {
+            this.setColor(Color.BROWN);
+            this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());
+            Swiat.getInstance().addLotniskoCywilne(this);
 //        System.out.println("Utworzono Lotnisko Cywilne");
+        }
     }
     public LotniskoCywilne(){
 

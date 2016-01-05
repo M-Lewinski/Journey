@@ -174,8 +174,9 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                     });
                     Przystanek przystanek = (Przystanek) this;
                     przystanek.addPojazdZaparkowany(pojazd);
-                    pojazd.ladowanie(przystanek);
+//                    pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getTrasa(), pojazd.getObecnePolozenie()));
                     pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
+                    pojazd.ladowanie(przystanek);
                 } else {
                     this.startowanie(pojazd);
                 }
@@ -233,15 +234,17 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     public void startowanie(Pojazd pojazd){
         synchronized (kontrolaLotow) {
             synchronized (pojazd.getHulk()) {
-//                if(pojazd.przedStartowaniem(this)==false){
-//                    return;
-//                }
+                if(pojazd.przedStartowaniem()==false){
+                    return;
+                }
                 this.obecnieZajmuje = pojazd;
 //            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
+                pojazd.nastepnaDroga();
                 if (this instanceof Przystanek) {
                     Przystanek przystanek = (Przystanek) this;
                     if (przystanek.getListaPojazdowZaparkowanych().contains(pojazd)) {
                         if (pojazd instanceof Samolot) {
+                            ((Samolot) pojazd).setMaksymalnaIloscPaliwa(pojazd.okreslanieDlugosciTrasy(pojazd.getObecnePolozenie(),pojazd.getNastepnyPrzystanek(),pojazd.getPozostalaTrasa())+400);
                             przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc() + 1);
                         }
                         pojazd.setWidocznosc(true);
@@ -254,7 +257,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                         przystanek.removePojazdZaparkowany(pojazd);
                     }
                 }
-                pojazd.nastepnaDroga();
+//                pojazd.nastepnaDroga();
                 pojazd.poruszSie();
                 this.obecnieZajmuje = null;
             }
@@ -290,16 +293,21 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 //        }
 //    }
 //
-    public MiejsceZmianyKierunku(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
+    public MiejsceZmianyKierunku(double dlugosc, double szerokosc, double polozenieX, double polozenieY, String nazwa,boolean istniejeWSwiecie) {
         super(dlugosc, szerokosc);
         this.setPolozenieX(polozenieX);
         this.setPolozenieY(polozenieY);
-        this.zajetaPrzestrzen = zajetaPrzestrzen;
-        this.nazwa = nazwa;
-        Swiat.getInstance().addMiejsceZmianyKierunku(this);
+//        this.zajetaPrzestrzen = zajetaPrzestrzen;
+//        if(istniejeWSwiecie==true) {
+            this.nazwa = nazwa;
+        if(istniejeWSwiecie==true) {
+            Swiat.getInstance().addMiejsceZmianyKierunku(this);
+        }
         this.setPromien(10);
-        this.promienOuterRing = this.promien*2 + 15;
+        this.promienOuterRing = this.promien * 2 + 15;
+//        }
     }
+
     public MiejsceZmianyKierunku(){
 
     }
@@ -338,10 +346,10 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     @Override
     public List<Control> potrzebneInformacje() {
         List<Control> listaNodow = new ArrayList<Control>();
-        ShowLabel showLabel1 = new ShowLabel("Nazwa:");
+        ShowLabel showLabel1 = new ShowLabel("Nazwa: " + this.getNazwa());
         listaNodow.add(showLabel1);
-        ShowLabel showLabel2 = new ShowLabel(this.getNazwa(),this);
-        listaNodow.add(showLabel2);
+//        ShowLabel showLabel2 = new ShowLabel(this.getNazwa(),this);
+//        listaNodow.add(showLabel2);
         ShowLabel showLabel3 = new ShowLabel("Obecnie zajmowane przez:");
         listaNodow.add(showLabel3);
         if(this.obecnieZajmuje!=null){

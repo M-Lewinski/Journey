@@ -33,7 +33,6 @@ public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
 
     public PunktNaMapie(double dlugosc, double szerokosc) {
         super(dlugosc,szerokosc);
-
     }
     public PunktNaMapie(){
     }

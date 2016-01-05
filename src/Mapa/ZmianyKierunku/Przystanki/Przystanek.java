@@ -184,14 +184,17 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     }
 
 
-    public Przystanek(double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, String nazwa) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
-        Swiat.getInstance().addPrzystanek(this);
+    public Przystanek(double dlugosc, double szerokosc, double polozenieX, double polozenieY, String nazwa,boolean czyIstniejeWSwiecie) {
+        super(dlugosc, szerokosc, polozenieX, polozenieY,nazwa,czyIstniejeWSwiecie);
+        if(czyIstniejeWSwiecie==true) {
+            Swiat.getInstance().addPrzystanek(this);
+        }
 //        this.setPromien(15);
     }
     public Przystanek(){
 
     }
+
 
 
 

@@ -10,6 +10,8 @@ import Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
+import Pojazdy.Ladunki.Uzbrojenie;
+import Pojazdy.Ladunki.Wojskowy;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -22,10 +24,11 @@ import java.util.List;
 public class SamolotWojskowy extends Samolot {
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
+    private Wojskowy ladunek;
 //    public SamolotWojskowy(double dlugosc, double szerokosc, double polozenieX, double polozenieY, double maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-    public SamolotWojskowy(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-        super(dlugosc, szerokosc, maksymalnaPredkosc, maksymalnaIloscPaliwa, aktualnaIloscPaliwa);
-
+    public SamolotWojskowy(double dlugosc, double szerokosc, Uzbrojenie uzbrojenie,double polozenieX,double polozenieY) {
+        super(dlugosc, szerokosc);
+        ladunek = new Wojskowy(uzbrojenie);
 
 //        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
 //        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
@@ -67,7 +70,13 @@ public class SamolotWojskowy extends Samolot {
         return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, SamolotWojskowy.listaGdzieMozeLadowac);
     }
 
-//    @Override
+    @Override
+    public void wyznaczaniePierwszejTrasy() {
+//        super.wyznaczaniePierwszejTrasy();
+
+    }
+
+    //    @Override
 //    public void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy) {
 //
 //    }

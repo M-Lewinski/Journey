@@ -126,7 +126,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         Swiat.getInstance().addPasazer(this);
 //        this.przystanekPoczatkowy.addPasazerOczekujacy(this);
         tworzenieTrasy(this.przystanekPoczatkowy,this.przystanekDocelowy);
-        this.nastepnyPrzystanek=kolejnyPrzystanek();
+//        this.nastepnyPrzystanek=kolejnyPrzystanek();
         Runnable runner = this;
         thread = new Thread(runner);
 //        threadIsAlive=true;
@@ -135,18 +135,30 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         Swiat.getInstance().getListaThread().add(thread);
     }
 
-    public Przystanek kolejnyPrzystanek(){
-        if(this.pozostalaTrasa.isEmpty()){
+    public Przystanek kolejnyPrzystanek(List<Przystanek> trasa){
+        if(trasa.isEmpty()){
             return null;
         }
-        else if(this.pozostalaTrasa.size()>1){
+        else if(trasa.size()>1){
             return this.pozostalaTrasa.get(1);
         }
-        else if(this.pozostalaTrasa.size()==0){
+        else if(trasa.size()==0){
             return this.pozostalaTrasa.get(0);
         }
         return null;
     }
+//public Przystanek kolejnyPrzystanek(List<Przystanek> trasa){
+//        if(this.pozostalaTrasa.isEmpty()){
+//            return null;
+//        }
+//        else if(this.pozostalaTrasa.size()>1){
+//            return this.pozostalaTrasa.get(1);
+//        }
+//        else if(this.pozostalaTrasa.size()==0){
+//            return this.pozostalaTrasa.get(0);
+//        }
+//        return null;
+//    }
 
     private void okreslaniePolozen() {
         Random random = new Random();
@@ -184,7 +196,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         return nastepnyPrzystanek;
     }
 
-    public void setNastepnyPrzystanek(Przystanek nastepnyPrzystanek) {
+    public synchronized void setNastepnyPrzystanek(Przystanek nastepnyPrzystanek) {
         this.nastepnyPrzystanek = nastepnyPrzystanek;
     }
 
@@ -300,7 +312,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         List<Control> listaNodow = new ArrayList<Control>();
         ShowLabel label1 = new ShowLabel("Identyfikator:");
         listaNodow.add(label1);
-        ShowLabel label2 = new ShowLabel("  " + this.identyfikator.toString());
+        ShowLabel label2 = new ShowLabel(this.identyfikator.toString());
         listaNodow.add(label2);
         ShowLabel label15 = new ShowLabel("Imie i nazwisko:");
         listaNodow.add(label15);
@@ -334,6 +346,14 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         else{
             ShowLabel label12 = new ShowLabel("Obecne polozenie: "+((Przystanek) this.obecnePolozenie).getNazwa(),this.getObecnePolozenie());
             listaNodow.add(label12);
+        }
+        if(this.nastepnyPrzystanek!=null){
+            ShowLabel label = new ShowLabel("Nastepny przystanek: "+ this.nastepnyPrzystanek.getNazwa(),this.nastepnyPrzystanek);
+            listaNodow.add(label);
+        }
+        else{
+            ShowLabel label = new ShowLabel("Nastepny przystanek: Brak");
+            listaNodow.add(label);
         }
         ShowLabel label7 = new ShowLabel("Przystanek koncowy: "+this.getPrzystanekDocelowy().getNazwa(),this.getPrzystanekDocelowy());
         listaNodow.add(label7);
@@ -467,10 +487,10 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 
     private boolean uzyskiwanieListTrasBezPowtorzeniaElementu(Przystanek koniecTrasy, ObservableList<TrasowaniePasazerow> listaTras, SortedList<TrasowaniePasazerow> posortowanaListaTras, LinkedList<Przystanek> badanyElement) {
         if ( badanyElement.getLast() == koniecTrasy) {
-            System.out.println(this.getImie() + " " + this.getNazwisko() +" znaleziono Trase jej dlugosc to: " + posortowanaListaTras.get(0).getDlugosc());
-            for (int i = 0; i <  badanyElement.size(); i++) {
-                System.out.println("Punkt " + i + " " +  badanyElement.get(i).getNazwa());
-            }
+//            System.out.println(this.getImie() + " " + this.getNazwisko() +" znaleziono Trase jej dlugosc to: " + posortowanaListaTras.get(0).getDlugosc());
+//            for (int i = 0; i <  badanyElement.size(); i++) {
+//                System.out.println("Punkt " + i + " " +  badanyElement.get(i).getNazwa());
+//            }
             return true;
         }
         ArrayList<Pojazd> listaMozliwychPojazdow = new ArrayList<Pojazd>();
@@ -620,6 +640,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         if(!this.pozostalaTrasa.isEmpty()){
             this.pozostalaTrasa.clear();
         }
+        nastepnyPrzystanek=null;
 //        this.setListaPrzystankow(szukanieTrasy(punktPoczatkowy, punktKoncowy));
         List<Przystanek> listaTymczasowa = szukanieTrasy(punktPoczatkowy,punktKoncowy);
         if(listaTymczasowa==null){
@@ -636,8 +657,8 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         if(listaPrzystankow==null){
             return;
         }
-
         this.pozostalaTrasa.addAll(this.listaPrzystankow);
+        nastepnyPrzystanek=kolejnyPrzystanek(this.pozostalaTrasa);
 //        System.out.println("Lista przystankow do przejechania:");
 //        for (int i = 0; i < this.listaPrzystankow.size(); i++) {
 //            System.out.printf(" " + this.listaPrzystankow.get(i).getNazwa());
@@ -649,9 +670,12 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             if (this.obecnePolozenie instanceof TransportowiecCywilny) {
                 TransportowiecCywilny pojazd = (TransportowiecCywilny) this.obecnePolozenie;
                 synchronized (pojazd.getHulk()) {
+                    System.out.println("wysiadam!!!!!!!!!");
                     this.nastepnyPrzystanek.addPasazerOczekujacy(this);
                     pojazd.wysiadanie(this);
-                    this.nastepnyPrzystanek = this.kolejnyPrzystanek();
+                    this.pozostalaTrasa.remove(0);
+                    this.obecnePolozenie=this.nastepnyPrzystanek;
+                    this.nastepnyPrzystanek = this.kolejnyPrzystanek(this.pozostalaTrasa);
                     this.moznaWysiadac = false;
                 }
             }
@@ -660,10 +684,12 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     public void wsiadanie(Pojazd pojazd){
         synchronized (pojazd.getHulk()){
             if(pojazd instanceof TransportowiecCywilny){
+//                System.out.println("Jestem!!!!!!!!");
                 TransportowiecCywilny transportowiecCywilny = (TransportowiecCywilny) pojazd;
                 if(transportowiecCywilny.wsiadanie(this)){
                     Przystanek przystanek = (Przystanek) this.getObecnePolozenie();
                     przystanek.removePasazerOczekujacy(this);
+                    this.obecnePolozenie=pojazd;
                 }
             }
         }
@@ -724,6 +750,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         Swiat.getInstance().removePasazer(this);
         Swiat.getInstance().getListaThread().remove(thread);
         threadIsAlive=false;
+        System.out.println("USUNIETO PASAZERA!!!!!!!!!!!!!!!");
     }
 
     public void odwrocTrase(){
@@ -733,9 +760,11 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             this.setPrzystanekDocelowy(przystanek);
             Random random = new Random();
             if (this.podrozSluzbowa == true) {
-                this.czasPostoju = random.nextInt(15) + 5;
+//                this.czasPostoju = random.nextInt(15) + 5;
+                this.czasPostoju = fps * 10;
             } else {
-                this.czasPostoju = random.nextInt(30) + 15;
+//                this.czasPostoju = random.nextInt(30) + 15;
+                this.czasPostoju = fps*20;
             }
             this.setPowrot(true);
             this.tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
@@ -754,18 +783,40 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             this.threadIsAlive=true;
             while(this.threadIsAlive==true){
                 if(this.getObecnePolozenie()==this.getPrzystanekDocelowy()){
-
+                    odwrocTrase();
                 }
-                if(doszloDoZmiany==true){
+                if(this.czasPostoju==0) {
+                    if (doszloDoZmiany == true) {
 //                       System.out.println("zmieniam!!!!!!");
-                    doszloDoZmiany=false;
+                        doszloDoZmiany = false;
 //                    tworzenieTrasy((Przystanek) this.obecnePolozenie, this.przystanekDocelowy);
-                    if(this.obecnePolozenie instanceof Przystanek){
-                        tworzenieTrasy((Przystanek) this.getObecnePolozenie(), this.getPrzystanekDocelowy());
+                        if (this.obecnePolozenie instanceof Przystanek) {
+                            tworzenieTrasy((Przystanek) this.getObecnePolozenie(), this.getPrzystanekDocelowy());
+                        } else {
+                            tworzenieTrasy(this.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
+                        }
+                    } else {
+                        if (moznaWysiadac == true) {
+//                        moznaWysiadac=false;
+//                        System.out.println("chce wyjsc");
+                            this.wysiadanie();
+                        } else {
+                            if (this.nastepnyPrzystanek != null) {
+                                if (obecnePolozenie instanceof Przystanek) {
+                                    Przystanek przystanek = (Przystanek) obecnePolozenie;
+                                    for (int i = 0; i < przystanek.getListaPojazdowZaparkowanych().size(); i++) {
+                                        Pojazd pojazd = przystanek.getListaPojazdowZaparkowanych().get(i);
+                                        if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
+                                            this.wsiadanie(pojazd);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    else{
-                        tworzenieTrasy(this.getNastepnyPrzystanek(),this.getPrzystanekDocelowy());
-                    }
+                }
+                else{
+                    this.czasPostoju--;
                 }
                 Thread.sleep(1000/fps);
             }

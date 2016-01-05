@@ -384,4 +384,8 @@ public abstract class Droga implements Rysowanie {
         }
     }
 
+    public double calaOdlegloscDrogi(){
+        return this.wylot.getDlugosc() + this.przelot.getDlugosc() + this.ladowanie.getDlugosc();
+    }
+
 }

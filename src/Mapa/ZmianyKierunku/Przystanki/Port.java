@@ -12,11 +12,13 @@ import javafx.scene.paint.Color;
  * Created by Lewin on 2015-10-18.
  */
 public class Port extends Przystanek implements TworzeniePojazdu {
-    public Port(String nazwa, double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen, nazwa);
-        this.setColor(Color.BLUE);
-        this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());
-        Swiat.getInstance().addPort(this);
+    public Port(String nazwa, double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean czyIstniejeWSwiecie) {
+        super(dlugosc, szerokosc, polozenieX, polozenieY, nazwa,czyIstniejeWSwiecie);
+        if(czyIstniejeWSwiecie) {
+            this.setColor(Color.BLUE);
+            this.rysuj(MainPanel.getGrupaMiejscZmianyKierunku());
+            Swiat.getInstance().addPort(this);
+        }
     }
     public Port(){
 

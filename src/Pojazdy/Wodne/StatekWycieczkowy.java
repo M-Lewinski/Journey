@@ -10,6 +10,7 @@ import Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Port;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
+import Pojazdy.Ladunki.Pasazerski;
 import Pojazdy.Ladunki.TypLadunku;
 import javafx.scene.paint.Color;
 
@@ -22,18 +23,22 @@ import java.util.List;
  */
 public class StatekWycieczkowy extends Statek {
     private String firma;
-//    private static List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
+    private Pasazerski ladunek;
+    //    private static List<Object> listaGdzieMozeLadowac = new ArrayList<Object>();
 //    private static Droga typDrogi;
     public String getFirma() {
         return firma;
     }
+
     public StatekWycieczkowy(double dlugosc, double szerokosc, double maksymalnaPredkosc, String firma) {
         super(dlugosc, szerokosc, maksymalnaPredkosc,null);
+        ladunek = new Pasazerski();
+//        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
+        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
         this.firma = firma;
+        this.setTymczasowyKolor(Color.LIGHTBLUE);
+        this.rysuj(MainPanel.getGrupaPojazdow());
     }
 
-//    @Override
-//    public void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy) {
-//
-//    }
+
 }

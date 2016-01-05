@@ -14,11 +14,9 @@ public abstract class Lotnisko extends Przystanek {
      * @param szerokosc szerokosc obrazu zwiazanego z obiektem.
      * @param polozenieX polozenie obiektu w poziomie.
      * @param polozenieY polozenie obiektu w pionie.
-     * @param zajetaPrzestrzen czy przestrzen powietrzna nad lotniskiem jest zajeta.
-     * @param maksymalnaPojemnosc maksymalna liczba samolotow znajdujacych sie na lotnisku.
      */
-    public Lotnisko(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean zajetaPrzestrzen, double maksymalnaPojemnosc) {
-        super(dlugosc, szerokosc, polozenieX, polozenieY, zajetaPrzestrzen,nazwa);
+    public Lotnisko(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY,boolean czyIstniejeWSwiecie) {
+        super(dlugosc, szerokosc, polozenieX, polozenieY,nazwa,czyIstniejeWSwiecie);
 //        this.maksymalnaPojemnosc = maksymalnaPojemnosc;
     }
 

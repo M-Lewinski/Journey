@@ -27,12 +27,10 @@ public abstract class Samolot extends Pojazd {
 //    private MiejsceZmianyKierunku nastepnyPrzystanek;
 
 //    public Samolot(int dlugosc, int szerokosc, int maksymalnaPredkosc, int liczbaPersonelu, int maksymalnaIloscPaliwa, int aktualnaIloscPaliwa) {
-    public Samolot(double dlugosc, double szerokosc, double maksymalnaPredkosc, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-        super(dlugosc, szerokosc, maksymalnaPredkosc);
+    public Samolot(double dlugosc, double szerokosc) {
+        super(dlugosc, szerokosc);
         Random random = new Random();
         this.liczbaPersonelu = random.nextInt(10)+4;
-        this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
-        this.aktualnaIloscPaliwa = aktualnaIloscPaliwa;
     }
 
     public Samolot(){
@@ -86,12 +84,21 @@ public abstract class Samolot extends Pojazd {
 
     public void setMaksymalnaIloscPaliwa(double maksymalnaIloscPaliwa) {
         this.maksymalnaIloscPaliwa = maksymalnaIloscPaliwa;
+        this.aktualnaIloscPaliwa = this.maksymalnaIloscPaliwa;
     }
 
     public void awaryjneLadowanie(){
 
     }
 
+    @Override
+    public void wtrakciePoruszaniaSie(double przesuniecie) {
+        super.wtrakciePoruszaniaSie(przesuniecie);
+        this.aktualnaIloscPaliwa = this.aktualnaIloscPaliwa-przesuniecie;
+        if(aktualnaIloscPaliwa<0.0){
+            System.out.println("ALARM BRAK PALIWA");
+        }
+    }
 
     @Override
     public void usuwanie() {
