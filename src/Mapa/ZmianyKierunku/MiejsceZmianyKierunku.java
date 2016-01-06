@@ -171,8 +171,11 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                     Przystanek przystanek = (Przystanek) this;
 //                    pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getTrasa(), pojazd.getObecnePolozenie()));
                     pojazd.ladowanie(przystanek);
+
                     pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
                     przystanek.addPojazdZaparkowany(pojazd);
+
+
                 } else {
                     this.startowanie(pojazd);
                 }
@@ -230,9 +233,9 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     public void startowanie(Pojazd pojazd){
         synchronized (kontrolaLotow) {
             synchronized (pojazd.getHulkPojazdu()) {
-//                if(pojazd.przedStartowaniem()==false){
-//                    return;
-//                }
+                if(pojazd.przedStartowaniem()==false){
+                    return;
+                }
                 this.obecnieZajmuje = pojazd;
 //            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
                 pojazd.nastepnaDroga();
@@ -254,9 +257,10 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                     }
                 }
 //                pojazd.nastepnaDroga();
+            }
                 pojazd.poruszSie();
                 this.obecnieZajmuje = null;
-            }
+
         }
     }
 

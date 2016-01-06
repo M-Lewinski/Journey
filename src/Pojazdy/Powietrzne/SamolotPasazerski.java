@@ -23,6 +23,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     private Pasazerski ladunek;
+
     public SamolotPasazerski(double dlugosc, double szerokosc) {
         super( dlugosc, szerokosc);
         this.ladunek = new Pasazerski();
@@ -30,6 +31,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
         this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
         this.setTymczasowyKolor(Color.YELLOW);
         this.rysuj(MainPanel.getGrupaPojazdow());
+        this.runMe();
     }
     public static List<MiejsceZmianyKierunku> getListaGdzieMozeLadowac() {
         return listaGdzieMozeLadowac;
@@ -162,6 +164,12 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
         synchronized (this.getHulkPojazdu()) {
             super.ladowanie(przystanek);
             this.ladunek.znalezienieOsobWysiadajacych(przystanek);
+            for (Pasazer p: this.ladunek.getListaWysiadajacychPasazerow()) {
+                synchronized (p){
+                    p.notify();
+                }
+            }
+            this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-this.ladunek.getsizeListaWysiadajacychPasazerow());
         }
     }
 
@@ -170,7 +178,6 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
         synchronized (this.getHulkPojazdu()){
             this.ladunek.removePasazer(pasazer);
             this.ladunek.removeWysiadajacyPasazer(pasazer);
-            this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);
         }
     }
 
@@ -210,5 +217,11 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
     public boolean przedStartowaniem() {
 //        return super.przedStartowaniem(miejsceZmianyKierunku);
         return this.ladunek.czyWszystcyWysiedli();
+    }
+
+    @Override
+    public void obslugaLadunku(List<Pasazer> listaOznajmionychPasazerow) {
+        super.obslugaLadunku(listaOznajmionychPasazerow);
+
     }
 }

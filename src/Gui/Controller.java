@@ -52,8 +52,8 @@ public class Controller {
 
     @FXML
     public void handleStworzSamolotPasazerski(){
-        for (int i = 0; i < 10; i++) {
-            SamolotPasazerski samolotPasazerski = new SamolotPasazerski(14,14);
+        for (int i = 0; i < 1; i++) {
+            new SamolotPasazerski(14,14);
         }
         System.out.println("Stworzono nowy samolot pasazerski");
     }

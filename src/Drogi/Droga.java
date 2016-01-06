@@ -90,10 +90,10 @@ public abstract class Droga implements Rysowanie {
         this.listaPojazdow = listaPojazdow;
     }
 
-    public void addListaPojazdow(Pojazd pojazd){
+    public synchronized void addListaPojazdow(Pojazd pojazd){
         this.listaPojazdow.add(pojazd);
     }
-    public void removeListaPojazdow(Pojazd pojazd){
+    public synchronized void removeListaPojazdow(Pojazd pojazd){
         this.listaPojazdow.remove(pojazd);
     }
     public double getAngle() {
@@ -368,6 +368,8 @@ public abstract class Droga implements Rysowanie {
 //            for (int i = 0; i < this.getListaPojazdow().size(); i++) {
             for (int i = 0; i < listaPojazdowNaDrodze.size(); i++) {
 //                Pojazd pojazdNaDrodze = this.getListaPojazdow().get(i);
+                if(listaPojazdowNaDrodze.get(i)==null)
+                    continue;
                 Pojazd pojazdNaDrodze = listaPojazdowNaDrodze.get(i);
                 if (pojazdNaDrodze == pojazd) {
                         continue;

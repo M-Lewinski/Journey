@@ -22,6 +22,10 @@ public class Pasazerski extends TypLadunku {
         this.listaPasazerow.add(pasazer);
     }
 
+    public List<Pasazer> getListaWysiadajacychPasazerow() {
+        return listaWysiadajacychPasazerow;
+    }
+
     public void removePasazer(Pasazer pasazer){
         this.listaPasazerow.remove(pasazer);
     }
@@ -43,6 +47,14 @@ public class Pasazerski extends TypLadunku {
 
     public void setObecnaLiczbaPasazerow(int obecnaLiczbaPasazerow) {
         this.obecnaLiczbaPasazerow = obecnaLiczbaPasazerow;
+    }
+
+    public int getsizeListaWysiadajacychPasazerow() {
+        return listaWysiadajacychPasazerow.size();
+    }
+
+    public void setListaWysiadajacychPasazerow(List<Pasazer> listaWysiadajacychPasazerow) {
+        this.listaWysiadajacychPasazerow = listaWysiadajacychPasazerow;
     }
 
     public int getObecnaLiczbaPasazerow() {
@@ -69,7 +81,7 @@ public class Pasazerski extends TypLadunku {
     public Pasazerski() {
         Random random = new Random();
 //        this.maksymalnaLiczbaPasazerow=random.nextInt(6)+5;
-        this.maksymalnaLiczbaPasazerow=0;
+        this.maksymalnaLiczbaPasazerow=5;
     }
 
     public void znalezienieOsobWysiadajacych(Przystanek przystanek){

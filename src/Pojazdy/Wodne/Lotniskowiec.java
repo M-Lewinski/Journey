@@ -32,6 +32,7 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
     public Lotniskowiec(double dlugosc, double szerokosc, double maksymalnaPredkosc) {
         super(dlugosc, szerokosc);
         Swiat.getInstance().addLotniskowiec(this);
+        this.runMe();
     }
 
     @Override

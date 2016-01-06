@@ -8,10 +8,7 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import javafx.scene.control.Control;
 import javafx.scene.shape.Circle;
 
-import java.util.ArrayList;
-import java.util.DoubleSummaryStatistics;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Lewin on 2015-10-18.
@@ -22,6 +19,18 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     private List<Pojazd> listaPojazdowPrzyjezdzajacych = new ArrayList<Pojazd>();
     private List<Pasazer> listaPasazerowPrzyjezdzajacych = new ArrayList<Pasazer>();
     private double maksymalnaPojemnosc=8;
+
+    public UUID getOstatnioOdwiedzil() {
+        return ostatnioOdwiedzil;
+    }
+
+    public void setOstatnioOdwiedzil(UUID ostatnioOdwiedzil) {
+        this.ostatnioOdwiedzil = ostatnioOdwiedzil;
+    }
+
+    private UUID ostatnioOdwiedzil;
+
+
 
     public void setMaksymalnaPojemnosc(double maksymalnaPojemnosc) {
         this.maksymalnaPojemnosc = maksymalnaPojemnosc;
@@ -183,8 +192,11 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         this.listaPasazerowPrzyjezdzajacych = listaPasazerowPrzyjezdzajacych;
     }
 
-    public void addPojazdZaparkowany(Pojazd pojazd){
+    public synchronized void addPojazdZaparkowany(Pojazd pojazd){
+        this.setOstatnioOdwiedzil(pojazd.getIdentyfikator());
+
         this.listaPojazdowZaparkowanych.add(pojazd);
+        this.notifyAll();
     }
 
     public void addPojazdPrzyjezdzajacy(Pojazd pojazd){
@@ -199,7 +211,7 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         this.listaPasazerowPrzyjezdzajacych.add(pasazer);
     }
 
-    public void removePojazdZaparkowany(Pojazd pojazd){
+    public synchronized void  removePojazdZaparkowany(Pojazd pojazd){
         this.listaPojazdowZaparkowanych.remove(pojazd);
     }
 
