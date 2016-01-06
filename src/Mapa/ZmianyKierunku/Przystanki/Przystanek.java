@@ -10,6 +10,7 @@ import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -31,24 +32,56 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         return maksymalnaPojemnosc;
     }
 
-    public void poinformujPasazerow(List<Pasazer> listaOznajmionychPasazerow){
-        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
-            if(!listaOznajmionychPasazerow.contains(this.listaPasazerowOczekujacych.get(i))) {
-                this.listaPasazerowOczekujacych.get(i).setDoszloDoZmiany(true);
-                listaOznajmionychPasazerow.add(this.listaPasazerowOczekujacych.get(i));
-//                System.out.println("wie");
-            }
-        }
+    public void poinformujPasazerow(List<Pasazer> listaOznajmionychPasazerow,boolean rezygnacja){
+        List<Pasazer> listaTymczasowa = new LinkedList<Pasazer>();
+        listaTymczasowa.addAll(this.listaPasazerowOczekujacych);
+        odpowiedniePoinformowanie(listaTymczasowa,listaOznajmionychPasazerow, rezygnacja);
+        listaTymczasowa.clear();
+        listaTymczasowa.addAll(this.listaPasazerowPrzyjezdzajacych);
+        odpowiedniePoinformowanie(this.listaPasazerowPrzyjezdzajacych,listaOznajmionychPasazerow,rezygnacja);
+        listaTymczasowa.clear();
+//
+//        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size() ; i++) {
+//            if(!listaOznajmionychPasazerow.contains(this.listaPasazerowPrzyjezdzajacych.get(i))) {
+//                this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
+//                listaOznajmionychPasazerow.add(this.listaPasazerowPrzyjezdzajacych.get(i));
+////                System.out.println("wie");
+//            }
+//        }
+    }
 
-        for (int i = 0; i < this.listaPasazerowPrzyjezdzajacych.size() ; i++) {
-            if(!listaOznajmionychPasazerow.contains(this.listaPasazerowPrzyjezdzajacych.get(i))) {
-                this.listaPasazerowPrzyjezdzajacych.get(i).setDoszloDoZmiany(true);
-                listaOznajmionychPasazerow.add(this.listaPasazerowPrzyjezdzajacych.get(i));
+    private void odpowiedniePoinformowanie(List<Pasazer> listaPasazerowDoOznajmienia,List<Pasazer> listaOznajmionychPasazerow, boolean rezygnacja) {
+        if(listaPasazerowDoOznajmienia == null){
+            return;
+        }
+        for (int i = 0; i < listaPasazerowDoOznajmienia.size(); i++) {
+            if(!listaOznajmionychPasazerow.contains(listaPasazerowDoOznajmienia.get(i))) {
+                if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa()==null){
+                    continue;
+                }
+                if(rezygnacja==true) {
+//                    if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa()==null){
+//                        continue;
+//                    }
+//                    if(!listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa().isEmpty())
+                    if(!listaPasazerowDoOznajmienia.get(i).getListaPrzystankow().isEmpty())
+                    listaPasazerowDoOznajmienia.get(i).setDoszloDoZmiany(true);
+                    listaOznajmionychPasazerow.add(listaPasazerowDoOznajmienia.get(i));
 //                System.out.println("wie");
+                }
+                else{
+
+//                    if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa().isEmpty()) {
+                    if(listaPasazerowDoOznajmienia.get(i).getListaPrzystankow().isEmpty()) {
+                        listaPasazerowDoOznajmienia.get(i).setDoszloDoZmiany(true);
+                        listaOznajmionychPasazerow.add(listaPasazerowDoOznajmienia.get(i));
+                    }
+                }
             }
         }
     }
-//
+
+    //
 //    public void poinformujPasazerow(){
 //        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
 //            this.listaPasazerowOczekujacych.get(i).setDoszloDoZmiany(true);

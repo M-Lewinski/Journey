@@ -3,6 +3,9 @@ package Mapa;
 import Drogi.Droga;
 import Drogi.DrogaMorska;
 import Drogi.DrogaPowietrzna;
+import Gui.Controller;
+import Gui.MainPanel;
+import Gui.ShowLabel;
 import Mapa.ZmianyKierunku.Przystanki.*;
 import Mapa.ZmianyKierunku.Skrzyzowanie;
 import Pasazerowie.Pasazer;
@@ -11,6 +14,9 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Pojazdy.Powietrzne.SamolotPasazerski;
 import Pojazdy.Wodne.Lotniskowiec;
 import com.sun.media.sound.MidiInDeviceProvider;
+import javafx.application.Platform;
+import javafx.scene.control.Control;
+import javafx.scene.control.Labeled;
 
 import java.util.*;
 
@@ -21,7 +27,7 @@ import static javafx.application.Application.launch;
  *
  */
 //public class Swiat extends ObiektGraficzny {
-public class Swiat extends ObiektGraficzny {
+public class Swiat extends ObiektGraficzny implements ShowInfo{
     /**
      * instancja klasy swiat.
      */
@@ -360,4 +366,53 @@ public class Swiat extends ObiektGraficzny {
 //        DrogaMorska drogaMorska10 = new DrogaMorska(skrzyzowanie7,skrzyzowanie6,0,0);
     }
 
+    @Override
+    public List<Control> potrzebneInformacje() {
+        List<Control> listaNodow = new ArrayList<Control>();
+        ShowLabel showLabel = new ShowLabel("Wszyscy Pasazerowie: ");
+        listaNodow.add(showLabel);
+        ShowLabel showLabel1 = new ShowLabel("Liczba wszystkich pasazerow: " + this.listaPasazerow.size());
+        listaNodow.add(showLabel1);
+        for (int i = 0; i < this.listaPasazerow.size(); i++) {
+            Pasazer pasazer = this.listaPasazerow.get(i);
+            ShowLabel showLabel2 = new ShowLabel("  " + pasazer.getImie() + " " + pasazer.getNazwisko(),pasazer);
+            listaNodow.add(showLabel2);
+        }
+        return  listaNodow;
+    }
+
+    @Override
+    public int showInfo(int rowCount) {
+        List<Control> listaNodow = new ArrayList<Control>();
+        listaNodow.addAll(this.potrzebneInformacje());
+        Controller controller = MainPanel.getLoader().getController();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                boolean rozne = false;
+                if (controller.getGrid().getChildren().size() != listaNodow.size()) {
+                    controller.getGrid().getChildren().clear();
+                    rozne = true;
+                }
+                if (rozne == false) {
+                    for (int i = 0; i < controller.getGrid().getChildren().size(); i++) {
+                        int row = controller.getGrid().getRowIndex(controller.getGrid().getChildren().get(i));
+                        if (controller.getGrid().getChildren().get(i) instanceof Labeled && listaNodow.get(row) instanceof Labeled) {
+                            if (((Labeled) controller.getGrid().getChildren().get(i)).getText().equals(((Labeled) listaNodow.get(row)).getText())) {
+                                continue;
+                            }
+                        }
+                        controller.getGrid().getChildren().remove(i);
+                        i--;
+                        controller.getGrid().add(listaNodow.get(row), 0, row);
+                    }
+                } else {
+                    for (int i = 0; i < listaNodow.size(); i++) {
+                        controller.getGrid().add(listaNodow.get(i), 0, i);
+                    }
+                }
+            }
+        });
+        return listaNodow.size();
+    }
 }

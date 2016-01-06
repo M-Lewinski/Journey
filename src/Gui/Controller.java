@@ -20,6 +20,10 @@ public class Controller {
     @FXML
     private Button buttonStworzSamolotWojskowy;
     @FXML
+    private Button buttonWszyscyPasazerowie;
+
+
+    @FXML
     private void initialize() {
     }
 
@@ -62,6 +66,11 @@ public class Controller {
     public  void handleStworzStatekWycieczkowy(){
         StatekWycieczkowy statekWycieczkowy = new StatekWycieczkowy(14,14);
         System.out.println("Stworzono nowy statek wycieczkowy");
+    }
+
+    @FXML
+    public void handleWyswietlWszystkichPasazerow(){
+        Informacja.getInstance().setObecnaInformacja(Swiat.getInstance());
     }
 
     public void setMainPanel(MainPanel mainPanel) {

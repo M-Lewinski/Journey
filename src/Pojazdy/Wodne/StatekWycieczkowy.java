@@ -124,6 +124,9 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 //                    return false;
 //                }
 //            }
+            if(this.ladunek==null){
+                return false;
+            }
             if(this.ladunek.czyWciazJestNaPrzystanku(pasazer,this)==false){
                 return false;
             }

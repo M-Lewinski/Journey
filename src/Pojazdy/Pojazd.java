@@ -190,7 +190,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     }
 
 //    public void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow){
-    public synchronized void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow,Droga typDrogi){
+//    public synchronized void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow,Droga typDrogi){
+    public  void zmianaTrasy(List<Przystanek> listaMozliwychPrzystankow,Droga typDrogi){
         //int x;
 //        MiejsceZmianyKierunku nastepneMiejsceZmianyKierunku = null;
         Przystanek nastepneMiejsceZmianyKierunku = null;
@@ -234,7 +235,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.poinformujPasazerow(staraTrasaPrzystankow,this.listaOdwiedzanychPrzystankow(this.trasa));
     }
 
-    public void zmienDotychczasowaTrase(){
+//    public synchronized void zmienDotychczasowaTrase(){
+    public  void zmienDotychczasowaTrase(){
         List<Przystanek> listaMozliwychPrzystankow = new ArrayList<Przystanek>();
         List<Przystanek> listaTymczasowa = new ArrayList<Przystanek>();
         listaTymczasowa.addAll(Swiat.getInstance().getListaPrzystankow());
@@ -476,9 +478,9 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
     public void wyznaczaniePierwszejTrasy(){
         okreslNowePolozenie(this.getMozliweLadowania());
-        this.getPrzystanekPoczatkowy().getListaPojazdowZaparkowanych().add(this);
         tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(), this.getTypDrogi());
         this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getPozostalaTrasa(),this.obecnePolozenie));
+        this.getPrzystanekPoczatkowy().getListaPojazdowZaparkowanych().add(this);
         this.poinformujPasazerow(null,this.listaOdwiedzanychPrzystankow(this.trasa));
     }
 
@@ -787,12 +789,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         }
         if(staraTrasa!=null){
             for (int i = 0; i < staraTrasa.size(); i++) {
-                staraTrasa.get(i).poinformujPasazerow(listaOznajmionychPasazerow);
+                staraTrasa.get(i).poinformujPasazerow(listaOznajmionychPasazerow,true);
             }
         }
         if(nowaTrasa!=null){
             for (int i = 0; i < nowaTrasa.size(); i++) {
-                nowaTrasa.get(i).poinformujPasazerow(listaOznajmionychPasazerow);
+                nowaTrasa.get(i).poinformujPasazerow(listaOznajmionychPasazerow,false);
             }
         }
     }
@@ -867,7 +869,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     }
 
 
-    public synchronized void odwrocTrase(){
+//    public synchronized void odwrocTrase(){
+    public void odwrocTrase(){
         Przystanek poczatek = this.getPrzystanekDocelowy();
         this.pozostalaTrasa.clear();
         this.przystanekDocelowy=this.getPrzystanekPoczatkowy();
@@ -1099,5 +1102,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                 e.printStackTrace();
             }
         }
+//        System.out.println("Zabito pojazd");
+//        thread.interrupt();
     }
 }

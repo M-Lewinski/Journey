@@ -14,9 +14,9 @@
    <children>
       <AnchorPane layoutX="400.0" layoutY="-1.0" prefHeight="650.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="950.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="buttonStworzSamolotPasazerski" layoutX="22.0" layoutY="499.0" mnemonicParsing="false" onAction="#handleStworzSamolotPasazerski" prefHeight="25.0" prefWidth="215.0" text="Stworz samolot pasazerski" textAlignment="CENTER" AnchorPane.bottomAnchor="126.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="499.0" />
-            <Button fx:id="buttonStworzSamolotWojskowy" layoutX="22.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleStworzSamolotWojskowy" prefHeight="25.0" prefWidth="215.0" text="Stworz samolot wojskowy" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="580.0" />
-            <Button fx:id="buttonStworzSamolotWojskowy1" layoutX="22.0" layoutY="538.0" mnemonicParsing="false" onAction="#handleStworzStatekWycieczkowy" prefHeight="25.0" prefWidth="215.0" text="Stworz statek wycieczkowy" textAlignment="CENTER" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="538.0" />
+            <Button fx:id="buttonStworzSamolotPasazerski" layoutX="14.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleStworzSamolotPasazerski" prefHeight="25.0" prefWidth="158.0" text="Stworz samolot pasazerski" textAlignment="CENTER" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="478.0" />
+            <Button fx:id="buttonStworzSamolotWojskowy" layoutX="14.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleStworzSamolotWojskowy" prefHeight="25.0" prefWidth="158.0" text="Stworz samolot wojskowy" textAlignment="CENTER" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="545.0" />
+            <Button fx:id="buttonStworzSamolotWojskowy1" layoutX="14.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleStworzStatekWycieczkowy" prefHeight="25.0" prefWidth="158.0" text="Stworz statek wycieczkowy" textAlignment="CENTER" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="513.0" />
             <ScrollPane fx:id="scrollPanel" fitToHeight="true" fitToWidth="true" layoutX="2.0" layoutY="23.0" prefHeight="445.0" prefWidth="312.0" AnchorPane.bottomAnchor="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="23.0">
                <content>
                   <GridPane fx:id="grid" prefWidth="315.0">
@@ -26,6 +26,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <Button fx:id="buttonWszyscyPasazerowie" layoutX="14.0" layoutY="578.0" mnemonicParsing="false" onAction="#handleWyswietlWszystkichPasazerow" prefHeight="25.0" prefWidth="158.0" text="Pasazerowie" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="578.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

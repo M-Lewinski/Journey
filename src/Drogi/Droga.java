@@ -359,26 +359,28 @@ public abstract class Droga implements Rysowanie {
 
     public boolean czyDojdzieDoZderzenia(Pojazd pojazd, double przesuniecie){
         synchronized (hulk){
-            List<Pojazd> listaPojazdowNaDrodze = new ArrayList<>(this.getListaPojazdow());
+//            List<Pojazd> listaPojazdowNaDrodze = new ArrayList<>(this.getListaPojazdow());
+            List<Pojazd> listaPojazdowNaDrodze = new ArrayList<>();
+            listaPojazdowNaDrodze.addAll(this.listaPojazdow);
 //            for (int i = 0; i < this.getListaPojazdow().size(); i++) {
             for (int i = 0; i < listaPojazdowNaDrodze.size(); i++) {
 //                Pojazd pojazdNaDrodze = this.getListaPojazdow().get(i);
                 Pojazd pojazdNaDrodze = listaPojazdowNaDrodze.get(i);
                 if (pojazdNaDrodze == pojazd) {
-                    if (pojazdNaDrodze == null) {
                         continue;
-                    }
+                }
 //                if(pojazdNaDrodze.getImageNode().visibleProperty().get() == true){
                     if (pojazdNaDrodze.isWidocznosc() == true) {
-                        double odlegloscMiedzyPojazdami = Math.abs(pojazd.getOdlegloscDoKonca() - pojazdNaDrodze.getOdlegloscDoKonca());
+                        double odleglosc1 = pojazd.getOdlegloscDoKonca();
+                        double odleglosc2 = pojazdNaDrodze.getOdlegloscDoKonca();
+                        double odlegloscMiedzyPojazdami = Math.abs(odleglosc1 - odleglosc2);
                         if (odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie) {
-                            if (pojazd.getOdlegloscDoKonca() > pojazdNaDrodze.getOdlegloscDoKonca()) {
-                            System.out.println("Za blisko");
+                            if (odleglosc1 > odleglosc2) {
                                 return true;
                             }
                         }
                     }
-                }
+
             }
             return false;
         }

@@ -173,10 +173,10 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                         }
                     });
                     Przystanek przystanek = (Przystanek) this;
-                    przystanek.addPojazdZaparkowany(pojazd);
 //                    pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getTrasa(), pojazd.getObecnePolozenie()));
                     pojazd.ladowanie(przystanek);
                     pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
+                    przystanek.addPojazdZaparkowany(pojazd);
                 } else {
                     this.startowanie(pojazd);
                 }
@@ -235,7 +235,6 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
         synchronized (kontrolaLotow) {
             synchronized (pojazd.getHulk()) {
                 if(pojazd.przedStartowaniem()==false){
-                    System.out.println("cos jest nie tak");
                     return;
                 }
                 this.obecnieZajmuje = pojazd;

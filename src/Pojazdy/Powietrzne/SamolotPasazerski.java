@@ -85,6 +85,9 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 //                    return false;
 //                }
 //            }
+            if(this.ladunek==null){
+                return  false;
+            }
             if(this.ladunek.czyWciazJestNaPrzystanku(pasazer,this)==false){
                 return false;
             }
@@ -170,6 +173,8 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
             this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);
         }
     }
+
+
 
 //    @Override
 //    public void wysiadanie() {

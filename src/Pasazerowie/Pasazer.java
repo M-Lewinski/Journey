@@ -76,7 +76,8 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
      */
     private List<Bilet> listaBiletow = new ArrayList<Bilet>();
 
-    private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
+//    private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
+    private List<Przystanek> listaPrzystankow;
 
     private int fps=30;
 
@@ -85,12 +86,14 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
      */
     private boolean powrot;
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
-    private List<Przystanek> pozostalaTrasa = new ArrayList<Przystanek>();
+//    private List<Przystanek> pozostalaTrasa = new ArrayList<Przystanek>();
+    private List<Przystanek> pozostalaTrasa;
 
     private Przystanek nastepnyPrzystanek;
     private Thread thread;
     private boolean threadIsAlive = false;
     private boolean moznaWysiadac = false;
+    private boolean moznaWsiadac = false;
     private boolean doszloDoZmiany = false;
     /**
      * Konstruktor klasy pasazer, ktory losowo generuje wartosci pol.
@@ -121,6 +124,8 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 //        this.czasPostoju = random.nextInt(30)+30;
 //        this.przystanekPoczatkowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
 //        this.przystanekDocelowy = Swiat.getInstance().getListaPrzystankow().get(random.nextInt(Swiat.getInstance().getListaPrzystankow().size()));
+        listaPrzystankow = new ArrayList<Przystanek>();
+        pozostalaTrasa = new ArrayList<Przystanek>();
         okreslaniePolozen();
 //        this.przystanekPoczatkowy = Swiat.getInstance().getListaPojazdow().get(0).getPrzystanekPoczatkowy();
 //        this.przystanekDocelowy = Swiat.getInstance().getListaPojazdow().get(0).getPrzystanekDocelowy();
@@ -199,6 +204,14 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 
     public synchronized void setNastepnyPrzystanek(Przystanek nastepnyPrzystanek) {
         this.nastepnyPrzystanek = nastepnyPrzystanek;
+    }
+
+    public boolean isMoznaWsiadac() {
+        return moznaWsiadac;
+    }
+
+    public void setMoznaWsiadac(boolean moznaWsiadac) {
+        this.moznaWsiadac = moznaWsiadac;
     }
 
     public boolean isThreadIsAlive() {
@@ -496,9 +509,9 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             return true;
         }
         ArrayList<Pojazd> listaMozliwychPojazdow = new ArrayList<Pojazd>();
-        if(!badanyElement.getLast().getListaPojazdowZaparkowanych().isEmpty()){
-            listaMozliwychPojazdow.addAll(badanyElement.getLast().getListaPojazdowZaparkowanych());
-        }
+//        if(!badanyElement.getLast().getListaPojazdowZaparkowanych().isEmpty()){
+//            listaMozliwychPojazdow.addAll(badanyElement.getLast().getListaPojazdowZaparkowanych());
+//        }
         if(!badanyElement.getLast().getListaPojazdowPrzyjezdzajacych().isEmpty()){
             listaMozliwychPojazdow.addAll(badanyElement.getLast().getListaPojazdowPrzyjezdzajacych());
         }
@@ -693,12 +706,18 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     }
 
     public synchronized void wsiadanie(Pojazd pojazd){
-        synchronized (pojazd.getHulk()){
 //            System.out.println("Wsiadam");
             if(pojazd instanceof TransportowiecCywilny){
 //                System.out.println("Jestem!!!!!!!!");
                 TransportowiecCywilny transportowiecCywilny = (TransportowiecCywilny) pojazd;
-                if(transportowiecCywilny.wsiadanie(this)){
+//                if(transportowiecCywilny.getLadunek().czyWszystcyWysiedli()==false){
+//                    return;
+//                }
+//                while(transportowiecCywilny.getLadunek().czyWszystcyWysiedli()==false){
+//
+//                }
+                synchronized (pojazd.getHulk()){
+                    if(transportowiecCywilny.wsiadanie(this)){
 //                    System.out.println("wsiadlem");
                     if(this.getObecnePolozenie() instanceof  Przystanek) {
                         Przystanek przystanek = (Przystanek) this.getObecnePolozenie();
@@ -819,20 +838,17 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             this.threadIsAlive=true;
             while(this.threadIsAlive==true){
                 if(this.getObecnePolozenie()==this.getPrzystanekDocelowy()){
-
                     odwrocTrase();
                 }
                 if(this.czasPostoju==0) {
+
                     if (doszloDoZmiany == true) {
-//                       System.out.println("zmieniam!!!!!!");
                         doszloDoZmiany = false;
-//                    tworzenieTrasy((Przystanek) this.obecnePolozenie, this.przystanekDocelowy);
                         if (this.obecnePolozenie instanceof Przystanek) {
                             tworzenieTrasy((Przystanek) this.getObecnePolozenie(), this.getPrzystanekDocelowy());
                         } else {
-//                            tworzenieTrasy(this.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
                             Pojazd pojazd = (Pojazd) this.getObecnePolozenie();
-//                            tworzenieTrasy(pojazd.getNastepnyPrzystanek(), this.getPrzystanekDocelowy());
+
                             if(pojazd.getObecnePolozenie() instanceof Przystanek) {
                                 Przystanek obecne = (Przystanek) pojazd.getObecnePolozenie();
                                 tworzenieTrasy(obecne, this.getPrzystanekDocelowy());
@@ -854,27 +870,48 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                         if (moznaWysiadac == true) {
 //                        moznaWysiadac=false;
                             this.wysiadanie();
-                        } else {
+                        }
+                        else {
                             if (this.nastepnyPrzystanek != null) {
                                 if (obecnePolozenie instanceof Przystanek) {
                                     Przystanek przystanek = (Przystanek) obecnePolozenie;
                                     for (int i = 0; i < przystanek.getListaPojazdowZaparkowanych().size(); i++) {
                                         Pojazd pojazd = przystanek.getListaPojazdowZaparkowanych().get(i);
                                         if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
+//                                            System.out.println("Proba wejscia");
                                             this.wsiadanie(pojazd);
-                                            break;
+                                            if(this.obecnePolozenie == pojazd) {
+                                                break;
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+//                        else if(moznaWsiadac==true){
+//                            if (this.nastepnyPrzystanek != null) {
+//                                if (obecnePolozenie instanceof Przystanek) {
+//                                    Przystanek przystanek = (Przystanek) obecnePolozenie;
+//                                    for (int i = 0; i < przystanek.getListaPojazdowZaparkowanych().size(); i++) {
+//                                        Pojazd pojazd = przystanek.getListaPojazdowZaparkowanych().get(i);
+//                                        if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
+//                                            this.wsiadanie(pojazd);
+//                                            break;
+//                                        }
+//                                    }
+//                                }
+//                            }
+//
+//                            }
                     }
                 }
                 else{
                     this.czasPostoju--;
                 }
-                Thread.sleep(1000/fps);
+                Thread.sleep(1000 / fps);
             }
+//            System.out.println("zabito pasazera");
+//            thread.interrupt();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
