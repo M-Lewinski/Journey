@@ -10,25 +10,16 @@ import Mapa.Monitoring;
 import Mapa.PunktNaMapie;
 import Mapa.ShowInfo;
 import Mapa.Swiat;
-import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
-import Pojazdy.Ladunki.TypLadunku;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
-import Pojazdy.Powietrzne.Samolot;
-import com.sun.istack.internal.localization.NullLocalizable;
-import javafx.animation.Transition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -45,8 +36,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     private double odlegloscDoKonca=0.0;
     private Thread thread;
     private boolean threadIsAlive=false;
-    private boolean widocznosc = false;
-    private Monitoring hulk = new Monitoring();
+    private boolean widocznosc;
+    private Monitoring hulkPojazdu = new Monitoring();
     /**
      * unikalny identyfikator pojazdu.
      */
@@ -88,12 +79,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.pozwolenie = pozwolenie;
     }
 
-    public Monitoring getHulk() {
-        return hulk;
+    public Monitoring getHulkPojazdu() {
+        return hulkPojazdu;
     }
 
-    public void setHulk(Monitoring hulk) {
-        this.hulk = hulk;
+    public void setHulkPojazdu(Monitoring hulkPojazdu) {
+        this.hulkPojazdu = hulkPojazdu;
     }
 
     public boolean isThreadIsAlive() {
@@ -393,6 +384,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
      */
     public Pojazd(double dlugosc, double szerokosc) {
         super(dlugosc, szerokosc);
+        this.widocznosc=false;
         this.imagePromien=this.pitagoras(this.getSzerokosc()/2,this.getWysokosc()/2);
         this.identyfikator = UUID.randomUUID();
 //        this.maksymalnaPredkosc = maksymalnaPredkosc;
@@ -491,16 +483,19 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     public void obslugaRuchu(){
         switch (this.statusPrzelotu){
             case 0:
+                //starowanie
 //                System.out.println("TUTAJ");
 //                this.nastepnaDroga();
 //                this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
                 this.obecnePolozenie.startowanie(this);
                 break;
             case 1:
+                //prosta
                 this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
                 poruszSie();
                 break;
             case 2:
+                //lądowanie
                 this.steps=drogaTeraz.iloscKrokow(this.statusPrzelotu);
                 this.pozostalaTrasa.get(1).ladowanie(this);
                 break;
@@ -974,8 +969,10 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     }
 
     public void usuwanie(){
-//        synchronized (this.getHulk()) {
-            this.poinformujORezygnacjiPrzyjazdu(this.trasa);
+        //synchronized (hulkPojazdu) {
+            System.out.println("usuwam");
+//            this.poinformujORezygnacjiPrzyjazdu(this.trasa);
+            this.poinformujPasazerow(this.listaOdwiedzanychPrzystankow(this.trasa),null);
             if (this.obecnePolozenie instanceof Przystanek) {
                 Przystanek przystanek = (Przystanek) this.obecnePolozenie;
                 if (przystanek.getListaPojazdowZaparkowanych().contains(this)) {
@@ -996,7 +993,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             Informacja.getInstance().wyczysc();
             Swiat.getInstance().getListaThread().remove(thread);
             threadIsAlive = false;
-//        }
+            this.drogaTeraz.notifyHulkaDrogi();
+        //}
     }
     
     @Override

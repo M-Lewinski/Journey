@@ -78,7 +78,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
     @Override
     public boolean wsiadanie(Pasazer pasazer) {
-        synchronized (this.getHulk()){
+        synchronized (this.getHulkPojazdu()){
 //            if(pasazer.getObecnePolozenie() instanceof Przystanek){
 //                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
 //                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
@@ -97,7 +97,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
 //    @Override
 //    public void wsiadanie(Pasazer pasazer) {
-//        synchronized (this.getHulk()){
+//        synchronized (this.getHulkPojazdu()){
 //            if(pasazer.getObecnePolozenie() instanceof Przystanek){
 //                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
 //                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
@@ -159,7 +159,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
     @Override
     public void ladowanie(Przystanek przystanek) {
-        synchronized (this.getHulk()) {
+        synchronized (this.getHulkPojazdu()) {
             super.ladowanie(przystanek);
             this.ladunek.znalezienieOsobWysiadajacych(przystanek);
         }
@@ -167,7 +167,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
     @Override
     public void wysiadanie(Pasazer pasazer) {
-        synchronized (this.getHulk()){
+        synchronized (this.getHulkPojazdu()){
             this.ladunek.removePasazer(pasazer);
             this.ladunek.removeWysiadajacyPasazer(pasazer);
             this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);
@@ -178,7 +178,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
 
 //    @Override
 //    public void wysiadanie() {
-//        synchronized (this.getHulk()){
+//        synchronized (this.getHulkPojazdu()){
 //            this.ladunek.znalezienieOsobWysiadajacych(this.getNastepnyPrzystanek());
 //        }
 //    }

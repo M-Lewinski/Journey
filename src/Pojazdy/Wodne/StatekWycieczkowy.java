@@ -2,24 +2,19 @@ package Pojazdy.Wodne;
 
 import Drogi.Droga;
 import Drogi.DrogaMorska;
-import Drogi.DrogaPowietrzna;
 import Gui.MainPanel;
 import Gui.ShowLabel;
-import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
-import Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe;
 import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Port;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
 import Pojazdy.Ladunki.Pasazerski;
-import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.TransportowiecCywilny;
 import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -117,7 +112,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 
     @Override
     public boolean wsiadanie(Pasazer pasazer) {
-        synchronized (this.getHulk()){
+        synchronized (this.getHulkPojazdu()){
 //            if(pasazer.getObecnePolozenie() instanceof Przystanek){
 //                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
 //                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
@@ -136,7 +131,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 
     @Override
     public void ladowanie(Przystanek przystanek) {
-        synchronized (this.getHulk()) {
+        synchronized (this.getHulkPojazdu()) {
             super.ladowanie(przystanek);
             this.ladunek.znalezienieOsobWysiadajacych(przystanek);
         }
@@ -150,7 +145,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 
     @Override
     public void wysiadanie(Pasazer pasazer) {
-        synchronized (this.getHulk()){
+        synchronized (this.getHulkPojazdu()){
             this.ladunek.removePasazer(pasazer);
             this.ladunek.removeWysiadajacyPasazer(pasazer);
             this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);

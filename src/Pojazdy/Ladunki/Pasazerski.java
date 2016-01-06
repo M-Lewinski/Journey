@@ -69,7 +69,7 @@ public class Pasazerski extends TypLadunku {
     public Pasazerski() {
         Random random = new Random();
 //        this.maksymalnaLiczbaPasazerow=random.nextInt(6)+5;
-        this.maksymalnaLiczbaPasazerow=5;
+        this.maksymalnaLiczbaPasazerow=0;
     }
 
     public void znalezienieOsobWysiadajacych(Przystanek przystanek){

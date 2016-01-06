@@ -20,7 +20,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
-import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Labeled;
 
@@ -690,7 +689,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     public synchronized void wysiadanie(){
             if (this.obecnePolozenie instanceof TransportowiecCywilny) {
                 TransportowiecCywilny pojazd = (TransportowiecCywilny) this.obecnePolozenie;
-                synchronized (pojazd.getHulk()) {
+                synchronized (pojazd.getHulkPojazdu()) {
 //                    System.out.println("wysiadam!!!!!!!!!");
                     this.nastepnyPrzystanek.addPasazerOczekujacy(this);
                     pojazd.wysiadanie(this);
@@ -716,7 +715,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 //                while(transportowiecCywilny.getLadunek().czyWszystcyWysiedli()==false){
 //
 //                }
-                synchronized (pojazd.getHulk()){
+                synchronized (pojazd.getHulkPojazdu()){
                     if(transportowiecCywilny.wsiadanie(this)){
 //                    System.out.println("wsiadlem");
                     if(this.getObecnePolozenie() instanceof  Przystanek) {

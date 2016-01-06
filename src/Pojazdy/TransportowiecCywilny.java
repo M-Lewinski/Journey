@@ -11,7 +11,7 @@ public interface TransportowiecCywilny {
     public boolean wsiadanie(Pasazer pasazer);
 //    public void wysiadanie();
     public void wysiadanie(Pasazer pasazer);
-    public Monitoring getHulk();
+    public Monitoring getHulkPojazdu();
     public Pasazerski getLadunek();
 //    public void stworzNowychPasazerow();
 }

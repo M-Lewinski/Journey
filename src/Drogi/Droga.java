@@ -1,16 +1,12 @@
 package Drogi;
 
-import Gui.MainPanel;
 import Mapa.Monitoring;
 import Mapa.Rysowanie;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Pojazdy.Pojazd;
 import javafx.scene.Group;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +15,7 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public abstract class Droga implements Rysowanie {
-    private Monitoring hulk = new Monitoring();
+    private Monitoring hulkDrogi = new Monitoring();
     /**
      * poczatek drogi.
      */
@@ -78,6 +74,13 @@ public abstract class Droga implements Rysowanie {
         return poczatek;
     }
 
+    public Monitoring getHulkDrogi() {
+        return hulkDrogi;
+    }
+
+    public void setHulkDrogi(Monitoring hulkDrogi) {
+        this.hulkDrogi = hulkDrogi;
+    }
 
     public ArrayList<Pojazd> getListaPojazdow() {
         return listaPojazdow;
@@ -358,7 +361,7 @@ public abstract class Droga implements Rysowanie {
     }
 
     public boolean czyDojdzieDoZderzenia(Pojazd pojazd, double przesuniecie){
-        synchronized (hulk){
+        synchronized (hulkDrogi){
 //            List<Pojazd> listaPojazdowNaDrodze = new ArrayList<>(this.getListaPojazdow());
             List<Pojazd> listaPojazdowNaDrodze = new ArrayList<>();
             listaPojazdowNaDrodze.addAll(this.listaPojazdow);
@@ -376,13 +379,29 @@ public abstract class Droga implements Rysowanie {
                         double odlegloscMiedzyPojazdami = Math.abs(odleglosc1 - odleglosc2);
                         if (odlegloscMiedzyPojazdami < pojazd.getImagePromien() + pojazdNaDrodze.getImagePromien() + przesuniecie) {
                             if (odleglosc1 > odleglosc2) {
+                                try {
+                                    hulkDrogi.wait();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                                 return true;
                             }
                         }
                     }
 
             }
+//            for (int i = 0; i < Swiat.getInstance().getListaWolnychPojazdow().size(); i++) {
+//                if()
+//            }
+//            hulkDrogi.notify();
+            hulkDrogi.notifyAll();
             return false;
+        }
+    }
+
+    public void notifyHulkaDrogi(){
+        synchronized (hulkDrogi) {
+            hulkDrogi.notifyAll();
         }
     }
 

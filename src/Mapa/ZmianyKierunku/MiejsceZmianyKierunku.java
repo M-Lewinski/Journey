@@ -1,8 +1,6 @@
 package Mapa.ZmianyKierunku;
 
-import Gui.Controller;
 import Gui.Informacja;
-import Gui.MainPanel;
 import Gui.ShowLabel;
 import Mapa.Monitoring;
 import Drogi.Droga;
@@ -12,7 +10,6 @@ import Mapa.Swiat;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
 import Pojazdy.Powietrzne.Samolot;
-import Pojazdy.TransportowiecCywilny;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.control.Control;
@@ -20,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
-import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,7 +138,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     public void ladowanie(Pojazd pojazd){
         Boolean czyToJestMiejsceDoLadowania=false;
         synchronized (kontrolaLotow) {
-            synchronized (pojazd.getHulk()) {
+            synchronized (pojazd.getHulkPojazdu()) {
 //               if(pojazd.przedLadowaniem(this)==false){
 //                   return;
 //               }
@@ -188,7 +184,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 //    public void ladowanie(Pojazd pojazd){
 //        Boolean czyToJestMiejsceDoLadowania=false;
 //        synchronized (kontrolaLotow) {
-//            synchronized (pojazd.getHulk()) {
+//            synchronized (pojazd.getHulkPojazdu()) {
 //               if(pojazd.przedLadowaniem(this)==false){
 //                   return;
 //               }
@@ -233,10 +229,10 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 
     public void startowanie(Pojazd pojazd){
         synchronized (kontrolaLotow) {
-            synchronized (pojazd.getHulk()) {
-                if(pojazd.przedStartowaniem()==false){
-                    return;
-                }
+            synchronized (pojazd.getHulkPojazdu()) {
+//                if(pojazd.przedStartowaniem()==false){
+//                    return;
+//                }
                 this.obecnieZajmuje = pojazd;
 //            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
                 pojazd.nastepnaDroga();
@@ -267,7 +263,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 //
 //    public void startowanie(Pojazd pojazd){
 //        synchronized (kontrolaLotow) {
-//            synchronized (pojazd.getHulk()) {
+//            synchronized (pojazd.getHulkPojazdu()) {
 //                this.obecnieZajmuje = pojazd;
 ////            pojazd.getDrogaTeraz().addListaPojazdow(pojazd);
 //                if (this instanceof Przystanek) {
