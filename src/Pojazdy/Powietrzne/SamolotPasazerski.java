@@ -90,77 +90,17 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
             if(this.ladunek==null){
                 return  false;
             }
+
             if(this.ladunek.czyWciazJestNaPrzystanku(pasazer,this)==false){
                 return false;
             }
+//            System.out.println("wsidama fjasklfjlsadfjlj");
             return this.ladunek.czyJestWolneMiejsce(pasazer);
         }
     }
 
-//    @Override
-//    public void wsiadanie(Pasazer pasazer) {
-//        synchronized (this.getHulkPojazdu()){
-//            if(pasazer.getObecnePolozenie() instanceof Przystanek){
-//                Przystanek przystanek = (Przystanek) pasazer.getObecnePolozenie();
-//                if(!przystanek.getListaPojazdowZaparkowanych().contains(this)){
-//                    return;
-//                }
-//            }
-//            if(this.ladunek.getMaksymalnaLiczbaPasazerow()-this.ladunek.getObecnaLiczbaPasazerow()>0){
-//                this.ladunek.addPasazer(pasazer);
-//                this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()+1);
-//            }
-//        }
-//    }
-
-
-//    @Override
-//    public boolean przedLadowaniem(MiejsceZmianyKierunku miejsceZmianyKierunku) {
-//        if(super.przedLadowaniem(miejsceZmianyKierunku)==false){
-//            return false;
-//        }
-//        this.ladunek.znalezienieOsobWysiadajacych((Przystanek) miejsceZmianyKierunku);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean poLadowaniu(MiejsceZmianyKierunku miejsceZmianyKierunku) {
-//        if(super.poLadowaniu(miejsceZmianyKierunku)==false){
-//            return false;
-//        }
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean poStartowaniu(MiejsceZmianyKierunku miejsceZmianyKierunku) {
-//        if (super.poStartowaniu(miejsceZmianyKierunku)==false){
-//            return false;
-//        }
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean przedStartowaniem(MiejsceZmianyKierunku miejsceZmianyKierunku) {
-//         if(super.przedStartowaniem(miejsceZmianyKierunku)==true){
-//             return false;
-//         }
-//        if(this.czyMozeTutajLadowac(miejsceZmianyKierunku)){
-//            Przystanek przystanek = (Przystanek) miejsceZmianyKierunku;
-//
-//            List<Pasazer> listaPasazerow = przystanek.getListaPasazerowOczekujacych();
-//            for (int i = 0; i < listaPasazerow.size(); i++) {
-//                if(listaPasazerow.get(i).getNastepnyPrzystanek()==this.getNastepnyPrzystanek()){
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
-
     @Override
-    public void ladowanie(Przystanek przystanek) {
+         public void ladowanie(Przystanek przystanek) {
         synchronized (this.getHulkPojazdu()) {
             super.ladowanie(przystanek);
             this.ladunek.znalezienieOsobWysiadajacych(przystanek);

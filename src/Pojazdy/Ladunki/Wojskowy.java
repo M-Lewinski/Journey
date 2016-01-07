@@ -13,4 +13,5 @@ public class Wojskowy extends TypLadunku {
     public Wojskowy(Uzbrojenie uzbrojenie) {
         this.uzbrojenie = uzbrojenie;
     }
+
 }

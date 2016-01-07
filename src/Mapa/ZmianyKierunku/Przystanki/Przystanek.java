@@ -64,10 +64,16 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
             return;
         }
         for (int i = 0; i < listaPasazerowDoOznajmienia.size(); i++) {
-            if(!listaOznajmionychPasazerow.contains(listaPasazerowDoOznajmienia.get(i))) {
-                if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa()==null){
+//            if(!listaOznajmionychPasazerow.contains(listaPasazerowDoOznajmienia.get(i))) {
+            if(listaOznajmionychPasazerow.contains(listaPasazerowDoOznajmienia.get(i))==false) {
+//                if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa()==null){
+
+                if(listaPasazerowDoOznajmienia.get(i)==null){
                     continue;
                 }
+//                if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa().isEmpty()){
+//                    continue;
+//                }
                 if(rezygnacja==true) {
 //                    if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa()==null){
 //                        continue;

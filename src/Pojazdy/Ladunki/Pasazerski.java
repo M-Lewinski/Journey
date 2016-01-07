@@ -112,6 +112,7 @@ public class Pasazerski extends TypLadunku {
             this.addPasazer(pasazer);
 //            this.setObecnaLiczbaPasazerow(this.getObecnaLiczbaPasazerow()+1);
             this.obecnaLiczbaPasazerow++;
+//            System.out.println("wsiadlemkf;askf;k");
             return true;
         }
         else {

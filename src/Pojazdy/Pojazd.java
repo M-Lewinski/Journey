@@ -785,9 +785,9 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
 
     public void poinformujPasazerow(List<Przystanek> staraTrasa, List<Przystanek> nowaTrasa){
-        if(Swiat.getInstance().getListaPojazdow().size() > Swiat.getInstance().getListaPrzystankow().size()*3){
-            return;
-        }
+//        if(Swiat.getInstance().getListaPojazdow().size() > Swiat.getInstance().getListaPrzystankow().size()*3){
+//            return;
+//        }
         List<Pasazer> listaOznajmionychPasazerow = new ArrayList<>();
         if(staraTrasa!=null) {
             for (int i = 0; i < staraTrasa.size(); i++) {
@@ -1017,11 +1017,11 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                     this.drogaTeraz.getKoniec().setObecnieZajmuje(null);
                 }
                 this.drogaTeraz.removeListaPojazdow(this);
+                this.drogaTeraz.notifyHulkaDrogi();
             }
             Informacja.getInstance().wyczysc();
             Swiat.getInstance().getListaThread().remove(thread);
             threadIsAlive = false;
-            this.drogaTeraz.notifyHulkaDrogi();
         if(Swiat.getInstance().getListaPojazdow().size()<=3*Swiat.getInstance().getListaPrzystankow().size()){
             this.poinformujPasazerow(this.listaOdwiedzanychPrzystankow(this.trasa),null);
         }

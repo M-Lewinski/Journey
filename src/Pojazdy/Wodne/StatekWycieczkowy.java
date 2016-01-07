@@ -135,6 +135,12 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
         synchronized (this.getHulkPojazdu()) {
             super.ladowanie(przystanek);
             this.ladunek.znalezienieOsobWysiadajacych(przystanek);
+            for (Pasazer p: this.ladunek.getListaWysiadajacychPasazerow()) {
+                synchronized (p){
+                    p.notify();
+                }
+            }
+            this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-this.ladunek.getsizeListaWysiadajacychPasazerow());
         }
     }
 
@@ -149,10 +155,16 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
         synchronized (this.getHulkPojazdu()){
             this.ladunek.removePasazer(pasazer);
             this.ladunek.removeWysiadajacyPasazer(pasazer);
-            this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);
+//            this.ladunek.setObecnaLiczbaPasazerow(this.ladunek.getObecnaLiczbaPasazerow()-1);
         }
     }
 
+
+    @Override
+    public void obslugaLadunku(List<Pasazer> listaOznajmionychPasazerow) {
+        super.obslugaLadunku(listaOznajmionychPasazerow);
+
+    }
 
 
 }

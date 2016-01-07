@@ -682,7 +682,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     public void wysiadanie(){
             if (this.obecnePolozenie instanceof TransportowiecCywilny) {
                 TransportowiecCywilny pojazd = (TransportowiecCywilny) this.obecnePolozenie;
-                    System.out.println("wysiadam!!!!!!!!!");
+//                    System.out.println("wysiadam!!!!!!!!!");
                     this.nastepnyPrzystanek.addPasazerOczekujacy(this);
                     if(this.pozostalaTrasa.size()>0) {
                         this.pozostalaTrasa.remove(0);
@@ -847,11 +847,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                             if (this.nastepnyPrzystanek != null) {
                                 if (obecnePolozenie instanceof Przystanek) {
                                     Przystanek przystanek = (Przystanek) obecnePolozenie;
-
-
                                     wsiadanie(przystanek);
-
-
                                 }
                                 //lecem
                                 lot((Pojazd)this.obecnePolozenie);
@@ -899,32 +895,35 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 
         List<Pojazd> listapojazdow = new ArrayList<Pojazd>();
         List<Pojazd> poprzednialistapojazdow = new ArrayList<Pojazd>();
-        UUID przylecialostatni = null;
+        UUID przylecialOstatni = null;
         while(true){
-
-
             synchronized (przystanek){
-                przylecialostatni = przystanek.getOstatnioOdwiedzil();
-                if(przystanek.getListaPojazdowZaparkowanych()==null){
-                    listapojazdow=null;
-                    poprzednialistapojazdow=null;
+                przylecialOstatni = przystanek.getOstatnioOdwiedzil();
+//                if(przystanek.getListaPojazdowZaparkowanych()==null){
+                if(przystanek.getListaPojazdowZaparkowanych().isEmpty()){
+//                    listapojazdow=null;
+                    listapojazdow.clear();
+//                    poprzednialistapojazdow=null;
+                    poprzednialistapojazdow.clear();
                     przystanek.wait();
+//                    System.out.println("koniec czekania");
                     continue;
                 }
-                listapojazdow.addAll(przystanek.getListaPojazdowZaparkowanych());
+
+                for (Pojazd pojazd: przystanek.getListaPojazdowZaparkowanych()){
+                    if(!listapojazdow.contains(pojazd)){
+                        listapojazdow.add(pojazd);
+                    }
+                }
+//                listapojazdow.addAll(przystanek.getListaPojazdowZaparkowanych());
                 listapojazdow.removeAll(poprzednialistapojazdow);
             }
-
             for (int i = 0; i < listapojazdow.size(); i++) {
                 synchronized (this) {
                     if (doszloDoZmiany == true) {
-
-
-
                         doszlodozmiany();
                     }
                 }
-
                 Pojazd pojazd = listapojazdow.get(i);
                 if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
 //                                            System.out.println("Proba wejscia");
@@ -934,17 +933,21 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                     }
                 }
             }
-            poprzednialistapojazdow=listapojazdow;
+//            poprzednialistapojazdow=listapojazdow;
+            poprzednialistapojazdow.clear();
+            poprzednialistapojazdow.addAll(listapojazdow);
             synchronized (przystanek){
-                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialostatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialostatni.equals(przystanek.getOstatnioOdwiedzil()))
+//                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil()))
+                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil()))
                 przystanek.wait();
             }
         }
     }
 
     private void doszlodozmiany() {
-        if(this.threadIsAlive==false)
+        if(this.threadIsAlive==false) {
             Thread.currentThread().stop();
+        }
 
         doszloDoZmiany = false;
         if (this.obecnePolozenie instanceof Przystanek) {

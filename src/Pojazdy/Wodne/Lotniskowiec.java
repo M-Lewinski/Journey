@@ -2,6 +2,7 @@ package Pojazdy.Wodne;
 
 import Drogi.Droga;
 import Drogi.DrogaMorska;
+import Gui.MainPanel;
 import Gui.ShowLabel;
 import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
@@ -10,8 +11,10 @@ import Mapa.ZmianyKierunku.Przystanki.Miasto;
 import Mapa.ZmianyKierunku.Przystanki.Port;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
+import Pojazdy.Ladunki.Wojskowy;
 import Pojazdy.TworzeniePojazdu;
 import javafx.scene.control.Control;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +25,18 @@ import java.util.List;
 public class Lotniskowiec extends Statek implements TworzeniePojazdu {
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
+    private Wojskowy ladunek;
 
     /**
      * Konstruktor klasy lotniskowiec, ktory wykorzystuje konstruktor z odziedziczonej klasy.
      * @param dlugosc
      * @param szerokosc
-     * @param maksymalnaPredkosc
      */
-    public Lotniskowiec(double dlugosc, double szerokosc, double maksymalnaPredkosc) {
+    public Lotniskowiec(double dlugosc, double szerokosc) {
         super(dlugosc, szerokosc);
         Swiat.getInstance().addLotniskowiec(this);
+        this.setTymczasowyKolor(Color.LIGHTBLUE);
+        this.rysuj(MainPanel.getGrupaPojazdow());
         this.runMe();
     }
 

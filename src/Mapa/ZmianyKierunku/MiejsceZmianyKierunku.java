@@ -183,52 +183,6 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
             }
         }
     }
-//
-//    public void ladowanie(Pojazd pojazd){
-//        Boolean czyToJestMiejsceDoLadowania=false;
-//        synchronized (kontrolaLotow) {
-//            synchronized (pojazd.getHulkPojazdu()) {
-//               if(pojazd.przedLadowaniem(this)==false){
-//                   return;
-//               }
-//                this.obecnieZajmuje = pojazd;
-//                if (this instanceof Przystanek) {
-//                    if (pojazd.czyMozeTutajLadowac(this) == true) {
-//                        Przystanek przystanek = (Przystanek) this;
-//                        if (pojazd instanceof Samolot) {
-//                            if (przystanek.getMaksymalnaPojemnosc() < 1) {
-//                                return;
-//                            }
-//                            przystanek.setMaksymalnaPojemnosc(przystanek.getMaksymalnaPojemnosc() - 1);
-//                        }
-//                        czyToJestMiejsceDoLadowania = true;
-////                    przystanek.addPojazdZaparkowany(pojazd);
-//                    }
-//                }
-//                pojazd.poruszSie();
-//                pojazd.setObecnePolozenie(this);
-//                pojazd.getDrogaTeraz().removeListaPojazdow(pojazd);
-//                pojazd.getPozostalaTrasa().remove(0);
-//                pojazd.setDrogaTeraz(null);
-//                if (czyToJestMiejsceDoLadowania == true) {
-//                    pojazd.setWidocznosc(false);
-//                    Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            pojazd.getImageNode().visibleProperty().setValue(false);
-//                        }
-//                    });
-//                    Przystanek przystanek = (Przystanek) this;
-//                    przystanek.addPojazdZaparkowany(pojazd);
-//                    pojazd.ladowanie();
-//                    pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
-//                } else {
-//                    this.startowanie(pojazd);
-//                }
-//                this.obecnieZajmuje=null;
-//            }
-//        }
-//    }
 
     public void startowanie(Pojazd pojazd){
         synchronized (kontrolaLotow) {
@@ -260,7 +214,6 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
             }
                 pojazd.poruszSie();
                 this.obecnieZajmuje = null;
-
         }
     }
 
