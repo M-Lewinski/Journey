@@ -10,9 +10,11 @@ import Mapa.Monitoring;
 import Mapa.PunktNaMapie;
 import Mapa.ShowInfo;
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.Przystanki.Lotnisko;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import Pojazdy.Wodne.Lotniskowiec;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -233,10 +235,16 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         List<Przystanek> listaMozliwychPrzystankow = new ArrayList<Przystanek>();
         List<Przystanek> listaTymczasowa = new ArrayList<Przystanek>();
         listaTymczasowa.addAll(Swiat.getInstance().getListaPrzystankow());
-        for (int i = 0; i < listaTymczasowa.size(); i++) {
-            if(this.czyMozeTutajLadowac(listaTymczasowa.get(i))==true){
-                listaMozliwychPrzystankow.add(listaTymczasowa.get(i));
+        if(!(this instanceof Lotniskowiec)) {
+            for (int i = 0; i < listaTymczasowa.size(); i++) {
+                if (this.czyMozeTutajLadowac(listaTymczasowa.get(i)) == true) {
+                    listaMozliwychPrzystankow.add(listaTymczasowa.get(i));
+                }
             }
+        }
+        else{
+            listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaMiast());
+            listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaPortow());
         }
         zmianaTrasy(listaMozliwychPrzystankow,this.getTypDrogi());
     }
@@ -632,14 +640,20 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
 //    public void okreslNowePolozenie(List<Przystanek> listaMozliwychPrzystankow){
     public void okreslNowePolozenie(List<MiejsceZmianyKierunku> listaMozliwychPrzystankow){
-        if (listaMozliwychPrzystankow.size() !=0) {
+//        if (listaMozliwychPrzystankow.size() !=0) {
             List<Przystanek> listaLokalizacji = new LinkedList<Przystanek>();
             List<Przystanek> listaPrzystankow = Swiat.getInstance().getListaPrzystankow();
-            for (int i = 0; i < listaPrzystankow.size(); i++) {
+            if(!(this instanceof Lotniskowiec)) {
+                for (int i = 0; i < listaPrzystankow.size(); i++) {
 //                if(czyMozeLadowac(listaPrzystankow.get(i), listaMozliwychPrzystankow)){
-                if(czyMozeTutajLadowac(listaPrzystankow.get(i))){
-                    listaLokalizacji.add(listaPrzystankow.get(i));
+                    if (czyMozeTutajLadowac(listaPrzystankow.get(i))) {
+                        listaLokalizacji.add(listaPrzystankow.get(i));
+                    }
                 }
+            }
+            else{
+                listaLokalizacji.addAll(Swiat.getInstance().getListaMiast());
+                listaLokalizacji.addAll(Swiat.getInstance().getListaPortow());
             }
 
 //            System.out.println("lista lokalizacji: "+listaLokalizacji.size());
@@ -651,12 +665,13 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //                System.out.println("przystanek " + i + ": " +listaMozliwychPrzystankow.get(i).getNazwa());
 //            }
             this.setPrzystanekDocelowy(listaLokalizacji.get(random.nextInt(listaLokalizacji.size())));
+//            System.out.println(this.przystanekDocelowy.getNazwa());
 //            this.getPrzystanekPoczatkowy().addPojazdZaparkowany(this);
             this.setPolozenieX(this.przystanekPoczatkowy.getPolozenieX());
             this.setPolozenieY(this.przystanekPoczatkowy.getPolozenieY());
 //            this.getObecnePolozenie().addPojazdOczekujacy(this);
 //            this.nastepnaDroga();
-        }
+//        }
     }
 
 
@@ -691,9 +706,16 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         for (int i = temp+1; i < trasa.size(); i++) {
 //            if (trasa.get(i) instanceof Przystanek) {
 //                if(czyMozeLadowac(trasa.get(i),ListaGdzieMozeLadowac)) {
-                if(czyMozeTutajLadowac(trasa.get(i))) {
+            if(!(this instanceof Lotniskowiec)) {
+                if (czyMozeTutajLadowac(trasa.get(i))) {
                     return (Przystanek) trasa.get(i);
                 }
+            }
+            else{
+                if(trasa.get(i) instanceof Przystanek){
+                    return (Przystanek) trasa.get(i);
+                }
+            }
 //            }
         }
         return null;
@@ -892,7 +914,6 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         Collections.reverse(this.trasa);
         this.pozostalaTrasa.addAll(this.trasa);
         this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getPozostalaTrasa(),this.getObecnePolozenie()));
-
     }
 
 //    public abstract void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy);
@@ -925,12 +946,15 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
     @Override
     public void rysuj(Group group) {
-        Rectangle rectangle = new Rectangle(this.getSzerokosc(),this.getWysokosc());
+        Rectangle rectangle = new Rectangle();
+//        Rectangle rectangle = new Rectangle(this.getSzerokosc(),this.getWysokosc());
+        rectangle.setVisible(false);
+        rectangle.setWidth(this.getSzerokosc());
+        rectangle.setHeight(this.getWysokosc());
         rectangle.setStroke(this.tymczasowyKolor);
         rectangle.setFill(this.tymczasowyKolor);
         rectangle.setLayoutX(this.getPolozenieX()-this.getSzerokosc()/2);
         rectangle.setLayoutY(this.getPolozenieY()-this.getWysokosc()/2);
-        rectangle.setVisible(false);
         rectangle.setOnMouseClicked(event -> {
             Informacja.getInstance().setObecnaInformacja(this);
         });
@@ -997,6 +1021,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     }
 
     public void usuwanie(){
+        threadIsAlive = false;
         //synchronized (hulkPojazdu) {
             System.out.println("usuwam");
 //            this.poinformujORezygnacjiPrzyjazdu(this.trasa);
@@ -1010,6 +1035,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             Swiat.getInstance().removePojazd(this);
             MainPanel.getGrupaPojazdow().getChildren().remove(this.getImageNode());
             if (this.drogaTeraz != null) {
+                this.drogaTeraz.notifyHulkaDrogi();
                 if(this.drogaTeraz.getPoczatek().getObecnieZajmuje()==this){
                     this.drogaTeraz.getPoczatek().setObecnieZajmuje(null);
                 }
@@ -1017,11 +1043,10 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                     this.drogaTeraz.getKoniec().setObecnieZajmuje(null);
                 }
                 this.drogaTeraz.removeListaPojazdow(this);
-                this.drogaTeraz.notifyHulkaDrogi();
             }
             Informacja.getInstance().wyczysc();
             Swiat.getInstance().getListaThread().remove(thread);
-            threadIsAlive = false;
+//            threadIsAlive = false;
         if(Swiat.getInstance().getListaPojazdow().size()<=3*Swiat.getInstance().getListaPrzystankow().size()){
             this.poinformujPasazerow(this.listaOdwiedzanychPrzystankow(this.trasa),null);
         }
@@ -1055,13 +1080,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //        listaNodow.add(label6);
         ShowLabel label11 = new ShowLabel("Obecne polozenie: " + this.obecnePolozenie.getNazwa(),this.obecnePolozenie);
         listaNodow.add(label11);
-        if(this.nastepnyPrzystanek!=null) {
-            ShowLabel label3 = new ShowLabel("Nastepny przystanek: " + this.nastepnyPrzystanek.getNazwa(),this.nastepnyPrzystanek);
-            listaNodow.add(label3);
-        }
-        else{
-            ShowLabel label3 = new ShowLabel("Nastepny przystanek: Brak");
-            listaNodow.add(label3);
+        if(!(this instanceof Lotniskowiec)) {
+            if (this.nastepnyPrzystanek != null) {
+                ShowLabel label3 = new ShowLabel("Nastepny przystanek: " + this.nastepnyPrzystanek.getNazwa(), this.nastepnyPrzystanek);
+                listaNodow.add(label3);
+            } else {
+                ShowLabel label3 = new ShowLabel("Nastepny przystanek: Brak");
+                listaNodow.add(label3);
+            }
         }
 
 //        ShowLabel label12 = new ShowLabel(" "+this.obecnePolozenie.getNazwa(),this.getObecnePolozenie());

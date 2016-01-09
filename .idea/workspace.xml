@@ -3,51 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="1f50d38b-bcd9-44e5-9551-e37e6c23d7d2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Ladunki/Pasazerski.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Ladunki/Pasazerski.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Przystanek.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/Przystanki/Przystanek.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/Bilet.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/Bilet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Ladunki/Wojskowy.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Ladunki/Wojskowy.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gui/Controller.java" afterPath="$PROJECT_DIR$/src/Gui/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/Droga.java" afterPath="$PROJECT_DIR$/src/Drogi/Droga.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/DrogaMorska.java" afterPath="$PROJECT_DIR$/src/Drogi/DrogaMorska.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" afterPath="$PROJECT_DIR$/src/Drogi/DrogaPowietrzna.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Filtrowanie.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Filtrowanie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Wodne/Firma.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Firma.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gui/Informacja.java" afterPath="$PROJECT_DIR$/src/Gui/Informacja.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Lotnisko.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoWojskowe.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gui/Interfejs.fxml" afterPath="$PROJECT_DIR$/src/Gui/Interfejs.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gui/MainPanel.java" afterPath="$PROJECT_DIR$/src/Gui/MainPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Miasto.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Miasto.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/Monitoring.java" afterPath="$PROJECT_DIR$/src/Mapa/Monitoring.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/NameList.txt" afterPath="$PROJECT_DIR$/src/Pasazerowie/NameList.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java" afterPath="$PROJECT_DIR$/src/Mapa/ObiektGraficzny.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Drogi/Odcinek.java" afterPath="$PROJECT_DIR$/src/Drogi/Odcinek.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" afterPath="$PROJECT_DIR$/src/Mapa/PunktNaMapie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/Rysowanie.java" afterPath="$PROJECT_DIR$/src/Mapa/Rysowanie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ShowInfo.java" afterPath="$PROJECT_DIR$/src/Mapa/ShowInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Gui/ShowLabel.java" afterPath="$PROJECT_DIR$/src/Gui/ShowLabel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Skrzyzowanie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/SurnameList.txt" afterPath="$PROJECT_DIR$/src/Pasazerowie/SurnameList.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/Swiat.java" afterPath="$PROJECT_DIR$/src/Mapa/Swiat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/TransportowiecCywilny.java" afterPath="$PROJECT_DIR$/src/Pojazdy/TransportowiecCywilny.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Trasowanie.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Trasowanie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/TrasowaniePasazerow.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/TrasowaniePasazerow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/TworzeniePojazdu.java" afterPath="$PROJECT_DIR$/src/Pojazdy/TworzeniePojazdu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Ladunki/TypLadunku.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Ladunki/TypLadunku.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Uzbrojenie.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Uzbrojenie.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Wojskowy.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Wojskowy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -72,17 +40,55 @@
     <option name="SORT_CHILDREN" value="false" />
     <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
   </component>
+  <component name="DockManager">
+    <window id="3">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="StatekWycieczkowy.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="3.466558">
+                    <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+    <window id="4">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="SamolotPasazerski.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="3.106036">
+                    <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Podroz" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Pasazer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Pasazer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.724138">
-              <caret line="526" column="37" selection-start-line="526" selection-start-column="37" selection-end-line="526" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.61340207">
+              <caret line="688" column="21" selection-start-line="688" selection-start-column="21" selection-end-line="688" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,73 +96,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiejsceZmianyKierunku.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Samolot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiejsceZmianyKierunku.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7961631">
-              <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShowLabel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Gui/ShowLabel.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Droga.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.275862">
-              <caret line="332" column="31" selection-start-line="332" selection-start-column="31" selection-end-line="332" selection-end-column="31" />
+              <caret line="184" column="25" selection-start-line="184" selection-start-column="25" selection-end-line="184" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pojazd.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.034483">
-              <caret line="1002" column="38" selection-start-line="1002" selection-start-column="38" selection-end-line="1002" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Przystanek.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.862069">
-              <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-              <folding>
-                <element signature="e#451#459#0" expanded="true" />
-                <element signature="e#531#540#0" expanded="true" />
-                <element signature="e#793#794#0" expanded="true" />
-                <element signature="e#833#834#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatekWycieczkowy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="0" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -165,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+              <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -175,11 +132,41 @@
         <entry file="file://$PROJECT_DIR$/src/Pojazdy/Ladunki/Wojskowy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
-                <element signature="e#265#266#0" expanded="true" />
-                <element signature="e#309#310#0" expanded="true" />
+                <element signature="e#292#293#0" expanded="true" />
+                <element signature="e#336#337#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pojazd.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.137931">
+              <caret line="955" column="26" selection-start-line="955" selection-start-column="26" selection-end-line="955" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#40370#40371#0" expanded="true" />
+                <element signature="e#40397#40398#0" expanded="true" />
+                <element signature="e#40475#40476#0" expanded="true" />
+                <element signature="e#40502#40503#0" expanded="true" />
+                <element signature="e#40543#40544#0" expanded="true" />
+                <element signature="e#40570#40571#0" expanded="true" />
+                <element signature="e#40650#40651#0" expanded="true" />
+                <element signature="e#40677#40678#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Gui/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -187,12 +174,10 @@
       <file leaf-file-name="Pasazerski.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.448276">
-              <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#630#631#0" expanded="true" />
-                <element signature="e#678#679#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -221,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Pasazerowie/SurnameList" />
         <option value="$PROJECT_DIR$/src/Drogi/Tmp.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/StatekWycieczkowy.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/PojazdTest.groovy" />
@@ -259,19 +243,20 @@
         <option value="$PROJECT_DIR$/src/Gui/Informacja.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/TransportowiecCywilny.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
-        <option value="$PROJECT_DIR$/src/Gui/Controller.java" />
         <option value="$PROJECT_DIR$/src/Drogi/Droga.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
         <option value="$PROJECT_DIR$/src/Mapa/Swiat.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java" />
+        <option value="$PROJECT_DIR$/src/Mapa/Monitoring.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java" />
-        <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java" />
         <option value="$PROJECT_DIR$/src/Pojazdy/Ladunki/Wojskowy.java" />
-        <option value="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
         <option value="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
+        <option value="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
+        <option value="$PROJECT_DIR$/src/Gui/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java" />
       </list>
     </option>
   </component>
@@ -511,6 +496,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Powietrzne" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Podroz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Podroz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pojazdy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Ladunki" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -628,10 +635,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Drogi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -991,7 +994,7 @@
       <workItem from="1452038672657" duration="14155000" />
       <workItem from="1452131296353" duration="104000" />
       <workItem from="1452163917398" duration="17000" />
-      <workItem from="1452164263429" duration="6587000" />
+      <workItem from="1452164263429" duration="22899000" />
     </task>
     <task id="LOCAL-00001" summary="Modifing lists and constructors.">
       <created>1445711853019</created>
@@ -1149,11 +1152,17 @@
       <option name="project" value="LOCAL" />
       <updated>1452086450723</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Moje proby zrobienia dobrej synchronizacji">
+      <created>1452173838053</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1452173838053</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="540555000" />
+    <option name="totallyTimeSpent" value="556867000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1179,13 +1188,13 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27406198" sideWeight="0.49092284" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3425775" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16717096" sideWeight="0.6450999" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16717096" sideWeight="0.6337079" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921028" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.7722096" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2193646" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16754201" sideWeight="0.3549001" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16717096" sideWeight="0.36629215" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.451876" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1253,11 +1262,20 @@
     <MESSAGE value="Cos jest nie tak." />
     <MESSAGE value="Nie dziala" />
     <MESSAGE value="Blokady sa na waitach." />
-    <option name="LAST_COMMIT_MESSAGE" value="Blokady sa na waitach." />
+    <MESSAGE value="Moje proby zrobienia dobrej synchronizacji" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moje proby zrobienia dobrej synchronizacji" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java</url>
+          <line>183</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1278,10 +1296,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#451#459#0" expanded="true" />
             <element signature="e#531#540#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#1058#1059#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1220#1221#0" expanded="true" />
+            <element signature="e#11037#11046#0" expanded="true" />
+            <element signature="e#11855#11863#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1322,6 +1345,14 @@
           <caret line="541" column="21" selection-start-line="541" selection-start-column="21" selection-end-line="541" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#40370#40371#0" expanded="true" />
+            <element signature="e#40397#40398#0" expanded="true" />
+            <element signature="e#40475#40476#0" expanded="true" />
+            <element signature="e#40502#40503#0" expanded="true" />
+            <element signature="e#40543#40544#0" expanded="true" />
+            <element signature="e#40570#40571#0" expanded="true" />
+            <element signature="e#40650#40651#0" expanded="true" />
+            <element signature="e#40677#40678#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1340,24 +1371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="29" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Drogi/Odcinek.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="113" column="31" selection-start-line="113" selection-start-column="31" selection-end-line="113" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/Monitoring.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1403,13 +1420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/PunktNaMapie.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1421,20 +1431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Miasto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1480,13 +1476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Statek.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1501,65 +1490,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Filtrowanie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gui/Interfejs.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.551724">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="51" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ShowInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/NameList.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gui/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pojazdy/TransportowiecCywilny.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39041096">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1577,38 +1511,9 @@
         <state vertical-scroll-proportion="-4.448276">
           <caret line="277" column="6" selection-start-line="277" selection-start-column="5" selection-end-line="277" selection-end-column="6" />
           <folding>
-            <element signature="e#8238#8239#0" expanded="true" />
-            <element signature="e#8289#8290#0" expanded="true" />
+            <element signature="e#8238#8239#0" expanded="false" />
+            <element signature="e#8289#8290#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="0" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.862069">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-          <folding>
-            <element signature="e#451#459#0" expanded="true" />
-            <element signature="e#531#540#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="34" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1620,63 +1525,210 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.448276">
-          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-            <element signature="e#678#679#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Drogi/Droga.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.275862">
-          <caret line="332" column="31" selection-start-line="332" selection-start-column="31" selection-end-line="332" selection-end-column="31" />
+        <state vertical-scroll-proportion="-8.689655">
+          <caret line="405" column="23" selection-start-line="405" selection-start-column="0" selection-end-line="406" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ShowInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.724138">
-          <caret line="526" column="37" selection-start-line="526" selection-start-column="37" selection-end-line="526" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Filtrowanie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/NameList.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/GeneratorPasazerow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Przystanek.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.206897">
+          <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#451#459#0" expanded="true" />
+            <element signature="e#531#540#0" expanded="true" />
+            <element signature="e#1058#1059#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1220#1221#0" expanded="true" />
+            <element signature="e#11037#11046#0" expanded="true" />
+            <element signature="e#11855#11863#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
+    <entry file="file://$PROJECT_DIR$/src/Gui/Interfejs.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.034483">
-          <caret line="1002" column="38" selection-start-line="1002" selection-start-column="38" selection-end-line="1002" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-7.62069">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/LotniskoCywilne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Miasto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/Przystanki/Port.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mapa/Monitoring.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotWojskowy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pojazdy/Ladunki/Wojskowy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7961631">
-          <caret line="215" column="43" selection-start-line="215" selection-start-column="43" selection-end-line="215" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="25" selection-start-line="184" selection-start-column="25" selection-end-line="184" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/Lotniskowiec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gui/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Pojazd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.137931">
+          <caret line="955" column="26" selection-start-line="955" selection-start-column="26" selection-end-line="955" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#40370#40371#0" expanded="true" />
+            <element signature="e#40397#40398#0" expanded="true" />
+            <element signature="e#40475#40476#0" expanded="true" />
+            <element signature="e#40502#40503#0" expanded="true" />
+            <element signature="e#40543#40544#0" expanded="true" />
+            <element signature="e#40570#40571#0" expanded="true" />
+            <element signature="e#40650#40651#0" expanded="true" />
+            <element signature="e#40677#40678#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/Samolot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Powietrzne/SamolotPasazerski.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.106036">
+          <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pojazdy/Wodne/StatekWycieczkowy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.466558">
+          <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61340207">
+          <caret line="688" column="21" selection-start-line="688" selection-start-column="21" selection-end-line="688" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

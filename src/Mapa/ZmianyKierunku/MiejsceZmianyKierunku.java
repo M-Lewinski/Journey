@@ -7,9 +7,11 @@ import Drogi.Droga;
 import Mapa.PunktNaMapie;
 import Mapa.ShowInfo;
 import Mapa.Swiat;
+import Mapa.ZmianyKierunku.Przystanki.Lotnisko;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
 import Pojazdy.Powietrzne.Samolot;
+import Pojazdy.Wodne.Lotniskowiec;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.control.Control;
@@ -177,6 +179,11 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 
 
                 } else {
+                    if(pojazd instanceof Lotniskowiec){
+                        if(pojazd.getObecnePolozenie()==pojazd.getPrzystanekDocelowy()) {
+                            pojazd.odwrocTrase();
+                        }
+                    }
                     this.startowanie(pojazd);
                 }
                 this.obecnieZajmuje=null;
