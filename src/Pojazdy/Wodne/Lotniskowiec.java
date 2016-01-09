@@ -13,6 +13,7 @@ import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.Ladunki.Wojskowy;
 import Pojazdy.TworzeniePojazdu;
+import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 
@@ -34,8 +35,9 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
      */
     public Lotniskowiec(double dlugosc, double szerokosc) {
         super(dlugosc, szerokosc);
+        ladunek = new Wojskowy();
         Swiat.getInstance().addLotniskowiec(this);
-        this.setTymczasowyKolor(Color.LIGHTBLUE);
+        this.setTymczasowyKolor(Color.DEEPPINK);
         this.rysuj(MainPanel.getGrupaPojazdow());
         this.runMe();
     }
@@ -50,16 +52,18 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
     @Override
     public List<Control> potrzebneInformacje() {
         List<Control> listNodow = super.potrzebneInformacje();
-        ShowLabel showLabel = new ShowLabel();
+        Button button = new Button();
+        ShowLabel showLabel = new ShowLabel("Uzbrojenie: " + this.ladunek.getUzbrojenie().toString());
+        listNodow.add(showLabel);
         return listNodow;
     }
 
     @Override
     public List<MiejsceZmianyKierunku> getMozliweLadowania() {
-        if(Lotniskowiec.listaGdzieMozeLadowac.isEmpty()){
+//        if(Lotniskowiec.listaGdzieMozeLadowac.isEmpty()){
 //            Lotniskowiec.listaGdzieMozeLadowac.add(new Miasto());
 //            Lotniskowiec.listaGdzieMozeLadowac.add(new Port());
-        }
+//        }
         return Lotniskowiec.listaGdzieMozeLadowac;
     }
 

@@ -855,10 +855,12 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                             }
 
                             synchronized (this) {
-                                while (!doszloDoZmiany) {
-                                    this.wait();
+                                int timeout=10;
+                                while (!doszloDoZmiany && timeout>0) {
+                                    this.wait(1000/30);
+                                    timeout--;
                                 }
-                                doszlodozmiany();
+                                dokonywanieZmiany();
                             }
                         }
                     }
@@ -875,7 +877,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         while(true) {
             synchronized (this) {
                 if (doszloDoZmiany == true) {
-                    doszlodozmiany();
+                    dokonywanieZmiany();
                 }
                 if(!moznaWysiadac) {
                     try {
@@ -893,58 +895,70 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 
     private void wsiadanie(Przystanek przystanek) throws InterruptedException {
 
-        List<Pojazd> listapojazdow = new ArrayList<Pojazd>();
-        List<Pojazd> poprzednialistapojazdow = new ArrayList<Pojazd>();
+        List<Pojazd> listaPojazdow = new ArrayList<Pojazd>();
+        List<Pojazd> poprzedniaListaPojazdow = new ArrayList<Pojazd>();
+//        Pojazd przylecialOstatni = null;
         UUID przylecialOstatni = null;
-        while(true){
+//        while(true){
+        while(this.threadIsAlive){
             synchronized (przystanek){
                 przylecialOstatni = przystanek.getOstatnioOdwiedzil();
 //                if(przystanek.getListaPojazdowZaparkowanych()==null){
                 if(przystanek.getListaPojazdowZaparkowanych().isEmpty()){
 //                    listapojazdow=null;
-                    listapojazdow.clear();
+                    listaPojazdow.clear();
 //                    poprzednialistapojazdow=null;
-                    poprzednialistapojazdow.clear();
+                    poprzedniaListaPojazdow.clear();
                     przystanek.wait();
 //                    System.out.println("koniec czekania");
                     continue;
                 }
 
-                for (Pojazd pojazd: przystanek.getListaPojazdowZaparkowanych()){
-                    if(!listapojazdow.contains(pojazd)){
-                        listapojazdow.add(pojazd);
-                    }
-                }
+//                for (Pojazd pojazd: przystanek.getListaPojazdowZaparkowanych()){
+//                    if(!listaPojazdow.contains(pojazd)){
+//                        listaPojazdow.add(pojazd);
+//                    }
+//                }
+                listaPojazdow.clear();
+                listaPojazdow.addAll(przystanek.getListaPojazdowZaparkowanych());
 //                listapojazdow.addAll(przystanek.getListaPojazdowZaparkowanych());
-                listapojazdow.removeAll(poprzednialistapojazdow);
+                listaPojazdow.removeAll(poprzedniaListaPojazdow);
             }
-            for (int i = 0; i < listapojazdow.size(); i++) {
+            for (int i = 0; i < listaPojazdow.size(); i++) {
                 synchronized (this) {
                     if (doszloDoZmiany == true) {
-                        doszlodozmiany();
+                        dokonywanieZmiany();
                     }
                 }
-                Pojazd pojazd = listapojazdow.get(i);
+                Pojazd pojazd = listaPojazdow.get(i);
+                this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa()+" "+pojazd.getIdentyfikator();
+                if(pojazd.getNastepnyPrzystanek()!=null)
+                this.pesel= pojazd.getNastepnyPrzystanek().getNazwa();
+
                 if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
 //                                            System.out.println("Proba wejscia");
+                    this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa()+" p"+pojazd.getIdentyfikator();
                     this.wsiadanie(pojazd);
                     if(this.obecnePolozenie == pojazd) {
                         return;
                     }
+                    this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa()+" n"+pojazd.getIdentyfikator();
                 }
             }
 //            poprzednialistapojazdow=listapojazdow;
-            poprzednialistapojazdow.clear();
-            poprzednialistapojazdow.addAll(listapojazdow);
+            poprzedniaListaPojazdow.clear();
+            poprzedniaListaPojazdow.addAll(listaPojazdow);
             synchronized (przystanek){
 //                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil()))
-                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil()))
-                przystanek.wait();
+                if(przystanek.getOstatnioOdwiedzil()==null || (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil())) {
+//                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni==przystanek.getOstatnioOdwiedzil());
+                    przystanek.wait();
+                }
             }
         }
     }
 
-    private void doszlodozmiany() {
+    private void dokonywanieZmiany() {
         if(this.threadIsAlive==false) {
             Thread.currentThread().stop();
         }

@@ -26,7 +26,9 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Button fx:id="buttonWszyscyPasazerowie" layoutX="14.0" layoutY="578.0" mnemonicParsing="false" onAction="#handleWyswietlWszystkichPasazerow" prefHeight="25.0" prefWidth="158.0" text="Pasazerowie" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="578.0" />
+            <Button fx:id="buttonWszyscyPasazerowie" layoutX="194.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleWyswietlWszystkichPasazerow" prefHeight="25.0" prefWidth="118.0" text="Pasazerowie" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="478.0" />
+            <Button fx:id="buttonDodajPasazera" layoutX="194.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleDodajPasazera" prefHeight="25.0" prefWidth="118.0" text="Dodaj Pasazera" />
+            <Button fx:id="buttonStworzLotniskowiec" layoutX="15.0" layoutY="577.0" mnemonicParsing="false" onAction="#handleStworzLotniskowiec" prefHeight="25.0" prefWidth="158.0" text="Stworz lotniskowiec" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

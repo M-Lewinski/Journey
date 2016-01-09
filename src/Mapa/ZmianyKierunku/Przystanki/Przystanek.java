@@ -20,6 +20,16 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
     private List<Pasazer> listaPasazerowPrzyjezdzajacych = new ArrayList<Pasazer>();
     private double maksymalnaPojemnosc=8;
 
+//    public Pojazd getOstatnioOdwiedzil() {
+//        return ostatnioOdwiedzil;
+//    }
+//
+//    public void setOstatnioOdwiedzil(Pojazd ostatnioOdwiedzil) {
+//        this.ostatnioOdwiedzil = ostatnioOdwiedzil;
+//    }
+//
+//    private Pojazd ostatnioOdwiedzil;
+
     public UUID getOstatnioOdwiedzil() {
         return ostatnioOdwiedzil;
     }
@@ -200,7 +210,7 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
 
     public synchronized void addPojazdZaparkowany(Pojazd pojazd){
         this.setOstatnioOdwiedzil(pojazd.getIdentyfikator());
-
+//        this.setOstatnioOdwiedzil(pojazd);
         this.listaPojazdowZaparkowanych.add(pojazd);
         this.notifyAll();
     }
@@ -255,26 +265,44 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         listaNodow.add(showLabel1);
         ShowLabel showLabel2 = new ShowLabel(Double.toString(this.maksymalnaPojemnosc));
         listaNodow.add(showLabel2);
-        ShowLabel label20 = new ShowLabel("Lista pojazdow przyjezdzajacych:");
-        listaNodow.add(label20);
-        for (int i = 0; i < this.listaPojazdowPrzyjezdzajacych.size(); i++) {
-            ShowLabel label21 = new ShowLabel(this.getListaPojazdowPrzyjezdzajacych().get(i).getIdentyfikator().toString(),this.getListaPojazdowPrzyjezdzajacych().get(i));
-            listaNodow.add(label21);
-        }
+//        ShowLabel label20 = new ShowLabel("Lista pojazdow przyjezdzajacych:");
+//        listaNodow.add(label20);
+//        for (int i = 0; i < this.listaPojazdowPrzyjezdzajacych.size(); i++) {
+//            ShowLabel label21 = new ShowLabel(this.getListaPojazdowPrzyjezdzajacych().get(i).getIdentyfikator().toString(),this.getListaPojazdowPrzyjezdzajacych().get(i));
+//            listaNodow.add(label21);
+//        }
         ShowLabel showLabel4 = new ShowLabel("Lista Pasazerow:");
         listaNodow.add(showLabel4);
-        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
-            Pasazer pasazer = this.listaPasazerowOczekujacych.get(i);
+        List<Pasazer> listaTymczasowa = new ArrayList<Pasazer>();
+        listaTymczasowa.addAll(this.listaPasazerowOczekujacych);
+        for (int i = 0; i < listaTymczasowa.size(); i++) {
+            Pasazer pasazer = listaTymczasowa.get(i);
             ShowLabel showLabel = new ShowLabel(pasazer.getImie()+ " " + pasazer.getNazwisko(),pasazer);
             listaNodow.add(showLabel);
         }
+
+//        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {
+//            Pasazer pasazer = this.listaPasazerowOczekujacych.get(i);
+//            ShowLabel showLabel = new ShowLabel(pasazer.getImie()+ " " + pasazer.getNazwisko(),pasazer);
+//            listaNodow.add(showLabel);
+//        }
+
+
         ShowLabel showLabel3 = new ShowLabel("Lista pojazdow:");
         listaNodow.add(showLabel3);
-        for (int i = 0; i < this.getListaPojazdowZaparkowanych().size(); i++) {
-            Pojazd pojazd = this.getListaPojazdowZaparkowanych().get(i);
+        List<Pojazd> listaTymczasowaPojazdow = new ArrayList<Pojazd>();
+        listaTymczasowaPojazdow.addAll(this.getListaPojazdowZaparkowanych());
+        for (int i = 0; i < listaTymczasowaPojazdow.size(); i++) {
+            Pojazd pojazd = listaTymczasowaPojazdow.get(i);
             ShowLabel showLabel = new ShowLabel(pojazd.getIdentyfikator().toString(),pojazd);
             listaNodow.add(showLabel);
         }
+
+//        for (int i = 0; i < this.getListaPojazdowZaparkowanych().size(); i++) {
+//            Pojazd pojazd = this.getListaPojazdowZaparkowanych().get(i);
+//            ShowLabel showLabel = new ShowLabel(pojazd.getIdentyfikator().toString(),pojazd);
+//            listaNodow.add(showLabel);
+//        }
         return  listaNodow;
     }
 }

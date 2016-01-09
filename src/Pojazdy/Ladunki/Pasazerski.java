@@ -68,9 +68,9 @@ public class Pasazerski extends TypLadunku {
     }
 
     public void stworzNowychPasazerow(int liczba) {
-        for (int i = 0; i < liczba; i++) {
-            Pasazer pasazer = new Pasazer();
-        }
+//        for (int i = 0; i < liczba; i++) {
+//            Pasazer pasazer = new Pasazer();
+//        }
     }
 
 

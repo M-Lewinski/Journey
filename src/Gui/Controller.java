@@ -1,8 +1,10 @@
 package Gui;
 
 import Mapa.Swiat;
+import Pasazerowie.Pasazer;
 import Pojazdy.Powietrzne.SamolotPasazerski;
 import Pojazdy.Powietrzne.SamolotWojskowy;
+import Pojazdy.Wodne.Lotniskowiec;
 import Pojazdy.Wodne.StatekWycieczkowy;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,8 +23,10 @@ public class Controller {
     private Button buttonStworzSamolotWojskowy;
     @FXML
     private Button buttonWszyscyPasazerowie;
-
-
+    @FXML
+    private Button buttonStworzLotniskowiec;
+    @FXML
+    private Button buttonDodajPasazera;
     @FXML
     private void initialize() {
     }
@@ -73,6 +77,20 @@ public class Controller {
     @FXML
     public void handleWyswietlWszystkichPasazerow(){
         Informacja.getInstance().setObecnaInformacja(Swiat.getInstance());
+    }
+
+    @FXML
+    public void handleStworzLotniskowiec(){
+        new Lotniskowiec(14,14);
+        System.out.println("Stworzono nowy lotniskowiec");
+    }
+
+    @FXML
+    public void handleDodajPasazera(){
+        for (int i = 0; i < 5; i++) {
+            new Pasazer();
+        }
+        System.out.println("Stworzono 5 pasazerow");
     }
 
     public void setMainPanel(MainPanel mainPanel) {
