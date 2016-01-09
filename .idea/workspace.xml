@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f50d38b-bcd9-44e5-9551-e37e6c23d7d2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pasazerowie/Pasazer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Ladunki/Pasazerski.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Ladunki/Pasazerski.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" afterPath="$PROJECT_DIR$/out/production/Podroz/Pojazdy/Pojazd.class" />
+    <list default="true" id="1f50d38b-bcd9-44e5-9551-e37e6c23d7d2" name="Default" comment="Pasazerowie wchodza do pojazdow.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" afterPath="$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" afterPath="$PROJECT_DIR$/src/Pasazerowie/Pasazer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Ladunki/Pasazerski.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" afterPath="$PROJECT_DIR$/src/Pojazdy/Pojazd.java" />
     </list>
     <ignored path="Podroz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,10 +54,14 @@
       <file leaf-file-name="Pasazer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.275862">
-              <caret line="936" column="0" selection-start-line="936" selection-start-column="0" selection-end-line="936" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6896552">
+              <caret line="929" column="0" selection-start-line="929" selection-start-column="0" selection-end-line="929" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#7504#7505#0" expanded="false" />
+                <element signature="e#25840#25841#0" expanded="false" />
+                <element signature="e#29700#29701#0" expanded="false" />
+                <element signature="e#30150#30151#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -104,8 +100,8 @@
       <file leaf-file-name="MiejsceZmianyKierunku.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65014166">
-              <caret line="167" column="33" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.74645895">
+              <caret line="173" column="86" selection-start-line="173" selection-start-column="86" selection-end-line="173" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1042,7 +1038,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452173838053</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Pasazerowie wchodza do pojazdow.">
+      <created>1452382644358</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1452382644358</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1147,7 +1149,8 @@
     <MESSAGE value="Nie dziala" />
     <MESSAGE value="Blokady sa na waitach." />
     <MESSAGE value="Moje proby zrobienia dobrej synchronizacji" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moje proby zrobienia dobrej synchronizacji" />
+    <MESSAGE value="Pasazerowie wchodza do pojazdow." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pasazerowie wchodza do pojazdow." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1533,10 +1536,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pasazerowie/Pasazer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.275862">
-          <caret line="936" column="0" selection-start-line="936" selection-start-column="0" selection-end-line="936" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6896552">
+          <caret line="929" column="0" selection-start-line="929" selection-start-column="0" selection-end-line="929" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#7504#7505#0" expanded="false" />
+            <element signature="e#25840#25841#0" expanded="false" />
+            <element signature="e#29700#29701#0" expanded="false" />
+            <element signature="e#30150#30151#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1585,8 +1592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mapa/ZmianyKierunku/MiejsceZmianyKierunku.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65014166">
-          <caret line="167" column="33" selection-start-line="167" selection-start-column="33" selection-end-line="167" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.74645895">
+          <caret line="173" column="86" selection-start-line="173" selection-start-column="86" selection-end-line="173" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
