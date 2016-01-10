@@ -10,7 +10,8 @@ import java.io.Serializable;
 /**
  * Created by Lewin on 2016-01-01.
  */
-public class ShowLabel extends Label {
+public class ShowLabel extends Label implements Serializable {
+    private static final long serialVersionUID = 9219039975631141606L;
     private ShowInfo informacjaObiektu=null;
     private transient Color wejscie = Color.GREEN;
     private transient Color wyjscie = Color.BLACK;

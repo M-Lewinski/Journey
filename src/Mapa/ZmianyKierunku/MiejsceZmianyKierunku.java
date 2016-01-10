@@ -20,13 +20,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Lewin on 2015-10-18.
  */
-public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements ShowInfo {
+public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements ShowInfo,Serializable {
+    private static final long serialVersionUID = 7969739521530812969L;
     private String nazwa;
     private List<Pojazd> listaPojazdowOczekujacych= new ArrayList<Pojazd>();
     private List<Droga> listaDrog = new ArrayList<Droga>();
@@ -338,4 +340,9 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
         return listaNodow;
     }
 
+    public void notifyKontrolaLotow(){
+        synchronized (kontrolaLotow) {
+            kontrolaLotow.notifyAll();
+        }
+    }
 }

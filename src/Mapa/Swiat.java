@@ -18,6 +18,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Control;
 import javafx.scene.control.Labeled;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static javafx.application.Application.launch;
@@ -27,7 +28,8 @@ import static javafx.application.Application.launch;
  *
  */
 //public class Swiat extends ObiektGraficzny {
-public class Swiat extends ObiektGraficzny implements ShowInfo{
+public class Swiat extends ObiektGraficzny implements ShowInfo,Serializable{
+    private static final long serialVersionUID = 2362712758919672750L;
     /**
      * instancja klasy swiat.
      */
@@ -87,6 +89,9 @@ public class Swiat extends ObiektGraficzny implements ShowInfo{
         return instance;
     }
 
+    public static void setInstance(Swiat instance) {
+        Swiat.instance = instance;
+    }
 
     public List<Pojazd> getListaWolnychPojazdow() {
         return listaWolnychPojazdow;
@@ -416,4 +421,16 @@ public class Swiat extends ObiektGraficzny implements ShowInfo{
         });
         return listaNodow.size();
     }
+
+    public void zamienInstancje(Swiat swiat){
+//        Swiat.getInstance().getListaPrzystankow().clear();
+//        Swiat.getInstance().getListaThread().clear();
+//        Swiat.getInstance().getListaPrzystankow().clear();
+//        Swiat.getInstance().getListaMiejscZmianyKierunku().clear();
+//
+//            Swiat.getInstance().getListaPojazdow().clear();
+//        this.setListaPrzystankow(swiat.getListaPrzystankow());
+//        this.setListaDrog(swiat.getListaDrog());
+    }
+
 }

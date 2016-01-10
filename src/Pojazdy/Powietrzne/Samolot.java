@@ -9,6 +9,7 @@ import Pojazdy.Trasowanie;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.Random;
 /**
  * Created by Lewin on 2015-10-18.
  */
-public abstract class Samolot extends Pojazd {
+public abstract class Samolot extends Pojazd implements Serializable {
+    private static final long serialVersionUID = 365009385796028411L;
     private int liczbaPersonelu=0;
     private double maksymalnaIloscPaliwa=0.0;
     private double aktualnaIloscPaliwa=0.0;

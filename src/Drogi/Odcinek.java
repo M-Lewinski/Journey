@@ -10,8 +10,8 @@ import java.io.Serializable;
 /**
  * Created by Lewin on 2015-12-08.
  */
-public class Odcinek implements Serializable {
-    private static final long serialVersionUID = 7548075626756304026L;
+public class Odcinek implements Serializable{
+    private static final long serialVersionUID = 2481289876531997373L;
     private double angle;
     private double dlugosc;
     private double poczatekX;

@@ -5,11 +5,15 @@ import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Lewin on 2015-10-18.
  */
-public class Skrzyzowanie extends MiejsceZmianyKierunku {
+public class Skrzyzowanie extends MiejsceZmianyKierunku implements Serializable {
+    private static final long serialVersionUID = -6210785879157624427L;
+
     public Skrzyzowanie(String nazwa, double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean czyIstniejeWSwiecie) {
         super(dlugosc, szerokosc, polozenieX, polozenieY,nazwa,czyIstniejeWSwiecie);
         if(czyIstniejeWSwiecie==true) {

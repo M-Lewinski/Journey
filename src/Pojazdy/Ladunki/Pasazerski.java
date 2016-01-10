@@ -6,6 +6,7 @@ import Pasazerowie.Pasazer;
 import Pojazdy.Pojazd;
 import javafx.scene.control.Control;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,7 +14,8 @@ import java.util.Random;
 /**
  * Created by Lewin on 2015-10-19.
  */
-public class Pasazerski extends TypLadunku {
+public class Pasazerski extends TypLadunku implements Serializable {
+    private static final long serialVersionUID = 6730334645512804827L;
     private int maksymalnaLiczbaPasazerow;
     private int obecnaLiczbaPasazerow=0;
     private List<Pasazer> listaPasazerow = new ArrayList<Pasazer>();
@@ -69,7 +71,7 @@ public class Pasazerski extends TypLadunku {
 
     public void stworzNowychPasazerow(int liczba) {
         for (int i = 0; i < liczba; i++) {
-            Pasazer pasazer = new Pasazer();
+//            Pasazer pasazer = new Pasazer();
         }
     }
 

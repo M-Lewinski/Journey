@@ -14,6 +14,7 @@ import Pojazdy.TransportowiecCywilny;
 import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,7 +22,8 @@ import java.util.Random;
 /**
  * Created by Lewin on 2015-10-18.
  */
-public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
+public class StatekWycieczkowy extends Statek implements TransportowiecCywilny,Serializable {
+    private static final long serialVersionUID = -6211877081383929112L;
     private Firma firma;
     private Pasazerski ladunek;
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();

@@ -12,76 +12,117 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Klasa droga implementujaca abstrakcje obiektu droga.
- * Created by Lewin on 2015-10-18.
+/** Klasa droga implementuj¹ca abstrakcjê obiektu droga. Droga zawiera w sobie odcinek, który pozwala pojazdom poruszaæ siê bezkolizyjnie.
+ *
+ * Created by Micha³ Lewiñski 122505 on 2015-10-18.
  */
 public abstract class Droga implements Rysowanie,Serializable {
-    private static final long serialVersionUID = 5578184225632826392L;
+    private static final long serialVersionUID = -4648857826824857706L;
     private Monitoring hulkDrogi = new Monitoring();
     /**
-     * poczatek drogi.
+     * Pocz¹tek drogi.
      */
     private MiejsceZmianyKierunku poczatek;
     /**
-     * koniec drogi.
+     * Koniec drogi.
      */
     private MiejsceZmianyKierunku koniec;
     /**
-     *  odleglosc miedzy punktem poczatkowym a koncowym.
+     * Lista pojazdów, które znajduj¹ siê na danej drodze. To pole zapewnia, ¿e pojazdy nie zderz¹ sie w trakcie poruszania.
      */
     private ArrayList<Pojazd> listaPojazdow = new ArrayList<Pojazd>();
+    /**
+     * Odleg³oœæ miêdzy punktem pocz¹tkowym a koñcowym w linii prostej.
+     */
     private double odleglosc;
+    /**
+     * K¹t pod jakim idzie droga w stosunku jej pocz¹tku i koñca.
+     */
     private double angle;
-//    private double sinDrogi;
-//    private double cosDrogi;
+    /**
+     * Odcinek drogi, który ³¹czy pocz¹tek z zewnêtrznym okrêgiem pocz¹tku. Odcinek ten jest wykorzystywany przez pojazd przy opuszczaniu miejsca zmiany kierunku.
+     */
     private Odcinek wylot;
+    /**
+     * Odcniek drogi, który ³¹czy zewnêtrzne okrêgi pocz¹tku i koñca. Odcinek ten jest wykorzystywany przy poruszaniu siê miedzy punktami na mapie.
+     */
     private Odcinek przelot;
+    /**
+     * Odcinek drogi, który ³¹czy koniec z zewnêtrznym okrêgiem koñca. Odcinek ten jest wykorzystywany przez pojazd przy ladowaniu.
+     */
     private Odcinek ladowanie;
-//    private double pozycjaPoczatkowaX;
-//    private double PozycjaPoczatkowaY;
-//    private double odlegloscPoczatek;
-//    private double katPoczatkowy;
-//    private double pozycjaKoncowaX;
-//    private double pozycjaKoncowaY;
-//    private double odlegloscKoniec;
-//    private double katKoncowy;
-//    private double odlegloscMiedzyMiejscamiZmianyKierunku;
-//    private Shape imageNode;
+    /**
+     * Kolor drogi.
+     */
     private transient Color color;
-
+    /**
+     * Parametr okreœlaj¹cy czy dana droga ma zaistnieæ w œwiecie.
+     */
     private boolean czyIstniejeWSwiecei;
 
+    /**
+     * Setter parametru koniec.
+     * @param koniec koniec drogi.
+     */
     public void setKoniec(MiejsceZmianyKierunku koniec) {
         this.koniec = koniec;
     }
 
+    /**
+     * Setter parametru poczatek.
+     * @param poczatek pocz¹tek drogi.
+     */
     public void setPoczatek(MiejsceZmianyKierunku poczatek) {
 
         this.poczatek = poczatek;
     }
 
+    /**
+     * Getter parametru Color.
+     * @return zwraca kolor drogi.
+     */
     public Color getColor() {
         return color;
     }
 
+    /**
+     * Setter parametru Color.
+     * @param color kolor drogi.
+     */
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * Getter parametru koniec.
+     * @return zwraca koniec drogi.
+     */
     public MiejsceZmianyKierunku getKoniec() {
 
         return koniec;
     }
 
+    /**
+     * Getter parametru poczatek.
+     * @return zwraca pocz¹tek drogi.
+     */
     public MiejsceZmianyKierunku getPoczatek() {
 
         return poczatek;
     }
 
+    /**
+     * Getter monitora drogi.
+     * @return zwraca monitor drogi.
+     */
     public Monitoring getHulkDrogi() {
         return hulkDrogi;
     }
 
+    /**
+     *
+     * @param hulkDrogi
+     */
     public void setHulkDrogi(Monitoring hulkDrogi) {
         this.hulkDrogi = hulkDrogi;
     }
@@ -200,8 +241,13 @@ public abstract class Droga implements Rysowanie,Serializable {
     }
 
     @Override
-    public void naprawRysunki(Group group,Color color) {
-        this.color=color;
+    public void naprawRysunki(Group group) {
+        if(this instanceof DrogaMorska){
+            this.color=Color.CYAN;
+        }
+        else if(this instanceof DrogaPowietrzna){
+            this.color=Color.ORANGE;
+        }
         rysuj(group);
     }
 

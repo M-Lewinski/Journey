@@ -30,6 +30,7 @@
             <Button fx:id="buttonDodajPasazera" layoutX="194.0" layoutY="513.0" mnemonicParsing="false" onAction="#handleDodajPasazera" prefHeight="25.0" prefWidth="118.0" text="Dodaj Pasazera" />
             <Button fx:id="buttonStworzLotniskowiec" layoutX="14.0" layoutY="577.0" mnemonicParsing="false" onAction="#handleStworzLotniskowiec" prefHeight="25.0" prefWidth="158.0" text="Stworz lotniskowiec" />
             <Button fx:id="buttonZapiszSerializacje" layoutX="194.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleZapiszSerializacje" prefHeight="25.0" prefWidth="118.0" text="Zapisz Serializacje" />
+            <Button fx:id="buttonWczytajSerializacje" layoutX="194.0" layoutY="577.0" mnemonicParsing="false" onAction="#handleWczytajSerializacje" prefHeight="25.0" prefWidth="118.0" text="Czytaj Serializacje" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

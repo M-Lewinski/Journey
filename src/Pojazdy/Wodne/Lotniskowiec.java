@@ -18,13 +18,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /** Klasa lotniskowca, ktora implementuje obiekt lotniskowiec.
  * Created by Lewin on 2015-10-18.
  */
-public class Lotniskowiec extends Statek implements TworzeniePojazdu {
+public class Lotniskowiec extends Statek implements TworzeniePojazdu,Serializable {
+    private static final long serialVersionUID = -5219907779408385164L;
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     private Wojskowy ladunek;
@@ -38,7 +40,7 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
         super(dlugosc, szerokosc);
         ladunek = new Wojskowy();
         Swiat.getInstance().addLotniskowiec(this);
-        this.setColor(Color.DEEPPINK);
+        this.setColor(Color.BLACK);
         this.rysuj(MainPanel.getGrupaPojazdow());
         this.runMe();
     }

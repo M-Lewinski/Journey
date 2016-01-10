@@ -7,11 +7,15 @@ import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
+
 
 /**
  * Created by Lewin on 2015-10-18.
  */
-public class Port extends Przystanek implements TworzeniePojazdu {
+public class Port extends Przystanek implements TworzeniePojazdu,Serializable {
+    private static final long serialVersionUID = -4540273877525475953L;
+
     public Port(String nazwa, double dlugosc, double szerokosc, double polozenieX, double polozenieY, boolean czyIstniejeWSwiecie) {
         super(dlugosc, szerokosc, polozenieX, polozenieY, nazwa,czyIstniejeWSwiecie);
         if(czyIstniejeWSwiecie) {

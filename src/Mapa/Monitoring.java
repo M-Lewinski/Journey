@@ -7,9 +7,18 @@ import java.io.Serializable;
  */
 public class Monitoring implements Serializable{
     private static final long serialVersionUID = -9191200608500873962L;
-//    private Object  monitor = new Object();
+    private PunktNaMapie punktNaMapie =null;
+    //    private Object  monitor = new Object();
+//    public Monitoring() {
+//
+//    }
 
-    public Monitoring() {
 
+    public PunktNaMapie getPunktNaMapie() {
+        return punktNaMapie;
+    }
+
+    public void setPunktNaMapie(PunktNaMapie punktNaMapie) {
+        this.punktNaMapie = punktNaMapie;
     }
 }

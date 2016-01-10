@@ -1,5 +1,6 @@
 package Pojazdy;
 
+import java.io.Serializable;
 import java.util.*;
 
 import Drogi.Droga;
@@ -26,14 +27,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import sun.applet.Main;
 
 
 /**
  *  Klasa Pojazd implementujaca abstrakcje obiektu pojazd.
- *  @param
+ *
  *
  */
-public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowanie, ShowInfo {
+public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowanie, ShowInfo,Serializable {
+    private static final long serialVersionUID = -9081699243483788445L;
     private int oczekiwanie=0;
     private int fps=30;
     private double imagePromien;
@@ -57,7 +60,17 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //    private int statusPrzelotu=-1;
     private int statusPrzelotu=0;
     private boolean pozwolenie=false;
+    private boolean stoj = false;
     private List<MiejsceZmianyKierunku> pozostalaTrasa = new ArrayList<MiejsceZmianyKierunku>();
+
+    public boolean isStoj() {
+        return stoj;
+    }
+
+    public void setStoj(boolean stoj) {
+        this.stoj = stoj;
+    }
+
 
     public int getFps() {
         return fps;
@@ -158,6 +171,16 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //
 ////        return nastepneMozliweLadowanie(trasa,)
 //    }
+
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
     private Przystanek nastepnyPrzystanek;
 
     public int getOczekiwanie() {
@@ -567,7 +590,9 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                     return;
                 }
                 Thread.sleep(1000 / fps);
-
+                if(this.stoj==true){
+                    return;
+                }
                 if (this.steps < this.getMaksymalnaPredkosc()) {
                     moveX = this.steps * sinDrogi;
                     moveY = this.steps * cosDrogi;
@@ -991,7 +1016,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             Informacja.getInstance().setObecnaInformacja(this);
         });
         this.setImageNode(rectangle);
-        group.getChildren().add(this.getImageNode());
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                group.getChildren().add(getImageNode());
+
+            }
+        });
+//        group.getChildren().add(this.getImageNode());
 //        Platform.runLater(new Runnable() {
 //            @Override
 //            public void run() {
@@ -1120,8 +1152,10 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             listaNodow.add(label5);
 //        ShowLabel label6 = new ShowLabel("  " +this.getPrzystanekPoczatkowy().getNazwa(),this.getPrzystanekPoczatkowy());
 //        listaNodow.add(label6);
-            ShowLabel label11 = new ShowLabel("Obecne polozenie: " + this.obecnePolozenie.getNazwa(), this.obecnePolozenie);
-            listaNodow.add(label11);
+            if(this.obecnePolozenie!=null) {
+                ShowLabel label11 = new ShowLabel("Obecne polozenie: " + this.obecnePolozenie.getNazwa(), this.obecnePolozenie);
+                listaNodow.add(label11);
+            }
         }
         if(!(this instanceof Lotniskowiec)) {
             if (this.nastepnyPrzystanek != null) {
@@ -1159,14 +1193,12 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //        listaLabeli.add(label10);
         return listaNodow;
     }
-
-
-
     @Override
     public void run() {
         threadIsAlive=true;
         while (threadIsAlive==true) {
             try {
+
 //                System.out.println("WLASNIE TUTAJ");
 //                if(MainPanel.beginning==true) {
 //                if(this.oczekiwanie!=0) {

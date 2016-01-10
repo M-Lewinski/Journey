@@ -6,10 +6,14 @@ import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
+
 /** Klasa drogi powietrznej, ktora implementuje obiekt droga powietrzna.
  * Created by Lewin on 2015-10-18.
  */
-public class DrogaPowietrzna extends Droga {
+public class DrogaPowietrzna extends Droga implements Serializable {
+    private static final long serialVersionUID = -3569023475866065706L;
+
     /**
      * Konstruktor klasy droga powietrzna, ktory wykorzystuje konstruktor z odziedziczonej klasy.
      * @param poczatek poczatek drogi.

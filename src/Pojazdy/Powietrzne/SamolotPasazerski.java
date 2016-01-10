@@ -20,8 +20,9 @@ import java.util.List;
 /**
  * Created by Lewin on 2015-10-18.
  */
-public class SamolotPasazerski extends Samolot implements TransportowiecCywilny {
+public class SamolotPasazerski extends Samolot implements TransportowiecCywilny,Serializable {
 
+    private static final long serialVersionUID = -7186764832278829889L;
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     private Pasazerski ladunek;

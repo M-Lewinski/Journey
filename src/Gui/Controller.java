@@ -31,6 +31,8 @@ public class Controller {
     private Button buttonDodajPasazera;
     @FXML
     private Button buttonZapiszSerializacje;
+    @FXML
+    private Button buttonWczytajSerializacje;
 
     @FXML
     private void initialize() {
@@ -111,6 +113,13 @@ public class Controller {
         System.out.println("Zapisywanie Serializacji do pliku");
         MainPanel.serializacjaAplikacji();
     }
+
+    @FXML
+    public void handleWczytajSerializacje(){
+        System.out.println("Wczytywanie Serializacji z pliku");
+        MainPanel.wczytywanieSerializacji();
+    }
+
     public void setMainPanel(MainPanel mainPanel) {
         this.mainPanel = mainPanel;
     }

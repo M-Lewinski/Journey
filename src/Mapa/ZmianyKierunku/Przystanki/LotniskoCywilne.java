@@ -7,10 +7,13 @@ import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
+
 /**
  * Created by Lewin on 2015-10-18.
  */
-public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu {
+public class LotniskoCywilne extends Lotnisko implements TworzeniePojazdu,Serializable {
+    private static final long serialVersionUID = -378067437537229120L;
     public LotniskoCywilne(String nazwa,double dlugosc, double szerokosc, double polozenieX, double polozenieY,boolean czyIstniejeWSwiecie) {
         super(nazwa, dlugosc, szerokosc, polozenieX, polozenieY, czyIstniejeWSwiecie);
         if (czyIstniejeWSwiecie == true) {

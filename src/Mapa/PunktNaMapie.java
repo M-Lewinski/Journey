@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Labeled;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo {
+public abstract class PunktNaMapie extends ObiektGraficzny implements ShowInfo,Serializable {
+    private static final long serialVersionUID = -5033774608682335773L;
     private double polozenieX;
     private double polozenieY;
 

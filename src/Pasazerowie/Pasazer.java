@@ -312,6 +312,14 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie, Serializable {
         return identyfikator;
     }
 
+    public Thread getThread() {
+        return thread;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
     public void setObecnePolozenie(PunktNaMapie obecnePolozenie) {
         this.obecnePolozenie = obecnePolozenie;
     }
@@ -861,6 +869,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie, Serializable {
         try {
             this.threadIsAlive=true;
             while(this.threadIsAlive==true){
+
 
 //                if(this.getObecnePolozenie()==this.getPrzystanekDocelowy()){
 //                    odwrocTrase();

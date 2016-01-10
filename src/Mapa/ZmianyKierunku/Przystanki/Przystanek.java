@@ -8,12 +8,14 @@ import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import javafx.scene.control.Control;
 import javafx.scene.shape.Circle;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by Lewin on 2015-10-18.
  */
-public abstract class Przystanek extends MiejsceZmianyKierunku {
+public abstract class Przystanek extends MiejsceZmianyKierunku implements Serializable {
+    private static final long serialVersionUID = 693925678757507375L;
     private List<Pojazd> listaPojazdowZaparkowanych = new ArrayList<Pojazd>();
     private List<Pasazer> listaPasazerowOczekujacych = new ArrayList<Pasazer>();
     private List<Pojazd> listaPojazdowPrzyjezdzajacych = new ArrayList<Pojazd>();
@@ -91,6 +93,9 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
 //                    if(!listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa().isEmpty())
                     if(!listaPasazerowDoOznajmienia.get(i).getListaPrzystankow().isEmpty())
                     listaPasazerowDoOznajmienia.get(i).setDoszloDoZmiany(true);
+                    if(i>=listaPasazerowDoOznajmienia.size()){
+                        continue;
+                    }
                     listaOznajmionychPasazerow.add(listaPasazerowDoOznajmienia.get(i));
 //                System.out.println("wie");
                 }
@@ -98,6 +103,9 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
 
 //                    if(listaPasazerowDoOznajmienia.get(i).getPozostalaTrasa().isEmpty()) {
                     if(listaPasazerowDoOznajmienia.get(i).getListaPrzystankow().isEmpty()) {
+                        if(i>=listaPasazerowDoOznajmienia.size()){
+                            continue;
+                        }
                         listaPasazerowDoOznajmienia.get(i).setDoszloDoZmiany(true);
                         listaOznajmionychPasazerow.add(listaPasazerowDoOznajmienia.get(i));
                     }

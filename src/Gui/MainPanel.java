@@ -9,8 +9,10 @@ import Mapa.ZmianyKierunku.Przystanki.LotniskoWojskowe;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Mapa.ZmianyKierunku.Skrzyzowanie;
 import Pasazerowie.Pasazer;
+import Pojazdy.Pojazd;
 import Pojazdy.Powietrzne.SamolotPasazerski;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 import javafx.fxml.FXMLLoader;
@@ -26,12 +28,15 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.signature.SignatureWriter;
+import jdk.nashorn.internal.ir.WhileNode;
 import sun.applet.Main;
 import sun.plugin.javascript.navig.Anchor;
 
 import javax.swing.*;
 import java.io.*;
 import java.security.PrivateKey;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -162,8 +167,20 @@ public class MainPanel extends Application implements Serializable {
     public static void serializacjaAplikacji(){
         ObjectOutputStream wyjscie;
         try {
+//            for (int i = 0; i < Swiat.getInstance().getListaPojazdow().size(); i++) {
+//                Swiat.getInstance().getListaPojazdow().get(i).setThreadIsAlive(false);
+//            }
+//            for (int i = 0; i < Swiat.getInstance().getListaPasazerow().size(); i++) {
+//                Swiat.getInstance().getListaPasazerow().get(i).setThreadIsAlive(false);
+//            }
+            for (int i = 0; i < Swiat.getInstance().getListaPojazdow().size(); i++) {
+                Swiat.getInstance().getListaPojazdow().get(i).setStoj(true);
+            }
             for (int i = 0; i < Swiat.getInstance().getListaThread().size(); i++) {
+                synchronized (Swiat.getInstance().getListaThread().get(i)) {
+
                 Swiat.getInstance().getListaThread().get(i).suspend();
+                }
             }
             wyjscie = new ObjectOutputStream(new FileOutputStream("PlikSerializacyjny.serial"));
             wyjscie.writeObject(Swiat.getInstance());
@@ -176,8 +193,99 @@ public class MainPanel extends Application implements Serializable {
             e.printStackTrace();
             System.out.println("Nie udalo sie dokonac serializacji");
         }
+
         for (int i = 0; i < Swiat.getInstance().getListaThread().size(); i++) {
+            synchronized (Swiat.getInstance().getListaThread().get(i)) {
+//                Swiat.getInstance().getListaThread().get(i).notify();
             Swiat.getInstance().getListaThread().get(i).resume();
+//            Swiat.getInstance().getListaThread().get(i).start();
+//            Swiat.getInstance().getListaThread().get(i).start();
+            }
         }
+
+        for (int i = 0; i < Swiat.getInstance().getListaPojazdow().size(); i++) {
+            Swiat.getInstance().getListaPojazdow().get(i).setStoj(false);
+        }
+//        for (int i = 0; i < Swiat.getInstance().getListaPojazdow().size(); i++) {
+//            Swiat.getInstance().getListaPojazdow().get(i)
+//        }
+//        for (int i = 0; i < Swiat.getInstance().getListaPasazerow().size(); i++) {
+//            Swiat.getInstance().getListaPasazerow().get(i).setThreadIsAlive(false);
+//        }
+    }
+
+    public static void wczytywanieSerializacji(){
+        ObjectInputStream wejscie = null;
+        Swiat nowySwiat =null;
+        Informacja.getInstance().wyczysc();
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                MainPanel.getGrupaPojazdow().getChildren().clear();
+//                MainPanel.getGrupaDrog().getChildren().clear();
+//                MainPanel.getGrupaMiejscZmianyKierunku().getChildren().clear();
+//            }
+//        });
+        try{
+            wejscie = new ObjectInputStream(new FileInputStream("PlikSerializacyjny.serial"));
+            try {
+                nowySwiat = (Swiat) wejscie.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            wejscie.close();
+        }catch (FileNotFoundException e){
+            System.out.println("Nie odnaleziono odpowiedniego pliku");
+            return;
+        }catch (IOException e){
+
+        }
+        while (Swiat.getInstance().getListaPojazdow().isEmpty()==false){
+            Swiat.getInstance().getListaPojazdow().get(0).usuwanie();
+        }
+        while (Swiat.getInstance().getListaPasazerow().isEmpty()==false){
+            Swiat.getInstance().getListaPasazerow().get(0).usuwanie();
+        }
+//        System.out.println(nowySwiat.getListaMiejscZmianyKierunku().get(0).getNazwa());
+//        Swiat.getInstance().zamienInstancje(nowySwiat);
+        Swiat.setInstance(nowySwiat);
+        Swiat.getInstance().setListaThread(null);
+        List<Thread> listaThreadow = new ArrayList<Thread>();
+
+//        for (int i = 0; i < Swiat.getInstance().getListaLotniskCywilnych().size(); i++) {
+//            Swiat.getInstance().getListaLotniskCywilnych().get(i).naprawRysunki(MainPanel.getGrupaMiejscZmianyKierunku(),Color.BROWN);
+//        }
+//        for (int i = 0; i < Swiat.getInstance().getListaLotniskWojskowych().size(); i++) {
+//            Swiat.getInstance().getListaLotniskWojskowych().get(i).naprawRysunki(MainPanel.getGrupaMiejscZmianyKierunku(),Color.);
+//        }
+//        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
+//            Swiat.getInstance().getListaMiejscZmianyKierunku().get(i).naprawRysunki(MainPanel.getGrupaMiejscZmianyKierunku());
+//        }
+//        for (int i = 0; i < Swiat.getInstance().getListaDrog().size(); i++) {
+//            Swiat.getInstance().getListaDrog().get(i).naprawRysunki(MainPanel.getGrupaDrog());
+//        }
+        for (int i = 0; i < Swiat.getInstance().getListaPojazdow().size(); i++) {
+            Swiat.getInstance().getListaPojazdow().get(i).naprawRysunki(MainPanel.getGrupaPojazdow());
+        }
+        for (int i = 0; i < Swiat.getInstance().getListaPojazdow().size(); i++) {
+            Runnable obiektDlaThreadu = Swiat.getInstance().getListaPojazdow().get(i);
+            Thread thread = new Thread(obiektDlaThreadu);
+            Swiat.getInstance().getListaPojazdow().get(i).setThread(thread);
+            listaThreadow.add(thread);
+            thread.start();
+        }
+        for (int i = 0; i < Swiat.getInstance().getListaPasazerow().size(); i++) {
+            Runnable obiektDlaThreadu = Swiat.getInstance().getListaPasazerow().get(i);
+            Thread thread = new Thread(obiektDlaThreadu);
+            Swiat.getInstance().getListaPasazerow().get(i).setThread(thread);
+            listaThreadow.add(thread);
+            thread.start();
+        }
+//        for (int i = 0; i < Swiat.getInstance().getListaMiejscZmianyKierunku().size(); i++) {
+//            Swiat.getInstance().getListaMiejscZmianyKierunku().get(i).notifyKontrolaLotow();
+//        }
+        Swiat.getInstance().setListaThread(listaThreadow);
+
+        System.out.println("Udalo sie wczytac serializacje");
     }
 }

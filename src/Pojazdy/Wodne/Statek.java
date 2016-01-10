@@ -14,6 +14,7 @@ import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.Pojazd;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +22,8 @@ import java.util.List;
 /**
  * Created by Lewin on 2015-10-18.
  */
-public abstract class Statek extends Pojazd {
+public abstract class Statek extends Pojazd implements Serializable {
+    private static final long serialVersionUID = -3276363032125201789L;
 //    private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
 //    private static Droga typDrogi;
     /**

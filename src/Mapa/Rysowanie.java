@@ -10,5 +10,5 @@ import javafx.scene.paint.Color;
 public interface Rysowanie {
 //    public void rysuj(Group group);
     public void rysuj(Group group);
-    public void naprawRysunki(Group group,Color color);
+    public void naprawRysunki(Group group);
 }

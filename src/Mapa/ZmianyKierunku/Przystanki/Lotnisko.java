@@ -1,9 +1,12 @@
 package Mapa.ZmianyKierunku.Przystanki;
 
+import java.io.Serializable;
+
 /** Klasa lotniska, ktora implementuje obiekt lotnisko.
  * Created by Lewin on 2015-10-18.
  */
-public abstract class Lotnisko extends Przystanek {
+public abstract class Lotnisko extends Przystanek implements Serializable {
+    private static final long serialVersionUID = -7529943293187354344L;
     /**
      * maksymalna liczba samolotow, ktore znajduja sie na lotnisku.
      */
