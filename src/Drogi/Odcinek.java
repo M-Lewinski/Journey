@@ -99,7 +99,7 @@ public class Odcinek {
     public void setImageNode(Shape imageNode) {
         this.imageNode = imageNode;
     }
-    public Odcinek(double kat, double pX, double pY,double kX,double kY, Color color){
+    public Odcinek(double kat, double pX, double pY,double kX,double kY, Color color,boolean czyIstnieje){
         this.angle=kat;
         this.poczatekX=pX;
         this.poczatekY=pY;
@@ -109,11 +109,13 @@ public class Odcinek {
         this.sinOdcinka = Math.sin(this.angle);
         this.cosOdcinka = Math.cos(this.angle);
         this.kolor = color;
-        Line linia = new Line(poczatekX,poczatekY,koniecX,koniecY);
-        linia.setStroke(this.kolor);
-        linia.setStrokeWidth(2);
-        imageNode= linia;
-        MainPanel.getGrupaDrog().getChildren().add(imageNode);
+        if(czyIstnieje==true) {
+            Line linia = new Line(poczatekX, poczatekY, koniecX, koniecY);
+            linia.setStroke(this.kolor);
+            linia.setStrokeWidth(2);
+            imageNode = linia;
+            MainPanel.getGrupaDrog().getChildren().add(imageNode);
+        }
     }
 
 }

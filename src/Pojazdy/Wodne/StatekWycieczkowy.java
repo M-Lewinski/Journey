@@ -91,7 +91,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
     @Override
     public void usuwanie() {
         super.usuwanie();
-        this.ladunek.usuwanie();
+        this.ladunek.usuwanie(this);
     }
 
     @Override
@@ -134,7 +134,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
     public void ladowanie(Przystanek przystanek) {
         synchronized (this.getHulkPojazdu()) {
             super.ladowanie(przystanek);
-            this.ladunek.znalezienieOsobWysiadajacych(przystanek);
+            this.ladunek.znalezienieOsobWysiadajacych(this,przystanek);
             for (Pasazer p: this.ladunek.getListaWysiadajacychPasazerow()) {
                 synchronized (p){
                     p.notify();

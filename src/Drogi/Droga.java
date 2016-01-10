@@ -47,6 +47,8 @@ public abstract class Droga implements Rysowanie {
 //    private Shape imageNode;
     private Color color;
 
+    private boolean czyIstniejeWSwiecei;
+
     public void setKoniec(MiejsceZmianyKierunku koniec) {
         this.koniec = koniec;
     }
@@ -157,12 +159,15 @@ public abstract class Droga implements Rysowanie {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
+    public Droga(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,boolean istniejeWSwiecie) {
         this.poczatek = poczatek;
         this.koniec = koniec;
         this.odleglosc = Math.sqrt(Math.pow(poczatek.getPolozenieX()-koniec.getPolozenieX(),2.0) + Math.pow(poczatek.getPolozenieY()-koniec.getPolozenieY(),2.0));
         this.odleglosc = odleglosc;
-        Swiat.getInstance().addDroga(this);
+        this.czyIstniejeWSwiecei=istniejeWSwiecie;
+        if(this.czyIstniejeWSwiecei==true) {
+            Swiat.getInstance().addDroga(this);
+        }
         this.poczatek.addListaDrog(this);
         this.okreslKat();
 //        System.out.println("Dlugosc drogi: " + this.odleglosc);
@@ -294,15 +299,15 @@ public abstract class Droga implements Rysowanie {
         double katMiedzy = Math.atan2(zmianaXP,zmianaYP);
 //        System.out.println(this.poczatek.getNazwa()+" kat wylotu "+Math.toDegrees(katMiedzy));
 //        double katMiedzy = Math.atan2(zmianaYP,zmianaXP);
-        this.wylot = new Odcinek(katMiedzy,poczatekX,poczatekY,poczatekX+zmianaXP,poczatekY+zmianaYP,this.color);
+        this.wylot = new Odcinek(katMiedzy,poczatekX,poczatekY,poczatekX+zmianaXP,poczatekY+zmianaYP,this.color,czyIstniejeWSwiecei);
         katMiedzy = Math.atan2(koniecX+zmianaXK-(poczatekX+zmianaXP),koniecY+zmianaYK-(poczatekY+zmianaYP));
 //        katMiedzy = Math.atan2(koniecY+zmianaYK-(poczatekY+zmianaYP),koniecX+zmianaXK-(poczatekX+zmianaXP));
 //        System.out.println(this.poczatek.getNazwa()+" kat przelatu "+Math.toDegrees(katMiedzy));
-        this.przelot = new Odcinek(katMiedzy,poczatekX+zmianaXP,poczatekY+zmianaYP,koniecX+zmianaXK,koniecY+zmianaYK,this.color);
+        this.przelot = new Odcinek(katMiedzy,poczatekX+zmianaXP,poczatekY+zmianaYP,koniecX+zmianaXK,koniecY+zmianaYK,this.color,czyIstniejeWSwiecei);
         katMiedzy = Math.atan2(-zmianaXK,-zmianaYK);
 //        katMiedzy = Math.atan2(zmianaYK,zmianaXK);
 //        System.out.println(this.poczatek.getNazwa()+" kat ladowania "+Math.toDegrees(katMiedzy));
-        this.ladowanie = new Odcinek(katMiedzy,koniecX+zmianaXK,koniecY+zmianaYK,koniecX,koniecY,this.color);
+        this.ladowanie = new Odcinek(katMiedzy,koniecX+zmianaXK,koniecY+zmianaYK,koniecX,koniecY,this.color,czyIstniejeWSwiecei);
 //        System.out.println(this.poczatek.getNazwa() + " odcinek normalny: "+this.odleglosc);
 //        System.out.println(this.poczatek.getNazwa() + " odcinek wylotu: " + this.wylot.getDlugosc());
 //        System.out.println(this.poczatek.getNazwa() + " odcinek przelotu: " + this.przelot.getDlugosc());

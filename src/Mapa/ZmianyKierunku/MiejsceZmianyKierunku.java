@@ -162,6 +162,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                 pojazd.getDrogaTeraz().removeListaPojazdow(pojazd);
                 pojazd.getPozostalaTrasa().remove(0);
                 pojazd.setDrogaTeraz(null);
+                this.obecnieZajmuje=null;
                 if (czyToJestMiejsceDoLadowania == true) {
                     pojazd.setWidocznosc(false);
                     Platform.runLater(new Runnable() {
@@ -175,13 +176,20 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                     pojazd.ladowanie(przystanek);
 
                     if(pojazd.getObecnePolozenie()==pojazd.getPrzystanekDocelowy()){
-                        pojazd.odwrocTrase();
+                        if(!Swiat.getInstance().getListaLotniskWojskowych().contains(pojazd)){
+                            pojazd.odwrocTrase();
+                        }
                     }
 
                     pojazd.setNastepnyPrzystanek(pojazd.nastepneMozliweLadowanie(pojazd.getPozostalaTrasa(), pojazd.getObecnePolozenie()));
                     przystanek.addPojazdZaparkowany(pojazd);
-
-
+                    if(Swiat.getInstance().getListaWolnychPojazdow().contains(pojazd)){
+//                        Swiat.getInstance().getListaWolnychPojazdow().remove(pojazd);
+                        Swiat.getInstance().removeWolnyPojazd(pojazd);
+                        pojazd.setPrzystanekPoczatkowy(przystanek);
+                        pojazd.setObecnePolozenie(przystanek);
+                        pojazd.zmienDotychczasowaTrase();
+                    }
                 } else {
                     if(pojazd instanceof Lotniskowiec){
                         if(pojazd.getObecnePolozenie()==pojazd.getPrzystanekDocelowy()) {
@@ -190,7 +198,7 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
                     }
                     this.startowanie(pojazd);
                 }
-                this.obecnieZajmuje=null;
+//                this.obecnieZajmuje=null;
             }
         }
     }

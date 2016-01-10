@@ -277,8 +277,10 @@ public abstract class Przystanek extends MiejsceZmianyKierunku {
         listaTymczasowa.addAll(this.listaPasazerowOczekujacych);
         for (int i = 0; i < listaTymczasowa.size(); i++) {
             Pasazer pasazer = listaTymczasowa.get(i);
-            ShowLabel showLabel = new ShowLabel(pasazer.getImie()+ " " + pasazer.getNazwisko(),pasazer);
-            listaNodow.add(showLabel);
+            if(pasazer!=null) {
+                ShowLabel showLabel = new ShowLabel(pasazer.getImie() + " " + pasazer.getNazwisko(), pasazer);
+                listaNodow.add(showLabel);
+            }
         }
 
 //        for (int i = 0; i < this.listaPasazerowOczekujacych.size(); i++) {

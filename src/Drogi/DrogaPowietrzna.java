@@ -15,10 +15,12 @@ public class DrogaPowietrzna extends Droga {
      * @param poczatek poczatek drogi.
      * @param koniec koniec drogi.
      */
-    public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec) {
-        super(poczatek, koniec);
-        this.setColor(Color.ORANGE);
-        this.rysuj(MainPanel.getGrupaDrog());
+    public DrogaPowietrzna(MiejsceZmianyKierunku poczatek, MiejsceZmianyKierunku koniec,boolean istniejeWSwiecie) {
+        super(poczatek, koniec, istniejeWSwiecie);
+//        if (istniejeWSwiecie == true) {
+            this.setColor(Color.ORANGE);
+            this.rysuj(MainPanel.getGrupaDrog());
+//        }
     }
     public DrogaPowietrzna(){
 

@@ -68,9 +68,9 @@ public class Pasazerski extends TypLadunku {
     }
 
     public void stworzNowychPasazerow(int liczba) {
-//        for (int i = 0; i < liczba; i++) {
-//            Pasazer pasazer = new Pasazer();
-//        }
+        for (int i = 0; i < liczba; i++) {
+            Pasazer pasazer = new Pasazer();
+        }
     }
 
 
@@ -84,12 +84,36 @@ public class Pasazerski extends TypLadunku {
         this.maksymalnaLiczbaPasazerow=5;
     }
 
-    public void znalezienieOsobWysiadajacych(Przystanek przystanek){
+    public void znalezienieOsobWysiadajacych(Pojazd pojazd,Przystanek przystanek){
         for (int i = 0; i < listaPasazerow.size(); i++) {
 //            if(this.listaPasazerow.get(i).getNastepnyPrzystanek()==przystanek || this.listaPasazerow.get(i).getPozostalaTrasa().isEmpty()){
-            if(this.listaPasazerow.get(i).getNastepnyPrzystanek()==przystanek){
-                this.listaWysiadajacychPasazerow.add(this.listaPasazerow.get(i));
-                this.listaPasazerow.get(i).setMoznaWysiadac(true);
+            Pasazer pasazer = this.listaPasazerow.get(i);
+            if(pasazer.isThreadIsAlive()==false || pojazd.isThreadIsAlive()==false ){
+                return;
+            }
+            if(pasazer.getNastepnyPrzystanek()==przystanek){
+                if(!this.listaWysiadajacychPasazerow.contains(pasazer)) {
+                    this.listaWysiadajacychPasazerow.add(pasazer);
+                    pasazer.setMoznaWysiadac(true);
+                }
+            }
+            else{
+                if(pasazer.getNastepnyPrzystanek() !=null && pojazd.getNastepnyPrzystanek()!=null) {
+                    synchronized (pasazer) {
+                        if (!this.listaWysiadajacychPasazerow.contains(pasazer)) {
+                            if (!pasazer.getPozostalaTrasa().isEmpty()) {
+                                if (!pojazd.getPozostalaTrasa().contains(pasazer.getNastepnyPrzystanek())) {
+                                    pasazer.setNastepnyPrzystanek(pojazd.getNastepnyPrzystanek());
+                                    pasazer.getPozostalaTrasa().clear();
+                                    pasazer.setDoszloDoZmiany(true);
+                                    this.listaWysiadajacychPasazerow.add(pasazer);
+                                    pasazer.setMoznaWysiadac(true);
+                                    System.out.println("HEJ COS BYLO PRZEZ CHWILE NIE TAK");
+                                }
+                            }
+                        }
+                    }
+                }
             }
 //            if(this.listaPasazerow.get(i).getPozostalaTrasa().isEmpty()){
 //            this.listaWysiadajacychPasazerow.add(this.listaPasazerow.get(i));
@@ -98,13 +122,22 @@ public class Pasazerski extends TypLadunku {
         }
     }
 
-    public void usuwanie(){
-        for (int i = 0; i < this.listaPasazerow.size(); i++) {
-            this.listaPasazerow.get(i).usuwanie();
-            this.listaPasazerow.get(i).setObecnePolozenie(null);
-            this.listaPasazerow.remove(i);
+    public void usuwanie(Pojazd pojazd){
+        synchronized (pojazd.getHulkPojazdu()) {
+            for (int i = 0; i < this.listaPasazerow.size(); i++) {
+                Pasazer pasazer = this.listaPasazerow.get(i);
+                synchronized (pasazer) {
+                    pasazer.setImie("USUWANIE " +pasazer.getImie());
+                    pasazer.usuwanie();
+                    pasazer.setObecnePolozenie(null);
+//                    pasazer.notify();
+                    pasazer.notifyAll();
+//                    this.listaPasazerow.remove(i);
+                }
+            }
+            this.listaPasazerow.clear();
+            this.listaWysiadajacychPasazerow.clear();
         }
-        this.listaWysiadajacychPasazerow.clear();
     }
 
     public boolean czyJestWolneMiejsce(Pasazer pasazer){
@@ -160,4 +193,21 @@ public class Pasazerski extends TypLadunku {
             return false;
         }
     }
+
+    public void poinformujPasazerow(List<Pasazer> listaOznajmionychPasazerow){
+//        for (int i = 0; i < this.listaPasazerow.size(); i++) {
+            for (Pasazer pasazer : this.listaPasazerow) {
+//                Pasazer pasazer = this.listaPasazerow.get(i);
+                if (!listaOznajmionychPasazerow.contains(pasazer)) {
+                    if (!this.listaWysiadajacychPasazerow.contains(pasazer)) {
+                        synchronized (pasazer) {
+                            pasazer.setDoszloDoZmiany(true);
+                            listaOznajmionychPasazerow.add(pasazer);
+                            pasazer.notify();
+                        }
+                    }
+                }
+            }
+        }
+//    }
 }

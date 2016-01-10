@@ -14,6 +14,8 @@ import Mapa.ZmianyKierunku.Przystanki.Lotnisko;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pasazerowie.Pasazer;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
+import Pojazdy.Powietrzne.Samolot;
+import Pojazdy.Powietrzne.SamolotWojskowy;
 import Pojazdy.Wodne.Lotniskowiec;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -263,7 +265,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 
 
 //    public List<MiejsceZmianyKierunku> szukanieTrasy(Przystanek poczatekTrasy,Przystanek koniecTrasy, Object typDrogi){
-    public List<MiejsceZmianyKierunku> szukanieTrasy(MiejsceZmianyKierunku poczatekTrasy,MiejsceZmianyKierunku koniecTrasy, Object typDrogi){
+    public List<MiejsceZmianyKierunku> szukanieTrasy(MiejsceZmianyKierunku poczatekTrasy,MiejsceZmianyKierunku koniecTrasy, Object typDrogi,Trasowanie dlugosc){
+//    public Trasowanie szukanieTrasy(MiejsceZmianyKierunku poczatekTrasy,MiejsceZmianyKierunku koniecTrasy, Object typDrogi){
         ObservableList<Trasowanie> listaTras = FXCollections.observableArrayList();
         SortedList<Trasowanie> posortowanaListaTras =  new SortedList<Trasowanie>(listaTras,new Trasowanie());
 //        for (int i = 0; i < poczatekTrasy.getListaDrog().size(); i++) {
@@ -285,10 +288,15 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
             LinkedList<MiejsceZmianyKierunku> badanyElement = posortowanaListaTras.get(0).getListaPunktowNaMapie();
             if (uzyskiwanieListTrasBezPowtorzeniaElementu(koniecTrasy, typDrogi, listaTras, posortowanaListaTras, badanyElement)) {
 //                System.out.println("Dlugosc " + posortowanaListaTras.get(0).getDlugosc());
+//                dlugosc=posortowanaListaTras.get(0).getDlugosc();
+                if(dlugosc!=null){
+                    dlugosc.setDlugosc(posortowanaListaTras.get(0).getDlugosc());
+                }
                 return badanyElement;
             }
             listaTras.remove(posortowanaListaTras.get(0));
         }
+//        dlugosc=0.0;
 //        System.out.println("Nie znaleziono trasy");
         return null;
     }
@@ -418,7 +426,11 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     }
 
     public void runMe(){
-        wyznaczaniePierwszejTrasy();
+//        System.out.println("Here2");
+//        if(!(this instanceof SamolotWojskowy)) {
+            wyznaczaniePierwszejTrasy();
+//        }
+//        System.out.println("HERE3");
         Swiat.getInstance().addPojazd(this);
         Runnable runner = this;
         thread = new Thread(runner);
@@ -483,10 +495,15 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //        this.steps=this.drogaTeraz.getOdleglosc();
     }
 
-    public void wyznaczaniePierwszejTrasy(){
+    public void wyznaczaniePierwszejTrasy() {
+//        System.out.println("tworzenie pierwszej trasy");
+//        if(!(this instanceof SamolotWojskowy)) {
         okreslNowePolozenie(this.getMozliweLadowania());
-        synchronized ( this) {
+//      }
+//        System.out.println("Tutaj jestem");
+        synchronized (this) {
             tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(), this.getTypDrogi());
+//            System.out.println("nazwa nastepnego miejsca: " + this.getTrasa().get(1));
             this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getPozostalaTrasa(), this.obecnePolozenie));
         }
         this.getPrzystanekPoczatkowy().addPojazdZaparkowany(this);
@@ -642,20 +659,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //    public void okreslNowePolozenie(List<Przystanek> listaMozliwychPrzystankow){
     public void okreslNowePolozenie(List<MiejsceZmianyKierunku> listaMozliwychPrzystankow){
 //        if (listaMozliwychPrzystankow.size() !=0) {
-            List<Przystanek> listaLokalizacji = new LinkedList<Przystanek>();
-            List<Przystanek> listaPrzystankow = Swiat.getInstance().getListaPrzystankow();
-            if(!(this instanceof Lotniskowiec)) {
-                for (int i = 0; i < listaPrzystankow.size(); i++) {
-//                if(czyMozeLadowac(listaPrzystankow.get(i), listaMozliwychPrzystankow)){
-                    if (czyMozeTutajLadowac(listaPrzystankow.get(i))) {
-                        listaLokalizacji.add(listaPrzystankow.get(i));
-                    }
-                }
-            }
-            else{
-                listaLokalizacji.addAll(Swiat.getInstance().getListaMiast());
-                listaLokalizacji.addAll(Swiat.getInstance().getListaPortow());
-            }
+        List<Przystanek> listaLokalizacji = filtrowaniePrzystankow();
 
 //            System.out.println("lista lokalizacji: "+listaLokalizacji.size());
             Random random = new Random();
@@ -675,8 +679,26 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //        }
     }
 
+    public List<Przystanek> filtrowaniePrzystankow() {
+        List<Przystanek> listaLokalizacji = new LinkedList<Przystanek>();
+        List<Przystanek> listaPrzystankow = Swiat.getInstance().getListaPrzystankow();
+        if(!(this instanceof Lotniskowiec)) {
+            for (int i = 0; i < listaPrzystankow.size(); i++) {
+//                if(czyMozeLadowac(listaPrzystankow.get(i), listaMozliwychPrzystankow)){
+                if (czyMozeTutajLadowac(listaPrzystankow.get(i))) {
+                    listaLokalizacji.add(listaPrzystankow.get(i));
+                }
+            }
+        }
+        else{
+            listaLokalizacji.addAll(Swiat.getInstance().getListaMiast());
+            listaLokalizacji.addAll(Swiat.getInstance().getListaPortow());
+        }
+        return listaLokalizacji;
+    }
 
-//    public Przystanek nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie, List<MiejsceZmianyKierunku> listaGdzieMozeLadowac) {
+
+    //    public Przystanek nastepnyPrzystanekZTrasy(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie, List<MiejsceZmianyKierunku> listaGdzieMozeLadowac) {
 //        if(trasa!=null) {
 //            if (trasa.size() > 1) {
 //                for (int i = 1; i < trasa.size(); i++) {
@@ -834,7 +856,16 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                 nowaTrasa.get(i).poinformujPasazerow(listaOznajmionychPasazerow,false);
             }
         }
+        if(this.isThreadIsAlive()==true) {
+            if (this instanceof TransportowiecCywilny) {
+                synchronized (this.getHulkPojazdu()) {
+                    TransportowiecCywilny transportowiecCywilny = (TransportowiecCywilny) this;
+                    transportowiecCywilny.getLadunek().poinformujPasazerow(listaOznajmionychPasazerow);
+                }
+            }
+        }
     }
+
     public boolean czyMozeLadowac(Object doSprawdzenia,List<MiejsceZmianyKierunku> listaGdzieMozeLadowac){
         for (int i = 0; i < listaGdzieMozeLadowac.size(); i++) {
             if(listaGdzieMozeLadowac.get(i).getClass().isInstance(doSprawdzenia)){
@@ -927,7 +958,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         this.getTrasa().clear();
         this.getPozostalaTrasa().clear();
 //        this.setTrasa(szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,typDrogi));
-        List<MiejsceZmianyKierunku> listaTymczasowa = szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,typDrogi);
+        List<MiejsceZmianyKierunku> listaTymczasowa = szukanieTrasy(przystanekPoczatkowy,przystanekDocelowy,typDrogi,null);
         if(listaTymczasowa==null){
             return;
         }
@@ -1045,12 +1076,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
                 }
                 this.drogaTeraz.removeListaPojazdow(this);
             }
+        this.obecnePolozenie=null;
+        this.nastepnyPrzystanek=null;
             Informacja.getInstance().wyczysc();
             Swiat.getInstance().getListaThread().remove(thread);
 //            threadIsAlive = false;
-        if(Swiat.getInstance().getListaPojazdow().size()<=3*Swiat.getInstance().getListaPrzystankow().size()){
+//        if(Swiat.getInstance().getListaPojazdow().size()<=3*Swiat.getInstance().getListaPrzystankow().size()){
             this.poinformujPasazerow(this.listaOdwiedzanychPrzystankow(this.trasa),null);
-        }
+//        }
         //}
     }
     
@@ -1059,7 +1092,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         List<Control> listaNodow = new ArrayList<Control>();
         Button buttonZmianaTrasy = new Button("Zmien trase");
         buttonZmianaTrasy.setOnMouseClicked(event -> {
-            this.zmienDotychczasowaTrase();
+//            if(this instanceof Samolot){
+//                Samolot samolot = (Samolot) this;
+//                if(samolot.isAwaria()==false){
+//                    this.zmienDotychczasowaTrase();
+//                }
+//            }else{
+                this.zmienDotychczasowaTrase();
+//            }
         });
         listaNodow.add(buttonZmianaTrasy);
         Button  buttonUsunPojazd = new Button("Usun pojazd");
@@ -1075,12 +1115,14 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         listaNodow.add(label15);
 //        ShowLabel label16 = new ShowLabel(Double.toString(this.getMaksymalnaPredkosc()));
 //        listaNodow.add(label16);
-        ShowLabel label5 = new ShowLabel("Przystanek poczatkowy: "+ this.getPrzystanekPoczatkowy().getNazwa(),this.getPrzystanekPoczatkowy());
-        listaNodow.add(label5);
+        if(Swiat.getInstance().getListaWolnychPojazdow().contains(this)==false) {
+            ShowLabel label5 = new ShowLabel("Przystanek poczatkowy: " + this.getPrzystanekPoczatkowy().getNazwa(), this.getPrzystanekPoczatkowy());
+            listaNodow.add(label5);
 //        ShowLabel label6 = new ShowLabel("  " +this.getPrzystanekPoczatkowy().getNazwa(),this.getPrzystanekPoczatkowy());
 //        listaNodow.add(label6);
-        ShowLabel label11 = new ShowLabel("Obecne polozenie: " + this.obecnePolozenie.getNazwa(),this.obecnePolozenie);
-        listaNodow.add(label11);
+            ShowLabel label11 = new ShowLabel("Obecne polozenie: " + this.obecnePolozenie.getNazwa(), this.obecnePolozenie);
+            listaNodow.add(label11);
+        }
         if(!(this instanceof Lotniskowiec)) {
             if (this.nastepnyPrzystanek != null) {
                 ShowLabel label3 = new ShowLabel("Nastepny przystanek: " + this.nastepnyPrzystanek.getNazwa(), this.nastepnyPrzystanek);
@@ -1129,19 +1171,19 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
 //                if(MainPanel.beginning==true) {
 //                if(this.oczekiwanie!=0) {
                 if (!this.pozostalaTrasa.isEmpty() && this.getImageNode()!=null) {
-                    if(this.pozostalaTrasa.size()<2) {
-                        if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
-                            if(this.getTrasa().size()<2) {
-                                if(Swiat.getInstance().getListaWolnychPojazdow().contains(this)){
-                                    Swiat.getInstance().removeWolnyPojazd(this);
-                                }
-                                this.zmienDotychczasowaTrase();
-                            }
-//                            else {
-//                                this.odwrocTrase();
+//                    if(this.pozostalaTrasa.size()<2) {
+//                        if (this.getObecnePolozenie() == this.getPrzystanekDocelowy()) {
+//                            if(this.getTrasa().size()<2) {
+//                                if(Swiat.getInstance().getListaWolnychPojazdow().contains(this)){
+//                                    Swiat.getInstance().removeWolnyPojazd(this);
+//                                }
+//                                this.zmienDotychczasowaTrase();
 //                            }
-                        }
-                    }
+////                            else {
+////                                this.odwrocTrase();
+////                            }
+//                        }
+//                    }
 //                        System.out.println("HELLO");
                     if(this.oczekiwanie==0) {
 //                            System.out.println("HEY");

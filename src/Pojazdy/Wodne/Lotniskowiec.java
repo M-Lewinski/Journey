@@ -12,6 +12,7 @@ import Mapa.ZmianyKierunku.Przystanki.Port;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Ladunki.TypLadunku;
 import Pojazdy.Ladunki.Wojskowy;
+import Pojazdy.Powietrzne.SamolotWojskowy;
 import Pojazdy.TworzeniePojazdu;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -48,6 +49,10 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
     }
 
 
+    public void stworzSamolotWojskowy(){
+        SamolotWojskowy samolotWojskowy = new SamolotWojskowy(14,14,this.ladunek.getUzbrojenie(),this.getPolozenieX(),this.getPolozenieY());
+    }
+
 
     @Override
     public List<Control> potrzebneInformacje() {
@@ -73,6 +78,12 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
             Lotniskowiec.typDrogi = new DrogaMorska();
         }
         return Lotniskowiec.typDrogi;
+    }
+
+    @Override
+    public void usuwanie() {
+        super.usuwanie();
+        Swiat.getInstance().removeLotniskowiec(this);
     }
 
     public Przystanek nastepneMozliweLadowanie(List<MiejsceZmianyKierunku> trasa, MiejsceZmianyKierunku obecnePolozenie) {

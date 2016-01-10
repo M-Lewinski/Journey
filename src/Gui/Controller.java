@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
+import java.util.Random;
+
 /**
  * Created by Lewin on 2015-11-28.
  */
@@ -64,8 +66,16 @@ public class Controller {
 
     @FXML
     public void handleStworzSamolotWojskowy(){
+        Random random = new Random();
+        if(!Swiat.getInstance().getListaLotniskowcow().isEmpty()) {
+            Lotniskowiec lotniskowiec = Swiat.getInstance().getListaLotniskowcow().get(random.nextInt(Swiat.getInstance().getListaLotniskowcow().size()));
 //        SamolotWojskowy samolotWojskowy = new SamolotWojskowy(14,14);
-        System.out.println("Sworzono nowy samolot wojskowy");
+            lotniskowiec.stworzSamolotWojskowy();
+            System.out.println("Sworzono nowy samolot wojskowy");
+        }
+        else{
+            System.out.println("Nie ma lotniskowcow");
+        }
     }
 
     @FXML

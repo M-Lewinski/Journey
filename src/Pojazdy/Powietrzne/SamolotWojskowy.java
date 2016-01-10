@@ -26,29 +26,99 @@ public class SamolotWojskowy extends Samolot {
     private static Droga typDrogi;
     private Wojskowy ladunek;
 //    public SamolotWojskowy(double dlugosc, double szerokosc, double polozenieX, double polozenieY, double maksymalnaPredkosc, TypLadunku ladunek, int liczbaPersonelu, double maksymalnaIloscPaliwa, double aktualnaIloscPaliwa) {
-    public SamolotWojskowy(double dlugosc, double szerokosc, Uzbrojenie uzbrojenie,double polozenieX,double polozenieY) {
+    public SamolotWojskowy(double dlugosc, double szerokosc, Uzbrojenie uzbrojenie, double polozenieX, double polozenieY) {
         super(dlugosc, szerokosc);
         ladunek = new Wojskowy(uzbrojenie);
-
-//        LinkedList<Przystanek> listaMozliwychPrzystankow = new LinkedList<Przystanek>();
-//        listaMozliwychPrzystankow.addAll(Swiat.getInstance().getListaLotniskWojskowych());
-//        okreslNowePolozenie(listaGdzieMozeLadowac);
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(),typDrogi);
-//        wypisywanieTrasy(this.getTrasa());
-//        this.getObecnePolozenie().addPojazdOczekujacy(this);
-//        this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getTrasa(),this.getObecnePolozenie()));
-//        this.nastepnaDroga();
-
         this.setTymczasowyKolor(Color.DARKORANGE);
         this.rysuj(MainPanel.getGrupaPojazdow());
-
-//        okreslNowePolozenie(listaMozliwychPrzystankow);
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy());
-//        tworzenieTrasy(this.getPrzystanekPoczatkowy(),this.getPrzystanekDocelowy(),typDrogi);
-//        this.setNastepnyPrzystanek(nastepnyPrzystanekZTrasy(this.getTrasa()));
+        Swiat.getInstance().getListaWolnychPojazdow().add(this);
+//        okreslaniePierwszegoPolozenia(polozenieX, polozenieY);
+        this.setPolozenieX(polozenieX);
+        this.setPolozenieY(polozenieY);
+//        System.out.println("HERE1");
+//        synchronized (this) {
+//            tworzenieTrasy(this.getPrzystanekPoczatkowy(), this.getPrzystanekDocelowy(), this.getTypDrogi());
+//            System.out.println("nazwa nastepnego miejsca: " + this.getTrasa().get(1));
+//            this.setNastepnyPrzystanek(this.nastepneMozliweLadowanie(this.getPozostalaTrasa(), this.getObecnePolozenie()));
+//        }
+//        this.getPrzystanekPoczatkowy().addPojazdZaparkowany(this);
+//        this.poinformujPasazerow(null,this.listaOdwiedzanychPrzystankow(this.getTrasa()));
         this.runMe();
     }
 
+    @Override
+    public void okreslNowePolozenie(List<MiejsceZmianyKierunku> listaMozliwychPrzystankow) {
+        LotniskoWojskowe poczatek = new LotniskoWojskowe(null,30,30,this.getPolozenieX(),this.getPolozenieY(),false);
+        this.setObecnePolozenie(poczatek);
+        this.setPrzystanekPoczatkowy(poczatek);
+//        this.setPolozenieX(polozenieX);
+//        this.setPolozenieY(polozenieY);
+        List<Przystanek> listaLokalizcji = filtrowaniePrzystankow();
+        listaLokalizcji.remove(poczatek);
+        double odleglosc=0.0;
+        Przystanek koniec=null;
+        for (int i = 0; i < listaLokalizcji.size(); i++) {
+            Przystanek przystanek = listaLokalizcji.get(i);
+//            if(przystanek == poczatek){
+//                continue;
+//            }
+            double temp = pitagoras(poczatek.getPolozenieX()-przystanek.getPolozenieX(),poczatek.getPolozenieY()-przystanek.getPolozenieY());
+            if(temp == 0.0){
+                continue;
+            }
+            if(odleglosc==0.0){
+                odleglosc=temp;
+                koniec=przystanek;
+                continue;
+            }
+            if(temp <= odleglosc){
+                odleglosc=temp;
+                koniec=przystanek;
+            }
+        }
+//        System.out.println(temp);
+//        System.out.println(koniec.getNazwa());
+        Droga droga = new DrogaPowietrzna(poczatek,koniec,false);
+        this.setPrzystanekDocelowy(koniec);
+    }
+
+
+    //    public void okreslaniePierwszegoPolozenia(double polozenieX,double polozenieY){
+//        LotniskoWojskowe poczatek = new LotniskoWojskowe(null,30,30,polozenieX,polozenieY,false);
+//        this.setObecnePolozenie(poczatek);
+//        this.setPrzystanekPoczatkowy(poczatek);
+//        this.setPolozenieX(polozenieX);
+//        this.setPolozenieY(polozenieY);
+//        List<Przystanek> listaLokalizcji = filtrowaniePrzystankow();
+//        listaLokalizcji.remove(poczatek);
+//        double odleglosc=0.0;
+//        Przystanek koniec=null;
+//        double temp=0.0;
+//        for (int i = 0; i < listaLokalizcji.size(); i++) {
+//            Przystanek przystanek = listaLokalizcji.get(i);
+////            if(przystanek == poczatek){
+////                continue;
+////            }
+//           temp = pitagoras(poczatek.getPolozenieX()-przystanek.getPolozenieX(),poczatek.getPolozenieY()-przystanek.getPolozenieY());
+//            if(temp == 0.0){
+//                continue;
+//            }
+//            if(odleglosc==0.0){
+//                odleglosc=temp;
+//                koniec=przystanek;
+//                continue;
+//            }
+//            if(temp <= odleglosc){
+//                odleglosc=temp;
+//                koniec=przystanek;
+//            }
+//        }
+//        System.out.println(temp);
+//        System.out.println(koniec.getNazwa());
+//        Droga droga = new DrogaPowietrzna(poczatek,koniec,false);
+//        this.setPrzystanekDocelowy(koniec);
+//    }
+//
     @Override
     public List<MiejsceZmianyKierunku> getMozliweLadowania() {
         if(SamolotWojskowy.listaGdzieMozeLadowac.isEmpty()){
@@ -71,11 +141,7 @@ public class SamolotWojskowy extends Samolot {
         return this.nastepnyPrzystanekZTrasy(trasa,obecnePolozenie, SamolotWojskowy.listaGdzieMozeLadowac);
     }
 
-    @Override
-    public void wyznaczaniePierwszejTrasy() {
-//        super.wyznaczaniePierwszejTrasy();
 
-    }
 
     //    @Override
 //    public void tworzenieTrasy(MiejsceZmianyKierunku poczatekTrasy, MiejsceZmianyKierunku koniecTrasy) {

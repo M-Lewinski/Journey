@@ -144,10 +144,10 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             return null;
         }
         else if(trasa.size()>1){
-            return this.pozostalaTrasa.get(1);
+            return trasa.get(1);
         }
         else if(trasa.size()==0){
-            return this.pozostalaTrasa.get(0);
+            return trasa.get(0);
         }
         return null;
     }
@@ -314,6 +314,10 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         this.obecnePolozenie = obecnePolozenie;
     }
 
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
     @Override
     public List<Control> potrzebneInformacje() {
         List<Control> listaNodow = new ArrayList<Control>();
@@ -336,6 +340,14 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         else{
             ShowLabel label19 = new ShowLabel("Podroz sluzbowa: Nie");
             listaNodow.add(label19);
+        }
+        if(this.powrot==true){
+            ShowLabel label24 = new ShowLabel("Powrot: TAK");
+            listaNodow.add(label24);
+        }
+        else{
+            ShowLabel label24 = new ShowLabel("Powrot: NIE");
+            listaNodow.add(label24);
         }
         ShowLabel label5 = new ShowLabel("Przystanek poczatkowy: " + this.przystanekPoczatkowy.getNazwa(),this.getPrzystanekPoczatkowy());
         listaNodow.add(label5);
@@ -781,24 +793,36 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     }
 
     public void usuwanie(){
-        this.poinformujORezygnacjiZPrzyjazdu();
+        synchronized (this) {
+            this.poinformujORezygnacjiZPrzyjazdu();
 //        List<Przystanek> listaTymczasowa = Swiat.getInstance().getListaPrzystankow();
 //        for (int i = 0; i < listaTymczasowa.size(); i++) {
 //            if(listaTymczasowa.get(i).getListaPasazerowPrzyjezdzajacych().contains(this)){
 //                listaTymczasowa.get(i).getListaPojazdowZaparkowanych().remove(this);
 //            }
 //        }
-        if(this.obecnePolozenie instanceof Przystanek){
-            Przystanek przystanek = (Przystanek) this.obecnePolozenie;
-            przystanek.removePasazerOczekujacy(this);
+            if (this.obecnePolozenie instanceof Przystanek) {
+                Przystanek przystanek = (Przystanek) this.obecnePolozenie;
+//            przystanek.getListaPasazerowOczekujacych().remove(this);
+//            while(przystanek.getListaPasazerowOczekujacych().contains(this)) {
+                przystanek.getListaPasazerowOczekujacych().remove(this);
+//            }
+            }
+
+//        Swiat.getInstance().removePasazer(this);
+            while (Swiat.getInstance().getListaPasazerow().contains(this)) {
+                Swiat.getInstance().getListaPasazerow().remove(this);
+            }
+            Swiat.getInstance().getListaThread().remove(thread);
+            if (Informacja.getInstance().getObecnaInformacja() == this) {
+                Informacja.getInstance().wyczysc();
+            }
+            threadIsAlive = false;
+            System.out.println("USUNIETO PASAZERA: " + this.getImie() + " " + this.getNazwisko());
+            if (Swiat.getInstance().getListaPasazerow().contains(this)) {
+                System.out.println("SXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            }
         }
-        Swiat.getInstance().removePasazer(this);
-        Swiat.getInstance().getListaThread().remove(thread);
-        threadIsAlive=false;
-        if(Informacja.getInstance().getObecnaInformacja()==this) {
-            Informacja.getInstance().wyczysc();
-        }
-        System.out.println("USUNIETO PASAZERA!!!!!!!!!!!!!!!");
     }
 
     public void odwrocTrase(){
@@ -807,7 +831,6 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             Przystanek przystanek = this.getPrzystanekPoczatkowy();
             this.setPrzystanekPoczatkowy(this.getPrzystanekDocelowy());
             this.setPrzystanekDocelowy(przystanek);
-            Random random = new Random();
             if (this.podrozSluzbowa == true) {
 //                this.czasPostoju = random.nextInt(15) + 5;
                 czasPostoju = fps * 10;
@@ -837,10 +860,19 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             this.threadIsAlive=true;
             while(this.threadIsAlive==true){
 
-                        if (moznaWysiadac == true) {
+//                if(this.getObecnePolozenie()==this.getPrzystanekDocelowy()){
+//                    odwrocTrase();
+//                }
+
+                if (moznaWysiadac == true) {
                             this.wysiadanie();
                             if(this.getObecnePolozenie()==this.getPrzystanekDocelowy()){
                                 odwrocTrase();
+                            }
+                            else{
+                                if(doszloDoZmiany==true){
+                                    dokonywanieZmiany();
+                                }
                             }
                         }
                         else {
@@ -851,6 +883,9 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                                 }
                                 //lecem
                                 lot((Pojazd)this.obecnePolozenie);
+//                                if(doszloDoZmiany==true){
+//                                    dokonywanieZmiany();
+//                                }
                                 continue;
                             }
 
@@ -876,16 +911,19 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
 
         while(true) {
             synchronized (this) {
-                if (doszloDoZmiany == true) {
+                if (threadIsAlive == false || pojazd.isThreadIsAlive()==false) {
+                    return;
+                }
+                if (doszloDoZmiany == true && this.moznaWysiadac == false) {
                     dokonywanieZmiany();
                 }
-                if(!moznaWysiadac) {
+                if (!moznaWysiadac) {
                     try {
                         this.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }else{
+                } else {
                     return;
                 }
             }
@@ -922,7 +960,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                 listaPojazdow.clear();
                 listaPojazdow.addAll(przystanek.getListaPojazdowZaparkowanych());
 //                listapojazdow.addAll(przystanek.getListaPojazdowZaparkowanych());
-                listaPojazdow.removeAll(poprzedniaListaPojazdow);
+//                listaPojazdow.removeAll(poprzedniaListaPojazdow);
             }
             for (int i = 0; i < listaPojazdow.size(); i++) {
                 synchronized (this) {
@@ -934,15 +972,16 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
                 this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa()+" "+pojazd.getIdentyfikator();
                 if(pojazd.getNastepnyPrzystanek()!=null)
                 this.pesel= pojazd.getNastepnyPrzystanek().getNazwa();
-
-                if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
+                if(pojazd.getNastepnyPrzystanek()!=null && this.nastepnyPrzystanek!=null) {
+                    if (pojazd.getNastepnyPrzystanek() == this.nastepnyPrzystanek) {
 //                                            System.out.println("Proba wejscia");
-                    this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa()+" p"+pojazd.getIdentyfikator();
-                    this.wsiadanie(pojazd);
-                    if(this.obecnePolozenie == pojazd) {
-                        return;
+                        this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa() + " p" + pojazd.getIdentyfikator();
+                        this.wsiadanie(pojazd);
+                        if (this.obecnePolozenie == pojazd) {
+                            return;
+                        }
+                        this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa() + " n" + pojazd.getIdentyfikator();
                     }
-                    this.nazwisko = ((MiejsceZmianyKierunku) this.obecnePolozenie).getNazwa()+" n"+pojazd.getIdentyfikator();
                 }
             }
 //            poprzednialistapojazdow=listapojazdow;
@@ -950,8 +989,9 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
             poprzedniaListaPojazdow.addAll(listaPojazdow);
             synchronized (przystanek){
 //                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil()))
-                if(przystanek.getOstatnioOdwiedzil()==null || (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil())) {
-//                if(przystanek.getOstatnioOdwiedzil()==null|| (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni==przystanek.getOstatnioOdwiedzil());
+//                if(przystanek.getOstatnioOdwiedzil()==null || (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil())) {
+//                if(przystanek.getOstatnioOdwiedzil()==null || (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni.equals(przystanek.getOstatnioOdwiedzil())) {
+                if(przystanek.getOstatnioOdwiedzil()==null || (przylecialOstatni==null && przystanek.getOstatnioOdwiedzil()!=null) || przylecialOstatni == przystanek.getOstatnioOdwiedzil() ) {
                     przystanek.wait();
                 }
             }
@@ -959,11 +999,14 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     }
 
     private void dokonywanieZmiany() {
-        if(this.threadIsAlive==false) {
-            Thread.currentThread().stop();
-        }
-
         doszloDoZmiany = false;
+
+//        if(this.threadIsAlive==false) {
+//            Thread.currentThread().stop();
+//        }
+        if(this.threadIsAlive==false){
+            return;
+        }
         if (this.obecnePolozenie instanceof Przystanek) {
             zmianaTrasyWPrzystanku();
         } else {
