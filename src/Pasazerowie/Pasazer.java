@@ -23,13 +23,15 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.Control;
 import javafx.scene.control.Labeled;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Klasa pasazer, ktora implementuje obiekt pasazer.
  * Created by Lewin on 2015-10-18.
  */
-public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
+public class Pasazer implements ShowInfo,Runnable, Filtrowanie, Serializable {
+    private static final long serialVersionUID = 7764388532919016430L;
     /**
      * unikalny identyfikator
      */
@@ -72,7 +74,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     /**
      * lista wszystkich miejsc zmiany kierunku i pojazdow za pomoca, ktorych bedzie przemieszczal sie pasazer.
      */
-    private List<Bilet> listaBiletow = new ArrayList<Bilet>();
+//    private List<Bilet> listaBiletow = new ArrayList<Bilet>();
 
 //    private List<Przystanek> listaPrzystankow = new ArrayList<Przystanek>();
     private List<Przystanek> listaPrzystankow;
@@ -88,7 +90,7 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
     private List<Przystanek> pozostalaTrasa;
 
     private Przystanek nastepnyPrzystanek;
-    private Thread thread;
+    private transient Thread thread;
     private boolean threadIsAlive = false;
     private boolean moznaWysiadac = false;
     private boolean moznaWsiadac = false;
@@ -254,21 +256,21 @@ public class Pasazer implements ShowInfo,Runnable, Filtrowanie {
         this.powrot = powrot;
     }
 
-    public List<Bilet> getListaBiletow() {
-        return listaBiletow;
-    }
-
-    public void setListaBiletow(List<Bilet> listaBiletow) {
-        this.listaBiletow = listaBiletow;
-    }
-
-    public void addBilet(Bilet bilet){
-        this.listaBiletow.add(bilet);
-    }
-
-    public void removeBilet(Bilet bilet){
-        this.listaBiletow.remove(bilet);
-    }
+//    public List<Bilet> getListaBiletow() {
+//        return listaBiletow;
+//    }
+//
+//    public void setListaBiletow(List<Bilet> listaBiletow) {
+//        this.listaBiletow = listaBiletow;
+//    }
+//
+//    public void addBilet(Bilet bilet){
+//        this.listaBiletow.add(bilet);
+//    }
+//
+//    public void removeBilet(Bilet bilet){
+//        this.listaBiletow.remove(bilet);
+//    }
 
     public boolean isPodrozSluzbowa() {
 

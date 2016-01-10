@@ -13,6 +13,7 @@ import Pojazdy.TransportowiecCywilny;
 import javafx.scene.control.Control;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * Created by Lewin on 2015-10-18.
  */
 public class SamolotPasazerski extends Samolot implements TransportowiecCywilny {
+
     private static List<MiejsceZmianyKierunku> listaGdzieMozeLadowac = new ArrayList<MiejsceZmianyKierunku>();
     private static Droga typDrogi;
     private Pasazerski ladunek;
@@ -29,7 +31,7 @@ public class SamolotPasazerski extends Samolot implements TransportowiecCywilny 
         this.ladunek = new Pasazerski();
 //        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
         this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
-        this.setTymczasowyKolor(Color.YELLOW);
+        this.setColor(Color.YELLOW);
         this.rysuj(MainPanel.getGrupaPojazdow());
         this.runMe();
     }

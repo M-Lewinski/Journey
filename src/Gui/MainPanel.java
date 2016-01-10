@@ -30,7 +30,7 @@ import sun.applet.Main;
 import sun.plugin.javascript.navig.Anchor;
 
 import javax.swing.*;
-import java.io.IOException;
+import java.io.*;
 import java.security.PrivateKey;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,13 +38,15 @@ import java.util.List;
 /**
  * Created by Lewin on 2015-10-23.
  */
-public class MainPanel extends Application {
+public class MainPanel extends Application implements Serializable {
+    private static final long serialVersionUID = -1993738385689327868L;
     private static Stage primaryStage;
     private static AnchorPane rootLayout;
     private static Group  grupaMiejscZmianyKierunku = new Group();
     private static Group grupaDrog = new Group();
     private static Group grupaPojazdow = new Group();
-//    public static boolean beginning = false;
+    private Swiat swiat;
+    //    public static boolean beginning = false;
 //    private static Controller controller;
     //    private static MainPanel instance = null;
     private static FXMLLoader  loader = new FXMLLoader();
@@ -130,7 +132,7 @@ public class MainPanel extends Application {
             rootLayout.getChildren().add(MainPanel.grupaMiejscZmianyKierunku);
             rootLayout.getChildren().add(MainPanel.grupaDrog);
             rootLayout.getChildren().add(MainPanel.grupaPojazdow);
-            Swiat.getInstance();
+            this.swiat=Swiat.getInstance();
             Swiat.getInstance().stworzSwiat();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -145,10 +147,37 @@ public class MainPanel extends Application {
         return primaryStage;
     }
 
+    public Swiat getSwiat() {
+        if(this.swiat==null){
+            this.swiat=Swiat.getInstance();
+        }
+        return this.swiat;
+    }
 
     public static void main(String[] args) {
 
         launch(args);
     }
 
+    public static void serializacjaAplikacji(){
+        ObjectOutputStream wyjscie;
+        try {
+            for (int i = 0; i < Swiat.getInstance().getListaThread().size(); i++) {
+                Swiat.getInstance().getListaThread().get(i).suspend();
+            }
+            wyjscie = new ObjectOutputStream(new FileOutputStream("PlikSerializacyjny.serial"));
+            wyjscie.writeObject(Swiat.getInstance());
+            wyjscie.close();
+            System.out.println("Wykonano serializacje");
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+            System.out.println("Nie udalo sie zapisac pliku");
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Nie udalo sie dokonac serializacji");
+        }
+        for (int i = 0; i < Swiat.getInstance().getListaThread().size(); i++) {
+            Swiat.getInstance().getListaThread().get(i).resume();
+        }
+    }
 }

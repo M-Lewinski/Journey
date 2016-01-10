@@ -38,7 +38,7 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
     private int fps=30;
     private double imagePromien;
     private double odlegloscDoKonca=0.0;
-    private Thread thread;
+    private transient Thread thread;
     private boolean threadIsAlive=false;
     private boolean widocznosc;
     private Monitoring hulkPojazdu = new Monitoring();
@@ -116,15 +116,15 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
      */
     private Przystanek przystanekDocelowy;
 
-    private Color tymczasowyKolor;
-
-    public Color getTymczasowyKolor() {
-        return tymczasowyKolor;
-    }
-
-    public void setTymczasowyKolor(Color tymczasowyKolor) {
-        this.tymczasowyKolor = tymczasowyKolor;
-    }
+//    private Color tymczasowyKolor;
+//
+//    public Color getTymczasowyKolor() {
+//        return tymczasowyKolor;
+//    }
+//
+//    public void setTymczasowyKolor(Color tymczasowyKolor) {
+//        this.tymczasowyKolor = tymczasowyKolor;
+//    }
 
     public double getSteps() {
         return steps;
@@ -983,8 +983,8 @@ public abstract class Pojazd extends PunktNaMapie implements Runnable,Filtrowani
         rectangle.setVisible(false);
         rectangle.setWidth(this.getSzerokosc());
         rectangle.setHeight(this.getWysokosc());
-        rectangle.setStroke(this.tymczasowyKolor);
-        rectangle.setFill(this.tymczasowyKolor);
+        rectangle.setStroke(this.getColor());
+        rectangle.setFill(this.getColor());
         rectangle.setLayoutX(this.getPolozenieX()-this.getSzerokosc()/2);
         rectangle.setLayoutY(this.getPolozenieY()-this.getWysokosc()/2);
         rectangle.setOnMouseClicked(event -> {

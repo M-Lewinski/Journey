@@ -8,13 +8,15 @@ import Pojazdy.Pojazd;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /** Klasa droga implementujaca abstrakcje obiektu droga.
  * Created by Lewin on 2015-10-18.
  */
-public abstract class Droga implements Rysowanie {
+public abstract class Droga implements Rysowanie,Serializable {
+    private static final long serialVersionUID = 5578184225632826392L;
     private Monitoring hulkDrogi = new Monitoring();
     /**
      * poczatek drogi.
@@ -45,7 +47,7 @@ public abstract class Droga implements Rysowanie {
 //    private double katKoncowy;
 //    private double odlegloscMiedzyMiejscamiZmianyKierunku;
 //    private Shape imageNode;
-    private Color color;
+    private transient Color color;
 
     private boolean czyIstniejeWSwiecei;
 
@@ -192,12 +194,18 @@ public abstract class Droga implements Rysowanie {
 //        imageNode = new Line(poczatek.getPolozenieX(),poczatek.getPolozenieY(),koniec.getPolozenieX(),koniec.getPolozenieY());
 //        imageNode.setStroke(this.color);
 //        group.getChildren().add(imageNode);
-        proba(group);
+        odpowiednieUksztaltowanieDrog(group);
 //        line.setStroke(Color.ORANGE);
 //        panel.getChildren().add(line);
     }
 
-//    public double getAngle() {
+    @Override
+    public void naprawRysunki(Group group,Color color) {
+        this.color=color;
+        rysuj(group);
+    }
+
+    //    public double getAngle() {
 //        return angle;
 //    }
 //
@@ -211,7 +219,7 @@ public abstract class Droga implements Rysowanie {
 //        this.cosDrogi = Math.cos(this.angle);
     }
 
-    public void proba(Group group){
+    public void odpowiednieUksztaltowanieDrog(Group group){
         double zmianaXP=0.0;
         double zmianaYP=0.0;
         double zmianaXK=0.0;
@@ -411,6 +419,8 @@ public abstract class Droga implements Rysowanie {
             hulkDrogi.notifyAll();
         }
     }
+
+
 
     public double calaOdlegloscDrogi(){
         return this.wylot.getDlugosc() + this.przelot.getDlugosc() + this.ladowanie.getDlugosc();

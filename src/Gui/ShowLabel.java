@@ -5,13 +5,15 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.io.Serializable;
+
 /**
  * Created by Lewin on 2016-01-01.
  */
 public class ShowLabel extends Label {
     private ShowInfo informacjaObiektu=null;
-    private Color wejscie = Color.GREEN;
-    private Color wyjscie = Color.BLACK;
+    private transient Color wejscie = Color.GREEN;
+    private transient Color wyjscie = Color.BLACK;
     public void obsluga(){
         this.setFont(new Font(15.0));
         this.setOnMouseClicked(event -> {

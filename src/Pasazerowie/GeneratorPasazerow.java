@@ -15,7 +15,8 @@ import java.util.*;
  * Klasa generujaca imiona i nazwiska pasazerow, ktore sa wczytywane z dolaczonego pliku.
  * Created by Lewin on 2015-10-24.
  */
-public class GeneratorPasazerow {
+public class GeneratorPasazerow implements Serializable {
+    private static final long serialVersionUID = -1121403815523156626L;
     /**
      * instancja klasy generatora pasazerow.
      */
@@ -37,10 +38,17 @@ public class GeneratorPasazerow {
         BufferedReader imieReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("NameList.txt")));
         String s;
         try {
-            while ((s = imieReader.readLine()) != null)
+            while ((s = imieReader.readLine()) != null) {
                 listaImion.add(s);
+            }
         }catch (IOException e){
 
+        }finally {
+            try {
+                imieReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         BufferedReader nazwiskoReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("SurnameList.txt")));
         try {
@@ -49,6 +57,12 @@ public class GeneratorPasazerow {
             }
         }catch (IOException e){
 
+        }finally {
+            try {
+                nazwiskoReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -38,7 +38,7 @@ public class Lotniskowiec extends Statek implements TworzeniePojazdu {
         super(dlugosc, szerokosc);
         ladunek = new Wojskowy();
         Swiat.getInstance().addLotniskowiec(this);
-        this.setTymczasowyKolor(Color.DEEPPINK);
+        this.setColor(Color.DEEPPINK);
         this.rysuj(MainPanel.getGrupaPojazdow());
         this.runMe();
     }

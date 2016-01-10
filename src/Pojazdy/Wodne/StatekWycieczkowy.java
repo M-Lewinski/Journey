@@ -45,7 +45,7 @@ public class StatekWycieczkowy extends Statek implements TransportowiecCywilny {
 //        this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow()+90);
         this.ladunek.stworzNowychPasazerow(this.ladunek.getMaksymalnaLiczbaPasazerow());
         this.firma = firma;
-        this.setTymczasowyKolor(Color.LIGHTBLUE);
+        this.setColor(Color.LIGHTBLUE);
         this.rysuj(MainPanel.getGrupaPojazdow());
         this.runMe();
     }

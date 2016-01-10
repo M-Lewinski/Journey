@@ -36,7 +36,7 @@ public class Swiat extends ObiektGraficzny implements ShowInfo{
      * lista wszystkich pasazerow.
      */
     private List<Runnable> listaRunnable = new LinkedList<Runnable>();
-    private List<Thread> listaThread = new LinkedList<Thread>();
+    private transient List<Thread> listaThread = new LinkedList<Thread>();
     private List<Pasazer> listaPasazerow = new ArrayList<Pasazer>();
     private List<Pojazd> listaWolnychPojazdow = new ArrayList<Pojazd>();
     /**

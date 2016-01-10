@@ -30,6 +30,9 @@ public class Controller {
     @FXML
     private Button buttonDodajPasazera;
     @FXML
+    private Button buttonZapiszSerializacje;
+
+    @FXML
     private void initialize() {
     }
 
@@ -103,6 +106,11 @@ public class Controller {
         System.out.println("Stworzono 5 pasazerow");
     }
 
+    @FXML
+    public void handleZapiszSerializacje(){
+        System.out.println("Zapisywanie Serializacji do pliku");
+        MainPanel.serializacjaAplikacji();
+    }
     public void setMainPanel(MainPanel mainPanel) {
         this.mainPanel = mainPanel;
     }

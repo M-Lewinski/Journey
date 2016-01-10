@@ -29,7 +29,7 @@ public class SamolotWojskowy extends Samolot {
     public SamolotWojskowy(double dlugosc, double szerokosc, Uzbrojenie uzbrojenie, double polozenieX, double polozenieY) {
         super(dlugosc, szerokosc);
         ladunek = new Wojskowy(uzbrojenie);
-        this.setTymczasowyKolor(Color.DARKORANGE);
+        this.setColor(Color.DARKORANGE);
         this.rysuj(MainPanel.getGrupaPojazdow());
         Swiat.getInstance().getListaWolnychPojazdow().add(this);
 //        okreslaniePierwszegoPolozenia(polozenieX, polozenieY);

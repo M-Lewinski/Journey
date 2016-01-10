@@ -5,10 +5,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 
+import java.io.Serializable;
+
 /**
  * Created by Lewin on 2015-12-08.
  */
-public class Odcinek {
+public class Odcinek implements Serializable {
+    private static final long serialVersionUID = 7548075626756304026L;
     private double angle;
     private double dlugosc;
     private double poczatekX;
@@ -17,8 +20,8 @@ public class Odcinek {
     private double koniecY;
     private double sinOdcinka;
     private double cosOdcinka;
-    private Shape imageNode;
-    private Color kolor;
+    private transient Shape imageNode;
+    private transient Color kolor;
 
     public double getAngle() {
         return angle;

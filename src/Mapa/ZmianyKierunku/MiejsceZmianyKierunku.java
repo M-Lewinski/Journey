@@ -33,20 +33,20 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
     private boolean zajetaPrzestrzen=false;
     private Pojazd obecnieZajmuje = null;
     private double promien;
-    private Shape outRing;
-    private Color color;
+    private transient Shape outRing;
+//    private transient Color color;
     private double promienOuterRing;
     private Monitoring kontrolaLotow = new Monitoring();
     //    private int promien=10;
 //    private javafx.scene.shape.Shape imageNode;
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
+//
+//    public Color getColor() {
+//        return color;
+//    }
+//
+//    public void setColor(Color color) {
+//        this.color = color;
+//    }
 
     public String getNazwa() {
         return nazwa;
@@ -301,9 +301,12 @@ public abstract class MiejsceZmianyKierunku extends PunktNaMapie implements Show
 //        this.setOutRing(outterCicle);
         this.getOutRing().setStrokeWidth(2);
         this.getOutRing().setFill(Color.TRANSPARENT);
-        this.getImageNode().setFill(this.color);
-        this.getImageNode().setStroke(this.color);
-        this.getOutRing().setStroke(this.color);
+//        this.getImageNode().setFill(this.color);
+        this.getImageNode().setFill(this.getColor());
+//        this.getImageNode().setStroke(this.color);
+        this.getImageNode().setStroke(this.getColor());
+//        this.getOutRing().setStroke(this.color);
+        this.getOutRing().setStroke(this.getColor());
         this.getOutRing().setOnMouseClicked(event -> {
             Informacja.getInstance().setObecnaInformacja(this);
         });

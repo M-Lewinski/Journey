@@ -1,6 +1,7 @@
 package Pojazdy.Powietrzne;
 
 import Gui.ShowLabel;
+import Mapa.Swiat;
 import Mapa.ZmianyKierunku.MiejsceZmianyKierunku;
 import Mapa.ZmianyKierunku.Przystanki.Przystanek;
 import Pojazdy.Pojazd;
@@ -38,12 +39,14 @@ public abstract class Samolot extends Pojazd {
     @Override
     public List<Control> potrzebneInformacje() {
         List<Control> listaNodow = super.potrzebneInformacje();
-        Button button = new Button("Awaryjne ladowanie!");
-        button.setOnMouseClicked(event -> {
+        if(!Swiat.getInstance().getListaWolnychPojazdow().contains(this)) {
+            Button button = new Button("Awaryjne ladowanie!");
+            button.setOnMouseClicked(event -> {
 //            this.awaryjneLadowanie();
-            this.wymuszoneAwaryjneLadowanie = true;
-        });
-        listaNodow.add(0,button);
+                this.wymuszoneAwaryjneLadowanie = true;
+            });
+            listaNodow.add(0, button);
+        }
         ShowLabel label1 = new ShowLabel("Liczba zalogi: "+ Integer.toString(this.liczbaPersonelu));
         listaNodow.add(5,label1);
 //        ShowLabel label2 = new ShowLabel(Integer.toString(this.liczbaPersonelu));

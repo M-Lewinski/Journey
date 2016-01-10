@@ -4,10 +4,13 @@ import Mapa.ShowInfo;
 import javafx.application.Platform;
 import sun.applet.Main;
 
+import java.io.Serializable;
+
 /**
  * Created by Lewin on 2015-12-31.
  */
-public class Informacja implements Runnable {
+public class Informacja implements Runnable{
+//    private static final long serialVersionUID = 4142564738768594598L;
     private ShowInfo obecnaInformacja=null;
     private static Informacja instance = null;
     private int rowCount=0;
